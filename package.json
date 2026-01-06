@@ -1,0 +1,35 @@
+{
+  "name": "@scottish-government/designsystem-storybook",
+  "description": "Web interface for Scottish Government Digital Design System components",
+  "version": "0.0.1",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "author": {
+    "name": "Scottish Government Digital Design system team",
+    "email": "designsystem@gov.scot",
+    "url": "https://github.com/scottish-government-design-system/design-system"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@scottish-government/design-system": "^3.3.2"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^4.1.3",
+    "@storybook/addon-a11y": "^10.1.11",
+    "@storybook/addon-docs": "^10.1.11",
+    "@storybook/addon-vitest": "^10.1.11",
+    "@storybook/builder-webpack5": "^10.1.11",
+    "@storybook/html-vite": "^10.1.11",
+    "@vitest/browser-playwright": "^4.0.16",
+    "@vitest/coverage-v8": "^4.0.16",
+    "playwright": "^1.57.0",
+    "simple-nunjucks-loader": "^3.2.0",
+    "storybook": "^10.1.11",
+    "ts-loader": "^9.5.4",
+    "vitest": "^4.0.16"
+  }
+}

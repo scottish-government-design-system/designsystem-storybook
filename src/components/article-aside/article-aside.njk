@@ -1,0 +1,14 @@
+<aside class="ds_article-aside">
+    {%- if heading -%}
+    <h2 class="gamma">{{ heading }}</h2>
+    {%- endif -%}
+    {%- if items -%}
+    <ul class="ds_no-bullets">
+    {%- for listitem in items -%}
+        <li>
+            <a href="{{ listitem.link }}">{{ listitem.label | safe }}</a>
+        </li>
+    {%-  endfor %}
+    </ul>
+    {%- endif -%}
+</aside>

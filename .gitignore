@@ -1,0 +1,8 @@
+node_modules
+dist
+coverage
+dev
+__screenshots__
+
+*storybook.log
+storybook-static
