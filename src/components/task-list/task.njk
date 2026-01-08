@@ -1,0 +1,27 @@
+{% macro task(params) %}
+    <li class="ds_task-list__task" id="{{ params.id }}">
+        <div class="ds_task-list__task-details">
+            <{{ params.headingLevel }} class="ds_task-list__task-heading">
+                {% if params.href %}<a class="ds_task-list__task-link" href="{{ params.href }}">{%- endif -%}
+                {{ params.title }} <span class="visually-hidden">({{ params.statusText }})</span>
+                {%- if params.href %}</a>{%- endif %}
+            </{{ params.headingLevel }}>
+            {%- if params.content -%}
+            <p class="ds_hint-text  ds_task-list__task-summary">{{ params.content }}</p>
+            {%- endif %}
+        </div>
+        {% if params.status -%}
+        <strong class="ds_tag {%- if params.status == 'Complete' %}  ds_tag--green{%- else %}  ds_tag--grey{%- endif %}" aria-hidden="true">
+            {{- params.status -}}
+        </strong>
+        {%- endif %}
+    </li>
+{% endmacro %}
+{{task({
+    content: content,
+    headingLevel: headingLevel,
+    href: href,
+    id: id,
+    status: status,
+    title: title
+})}}

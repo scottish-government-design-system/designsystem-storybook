@@ -1,4 +1,3 @@
-// Accordion.stories.ts
 import type { Meta, StoryObj } from '@storybook/html';
 
 // @ts-expect-error no type defs

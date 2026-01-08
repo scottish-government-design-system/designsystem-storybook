@@ -1,17 +1,12 @@
 import type { StorybookConfig } from '@storybook/html-vite';
 
 const config: StorybookConfig = {
-  stories: [
-    "../src/**/*.mdx",
-    "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"
-  ],
   addons: [
-    // "@chromatic-com/storybook",
+    "@chromatic-com/storybook",
     "@storybook/addon-vitest",
     "@storybook/addon-a11y",
     "@storybook/addon-docs",
   ],
-  framework: "@storybook/html-vite",
   core: {
     builder: {
       name: '@storybook/builder-webpack5',
@@ -21,7 +16,13 @@ const config: StorybookConfig = {
       },
     },
   },
-  // @ts-expect-error type not privided by StoryBook for html-vite
+  framework: "@storybook/html-vite",
+  staticDirs: ['../static'],
+  stories: [
+    "../src/**/*.mdx",
+    "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"
+  ],
+  // @ts-expect-error type not provided by StoryBook for html-vite
   webpackFinal: (config) => {
     config.module.rules.push(
       {
@@ -29,7 +30,9 @@ const config: StorybookConfig = {
         use: [
           {
             loader: 'simple-nunjucks-loader',
-            options: {}
+            options: {
+              searchPaths: ''
+            }
           }
         ]
       },

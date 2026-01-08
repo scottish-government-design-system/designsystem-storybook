@@ -1,0 +1,54 @@
+{% macro taskList(params) %}
+    {%- if params.title %}
+    <{{ params.headingLevel }} class="ds_task-list-heading">{{ params.title }}</{{ params.headingLevel }}>
+    {%- endif %}
+    {%- if params.intro %}
+    <p class="ds_task-list-intro">{{ params.intro }}</p>
+    {%- endif %}
+    {%- if params.tasks %}
+    <ul class="ds_task-list">
+        {%- for item in params.tasks %}
+            {%- from 'src/components/task-list/task.njk' import task %}
+            {{task({
+                content: item.content,
+                headingLevel: taskHeadingLevel,
+                href: item.href,
+                id: item.id,
+                status: item.status,
+                title: item.title
+            })}}
+        {%- endfor %}
+    </ul>
+    {%- endif %}
+    {%- if params.groups %}
+    <ul class="ds_task-list-group">
+        {%- for group in params.groups %}
+        <li class="ds_task-list-group__section">
+            <{{ params.groupHeadingLevel }} class="ds_task-list-heading">{{group.title}}</{{params.groupHeadingLevel}}>
+            <ul class="ds_task-list">
+            {%- for item in group.tasks %}
+                {% from 'src/components/task-list/task.njk' import task %}
+                {{task({
+                    content: item.content,
+                    headingLevel: taskHeadingLevel,
+                    href: item.href,
+                    id: item.id,
+                    status: item.status,
+                    title: item.title
+                })}}
+            {%- endfor %}
+            </ul>
+        </li>
+        {%- endfor %}
+    </ul>
+    {%- endif %}
+{% endmacro %}
+{{taskList({
+    groups: groups,
+    groupHeadingLevel: groupHeadingLevel,
+    headingLevel: headingLevel,
+    intro: intro,
+    taskHeadingLevel: taskHeadingLevel,
+    tasks: tasks,
+    title: title
+})}}

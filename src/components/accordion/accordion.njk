@@ -1,13 +1,14 @@
-<div class="ds_accordion{% if isSmall %}  ds_accordion--small{% endif %}" data-module="ds-accordion">
-    {%- if isOpenAll -%}
+{% macro accordion(params) %}
+<div class="ds_accordion{% if params.isSmall %}  ds_accordion--small{% endif %}" data-module="ds-accordion">
+    {%- if params.isOpenAll -%}
     <button data-accordion="accordion-open-all" type="button" class="ds_link  ds_accordion__open-all  js-open-all">Open all <span class="visually-hidden">sections</span></button>
     {%- endif -%}
-    {%- for accordion in items -%}
+    {%- for accordion in params.items %}
     <div class="ds_accordion-item">
         <input type="checkbox" class="visually-hidden  ds_accordion-item__control" id="panel-{{ loop.index }}" aria-labelledby="panel-{{ loop.index }}-heading">
         <div class="ds_accordion-item__header">
             <h3 id="panel-{{ loop.index }}-heading" class="ds_accordion-item__title">{{ accordion.heading }}</h3>
-            <span aria-hidden="true" {% if openText %}data-open-text="{{ openText }}"{% endif %}{% if closeText %} data-close-text="{{ closeText }}"{% endif %} class="ds_accordion-item__indicator"></span>
+            <span aria-hidden="true" {% if params.openText %}data-open-text="{{ params.openText }}"{% endif %}{% if params.closeText %} data-close-text="{{ params.closeText }}"{% endif %} class="ds_accordion-item__indicator"></span>
             <label class="ds_accordion-item__label" for="panel-{{ loop.index }}"><span class="visually-hidden">Show this section</span></label>
         </div>
         <div class="ds_accordion-item__body">
@@ -16,3 +17,12 @@
     </div>
     {%-  endfor %}
 </div>
+{% endmacro %}
+
+{{accordion({
+    closeText: closeText,
+    isOpenAll: isOpenAll,
+    isSmall: isSmall,
+    items: items,
+    openText: openText
+})}}

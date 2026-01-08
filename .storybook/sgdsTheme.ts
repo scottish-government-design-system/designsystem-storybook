@@ -4,6 +4,6 @@ export default create({
   base: 'light',
   brandTitle: 'Scottish Government Design System',
   brandUrl: 'https://designsystem.gov.scot',
-  brandImage: 'static/images/scottish-government--min.svg',
+  brandImage: '/images/scottish-government.svg',
   brandTarget: '_self',
 });

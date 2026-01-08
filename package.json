@@ -3,7 +3,6 @@
   "description": "Web interface for Scottish Government Digital Design System components",
   "version": "0.0.1",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"

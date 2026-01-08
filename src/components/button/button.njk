@@ -1,0 +1,48 @@
+{%- macro button(params) %}
+    {%- if params.href %}
+        {%- set elementName = 'a' %}
+    {%- else %}
+        {%- set elementName = 'button' %}
+    {%- endif %}
+    {%- if params.isSecondary %}
+        {%- set styleModifier = 'ds_button--secondary' %}
+    {%- endif %}
+    {%- if params.width %}
+        {%- set widthModifier = 'ds_button--' + width %}
+    {%- endif %}
+    {%- if params.isSmall %}
+        {%- set sizeModifier = 'ds_button--small' %}
+    {%- endif %}
+    {%- if params.icon and not params.isIconOnly %}
+        {%- set iconModifier = 'ds_button--has-icon' %}
+        {% if params.isIconLeft %}
+            {% set iconModifier = 'ds_button--has-icon  ds_button--has-icon--left' %}
+        {% endif %}
+    {%- endif %}
+    {%- if hasLinkStyle %}
+        <{{elementName}} {% if params.isDisabled %}disabled{%endif%} class="ds_link">{{content}}</{{elementName}}>
+    {%- else %}
+        <{{elementName}} {% if params.isDisabled %}disabled{%endif%} class="ds_button {{styleModifier}} {{widthModifier}} {{sizeModifier}} {{iconModifier}}" {%- if params.href %}href="{{params.href}}"{%- endif %}>
+            {%- if isIconOnly %}
+            <span class="visually-hidden">{{content}}</span>
+            {%- else %}
+            {{content}}
+            {%- endif %}
+            {%- if params.icon %}
+            <svg class="ds_icon" aria-hidden="true" role="img"><use href="/images/icons.stack.svg#{{params.icon}}"></use></svg>
+            {%- endif %}
+        </{{elementName}}>
+    {%- endif %}
+{%- endmacro %}
+{{button({
+    content: content,
+    hasLinkStyle: hasLinkStyle,
+    href: href,
+    icon: icon,
+    isDisabled: isDisabled,
+    isIconLeft: isIconLeft,
+    isIconOnly: isIconOnly,
+    isSecondary: isSecondary,
+    isSmall: isSmall,
+    width: width
+})}}
