@@ -1,0 +1,46 @@
+<style>
+    /* sidebar font sizes */
+    #storybook-explorer-tree button,
+    #storybook-explorer-tree a,
+    #storybook-explorer-menu .search-result-recentlyOpened,
+    #storybook-explorer-menu .search-result-item,
+    .react-aria-Popover button
+    {
+        font-size: 1rem !important;
+    }
+
+    /* slightly smaller sidebar font sizes */
+    #storybook-explorer-menu .search-result-item--label > div,
+    #storybook-testing-module button,
+    #storybook-explorer-searchfield {
+        font-size: 0.875rem !important;
+    }
+
+    /* sidebar component icons */
+    #storybook-explorer-tree button svg {
+        height: 1rem !important;
+        width: 1rem !important;
+    }
+
+    /* sidebar component icons */
+    #storybook-explorer-tree button > div > div {
+        align-items: initial !important;
+    }
+
+    /* sidebar section open/close icon positioning */
+    button[data-action="collapse-root"] > div {
+        position: relative;
+        top: 4px;
+    }
+
+    /* sidebar section open/close icon positioning */
+    button[data-action="collapse-root"][aria-expanded="true"] > div {
+        left: -4px;
+        top: 0;
+    }
+
+    /* logo size */
+    .sidebar-header > div > a > img {
+        max-width: 240px !important;
+    }
+</style>
