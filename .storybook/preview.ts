@@ -6,6 +6,7 @@ import '@scottish-government/design-system/dist/scripts/design-system.js';
 const preview: Preview = {
   parameters: {
     controls: {
+      disableSaveFromUI: true,
       matchers: {
        color: /(background|color)$/i,
        date: /Date$/i,

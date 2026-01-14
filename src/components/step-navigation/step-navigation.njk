@@ -1,0 +1,28 @@
+{%- macro stepNavigation(params) -%}
+{%- from 'src/components/step-navigation/step.njk' import step -%}
+<nav class="ds_step-navigation {%- if params.isSmall %}  ds_step-navigation--small{%- endif %}" data-module="ds-step-navigation" {%- if params.title %} aria-labelledby="step-navigation-title"{%- endif %}>
+    {%- if params.title %}
+    <h2 id="step-navigation-title" class="ds_step-navigation__title">
+        Part of
+        <a class="ds_step-navigation__title-link" href="/site/mygov/browse/mammals/step-by-step">{{ params.title }}</a>
+    </h2>
+    {%- endif %}
+    <div class="ds_accordion  {%- if params.isSmall %}  ds_accordion--small{%- endif %}" data-module="ds-accordion">
+        <button data-accordion="accordion-open-all" type="button"
+            class="ds_link  ds_accordion__open-all  js-open-all">Open all <span
+                class="visually-hidden">sections</span></button>
+
+        <ol class="ds_step-navigation__list">
+            {%- for item in params.steps %}
+                {{step(item)}}
+            {%- endfor %}
+        </ol>
+    </div>
+</nav>
+{%- endmacro -%}
+
+{{stepNavigation({
+    isSmall: isSmall,
+    steps: steps,
+    title: title
+})}}

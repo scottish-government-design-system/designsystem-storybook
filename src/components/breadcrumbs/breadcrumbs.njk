@@ -1,18 +1,18 @@
-{% macro breadcrumbs(params) %}
-    <nav aria-label="Breadcrumb">
-        <ol class="ds_breadcrumbs">
-            {%- for breadcrumb in params.items %}
-            <li class="ds_breadcrumbs__item {%- if breadcrumb.isHidden %} visually-hidden{%- endif %}" {%- if breadcrumb.isCurrent %} aria-current="page"{%- endif %}>
-                {%- if breadcrumb.href %}
-                <a class="ds_breadcrumbs__link" href="{{breadcrumb.href}}">{{ breadcrumb.content }}</a>
-                {%- else %}
-                {{ breadcrumb.content }}
-                {%- endif %}
-            </li>
-            {%-  endfor %}
-        </ol>
-    </nav>
-{% endmacro %}
+{%- macro breadcrumbs(params) -%}
+<nav aria-label="Breadcrumb">
+    <ol class="ds_breadcrumbs">
+        {%- for breadcrumb in params.items %}
+        <li class="ds_breadcrumbs__item {%- if breadcrumb.isHidden %} visually-hidden{%- endif %}" {%- if breadcrumb.isCurrent %} aria-current="page"{%- endif %}>
+            {%- if breadcrumb.href %}
+            <a class="ds_breadcrumbs__link" href="{{breadcrumb.href}}">{{ breadcrumb.content }}</a>
+            {%- else %}
+            {{ breadcrumb.content }}
+            {%- endif %}
+        </li>
+        {%-  endfor %}
+    </ol>
+</nav>
+{%- endmacro -%}
 
 {{breadcrumbs({
     items: items

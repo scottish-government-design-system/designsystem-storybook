@@ -1,0 +1,35 @@
+{%- macro siteFooter(params) -%}
+<footer class="ds_site-footer {%- if params.reversed %} ds_reversed{%- endif %}" {%- if params.styles %} style="{{ params.styles }}"{%- endif %}>
+    <div class="ds_wrapper">
+        <div class="ds_site-footer__content">
+            {%- if params.hasLinks %}
+            <ul class="ds_site-footer__site-items">
+                {%- for item in params.links %}
+                <li class="ds_site-items__item">
+                    <a href="{{ item.href }}">{{ item.content }}</a>
+                </li>
+                {%- endfor %}
+            </ul>
+            {%- endif %}
+            {%- if params.hasLicense %}
+            <div class="ds_site-footer__copyright">
+                <span class="ds_site-footer__copyright-logo"><img src="/images/ogl.svg" alt="Open Government License" width="41" height="17"></span>
+                <p>All content is available under the <a href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" data-navigation="link-external" data-footer="footer-copyright">Open Government Licence v3.0</a>, except for graphic assets and where otherwise stated</p><p>© Crown Copyright</p>
+            </div>
+            {%- endif %}
+            {%- if params.hasOrg %}
+            <div class="ds_site-footer__org">
+                <a class="ds_site-footer__org-link" href="" data-footer="footer-logo"><img class="ds_site-footer__org-logo" src="/images/scottish-government-small.svg" alt="gov.scot" width="300" height="55"></a>
+            </div>
+            {%- endif %}
+        </div>
+    </div>
+</footer>
+{%- endmacro -%}
+
+{{siteFooter({
+    hasLicense: hasLicense,
+    hasLinks: hasLinks,
+    hasOrg: hasOrg,
+    links: links
+})}}

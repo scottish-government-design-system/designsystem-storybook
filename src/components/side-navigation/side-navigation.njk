@@ -1,0 +1,32 @@
+{% macro renderItems(items, isRoot) %}
+<ul class="ds_side-navigation__list" {% if isRoot %}id="side-navigation-root"{% endif %}>
+    {%- for item in items %}
+        {{sideNavigationItem(item)}}
+    {%- endfor %}
+</ul>
+{% endmacro %}
+
+{%- macro sideNavigationItem(params) -%}
+<li class="ds_side-navigation__item"{%- if params.current %} aria-current="page"{%- endif %}>
+    {%- if params.href %}
+    <a href="{{ params.href }}" class="ds_side-navigation__link {% if params.isCurrent %}ds_current{% endif %}">{{ params.title }}</a>
+    {%- else %}
+    <span class="ds_side-navigation__link {% if params.isCurrent %}ds_current{% endif %}">{{ params.title }}</span>
+    {%- endif %}
+    {%- if params.items -%}
+        {{ renderItems(params.items) }}
+    {%- endif -%}
+</li>
+{%- endmacro -%}
+
+{%- macro sideNavigation(params) -%}
+<nav aria-label="{{ params.ariaLabel }}" class="ds_side-navigation" data-module="ds-side-navigation">
+    <input type="checkbox" class="visually-hidden js-toggle-side-navigation" id="show-side-navigation" aria-controls="side-navigation-root">
+    <label class="ds_side-navigation__expand ds_link" for="show-side-navigation"><span class="visually-hidden">Show all</span> {{ params.ariaLabel }} <span class="ds_side-navigation__expand-indicator"></span></label>
+    {{renderItems(params.items, true)}}
+</nav>
+{%- endmacro -%}
+
+{{sideNavigation({
+    items: items
+})}}

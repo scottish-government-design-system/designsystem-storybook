@@ -1,0 +1,48 @@
+{%- macro summaryItem(params) -%}
+<li class="ds_summary-list__item">
+    <span class="ds_summary-list__key" id="item-INDEX-key">{{ params.key }}</span>
+    <span class="ds_summary-list__value">
+        {%- if params.values %}
+        <ul class="ds_no-bullets">
+            {%- for value in params.values %}
+            <li><q class="ds_summary-list__answer">{{ value }}</q></li>
+            {%- endfor %}
+        </ul>
+        {%- else %}
+        <q class="ds_summary-list__answer">{{ params.value | safe }}</q>
+        {%- endif %}
+    </span>
+    {%- if params.actions %}
+    <div class="ds_summary-list__actions">
+        {%- if params.actions.length > 1 -%}
+        <ul class="ds_summary-list__actions-list">
+            {%- for action in params.action %}
+            <li class="ds_summary-list__actions-list-item">
+                {%- if action.href %}
+                <a href="{{action.href}}" class="ds_link" aria-describedby="item-INDEX-key {%- if action.cardId %} {{ action.cardId }}{%- endif %}">
+                    {{ action.label }}
+                </a>
+                {%- else %}
+                <button type="button" class="ds_link" aria-describedby="item-INDEX-key {%- if action.cardId %} {{ action.cardId }}{%- endif %}">
+                    {{ action.label }}
+                </button>
+                {%- endif %}
+            </li>
+            {%- endfor %}
+        </ul>
+        {%- else %}
+        <button type="button" class="ds_link" aria-describedby="item-INDEX-key {%- if params.actions[0].cardId %} {{ params.actions[0].cardId }}{%- endif %}">
+            {{ params.actions[0].label }}
+        </button>
+        {%- endif %}
+    </div>
+    {%- endif %}
+</li>
+{%- endmacro -%}
+
+{{summaryItem({
+    actions: actions,
+    key: key,
+    value: value,
+    values: values
+})}}

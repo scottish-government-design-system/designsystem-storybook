@@ -31,7 +31,13 @@ const meta: Meta<ComponentArgs> = {
 export default meta;
 type Story = StoryObj<ComponentArgs>;
 
-export const Default: Story = {};
+export const Default: Story = {
+    parameters: {
+        docs: {
+            story: { autoplay: true },
+        }
+    }
+};
 
 export const DateRange: Story = {
     args: {

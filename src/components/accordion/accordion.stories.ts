@@ -18,7 +18,7 @@ declare global {
 
 const meta: Meta<ComponentArgs> = {
     title: 'Components/Accordion',
-    tags: ['autodocs'],
+    // tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },
@@ -49,7 +49,13 @@ const meta: Meta<ComponentArgs> = {
 export default meta;
 type Story = StoryObj<ComponentArgs>;
 
-export const Default: Story = {};
+export const Default: Story = {
+    parameters: {
+        docs: {
+            story: { autoplay: true },
+        }
+    }
+};
 
 export const WithoutOpenAll: Story = {
     args: {

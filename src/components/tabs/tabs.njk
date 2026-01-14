@@ -1,0 +1,45 @@
+{%- macro tabs(params) -%}
+{%- set headingLevel = params.headingLevel or 'h2' -%}
+{%- if headingLevel == 'h2' -%}
+    {%- set tabHeadingLevel = 'h3' -%}
+{%- elif headingLevel == 'h3' -%}
+    {%- set tabHeadingLevel = 'h4' -%}
+{%- elif headingLevel == 'h4' -%}
+    {%- set tabHeadingLevel = 'h5' -%}
+{%- elif headingLevel == 'h5' -%}
+    {%- set tabHeadingLevel = 'h6' -%}
+{%- endif -%}
+<div class="ds_tabs {%- if params.isManual %} ds_tabs--manual{% endif %}" data-module="ds-tabs">
+    <{{headingLevel}} id="tabset-title" class="ds_tabs__titsle">{{ params.title }}</{{headingLevel}}>
+    {%- if params.items %}
+    <ul class="ds_tabs__list" id="tablist" aria-labelledby="tabset-title">
+        {%- for tab in params.items %}
+        <li class="ds_tabs__tab {%- if tab.isCurrent %}  ds_current{%- endif %}" {%- if tab.current %}aria-current="page"{%- endif %}>
+            <a class="ds_tabs__tab-link" href="#{{ tab.id }}">{{ tab.title }}</a>
+        </li>
+        {%- endfor %}
+    </ul>
+    {%- if params.isCurrentPage %}
+        <div id="ds_tabs__current" class="ds_tabs__current"><strong>Current category</strong> {{ params.isCurrentPage }}</div>
+    {%- endif %}
+    {%- for tab in params.items %}
+    {%- if tab.content %}
+    <div class="ds_tabs__content {%- if not isBorderless %}  ds_tabs__content--bordered{%- endif %}" id="{{ tab.id }}">
+        <{{tabHeadingLevel}}>{{ tab.title }}</{{tabHeadingLevel}}>
+        {{ tab.content | safe }}
+    </div>
+    {%- endif %}
+    {%- endfor %}
+    {%- endif %}
+</div>
+{%- endmacro -%}
+
+{{tabs({
+    headingLevel: headingLevel,
+    isBorderless: isBorderless,
+    isCurrentPage: isCurrentPage,
+    isDynamic: isDynamic,
+    isManual: isManual,
+    items: items,
+    title: title
+})}}

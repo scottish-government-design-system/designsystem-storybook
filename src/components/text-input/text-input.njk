@@ -1,0 +1,50 @@
+
+{%- macro textInput(params) -%}
+<label class="ds_label" for="{{params.id}}">{{params.label}}</label>
+{%- if params.hintText %}
+<p class="ds_hint-text" id="hint-text-kitchensink">{{params.hintText}}</p>
+{%- endif %}
+{%- if params.errorMessage %}
+<p class="ds_question__error-message " id="error-message-kitchensink">{{params.errorMessage}}</p>
+{%- endif %}
+{%- if params.isCurrency or params.hasButton %}<div class="{% if params.hasButton %}ds_input__wrapper  ds_input__wrapper--has-icon{% endif %} {% if params.isCurrency %}ds_currency-wrapper{% endif %}" {% if params.isCurrency %}data-symbol="{{params.currencySymbol | default('£')}}"{% endif %}>{%- endif %}
+<input
+    class="ds_input {% if params.hasError %}ds_input--error{% endif %} {% if params.width %}ds_input--{{params.width}}{% endif %}"
+    id="{{params.id}}"
+    name="{{params.name | default(params.id)}}"
+    {%- if params.placeholder -%}placeholder="{{params.placeholder}}"{%- endif %}
+    {%- if params.step -%}step="{{params.step}}"{%- endif %}
+    type="{{params.type | default('text')}}"
+    {%- if params.value -%}value="{{params.value}}"{%- endif %}
+>
+{%- if params.hasButton %}
+<button class="ds_button" type="button">
+    <span class="visually-hidden">{{params.buttonText}}</span>
+    <svg class="ds_icon" aria-hidden="true" role="img">
+        <use href="/images/icons.stack.svg#{{params.buttonIcon}}"></use>
+    </svg>
+</button>
+{%- endif %}
+{%- if params.isCurrency %}</div>{%- endif %}
+{%- endmacro -%}
+
+{{textInput({
+    buttonIcon: buttonIcon,
+    buttonText: buttonText,
+    countThreshold: countThreshold,
+    currencySymbol: currencySymbol,
+    errorMessage: errorMessage,
+    hasButton: hasButton,
+    hasError: hasError,
+    hintText: hintText,
+    id: id,
+    isCurrency: isCurrency,
+    label: label,
+    maxlength: maxlength,
+    name: name,
+    placeholder: placeholder,
+    step: step,
+    type: type,
+    value: value,
+    width: width
+})}}

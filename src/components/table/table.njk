@@ -1,0 +1,30 @@
+{%- macro table(params) -%}
+<table class="ds_table" {%- if params.smallScreen and params.smallScreen != 'none' %} data-smallscreen="{{ params.smallScreen }}"{%- endif %}>
+    <caption>{{ params.caption }}</caption>
+    {%- if params.head %}
+    <thead>
+        <tr>
+            {%- for cell in params.head %}
+            <th {%- if cell.scope %} scope="{{ cell.scope }}"{%- endif %}>{{ cell.content | safe }}</th>
+            {%- endfor %}
+        </tr>
+    </thead>
+    {%- endif %}
+    <tbody>
+        {%- for row in params.rows %}
+        <tr>
+            {%- for cell in row.cells %}
+            <td {%- if cell.align %} align="{{ cell.align }}"{%- endif %}>{{ cell.content | safe }}</td>
+            {%- endfor %}
+        </tr>
+        {%- endfor %}
+    </tbody>
+</table>
+{%- endmacro -%}
+
+{{table({
+    caption: caption,
+    smallScreen: smallScreen,
+    head: head,
+    rows: rows
+})}}

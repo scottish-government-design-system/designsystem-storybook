@@ -1,0 +1,29 @@
+
+{%- macro textarea(params) -%}
+<label class="ds_label" for="{{params.id}}">{{params.label}}</label>
+{%- if params.hintText %}
+<p class="ds_hint-text" id="hint-text-kitchensink">Please describe the problem you are having</p>
+{%- endif %}
+{%- if params.errorMessage %}
+<p class="ds_question__error-message " id="error-message-kitchensink">This field is required</p>
+{%- endif %}
+<textarea
+    class="ds_input {% if params.hasError %}ds_input--error{% endif %}"
+    id="{{params.id}}"
+    {%- if params.name -%}name="{{params.name}}"{%- else -%}name="{{params.id}}"{%- endif -%}
+    {%- if params.placeholder -%}placeholder="{{params.placeholder}}"{%- endif -%}
+    {%- if params.placeholder -%}rows="{{params.rows}}"{%- endif -%}
+>{{params.value}}</textarea>
+{%- endmacro -%}
+
+{{textarea({
+    errorMessage: errorMessage,
+    hasError: hasError,
+    hintText: hintText,
+    id: id,
+    label: label,
+    name: name,
+    placeholder: placeholder,
+    rows: rows,
+    value: value
+})}}

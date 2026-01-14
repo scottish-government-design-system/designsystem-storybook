@@ -1,0 +1,48 @@
+{%- macro summaryList(params) -%}
+{%- if params.isBorderless -%}
+    {%- set borderModifier = 'ds_summary-list--no-border' -%}
+{%- endif -%}
+{%- if params.hasShortKeys -%}
+    {%- set shortKeyModifier = 'ds_summary-list--short-keys' -%}
+{%- endif -%}
+{%- if params.items -%}
+<{{ params.listType }} class="ds_summary-list {{borderModifier}} {{shortKeyModifier}}">
+{%- for item in params.items %}
+    {%- set rowloop = loop %}
+    <li class="ds_summary-list__item">
+        <span class="ds_summary-list__key" id="item-{{rowloop.index}}-key">{{ item.key }}</span>
+        <span class="ds_summary-list__value">
+            <q class="ds_summary-list__answer">{{ item.value }}</q>
+        </span>
+        {%- if item.actions and not hasNoActions %}
+        <div class="ds_summary-list__actions">
+            {%- if item.actions.length > 1 -%}
+            <ul class="ds_summary-list__actions-list">
+                {%- for action in item.actions %}
+                <li class="ds_summary-list__actions-list-item">
+                    <button type="button" class="ds_link" aria-describedby="item-{{rowloop.index}}-key {%- if action.cardId %} {{ action.cardId }}{%- endif %}">
+                        {{ action.label }}
+                    </button>
+                </li>
+                {%- endfor %}
+            </ul>
+            {%- else %}
+            <button type="button" class="ds_link" aria-describedby="item-{{rowloop.index}}-key {%- if item.actions[0].cardId %} {{ item.actions[0].cardId }}{%- endif %}">
+                {{ item.actions[0].label }}
+            </button>
+            {%- endif %}
+        </div>
+        {%- endif %}
+    </li>
+{%- endfor %}
+</{{ params.listType }}>
+{%- endif -%}
+{%- endmacro -%}
+
+{{summaryList({
+    hasNoActions: hasNoActions,
+    hasShortKeys: hasShortKeys,
+    isBorderless: isBorderless,
+    items: items,
+    listType: listType
+})}}

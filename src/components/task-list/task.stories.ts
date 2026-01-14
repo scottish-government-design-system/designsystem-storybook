@@ -28,7 +28,7 @@ const meta: Meta<ComponentArgs> = {
     },
     argTypes: {
         status: {
-            options: ['Complete', 'In progress', 'Not started', 'Cannot start yet'],
+            options: ['None', 'Complete', 'In progress', 'Not started', 'Cannot start yet'],
             control: { type: 'select' },
             type: 'string'
         },
@@ -39,3 +39,21 @@ export default meta;
 type Story = StoryObj<ComponentArgs>;
 
 export const Default: Story = {};
+
+export const NoDescription: Story = {
+    args: {
+        content: undefined
+    }
+};
+
+export const NoLink: Story = {
+    args: {
+        href: undefined
+    }
+};
+
+export const NoStatus: Story = {
+    args: {
+        status: 'None'
+    }
+};

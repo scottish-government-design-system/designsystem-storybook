@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/html';
+import { MenuItemArgs as MenuItemArgs } from '../site-navigation/site-navigation.stories';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './site-header.njk';
@@ -7,6 +8,7 @@ type ComponentArgs = {
     hasNavigation?: boolean
     hasPhaseBanner?: boolean
     hasSearch?: boolean
+    navItems?: MenuItemArgs[]
     siteTitle?: string
 };
 
@@ -20,6 +22,25 @@ const meta: Meta<ComponentArgs> = {
         hasNavigation: false,
         hasPhaseBanner: false,
         hasSearch: false,
+        navItems: [
+            {
+                content: "Apples",
+                href: "#foo"
+            },
+            {
+                content: "Bananas",
+                href: "#bar",
+                isCurrent: true
+            },
+            {
+                content: "Cherries",
+                href: "#baz"
+            },
+            {
+                content: "Dates",
+                href: "#qux"
+            }
+        ],
         siteTitle: ''
     }
 };

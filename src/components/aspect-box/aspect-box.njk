@@ -1,8 +1,8 @@
-{% macro aspectBox(params) %}
+{%- macro aspectBox(params) -%}
 <div class="ds_aspect-box  {{params.ratio}}">
     <img {%- if params.altText %} alt="{{ params.altText }}"{%- endif %}{%- if params.presentation %} aria-hidden="true"{%- endif %} class="ds_aspect-box__inner" class="ds_aspect-box__inner" src="/images/placeholders/thistles.jpg" width="656" height="369">
 </div>
-{% endmacro %}
+{%- endmacro -%}
 
 {{aspectBox({
     altText: altText,

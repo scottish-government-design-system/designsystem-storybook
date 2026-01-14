@@ -1,4 +1,4 @@
-{% macro accordion(params) %}
+{%- macro accordion(params) -%}
 <div class="ds_accordion{% if params.isSmall %}  ds_accordion--small{% endif %}" data-module="ds-accordion">
     {%- if params.isOpenAll -%}
     <button data-accordion="accordion-open-all" type="button" class="ds_link  ds_accordion__open-all  js-open-all">Open all <span class="visually-hidden">sections</span></button>
@@ -17,7 +17,7 @@
     </div>
     {%-  endfor %}
 </div>
-{% endmacro %}
+{%- endmacro -%}
 
 {{accordion({
     closeText: closeText,

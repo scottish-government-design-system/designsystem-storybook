@@ -1,0 +1,34 @@
+{%- macro summaryCard(params) -%}
+{%- from 'src/components/summary-list/summary-list.njk' import summaryList -%}
+<div class="ds_summary-card">
+    <div class="ds_summary-card__header">
+        {%- if params.title %}<h3 class="ds_summary-card__header-title" {%- if params.actions %}  id="card-1-title"{%- endif %}>{{ params.title }}</h3>{%- endif %}
+        {%- if params.actions %}
+        <ul class="ds_summary-card__actions-list">
+            {%- for action in params.actions %}
+            <li class="ds_summary-card__actions-list-item">
+                {%- if action.link %}
+                <a href="#" class="ds_link" aria-describedby="card-1-title">{{ action.label }}</a>
+                {%- else %}
+                <button type="button" class="ds_link" aria-describedby="card-1-title">{{ action.label }}</button>
+                {%- endif %}
+            </li>
+            {%- endfor %}
+        </ul>
+        {%- endif %}
+    </div>
+    <div class="ds_summary-card__content">
+        {%- if params.summaryList %}
+            {{summaryList(
+                params.summaryList
+            )}}
+        {%- endif %}
+    </div>
+</div>
+{%- endmacro -%}
+
+{{summaryCard({
+    actions: actions,
+    summaryList: summaryList,
+    title: title
+})}}

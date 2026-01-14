@@ -45,7 +45,7 @@ const meta: Meta<ComponentArgs> = {
         },
         href: {
             control: { type: 'text' },
-            description: 'Href attribute, changes element to <code>&lt;a&gt;</code> if set',
+            description: '`href` attribute, changes element to `<a>` if set',
             table: {
                 type: {
                     summary: 'string'
@@ -53,7 +53,7 @@ const meta: Meta<ComponentArgs> = {
             }
         },
         icon: {
-            description: 'Name of the icon component to use',
+            description: 'Name of the icon to use',
             options: ['arrow_upward', 'calendar_today', 'cancel', 'check_circle', 'chevron_left', 'chevron_right', 'close', 'description', 'double_chevron_left', 'double_chevron_right' ,'error', 'expand_less', 'expand_more', 'list', 'priority_high', 'search'],
             control: { type: 'select' },
             type: 'string'

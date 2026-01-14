@@ -1,4 +1,4 @@
-{% macro datePicker(params) %}
+{%- macro datePicker(params) -%}
 {%- if params.minDate and params.maxDate -%}
 {%- set moduleDateRange = ["data-maxdate=\"", params.maxDate, "\" data-mindate=\"", params.minDate, "\""] | join %}
 {%- endif -%}
@@ -25,7 +25,7 @@
     </div>
     {%- endif %}
 </div>
-{% endmacro %}
+{%- endmacro -%}
 
 {{datePicker({
     dateFormat: dateFormat,

@@ -1,4 +1,4 @@
-{% macro backToTop(params) %}
+{%- macro backToTop(params) -%}
 <div class="ds_back-to-top" data-module="ds-back-to-top">
     <a href="#page-top" class="ds_back-to-top__button">{{ params.label }} <svg class="ds_icon  ds_back-to-top__icon" aria-hidden="true" role="img"><use href="images/icons.stack.svg#arrow_upward"></use></svg></a>
 </div>
@@ -6,7 +6,7 @@
 {% if params.hasFooter %}
 TODO: RENDER FOOTER
 {% endif %}
-{% endmacro %}
+{%- endmacro -%}
 
 {{backToTop({
     hasFooter: hasFooter,

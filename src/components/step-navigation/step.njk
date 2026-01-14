@@ -1,0 +1,37 @@
+{%- macro step(params) -%}
+<li value="{{params.value}}" class="ds_accordion-item {%- if params.parentIsSmall %}  ds_accordion-item--small{%- endif %}  {% if params.isOpen %}ds_accordion-item--open{% endif %}  {% if params.isCurrent %}ds_current{% endif %}  {% if params.type == 'and' %}ds_step-navigation__and{% endif %}  {% if params.type == 'or' %}ds_step-navigation__or{% endif %}" {% if params.isCurrent %}aria-current="step"{% endif %}>
+    <span class="ds_step-navigation__count">
+    {%- if params.type == 'and' %}
+        and <span class="visually-hidden">this step</span>
+    {%- elif params.type == 'or' %}
+        or <span class="visually-hidden">this step</span>
+    {%- else %}
+        <span class="visually-hidden">Step </span>{{ params.value }}
+    {%- endif %}
+    </span>
+    <input type="checkbox" {% if params.isOpen %}checked{% endif %} class="visually-hidden  ds_accordion-item__control" id="panel-{{params.index}}" aria-labelledby="panel-{{params.index}}-heading" >
+    <div class="ds_accordion-item__header">
+        <h3 id="panel-{{params.index}}-heading" class="ds_accordion-item__title">
+            {{params.heading}}
+        </h3>
+        <span aria-hidden="true" class="ds_accordion-item__indicator"></span>
+        <label class="ds_accordion-item__label" for="panel-{{params.index}}"><span class="visually-hidden">Show this
+                section</span></label>
+    </div>
+
+    <div class="ds_accordion-item__body" id="accordion-item-{{params.index}}">
+        {{params.content | safe}}
+    </div>
+</li>
+{%- endmacro -%}
+
+{{step({
+    content: content,
+    heading: heading,
+    isCurrent: isCurrent,
+    isOpen: isOpen,
+    type: type,
+    value: value,
+    parentIsSmall: parentIsSmall,
+    index: index
+})}}

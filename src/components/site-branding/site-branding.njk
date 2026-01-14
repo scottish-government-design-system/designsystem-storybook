@@ -1,0 +1,19 @@
+{%- macro siteBranding(params) -%}
+<div class="ds_site-branding">
+    {%- if params.hasLogo %}
+    <a class="ds_site-branding__logo ds_site-branding__link" href="/">
+        <img class="ds_site-branding__logo-image" src="/images/scottish-government.svg" alt="The Scottish Government" width="{{ params.logoWidth }}" height="{{ params.logoHeight }}" />
+    </a>
+    {%- endif %}
+    {%- if params.siteTitle %}
+    <div class="ds_site-branding__title">
+        {{ params.siteTitle | safe }}
+    </div>
+    {%- endif %}
+</div>
+{%- endmacro -%}
+
+{{siteBranding({
+    hasLogo: hasLogo,
+    siteTitle: siteTitle
+})}}

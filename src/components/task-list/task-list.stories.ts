@@ -6,6 +6,7 @@ import { ComponentArgs as TaskArgs } from './task.stories';
 import ComponentTemplate from './task-list.njk';
 
 type TaskGroupArgs = {
+    content?: string,
     title: string,
     tasks: TaskArgs[]
 }
@@ -53,7 +54,19 @@ const meta: Meta<ComponentArgs> = {
             }
         ],
         title: 'Heading for tasks'
-    }
+    },
+    argTypes: {
+        tasks: {
+            description: 'An array of task items'
+        },
+        title: {
+            description: 'The title of the task list',
+            type: {
+                name: 'string',
+                required: true
+            }
+        }
+    },
 };
 
 export default meta;
@@ -73,6 +86,7 @@ export const GroupedTasks: Story = {
         groups: [
             {
                 title: 'Heading for tasks',
+                content: 'This information will be used to check what additional benefits you may be able to apply for.',
                 tasks: [
                     {
                         href: '#',

@@ -1,8 +1,8 @@
-{% macro tag(params) %}
-    <div class="ds_tag {% if params.colour %}ds_tag--{{params.colour}}{% endif %}">
-        {{params.content}}
-    </div>
-{% endmacro %}
+{%- macro tag(params) -%}
+<div class="ds_tag {% if params.colour %}ds_tag--{{params.colour}}{% endif %}">
+    {{params.content}}
+</div>
+{%- endmacro -%}
 
 {{tag({
     colour: colour,

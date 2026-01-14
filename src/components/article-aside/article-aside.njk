@@ -1,4 +1,4 @@
-{% macro articleAside(params) %}
+{%- macro articleAside(params) -%}
 <aside class="ds_article-aside">
     {%- if params.heading %}
     <h2 class="gamma">{{ params.heading }}</h2>
@@ -13,7 +13,7 @@
     </ul>
     {%- endif %}
 </aside>
-{% endmacro %}
+{%- endmacro -%}
 
 {{articleAside({
     heading: heading,
