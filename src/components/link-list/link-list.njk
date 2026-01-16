@@ -1,0 +1,33 @@
+{%- macro linkList(params) -%}
+{%- from 'src/components/link-list/link-list.item.njk' import linkListItem -%}
+{%- if params.containerStart %}
+    {{ params.containerStart | safe}}
+{%- endif -%}
+<nav aria-label="Navigation heading">
+    <ul class="ds_link-list
+    {%- if params.isTwoColumns %}  ds_link-list-2-items{%- endif -%}
+    {%- if params.isBorderless %}  ds_link-list--no-border{%- endif -%}">
+        {%- for item in params.items -%}
+            {{linkListItem({
+                content: item.content,
+                hasImage: params.hasAllItemOptions,
+                hasMetadata: params.hasAllItemOptions,
+                heading: item.heading,
+                headingLevel: params.headingLevel,
+                tagName: 'li'
+            })}}
+        {% endfor %}
+    </ul>
+</nav>
+{%- if params.containerEnd %}
+    {{ params.containerEnd | safe}}
+{%- endif -%}
+{%- endmacro -%}
+
+{{linkList({
+    hasAllItemOptions: hasAllItemOptions,
+    headingLevel: headingLevel,
+    isBorderless: isBorderless,
+    isTwoColumns: isTwoColumns,
+    items: items
+})}}

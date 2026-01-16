@@ -1,0 +1,91 @@
+{%- macro featureHeader(params) -%}
+{%- from 'src/components/button/button.njk' import button -%}
+{%- if not params.isFullWidth %}
+<div class="ds_wrapper">
+{%- endif %}
+<header class="ds_feature-header
+{%- if params.background == 'colour' %}  ds_feature-header--background{% endif %}
+{%- if params.background == 'secondary' %}  ds_feature-header--background-secondary{% endif %}
+{%- if params.background == 'tertiary' %}  ds_feature-header--background-tertiary{% endif %}
+{%- if params.isWideText %}  ds_feature-header--wide{% endif %}
+{%- if params.isFullWidth %}  ds_feature-header--fullwidth{% endif %}
+{%- if params.isTopAlign %}  ds_feature-header--top{% endif %}"
+{%- if params.style %} style="{{params.style}}"{% endif %}>
+    {%- if params.isFullWidth %}
+    <div class="ds_wrapper">
+    {%- endif -%}
+
+    <div class="ds_feature-header__primary">
+        <h1 class="ds_feature-header__title">
+            {{ params.heading }}
+        </h1>
+        {%- if params.content %}
+        {{ params.content | safe }}
+        {% endif -%}
+        {%- if params.hasButton %}
+        {{button({
+            content: 'Call to action',
+            href: '#foo',
+            icon: 'chevron_right'
+        })}}
+        {% endif -%}
+    </div>
+    {%- if params.image == 'normal' %}
+    <div class="ds_feature-header__secondary {%- if params.cover %}  ds_feature-header__secondary--cover{% endif %} {%- if params.removePadding %}  ds_feature-header__secondary--no-padding{% endif %}">
+        <img class="ds_feature-header__image" alt="" src="https://placehold.co/767x431"
+            width="767"
+            height="431"
+            srcset="
+            https://placehold.co/352x198 352w,
+            https://placehold.co/448x252 448w,
+            https://placehold.co/544x306 544w,
+            https://placehold.co/704x396 704w,
+            https://placehold.co/767x431 767w,
+            https://placehold.co/896x504 896w,
+            https://placehold.co/1088x612 1088w,
+            https://placehold.co/1534x863 1534w"
+            sizes="(min-width:1200px) 544px, (min-width:992px) 448px, (min-width: 768px) 352px, 100vw"/>
+    </div>
+    {%- elseif params.image == 'square' %}
+    <div class="ds_feature-header__secondary {%- if params.cover %}  ds_feature-header__secondary--cover{% endif %} {%- if params.removePadding %}  ds_feature-header__secondary--no-padding{% endif %}">
+        <img class="ds_feature-header__image" alt="" src="https://placehold.co/767x767"
+            width="767"
+            height="767"
+            srcset="
+            https://placehold.co/352x352 352w,
+            https://placehold.co/448x448 448w,
+            https://placehold.co/544x544 544w,
+            https://placehold.co/704x704 704w,
+            https://placehold.co/767x767 767w,
+            https://placehold.co/896x896 896w,
+            https://placehold.co/1088x1088 1088w,
+            https://placehold.co/1534x1534 1534w"
+            sizes="(min-width:1200px) 544px, (min-width:992px) 448px, (min-width: 768px) 352px, 100vw"/>
+    </div>
+    {%- elseif params.image == 'svg' %}
+    <div class="ds_feature-header__secondary {%- if params.cover %}  ds_feature-header__secondary--cover{% endif %} {%- if params.removePadding %}  ds_feature-header__secondary--no-padding{% endif %}">
+        <img class="ds_feature-header__image" alt="" src="/images/placeholders/illustration.svg"
+            width="767"
+            height="767"/>
+    </div>
+    {%- endif %}
+    {%- if params.isFullWidth %}
+    </div>
+    {%- endif %}
+</header>
+{%- if not params.isFullWidth %}
+</div>
+{%- endif %}
+{%- endmacro -%}
+
+{{featureHeader({
+    altText: altText,
+    background: background,
+    content: content,
+    hasButton: hasButton,
+    heading: heading,
+    image: image,
+    isFullWidth: isFullWidth,
+    isTopAlign: isTopAlign,
+    isWideText: isWideText
+})}}

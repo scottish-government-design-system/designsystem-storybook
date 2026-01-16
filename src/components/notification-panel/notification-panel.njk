@@ -1,0 +1,19 @@
+{%- macro notificationPanel(params) -%}
+<div class="ds_notification-panel {% if params.isNeutral %}ds_notification-panel--neutral{% endif %}" {% if params.ariaLive %}aria-live="{{params.ariaLive}}"{% endif %} {%- if params.isAlert %} role="alert"{%- endif -%}>
+    {%- if params.heading %}
+    <{{ params.headingLevel | default('h1') }} class="ds_notification-panel__title ">{{ params.heading }}</{{ params.headingLevel | default('h1') }}>
+    {%- endif %}
+    {%- if params.content %}
+    <div class="ds_notification-panel__content">{{ params.content | safe }}</div>
+    {%- endif %}
+</div>
+{%- endmacro -%}
+
+{{notificationPanel({
+    ariaLive: ariaLive,
+    content: content,
+    heading: heading,
+    headingLevel: headingLevel,
+    isAlert: isAlert,
+    isNeutral: isNeutral
+})}}

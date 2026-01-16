@@ -1,0 +1,69 @@
+{%- macro linkListItem(params) -%}
+{%- from 'src/components/page-metadata/page-metadata.njk' import pageMetadata -%}
+<{{ params.tagName | default('div') }} class="ds_link-item">
+    {%- if params.hasImage %}
+    <a class="ds_link-item__image-link" href="{{ params.link }}" aria-hidden="true" tabindex="-1">
+        <div class="ds_aspect-box  ds_link-item__image">
+            <img class="ds_aspect-box__inner" alt="{{ params.heading }}" src="https://placehold.co/736x414"
+                loading="lazy"
+                width="${newsItem.image.image.xlargeeightcolumns.width?c}"
+                height="${newsItem.image.image.xlargeeightcolumns.height?c}"
+                srcset="
+                https://placehold.co/224x126 224w,
+                https://placehold.co/288x162 288w,
+                https://placehold.co/352x198 352w,
+                https://placehold.co/448x252 448w,
+                https://placehold.co/544x306 544w,
+                https://placehold.co/576x324 576w,
+                https://placehold.co/704x396 704w,
+                https://placehold.co/736x414 736w,
+                https://placehold.co/896x504 896w,
+                https://placehold.co/1088x612 1088w,
+                https://placehold.co/1472x828 1472w"
+                {%- if params.wide %}
+                sizes="(min-width:1200px) 544px, (min-width:992px) 448px, (min-width: 768px) 352px, 736px"
+                {%- else %}
+                sizes="(min-width:1200px) 352px, (min-width:992px) 288px, (min-width: 768px) 224px, 736px"
+                {%- endif %}
+            >
+        </div>
+    </a>
+    {% endif -%}
+    {%- if params.hasMetadata %}
+    <div class="ds_link-item__metadata">
+        {{pageMetadata({
+            isInline: true,
+            items: [
+                {
+                    key: 'Content type',
+                    value: 'Consultation paper'
+                },
+                {
+                    key: 'Publish date',
+                    value: '13 August 2025'
+                }
+            ]
+        })}}
+    </div>
+    {% endif -%}
+    {%- if params.heading %}
+    <{{ params.headingLevel | default('h2') }} class="ds_link-item__title">
+        <a href="{{ params.href }}" class="ds_link-item__link">{{ params.heading }}</a>
+    </{{ params.headingLevel | default('h2') }}>
+    {%- endif %}
+    {%- if params.content %}
+    <p class="ds_link-item__summary">{{ params.content | safe }}</p>
+    {%- endif %}
+</{{ params.tagName | default('div') }}>
+{%- endmacro -%}
+
+{{linkListItem({
+    content: content,
+    hasImage: hasImage,
+    hasMetadata: hasMetadata,
+    heading: heading,
+    headingLevel: headingLevel,
+    href: href,
+    isWide: isWide,
+    tagName: tagName
+})}}

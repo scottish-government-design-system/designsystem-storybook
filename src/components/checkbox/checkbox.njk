@@ -1,0 +1,24 @@
+{%- macro checkbox(params) -%}
+{%- if params.isExclusive %}<p class="ds_checkbox-separator">or</p>{% endif %}
+<div class="ds_checkbox {% if params.isSmall %}ds_checkbox--small{% endif %}">
+    <input class="ds_checkbox__input"
+        {%- if params.checked %}checked{%- endif %}
+        {%- if params.isExclusive %}data-behaviour="exclusive"{%- endif %}
+        id="{{params.id}}"
+        name="{{params.name | default(params.id)}}"
+        type="checkbox"
+    >
+    <label class="ds_checkbox__label" for="{{params.id}}">{{params.label}}</label>
+    {%- if params.hintText %}<p class="ds_hint-text">{{params.hintText}}</p>{%- endif %}
+</div>
+{%- endmacro -%}
+
+{{checkbox({
+    checked: checked,
+    hintText: hintText,
+    id: id,
+    isExclusive: isExclusive,
+    isSmall: isSmall,
+    label: label,
+    name: name
+})}}

@@ -1,0 +1,18 @@
+{%- macro categoryItem(params) -%}
+<{{ params.tagName | default('div') }} class="ds_category-item">
+    <{{params.headingLevel | default('h2') }} class="ds_category-item__title">
+        <a href="{{ params.href }}" class="ds_category-item__link">{{ params.heading }}</a>
+    </{{params.headingLevel | default('h2') }}>
+    {%- if params.content %}
+    <p class="ds_category-item__summary">{{ params.content }}</p>
+    {%- endif %}
+</{{ params.tagName | default('div') }}>
+{%- endmacro -%}
+
+{{categoryItem({
+	heading: heading,
+    headingLevel: headingLevel,
+	href: href,
+	content: content,
+    tagName: tagName
+})}}

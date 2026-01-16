@@ -1,0 +1,70 @@
+import type { Meta, StoryObj } from '@storybook/html';
+import argTypes from '../../../.storybook/sgdsArgTypes';
+
+// @ts-expect-error no type defs
+import ComponentTemplate from './notification-banner.njk';
+
+type NotificationBannerAergs = {
+    content?: string
+    hasColourIcon?: boolean
+    hasIcon?: boolean
+    hasInverseIcon?: boolean
+    id?: string
+    isDismissable?: boolean
+    title: string
+};
+
+const meta: Meta<NotificationBannerAergs> = {
+    title: 'Components/Notification banner',
+    tags: ['autodocs'],
+    render: (args) => {
+        return(ComponentTemplate(args))
+    },
+    args: {
+        content: '<p>We need to tell you about <a href=\"#\">something</a></p>',
+        title: 'Information'
+    },
+    argTypes: {
+        hasColourIcon: {
+            control: 'boolean',
+            description: 'Makes the icon display in the alternative colour scheme'
+        },
+        hasIcon: {
+            description: 'Shows the \'high priority\' icon on the notification banner',
+            control: 'boolean'
+        },
+        hasInverseIcon: {
+            control: 'boolean',
+            description: 'Makes the icon be inverted against a circle background'
+        },
+        id: argTypes.id(),
+        isDismissable: {
+            control: 'boolean',
+            description: 'Shows a \'close\' button on the notification banner'
+         },
+        title: {
+            description: 'A hidden title for the notification banner, useful for screen reader users',
+            type: 'string'
+        }
+    }
+};
+
+export default meta;
+type Story = StoryObj<NotificationBannerAergs>;
+
+export const Default: Story = {};
+
+export const Dismissable: Story = {
+    args: {
+        isDismissable: true
+    }
+};
+
+export const WithIcon: Story = {
+    name: 'With icon',
+    args: {
+        hasColourIcon: true,
+        hasInverseIcon: true,
+        hasIcon: true
+    }
+};

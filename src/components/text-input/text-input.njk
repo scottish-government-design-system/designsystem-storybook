@@ -2,15 +2,21 @@
 {%- macro textInput(params) -%}
 <label class="ds_label" for="{{params.id}}">{{params.label}}</label>
 {%- if params.hintText %}
-<p class="ds_hint-text" id="hint-text-kitchensink">{{params.hintText}}</p>
+{%- set hintTextId = "hint-text-" + params.id -%}
+<p class="ds_hint-text" id="{{hintTextId}}">{{params.hintText}}</p>
 {%- endif %}
-{%- if params.errorMessage %}
-<p class="ds_question__error-message " id="error-message-kitchensink">{{params.errorMessage}}</p>
+{%- if params.hasError and params.errorMessage %}
+{%- set errorMessageId = "error-message-" + params.id -%}
+<p class="ds_question__error-message " id="{{errorMessageId}}">{{params.errorMessage}}</p>
 {%- endif %}
 {%- if params.isCurrency or params.hasButton %}<div class="{% if params.hasButton %}ds_input__wrapper  ds_input__wrapper--has-icon{% endif %} {% if params.isCurrency %}ds_currency-wrapper{% endif %}" {% if params.isCurrency %}data-symbol="{{params.currencySymbol | default('£')}}"{% endif %}>{%- endif %}
 <input
     class="ds_input {% if params.hasError %}ds_input--error{% endif %} {% if params.width %}ds_input--{{params.width}}{% endif %}"
     id="{{params.id}}"
+    {%- if params.hintText or params.errorMessage -%}
+    aria-describedby="{% if params.hintText %}{{hintTextId}}{% endif %} {% if params.errorMessage %}{{errorMessageId}}{% endif %}"
+    {%- endif -%}
+    {%- if params.hasError %}aria-invalid="true"{%- endif %}
     name="{{params.name | default(params.id)}}"
     {%- if params.placeholder -%}placeholder="{{params.placeholder}}"{%- endif %}
     {%- if params.step -%}step="{{params.step}}"{%- endif %}

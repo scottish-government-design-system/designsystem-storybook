@@ -4,24 +4,24 @@ import argTypes from '../../../.storybook/sgdsArgTypes';
 // @ts-expect-error no type defs
 import ComponentTemplate from './table.njk';
 
-type CellArgs = {
+export type CellArgs = {
     align?: 'left' | 'right'
     content: string,
     scope?: 'col' | 'row'
 }
 
-type RowArgs = {
+export type RowArgs = {
     cells: CellArgs[]
 }
 
-type ComponentArgs = {
+export type TableArgs = {
     caption: string
     smallScreen: 'none' | 'scrolling' | 'boxes'
     head: CellArgs[],
     rows: RowArgs[]
 };
 
-const meta: Meta<ComponentArgs> = {
+const meta: Meta<TableArgs> = {
     title: 'Components/Table',
     tags: ['autodocs'],
     render: (args) => {
@@ -179,7 +179,7 @@ const meta: Meta<ComponentArgs> = {
 };
 
 export default meta;
-type Story = StoryObj<ComponentArgs>;
+type Story = StoryObj<TableArgs>;
 
 export const Default: Story = {
     parameters: {

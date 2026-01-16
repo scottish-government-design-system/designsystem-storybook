@@ -1,0 +1,16 @@
+{%- macro radioButton(params) -%}
+<div class="ds_radio {% if params.isSmall %}ds_radio--small{% endif %}">
+    <input class="ds_radio__input" {% if params.checked %}checked{% endif %} id="{{params.id}}" type="radio" name="{{params.name | default(params.id)}}">
+    <label class="ds_radio__label" for="{{params.id}}">{{params.label}}</label>
+    {%- if params.hintText %}<p class="ds_hint-text">{{params.hintText}}</p>{%- endif %}
+</div>
+{%- endmacro -%}
+
+{{radioButton({
+    checked: checked,
+    hintText: hintText,
+    id: id,
+    isSmall: isSmall,
+    label: label,
+    name: name
+})}}

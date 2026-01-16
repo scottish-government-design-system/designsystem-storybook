@@ -7,21 +7,21 @@
     <div class="ds_datepicker__input-wrapper">
         <div>
             <label class="ds_label" for="day">Day</label>
-            <input id="day" name="day" class="ds_input ds_input--fixed-2  js-datepicker-date">
+            <input id="{{params.id}}-day" name="{{params.name | default(params.id)}}-day" class="ds_input ds_input--fixed-2  js-datepicker-date">
         </div>
         <div>
             <label class="ds_label" for="month">Month</label>
-            <input id="month" name="month" class="ds_input ds_input--fixed-2  js-datepicker-month">
+            <input id="{{params.id}}-month" name="{{params.name | default(params.id)}}-month" class="ds_input ds_input--fixed-2  js-datepicker-month">
         </div>
         <div>
             <label class="ds_label" for="year">Year</label>
-            <input id="year" name="year" class="ds_input ds_input--fixed-4  js-datepicker-year">
+            <input id="{{params.id}}-year" name="{{params.name | default(params.id)}}-year" class="ds_input ds_input--fixed-4  js-datepicker-year">
         </div>
     </div>
     {%- else %}
     <label class="ds_label" for="start-date">{{ params.label }}</label>
     <div class="ds_input__wrapper">
-        <input {%- if params.dateFormat %} data-dateformat="{{params.dateFormat}}"{%- endif %} id="start-date" name="start-date" {{ moduleDateRange | safe}} placeholder="{{ params.placeholder }}" type="text" class="ds_input ds_input--fixed-10">
+        <input {%- if params.dateFormat %} data-dateformat="{{params.dateFormat}}"{%- endif %} id="{{params.id}}" name="{{params.name | default(params.id)}}" {{ moduleDateRange | safe}} placeholder="{{ params.placeholder }}" type="text" class="ds_input ds_input--fixed-10">
     </div>
     {%- endif %}
 </div>
@@ -29,9 +29,11 @@
 
 {{datePicker({
     dateFormat: dateFormat,
+    id: id,
     isMultipleFields: isMultipleFields,
     label: label,
     minDate: minDate,
     maxDate: maxDate,
+    name: name,
     placeholder: placeholder
 })}}

@@ -1,0 +1,41 @@
+{%- macro searchFacets(params) -%}
+{%- from 'src/components/search-facets/search-facets.facet.njk' import searchFacet -%}
+<div class="ds_facets">
+    <p class="visually-hidden">There are 7 search filters applied</p>
+    <dl class="ds_facets__list">
+        <div class="ds_facet-group">
+            <dt class="ds_facet__group-title">
+                Content type:
+            </dt>
+            {{searchFacet({title: 'Advice and guidance'})}}
+            {{searchFacet({title: 'Factsheet', hasJoinContent: true})}}
+            {{searchFacet({title: 'Statistics', hasJoinContent: true})}}
+        </div>
+        <div class="ds_facet-group">
+            <dt class="ds_facet__group-title">
+                Topic:
+            </dt>
+            {{searchFacet({title: 'Children and families'})}}
+            {{searchFacet({title: 'Education', hasJoinContent: true})}}
+        </div>
+        <div class="ds_facet-group">
+            <dt class="ds_facet__group-title">
+                Updated between:
+            </dt>
+            {{searchFacet({title: '20/11/2023', accessibleName: 'Updated after 20/11/2023'})}}
+            {{searchFacet({title: '02/04/2024', accessibleName: 'Updated before 02/04/2024', hasJoinContent: true, joinContent: 'and'})}}
+        </div>
+    </dl>
+    <button class="ds_button  ds_button--secondary  ds_button--has-icon  ds_facets__clear-button" type="button">
+        Clear all filters
+        <svg class="ds_facet__button-icon" aria-hidden="true" role="img">
+            <use href="/images/icons.stack.svg#cancel"></use>
+        </svg>
+    </button>
+</div>
+{%- endmacro -%}
+
+{{searchFacets({
+    joinContent: joinContent,
+    title: title
+})}}

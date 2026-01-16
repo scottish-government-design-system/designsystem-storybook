@@ -1,0 +1,156 @@
+{%- macro searchFiltersPanel(params) -%}
+<div class="ds_accordion-item">
+    <input type="checkbox" class="visually-hidden  ds_accordion-item__control" id="panel-{{params.id}}" aria-labelledby="panel-{{params.id}}-heading" />
+    <div class="ds_accordion-item__header">
+        <h3 id="panel-{{params.id}}-heading" class="ds_accordion-item__title">
+            {{params.title}}
+            {%if params.activeFilterCount %}<div class="ds_search-filters__filter-count">({{params.activeFilterCount}} selected)</div>{% endif %}
+        </h3>
+        <span aria-hidden="true" class="ds_accordion-item__indicator"></span>
+        <label class="ds_accordion-item__label" for="panel-{{params.id}}"><span class="visually-hidden">Show this section</span></label>
+    </div>
+    <div class="ds_accordion-item__body">
+        {%- if params.hasTextFilters %}
+        <fieldset id="filter-date-range" class="filters__fieldset">
+            <legend class="visually-hidden">Filter by date</legend>
+
+            <div class="ds_question">
+                <div data-module="ds-datepicker" class="ds_datepicker" id="fromDatePicker">
+                    <label class="ds_label  ds_no-margin--bottom" for="date-from">Updated after</label>
+                    <p class="ds_hint-text  ds_!_margin-bottom--1">For example, 21/01/2022</p>
+                    <div class="ds_input__wrapper">
+                        <input id="date-from" class="ds_input" type="text">
+                    </div>
+                </div>
+            </div>
+
+            <div class="ds_question">
+                <div data-module="ds-datepicker" class="ds_datepicker" id="toDatePicker">
+                    <label class="ds_label  ds_no-margin--bottom" for="date-to">Updated before</label>
+                    <p class="ds_hint-text  ds_!_margin-bottom--1">For example, 21/01/2022</p>
+                    <div class="ds_input__wrapper">
+                        <input id="date-to" class="ds_input" type="text">
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        {%- else %}
+        <fieldset>
+            <legend class="visually-hidden">Select which publication types you would like to see</legend>
+
+            {% if params.isScrollable %}<div class="ds_search-filters__scrollable">{% endif %}
+                <div class="ds_search-filters__checkboxes">
+                    <div class="ds_checkbox ds_checkbox--small">
+                        <input id="advice-and-guidance" {% if params.activeFilterCount %}checked{% endif %} name="publicationTypes" value="advice-and-guidance" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-advice-and-guidance">
+                        <label for="advice-and-guidance" class="ds_checkbox__label">Advice and guidance</label>
+                    </div>
+
+                    <div class="ds_checkbox ds_checkbox--small">
+                        <input id="agreement" name="publicationTypes" value="agreement" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-agreement">
+                        <label for="agreement" class="ds_checkbox__label">Agreement</label>
+                    </div>
+
+                    <div class="ds_checkbox ds_checkbox--small">
+                        <input id="consultation-analysis" {% if params.activeFilterCount %}checked{% endif %} name="publicationTypes" value="consultation-analysis" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-consultation-analysis">
+                        <label for="consultation-analysis" class="ds_checkbox__label">Consultation analysis</label>
+                    </div>
+
+                    <div class="ds_checkbox ds_checkbox--small">
+                        <input id="consultation-paper" name="publicationTypes" value="consultation-paper" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-consultation-paper">
+                        <label for="consultation-paper" class="ds_checkbox__label">Consultation paper</label>
+                    </div>
+
+                    <div class="ds_checkbox ds_checkbox--small">
+                        <input id="corporate-report" {% if params.activeFilterCount %}checked{% endif %} name="publicationTypes" value="corporate-report" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-corporate-report">
+                        <label for="corporate-report" class="ds_checkbox__label">Corporate report</label>
+                    </div>
+
+                    <div class="ds_checkbox ds_checkbox--small">
+                        <input id="correspondence" name="publicationTypes" value="correspondence" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-correspondence">
+                        <label for="correspondence" class="ds_checkbox__label">Correspondence</label>
+                    </div>
+
+                    <div class="ds_checkbox ds_checkbox--small">
+                        <input id="foi-eir-release" name="publicationTypes" value="foi-eir-release" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-foi-eir-release">
+                        <label for="foi-eir-release" class="ds_checkbox__label">FOI / EIR release</label>
+                    </div>
+
+                    <div class="ds_checkbox ds_checkbox--small">
+                        <input id="factsheet" name="publicationTypes" value="factsheet" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-factsheet">
+                        <label for="factsheet" class="ds_checkbox__label">Factsheet</label>
+                    </div>
+
+                    <div class="ds_checkbox ds_checkbox--small">
+                        <input id="form" name="publicationTypes" value="form" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-form">
+                        <label for="form" class="ds_checkbox__label">Form</label>
+                    </div>
+
+                    <div class="ds_checkbox ds_checkbox--small">
+                        <input id="impact-assessment" name="publicationTypes" value="impact-assessment" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-impact-assessment">
+                        <label for="impact-assessment" class="ds_checkbox__label">Impact assessment</label>
+                    </div>
+
+                    <div class="ds_checkbox ds_checkbox--small">
+                        <input id="independent-report" name="publicationTypes" value="independent-report" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-independent-report">
+                        <label for="independent-report" class="ds_checkbox__label">Independent report</label>
+                    </div>
+
+                    <div class="ds_checkbox ds_checkbox--small">
+                        <input id="map" name="publicationTypes" value="map" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-map">
+                        <label for="map" class="ds_checkbox__label">Map</label>
+                    </div>
+
+                    <div class="ds_checkbox ds_checkbox--small">
+                        <input id="minutes" name="publicationTypes" value="minutes" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-minutes">
+                        <label for="minutes" class="ds_checkbox__label">Minutes</label>
+                    </div>
+
+                    <div class="ds_checkbox ds_checkbox--small">
+                        <input id="progress-report" name="publicationTypes" value="progress-report" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-progress-report">
+                        <label for="progress-report" class="ds_checkbox__label">Progress report</label>
+                    </div>
+
+                    <div class="ds_checkbox ds_checkbox--small">
+                        <input id="regulation-directive-order" name="publicationTypes" value="regulation-directive-order" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-regulation-directive-order">
+                        <label for="regulation-directive-order" class="ds_checkbox__label">Regulation / directive / order</label>
+                    </div>
+
+                    <div class="ds_checkbox ds_checkbox--small">
+                        <input id="research-and-analysis" name="publicationTypes" value="research-and-analysis" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-research-and-analysis">
+                        <label for="research-and-analysis" class="ds_checkbox__label">Research and analysis</label>
+                    </div>
+
+                    <div class="ds_checkbox ds_checkbox--small">
+                        <input id="speech-statement" name="publicationTypes" value="speech-statement" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-speech-statement">
+                        <label for="speech-statement" class="ds_checkbox__label">Speech / statement</label>
+                    </div>
+
+                    <div class="ds_checkbox ds_checkbox--small">
+                        <input id="statistics" name="publicationTypes" value="statistics" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-statistics">
+                        <label for="statistics" class="ds_checkbox__label">Statistics</label>
+                    </div>
+
+                    <div class="ds_checkbox ds_checkbox--small">
+                        <input id="strategy-plan" name="publicationTypes" value="strategy-plan" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-strategy-plan">
+                        <label for="strategy-plan" class="ds_checkbox__label">Strategy / plan</label>
+                    </div>
+
+                    <div class="ds_checkbox ds_checkbox--small">
+                        <input id="transparency-data" name="publicationTypes" value="transparency-data" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-transparency-data">
+                        <label for="transparency-data" class="ds_checkbox__label">Transparency data</label>
+                    </div>
+                </div>
+            {% if params.isScrollable %}</div>{% endif %}
+        </fieldset>
+        {%- endif %}
+    </div>
+</div>
+{%- endmacro -%}
+
+{{searchFiltersPanel({
+    activeFilterCount: activeFilterCount,
+    hasTextFilters: hasTextFilters,
+    id: id,
+    isScrollable: isScrollable,
+    title: title
+})}}

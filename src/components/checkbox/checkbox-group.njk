@@ -1,0 +1,29 @@
+{%- macro checkboxGroup(params) -%}
+{%- from 'src/components/checkbox/checkbox.njk' import checkbox -%}
+<div class="ds_checkboxes  ds_field-group" data-module="ds-checkboxes">
+    {{checkbox({
+        id: 'universal-credit',
+        label: 'Universal credit'
+    })}}
+    {{checkbox({
+        id: 'pension-credit',
+        label: 'Pension credit'
+    })}}
+    {{checkbox({
+        id: 'jsa',
+        label: "Income-based Job Seeker's Allowance"
+    })}}
+    {%- if params.hasExclusive %}
+    {{checkbox({
+        id: 'none',
+        label: 'No, I do not receive any of these benefits',
+        isExclusive: true
+    })}}
+    {%- endif %}
+<div>
+{%- endmacro -%}
+
+{{checkboxGroup({
+    hasExclusive: hasExclusive,
+    isSmall: isSmall
+})}}

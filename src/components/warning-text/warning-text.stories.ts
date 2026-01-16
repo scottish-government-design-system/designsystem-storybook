@@ -3,11 +3,11 @@ import type { Meta, StoryObj } from '@storybook/html';
 // @ts-expect-error no type defs
 import ComponentTemplate from './warning-text.njk';
 
-type ComponentArgs = {
+export type WarningTextArgs = {
     content: string
 };
 
-const meta: Meta<ComponentArgs> = {
+const meta: Meta<WarningTextArgs> = {
     title: 'Components/Warning text',
     tags: ['autodocs'],
     render: (args) => {
@@ -19,6 +19,6 @@ const meta: Meta<ComponentArgs> = {
 };
 
 export default meta;
-type Story = StoryObj<ComponentArgs>;
+type Story = StoryObj<WarningTextArgs>;
 
 export const Default: Story = {};

@@ -1,0 +1,62 @@
+{%- macro radioGroup(params) -%}
+{%- from 'src/components/radio-button/radio-button.njk' import radioButton -%}
+<div class="ds_radios  ds_field-group {% if params.isInline%}ds_field-group--inline{% endif %}">
+    {%- if params.isInline %}
+    {{radioButton({
+        label: 'Yes',
+        id: 'yes-' + params.name,
+        name: params.name,
+        isSmall: params.isSmall
+    })}}
+    {{radioButton({
+        label: 'No',
+        id: 'no-' + params.name,
+        name: params.name,
+        isSmall: params.isSmall
+    })}}
+    {%- else %}
+    {{radioButton({
+        label: 'Flat',
+        id: 'flat-' + params.name,
+        name: params.name,
+        isSmall: params.isSmall
+    })}}
+    {{radioButton({
+        label: 'Bungalow',
+        id: 'bungalow-' + params.name,
+        name: params.name,
+        isSmall: params.isSmall
+    })}}
+    {{radioButton({
+        label: 'Cottage',
+        id: 'cottage-' + params.name,
+        name: params.name,
+        isSmall: params.isSmall
+    })}}
+    {{radioButton({
+        label: 'Terraced house',
+        id: 'terraced-house-' + params.name,
+        name: params.name,
+        isSmall: params.isSmall
+    })}}
+    {{radioButton({
+        label: 'Semi-detached house',
+        id: 'semi-detached-house-' + params.name,
+        name: params.name,
+        isSmall: params.isSmall
+    })}}
+    {{radioButton({
+        label: 'Detached house',
+        id: 'detached-house-' + params.name,
+        name: params.name,
+        isSmall: params.isSmall
+    })}}
+    {%- endif %}
+<div>
+{%- endmacro -%}
+
+{{radioGroup({
+    name: name,
+    isInline: isInline,
+    isSmall: isSmall
+})}}

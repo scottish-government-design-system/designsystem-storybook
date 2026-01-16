@@ -5,7 +5,7 @@ import ComponentTemplate from './button.njk';
 
 type ButtonWidth = 'fluid' | 'fixed' | 'max';
 
-type ComponentArgs = {
+export type ButtonArgs = {
     content: string
     hasLinkStyle?: boolean;
     href?: string;
@@ -18,7 +18,7 @@ type ComponentArgs = {
     width?: ButtonWidth;
 };
 
-const meta: Meta<ComponentArgs> = {
+const meta: Meta<ButtonArgs> = {
     title: 'Components/Button',
     tags: ['autodocs'],
     render: (args) => {
@@ -109,7 +109,7 @@ const meta: Meta<ComponentArgs> = {
 };
 
 export default meta;
-type Story = StoryObj<ComponentArgs>;
+type Story = StoryObj<ButtonArgs>;
 
 export const Default: Story = {};
 
@@ -126,30 +126,34 @@ export const Disabled: Story = {
 };
 
 export const FixedWidth: Story = {
+    name: 'Fixed width',
     args: {
         width: 'fixed'
     }
 };
 
 export const MaxWidth: Story = {
+    name: 'Max width',
     args: {
         width: 'max'
     }
 };
 
-export const small: Story = {
+export const Small: Story = {
     args: {
         isSmall: true
     }
 };
 
 export const IconAfter: Story = {
+    name: 'Icon after',
     args: {
         icon: 'search'
     }
 };
 
 export const IconBefore: Story = {
+    name: 'Icon before',
     args: {
         icon: 'search',
         isIconLeft: true
@@ -157,6 +161,7 @@ export const IconBefore: Story = {
 };
 
 export const IconOnly: Story = {
+    name: 'Icon only',
     args: {
         icon: 'search',
         isIconOnly: true
@@ -164,12 +169,14 @@ export const IconOnly: Story = {
 };
 
 export const LinkButton: Story = {
+    name: 'Link button',
     args: {
         href: '#foo'
     }
 };
 
 export const TextButton: Story = {
+    name: 'Text button',
     args: {
         hasLinkStyle: true
     }

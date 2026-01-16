@@ -1,0 +1,356 @@
+{%- macro searchFilters(params) -%}
+<div class="ds_search-filters">
+    <div class="ds_details" data-module="ds-details">
+        <input id="filters-toggle" type="checkbox" class="ds_details__toggle  visually-hidden">
+
+        <label for="filters-toggle" class="ds_details__summary">
+            <span class="visually-hidden">Show </span>Search filters
+        </label>
+
+        <div class="ds_skip-links  ds_skip-links--static">
+            <ul class="ds_skip-links__list">
+                <li class="ds_skip-links__item"><a class="ds_skip-links__link" href="#search-results">Skip to results</a></li>
+            </ul>
+        </div>
+
+        <div class="ds_details__text">
+            <form id="filters">
+                <h3 class="ds_search-filters__title  ds_h4">Filter by</h3>
+
+                <div class="ds_accordion  ds_accordion--small  ds_!_margin-top--0" data-module="ds-accordion">
+                    <div class="ds_accordion-item">
+                        <input type="checkbox" class="visually-hidden  ds_accordion-item__control" id="panel-1" aria-labelledby="panel-1-heading" />
+                        <div class="ds_accordion-item__header">
+                            <h3 id="panel-1-heading" class="ds_accordion-item__title">
+                                Content type
+                                <div class="ds_search-filters__filter-count">(1 selected)</div>
+                            </h3>
+                            <span aria-hidden="true" class="ds_accordion-item__indicator"></span>
+                            <label class="ds_accordion-item__label" for="panel-1"><span class="visually-hidden">Show this section</span></label>
+                        </div>
+                        <div class="ds_accordion-item__body">
+                            <fieldset>
+                                <legend class="visually-hidden">Select which publication types you would like to see</legend>
+
+                                <div class="ds_search-filters__scrollable">
+                                    <div class="ds_search-filters__checkboxes">
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="advice-and-guidance" checked name="publicationTypes" value="advice-and-guidance" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-advice-and-guidance">
+                                            <label for="advice-and-guidance" class="ds_checkbox__label">Advice and guidance</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="agreement" name="publicationTypes" value="agreement" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-agreement">
+                                            <label for="agreement" class="ds_checkbox__label">Agreement</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="consultation-analysis" name="publicationTypes" value="consultation-analysis" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-consultation-analysis">
+                                            <label for="consultation-analysis" class="ds_checkbox__label">Consultation analysis</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="consultation-paper" name="publicationTypes" value="consultation-paper" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-consultation-paper">
+                                            <label for="consultation-paper" class="ds_checkbox__label">Consultation paper</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="corporate-report" name="publicationTypes" value="corporate-report" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-corporate-report">
+                                            <label for="corporate-report" class="ds_checkbox__label">Corporate report</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="correspondence" name="publicationTypes" value="correspondence" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-correspondence">
+                                            <label for="correspondence" class="ds_checkbox__label">Correspondence</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="foi-eir-release" name="publicationTypes" value="foi-eir-release" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-foi-eir-release">
+                                            <label for="foi-eir-release" class="ds_checkbox__label">FOI / EIR release</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="factsheet" name="publicationTypes" value="factsheet" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-factsheet">
+                                            <label for="factsheet" class="ds_checkbox__label">Factsheet</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="form" name="publicationTypes" value="form" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-form">
+                                            <label for="form" class="ds_checkbox__label">Form</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="impact-assessment" name="publicationTypes" value="impact-assessment" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-impact-assessment">
+                                            <label for="impact-assessment" class="ds_checkbox__label">Impact assessment</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="independent-report" name="publicationTypes" value="independent-report" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-independent-report">
+                                            <label for="independent-report" class="ds_checkbox__label">Independent report</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="map" name="publicationTypes" value="map" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-map">
+                                            <label for="map" class="ds_checkbox__label">Map</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="minutes" name="publicationTypes" value="minutes" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-minutes">
+                                            <label for="minutes" class="ds_checkbox__label">Minutes</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="progress-report" name="publicationTypes" value="progress-report" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-progress-report">
+                                            <label for="progress-report" class="ds_checkbox__label">Progress report</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="regulation-directive-order" name="publicationTypes" value="regulation-directive-order" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-regulation-directive-order">
+                                            <label for="regulation-directive-order" class="ds_checkbox__label">Regulation / directive / order</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="research-and-analysis" name="publicationTypes" value="research-and-analysis" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-research-and-analysis">
+                                            <label for="research-and-analysis" class="ds_checkbox__label">Research and analysis</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="speech-statement" name="publicationTypes" value="speech-statement" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-speech-statement">
+                                            <label for="speech-statement" class="ds_checkbox__label">Speech / statement</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="statistics" name="publicationTypes" value="statistics" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-statistics">
+                                            <label for="statistics" class="ds_checkbox__label">Statistics</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="strategy-plan" name="publicationTypes" value="strategy-plan" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-strategy-plan">
+                                            <label for="strategy-plan" class="ds_checkbox__label">Strategy / plan</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="transparency-data" name="publicationTypes" value="transparency-data" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-transparency-data">
+                                            <label for="transparency-data" class="ds_checkbox__label">Transparency data</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+
+                    <div class="ds_accordion-item">
+                        <input type="checkbox" class="visually-hidden  ds_accordion-item__control" id="panel-2" aria-labelledby="panel-2-heading" />
+                        <div class="ds_accordion-item__header">
+                            <h3 id="panel-2-heading" class="ds_accordion-item__title">
+                                Topic
+                            </h3>
+                            <span aria-hidden="true" class="ds_accordion-item__indicator"></span>
+                            <label class="ds_accordion-item__label" for="panel-2"><span class="visually-hidden">Show this section</span></label>
+                        </div>
+                        <div class="ds_accordion-item__body">
+                            <fieldset>
+                                <legend class="visually-hidden">Select which topics you would like to see</legend>
+
+                                <div class="ds_search-filters__scrollable">
+                                    <div class="ds_search-filters__checkboxes">
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="arts-culture-and-sport" name="topics" class="ds_checkbox__input" type="checkbox" value="Arts, culture and sport" data-form="checkbox-topics-arts-culture-and-sport">
+                                            <label for="arts-culture-and-sport" class="ds_checkbox__label">Arts, culture and sport</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="brexit" name="topics" class="ds_checkbox__input" type="checkbox" value="Brexit" data-form="checkbox-topics-brexit">
+                                            <label for="brexit" class="ds_checkbox__label">Brexit</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="building-a-new-scotland" name="topics" class="ds_checkbox__input" type="checkbox" value="Building a new Scotland" data-form="checkbox-topics-building-a-new-scotland">
+                                            <label for="building-a-new-scotland" class="ds_checkbox__label">Building a new Scotland</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="building-planning-and-design" name="topics" class="ds_checkbox__input" type="checkbox" value="Building, planning and design" data-form="checkbox-topics-building-planning-and-design">
+                                            <label for="building-planning-and-design" class="ds_checkbox__label">Building, planning and design</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="business-industry-and-innovation" name="topics" class="ds_checkbox__input" type="checkbox" value="Business, industry and innovation" data-form="checkbox-topics-business-industry-and-innovation">
+                                            <label for="business-industry-and-innovation" class="ds_checkbox__label">Business, industry and innovation</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="children-and-families" name="topics" class="ds_checkbox__input" type="checkbox" value="Children and families" data-form="checkbox-topics-children-and-families">
+                                            <label for="children-and-families" class="ds_checkbox__label">Children and families</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="communities-and-third-sector" name="topics" class="ds_checkbox__input" type="checkbox" value="Communities and third sector" data-form="checkbox-topics-communities-and-third-sector">
+                                            <label for="communities-and-third-sector" class="ds_checkbox__label">Communities and third sector</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="constitution-and-democracy" name="topics" class="ds_checkbox__input" type="checkbox" value="Constitution and democracy" data-form="checkbox-topics-constitution-and-democracy">
+                                            <label for="constitution-and-democracy" class="ds_checkbox__label">Constitution and democracy</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="coronavirus-covid-19-in-scotland" name="topics" class="ds_checkbox__input" type="checkbox" value="Coronavirus (COVID-19) in Scotland" data-form="checkbox-topics-coronavirus-covid-19-in-scotland">
+                                            <label for="coronavirus-covid-19-in-scotland" class="ds_checkbox__label">Coronavirus (COVID-19) in Scotland</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="cost-of-living-crisis" name="topics" class="ds_checkbox__input" type="checkbox" value="Cost of living crisis" data-form="checkbox-topics-cost-of-living-crisis">
+                                            <label for="cost-of-living-crisis" class="ds_checkbox__label">Cost of living crisis</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="economy" name="topics" class="ds_checkbox__input" type="checkbox" value="Economy" data-form="checkbox-topics-economy">
+                                            <label for="economy" class="ds_checkbox__label">Economy</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="education" name="topics" class="ds_checkbox__input" type="checkbox" value="Education" data-form="checkbox-topics-education">
+                                            <label for="education" class="ds_checkbox__label">Education</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="energy" name="topics" class="ds_checkbox__input" type="checkbox" value="Energy" data-form="checkbox-topics-energy">
+                                            <label for="energy" class="ds_checkbox__label">Energy</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="environment-and-climate-change" name="topics" class="ds_checkbox__input" type="checkbox" value="Environment and climate change" data-form="checkbox-topics-environment-and-climate-change">
+                                            <label for="environment-and-climate-change" class="ds_checkbox__label">Environment and climate change</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="equality-and-rights" name="topics" class="ds_checkbox__input" type="checkbox" value="Equality and rights" data-form="checkbox-topics-equality-and-rights">
+                                            <label for="equality-and-rights" class="ds_checkbox__label">Equality and rights</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="farming-and-rural" name="topics" class="ds_checkbox__input" type="checkbox" value="Farming and rural" data-form="checkbox-topics-farming-and-rural">
+                                            <label for="farming-and-rural" class="ds_checkbox__label">Farming and rural</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="health-and-social-care" name="topics" class="ds_checkbox__input" type="checkbox" value="Health and social care" data-form="checkbox-topics-health-and-social-care">
+                                            <label for="health-and-social-care" class="ds_checkbox__label">Health and social care</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="housing" name="topics" class="ds_checkbox__input" type="checkbox" value="Housing" data-form="checkbox-topics-housing">
+                                            <label for="housing" class="ds_checkbox__label">Housing</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="international" name="topics" class="ds_checkbox__input" type="checkbox" value="International" data-form="checkbox-topics-international">
+                                            <label for="international" class="ds_checkbox__label">International</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="law-and-order" name="topics" class="ds_checkbox__input" type="checkbox" value="Law and order" data-form="checkbox-topics-law-and-order">
+                                            <label for="law-and-order" class="ds_checkbox__label">Law and order</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="marine-and-fisheries" name="topics" class="ds_checkbox__input" type="checkbox" value="Marine and fisheries" data-form="checkbox-topics-marine-and-fisheries">
+                                            <label for="marine-and-fisheries" class="ds_checkbox__label">Marine and fisheries</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="money-and-tax" name="topics" class="ds_checkbox__input" type="checkbox" value="Money and tax" data-form="checkbox-topics-money-and-tax">
+                                            <label for="money-and-tax" class="ds_checkbox__label">Money and tax</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="programme-for-government" name="topics" class="ds_checkbox__input" type="checkbox" value="Programme for Government" data-form="checkbox-topics-programme-for-government">
+                                            <label for="programme-for-government" class="ds_checkbox__label">Programme for Government</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="public-safety-and-emergencies" name="topics" class="ds_checkbox__input" type="checkbox" value="Public safety and emergencies" data-form="checkbox-topics-public-safety-and-emergencies">
+                                            <label for="public-safety-and-emergencies" class="ds_checkbox__label">Public safety and emergencies</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="public-sector" name="topics" class="ds_checkbox__input" type="checkbox" value="Public sector" data-form="checkbox-topics-public-sector">
+                                            <label for="public-sector" class="ds_checkbox__label">Public sector</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="scottish-budget" name="topics" class="ds_checkbox__input" type="checkbox" value="Scottish Budget" data-form="checkbox-topics-scottish-budget">
+                                            <label for="scottish-budget" class="ds_checkbox__label">Scottish Budget</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="transport" name="topics" class="ds_checkbox__input" type="checkbox" value="Transport" data-form="checkbox-topics-transport">
+                                            <label for="transport" class="ds_checkbox__label">Transport</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="ukraine" name="topics" class="ds_checkbox__input" type="checkbox" value="Ukraine" data-form="checkbox-topics-ukraine">
+                                            <label for="ukraine" class="ds_checkbox__label">Ukraine</label>
+                                        </div>
+
+                                        <div class="ds_checkbox ds_checkbox--small">
+                                            <input id="work-and-skills" name="topics" class="ds_checkbox__input" type="checkbox" value="Work and skills" data-form="checkbox-topics-work-and-skills">
+                                            <label for="work-and-skills" class="ds_checkbox__label">Work and skills</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+
+                    <div class="ds_accordion-item">
+                        <input type="checkbox" class="visually-hidden  ds_accordion-item__control" id="panel-3" aria-labelledby="panel-3-heading" />
+                        <div class="ds_accordion-item__header">
+                            <h3 id="panel-3-heading" class="ds_accordion-item__title">
+                                Updated
+                            </h3>
+                            <span aria-hidden="true" class="ds_accordion-item__indicator"></span>
+                            <label class="ds_accordion-item__label" for="panel-3"><span class="visually-hidden">Show this section</span></label>
+                        </div>
+                        <div class="ds_accordion-item__body">
+                            <fieldset id="filter-date-range" class="filters__fieldset">
+                                <legend class="visually-hidden">Filter by date</legend>
+
+                                <div class="ds_question">
+                                    <div data-module="ds-datepicker" class="ds_datepicker" id="fromDatePicker">
+                                        <label class="ds_label  ds_no-margin--bottom" for="date-from">Updated after</label>
+                                        <p class="ds_hint-text  ds_!_margin-bottom--1">For example, 21/01/2022</p>
+                                        <div class="ds_input__wrapper">
+                                            <input id="date-from" class="ds_input" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="ds_question">
+                                    <div data-module="ds-datepicker" class="ds_datepicker" id="toDatePicker">
+                                        <label class="ds_label  ds_no-margin--bottom" for="date-to">Updated before</label>
+                                        <p class="ds_hint-text  ds_!_margin-bottom--1">For example, 21/01/2022</p>
+                                        <div class="ds_input__wrapper">
+                                            <input id="date-to" class="ds_input" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="ds_button  ds_button--primary  ds_button--small  ds_button--max  ds_no-margin" type="submit">
+                    Apply filter
+                </button>
+
+            </form>
+        </div>
+    </div>
+</div>
+{%- endmacro -%}
+
+{{searchFilters({
+
+})}}

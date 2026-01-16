@@ -1,0 +1,39 @@
+{%- macro pagination(params) -%}
+<nav class="ds_pagination" aria-label="{{ params.label }}">
+    <ul class="ds_pagination__list">
+        {%- for item in params.items %}
+        <li class="ds_pagination__item" {%- if item.isEllipsis %} aria-hidden="true"{%- endif -%}>
+            {%- if item.isPrevious -%}
+                {%- set ariaLabel = 'Previous page' -%}
+            {% elif item.isNext %}
+                {%- set ariaLabel = 'Next page' -%}
+            {% elif item.isLast %}
+                {%- set ariaLabel = 'Last page, page ' + item.content -%}
+            {% elif item.href %}
+                {%- set ariaLabel = 'Page ' + item.content -%}
+            {% else %}
+                {%- set ariaLabel = undefined -%}
+            {%- endif -%}
+            {%- if item.href %}
+            <a {% if ariaLabel %}aria-label="{{ ariaLabel }}"{% endif %} class="ds_pagination__link {%- if item.isPrevious or item.isNext %}  ds_pagination__link--text  ds_pagination__link--icon{% endif %}  {%- if item.isCurrent %}  ds_current{%- endif -%}" href="{{ item.href }}" {%- if item.isCurrent %} aria-current="page"{%- endif -%} >
+                {%- if item.isPrevious %}
+                <svg class="ds_icon" aria-hidden="true" role="img"><use href="/images/icons.stack.svg#chevron_left"></use></svg>
+                {%- endif %}
+                <span class="ds_pagination__link-label">{{ item.content }}</span>
+                {%- if item.isNext %}
+                <svg class="ds_icon" aria-hidden="true" role="img"><use href="/images/icons.stack.svg#chevron_right"></use></svg>
+                {%- endif %}
+            </a>
+            {%- elseif item.isEllipsis %}
+            <span class="ds_pagination__link  ds_pagination__link--ellipsis">&hellip;</span>
+            {%- endif %}
+        </li>
+        {%- endfor %}
+    </ul>
+</nav>
+{%- endmacro -%}
+
+{{pagination({
+    items: items,
+    label: label
+})}}

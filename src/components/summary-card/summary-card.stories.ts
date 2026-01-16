@@ -1,17 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/html';
-import { ComponentArgs as SummaryListArgs } from '../summary-list/summary-list.stories';
+import { SummaryListArgs } from '../summary-list/summary-list.stories';
 import { ActionArgs } from '../summary-list/summary-item.stories';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './summary-card.njk';
 
-type ComponentArgs = {
+export type SummaryCardArgs = {
     actions?: ActionArgs[],
     summaryList: SummaryListArgs,
     title: string
 };
 
-const meta: Meta<ComponentArgs> = {
+const meta: Meta<SummaryCardArgs> = {
     title: 'Components/Summary card',
     tags: ['autodocs'],
     render: (args) => {
@@ -87,17 +87,19 @@ const meta: Meta<ComponentArgs> = {
 };
 
 export default meta;
-type Story = StoryObj<ComponentArgs>;
+type Story = StoryObj<SummaryCardArgs>;
 
 export const Default: Story = {};
 
 export const NoActions: Story = {
+    name: 'WNo actionsthout',
     args: {
         actions: undefined
     }
 };
 
 export const ActionsAreLinks: Story = {
+    name: 'Actions are links',
     args: {
         actions: [
             {
@@ -113,6 +115,7 @@ export const ActionsAreLinks: Story = {
 };
 
 export const BorderlessList: Story = {
+    name: 'Borderless list',
     args: {
         summaryList: (() => {
             const summaryList = JSON.parse(JSON.stringify(meta.args.summaryList));
@@ -123,6 +126,7 @@ export const BorderlessList: Story = {
 }
 
 export const ShortKeysList: Story = {
+    name: 'Short keys list',
     args: {
         summaryList: {
             hasShortKeys: true,

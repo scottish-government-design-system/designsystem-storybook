@@ -1,0 +1,46 @@
+{%- macro categoryList(params) -%}
+{%- from 'src/components/category-item/category-item.njk' import categoryItem -%}
+{%- if params.containerStart %}
+    {{ params.containerStart | safe}}
+{%- endif -%}
+{%- set tagName = 'ul' %}
+{%- if params.isOrdered %}
+    {%- set tagName = 'ol' %}
+{%- endif %}
+<nav aria-label="Category navigation">
+    <{{tagName}} class="ds_category-list  {% if params.isGrid %}ds_category-list--grid{% endif %}">
+        {%- if params.isCards -%}
+        {%- for item in params.items %}
+            {{categoryItem({
+                content: item.content,
+                heading: item.heading,
+                headingLevel: params.headingLevel,
+                href: item.href,
+                tagName: 'li'
+            })}}
+        {% endfor %}
+        {%- else -%}
+        {%- for item in params.items %}
+            {{categoryItem({
+                content: item.content,
+                heading: item.heading,
+                headingLevel: params.headingLevel,
+                href: item.href,
+                tagName: 'li'
+            })}}
+        {% endfor %}
+        {%- endif -%}
+    </{{tagName}}>
+</nav>
+{%- if params.containerEnd %}
+    {{ params.containerEnd | safe}}
+{%- endif -%}
+{%- endmacro -%}
+
+{{categoryList({
+    headingLevel: headingLevel,
+    isCards: isCards,
+    isGrid: isGrid,
+    isOrdered: isOrdered,
+	items: items
+})}}

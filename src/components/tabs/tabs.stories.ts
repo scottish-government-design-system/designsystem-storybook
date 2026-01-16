@@ -4,13 +4,13 @@ import argTypes from '../../../.storybook/sgdsArgTypes';
 // @ts-expect-error no type defs
 import ComponentTemplate from './tabs.njk';
 
-type TabArgs = {
+export type TabArgs = {
     content: string
     id: string
     title: string
 }
 
-type ComponentArgs = {
+export type TabsArgs = {
     title?: string
     headingLevel?: string
     isBorderless?: boolean
@@ -19,7 +19,7 @@ type ComponentArgs = {
     items: TabArgs[]
 };
 
-const meta: Meta<ComponentArgs> = {
+const meta: Meta<TabsArgs> = {
     title: 'Components/Tabs',
     tags: ['autodocs'],
     render: (args) => {
@@ -74,7 +74,7 @@ const meta: Meta<ComponentArgs> = {
 };
 
 export default meta;
-type Story = StoryObj<ComponentArgs>;
+type Story = StoryObj<TabsArgs>;
 
 export const Default: Story = {
     parameters: {
@@ -85,18 +85,21 @@ export const Default: Story = {
 };
 
 export const ManualActivation: Story = {
+    name: 'Manual activation',
     args: {
         isManual: true
     }
 };
 
 export const WithoutBorder: Story = {
+    name: 'Without border',
     args: {
         isBorderless: true
     }
 };
 
 export const DifferentHeadingLevel: Story = {
+    name: 'Different heading level',
     args: {
         headingLevel: 'h3'
     }

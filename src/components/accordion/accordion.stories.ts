@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/html';
 // @ts-expect-error no type defs
 import ComponentTemplate from './accordion.njk';
 
-type ComponentArgs = {
+export type AccordionArgs = {
     items: object[]
     closeText: string
     isOpenAll: boolean
@@ -16,7 +16,7 @@ declare global {
     interface Window { DS: any }
 };
 
-const meta: Meta<ComponentArgs> = {
+const meta: Meta<AccordionArgs> = {
     title: 'Components/Accordion',
     // tags: ['autodocs'],
     render: (args) => {
@@ -47,7 +47,7 @@ const meta: Meta<ComponentArgs> = {
 };
 
 export default meta;
-type Story = StoryObj<ComponentArgs>;
+type Story = StoryObj<AccordionArgs>;
 
 export const Default: Story = {
     parameters: {
@@ -58,6 +58,7 @@ export const Default: Story = {
 };
 
 export const WithoutOpenAll: Story = {
+    name: 'Without \'open all\'',
     args: {
         isOpenAll: false
     }
@@ -70,6 +71,7 @@ export const Small: Story = {
 };
 
 export const CustomOpenCloseText: Story = {
+    name: 'Custom open/close text',
     args: {
         openText: 'Ouvrir',
         closeText: 'Fermer',

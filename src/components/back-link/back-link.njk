@@ -1,7 +1,7 @@
 {%- macro backLink(params) -%}
-<a href="#" class="ds_back-link">{{ params.label }}</a>
+<a href="#" class="ds_back-link">{{ params.content }}</a>
 {%- endmacro -%}
 
 {{backLink({
-    label: label
+    content: content
 })}}

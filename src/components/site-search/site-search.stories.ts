@@ -3,10 +3,10 @@ import type { Meta, StoryObj } from '@storybook/html';
 // @ts-expect-error no type defs
 import ComponentTemplate from './site-search.njk';
 
-type ComponentArgs = {
+export type SiteSearchArgs = {
 };
 
-const meta: Meta<ComponentArgs> = {
+const meta: Meta<SiteSearchArgs> = {
     title: 'Components/Site search',
     tags: ['autodocs'],
     render: (args) => {
@@ -17,6 +17,6 @@ const meta: Meta<ComponentArgs> = {
 };
 
 export default meta;
-type Story = StoryObj<ComponentArgs>;
+type Story = StoryObj<SiteSearchArgs>;
 
 export const Default: Story = {};

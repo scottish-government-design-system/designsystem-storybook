@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/html';
-import { ComponentArgs as SideNavigationItemArgs } from './side-navigation.item.stories';
+import { SideNavigationItemArgs } from './side-navigation.item.stories';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './side-navigation.njk';
 
-type ComponentArgs = {
+export type SideNavigationArgs = {
     ariaLabel: string
     items: SideNavigationItemArgs[]
 };
 
-const meta: Meta<ComponentArgs> = {
+const meta: Meta<SideNavigationArgs> = {
     title: 'Components/Side navigation',
     tags: ['autodocs'],
     render: (args) => {
@@ -49,11 +49,12 @@ const meta: Meta<ComponentArgs> = {
 };
 
 export default meta;
-type Story = StoryObj<ComponentArgs>;
+type Story = StoryObj<SideNavigationArgs>;
 
 export const Default: Story = {};
 
 export const NestedNavigation: Story = {
+    name: 'Nested navigation',
     args: {
         items: [
             {

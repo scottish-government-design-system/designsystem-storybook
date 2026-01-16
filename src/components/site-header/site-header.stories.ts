@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/html';
-import { MenuItemArgs as MenuItemArgs } from '../site-navigation/site-navigation.stories';
+import { MenuItemArgs } from '../site-navigation/site-navigation.stories';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './site-header.njk';
 
-type ComponentArgs = {
+export type SiteHeaderArgs = {
     hasNavigation?: boolean
     hasPhaseBanner?: boolean
     hasSearch?: boolean
@@ -12,7 +12,7 @@ type ComponentArgs = {
     siteTitle?: string
 };
 
-const meta: Meta<ComponentArgs> = {
+const meta: Meta<SiteHeaderArgs> = {
     title: 'Components/Site header',
     tags: ['autodocs'],
     render: (args) => {
@@ -46,7 +46,7 @@ const meta: Meta<ComponentArgs> = {
 };
 
 export default meta;
-type Story = StoryObj<ComponentArgs>;
+type Story = StoryObj<SiteHeaderArgs>;
 
 export const Default: Story = {
     args: {
@@ -58,24 +58,28 @@ export const Default: Story = {
 };
 
 export const WithSiteTitle: Story = {
+    name: 'With site title',
     args: {
         siteTitle: 'Design System'
     }
 };
 
 export const WithNav: Story = {
+    name: 'With nav',
     args: {
         hasNavigation: true
     }
 };
 
 export const WithPhaseBanner: Story = {
+    name: 'With phase banner',
     args: {
         hasPhaseBanner: true
     }
 };
 
 export const WithSearch: Story = {
+    name: 'With search',
     args: {
         hasSearch: true
     }

@@ -3,12 +3,12 @@ import type { Meta, StoryObj } from '@storybook/html';
 // @ts-expect-error no type defs
 import ComponentTemplate from './autocomplete.njk';
 
-type ComponentArgs = {
+export type AutocompleteArgs = {
     heading: string,
     items: object[]
 };
 
-const meta: Meta<ComponentArgs> = {
+const meta: Meta<AutocompleteArgs> = {
     title: 'Components/Autocomplete',
     tags: ['autodocs'],
     render: (args) => {
@@ -20,6 +20,6 @@ const meta: Meta<ComponentArgs> = {
 };
 
 export default meta;
-type Story = StoryObj<ComponentArgs>;
+type Story = StoryObj<AutocompleteArgs>;
 
 export const Default: Story = {};

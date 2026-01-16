@@ -4,7 +4,7 @@ import argTypes from '../../../.storybook/sgdsArgTypes';
 // @ts-expect-error no type defs
 import ComponentTemplate from './text-input.njk';
 
-type ComponentArgs = {
+export type TextInputArgs = {
     buttonIcon?: string
     buttonText?: string
     countThreshold?: number
@@ -25,7 +25,7 @@ type ComponentArgs = {
     width?: string
 };
 
-const meta: Meta<ComponentArgs> = {
+const meta: Meta<TextInputArgs> = {
     title: 'Components/Text input',
     tags: ['autodocs'],
     render: (args) => {
@@ -84,13 +84,14 @@ const meta: Meta<ComponentArgs> = {
 };
 
 export default meta;
-type Story = StoryObj<ComponentArgs>;
+type Story = StoryObj<TextInputArgs>;
 
 export const Default: Story = {
 
 };
 
 export const KitchenSink: Story = {
+    name: 'Kitchen sink',
     args: {
         countThreshold: 50,
         errorMessage: 'This field is required',
@@ -117,6 +118,7 @@ export const Currency: Story = {
 }
 
 export const WithButton: Story = {
+    name: 'With button',
     args: {
         buttonIcon: 'search',
         buttonText: 'Search',

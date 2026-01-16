@@ -1,0 +1,13 @@
+{%- macro insetText(params) -%}
+<div class="ds_inset-text">
+    <div class="ds_inset-text__text">
+        {% if params.tag %}<span class="ds_tag">Note</span>{% endif %}
+        {{params.content | safe}}
+    </div>
+</div>
+{%- endmacro -%}
+
+{{insetText({
+    content: content,
+    tag: tag
+})}}

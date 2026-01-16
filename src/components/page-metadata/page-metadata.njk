@@ -1,0 +1,16 @@
+{%- macro pageMetadata(params) -%}
+<dl class="ds_metadata {% if params.isInline %}ds_metadata--inline{% endif %} {% if params.className %}{{params.className}}{% endif %}">
+    {%- for item in params.items %}
+    <div class="ds_metadata__item">
+        <dt class="ds_metadata__key">{{item.key}}</dt>
+        <dd class="ds_metadata__value">{{item.value | safe}}</dd>
+    </div>
+    {%- endfor %}
+</dl>
+{%- endmacro -%}
+
+{{pageMetadata({
+    className: className,
+    isInline: isInline,
+    items: items
+})}}

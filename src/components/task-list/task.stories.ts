@@ -4,7 +4,7 @@ import argTypes from '../../../.storybook/sgdsArgTypes';
 // @ts-expect-error no type defs
 import ComponentTemplate from './task.njk';
 
-export type ComponentArgs = {
+export type TaskArgs = {
     content?: string
     headingLevel?: string
     href?: string
@@ -13,7 +13,7 @@ export type ComponentArgs = {
     title: string
 };
 
-const meta: Meta<ComponentArgs> = {
+const meta: Meta<TaskArgs> = {
     title: 'Components/Task list/Task',
     tags: ['autodocs'],
     render: (args) => {
@@ -36,23 +36,26 @@ const meta: Meta<ComponentArgs> = {
 };
 
 export default meta;
-type Story = StoryObj<ComponentArgs>;
+type Story = StoryObj<TaskArgs>;
 
 export const Default: Story = {};
 
 export const NoDescription: Story = {
+    name: 'No description',
     args: {
         content: undefined
     }
 };
 
 export const NoLink: Story = {
+    name: 'No link',
     args: {
         href: undefined
     }
 };
 
 export const NoStatus: Story = {
+    name: 'No status',
     args: {
         status: 'None'
     }

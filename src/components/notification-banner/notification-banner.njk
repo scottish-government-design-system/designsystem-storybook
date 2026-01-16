@@ -1,0 +1,41 @@
+{%- macro notificationBanner(params) -%}
+<div {%- if params.id %} id="{{ params.id }}" {%- endif %} class="ds_notification ds_reversed{%- if params.modifiers %} {{ params.modifiers }}{%- endif -%}" data-module="ds-notification">
+    <div class="ds_wrapper">
+        <div class="ds_notification__content{%- if params.isDismissable %} ds_notification__content--has-close{%- endif %}">
+            {%- if params.title %}
+            <h2 class="visually-hidden">{{ params.title }}</h2>
+            {%- endif %}
+            {%- if params.hasIcon %}
+            <span class="ds_notification__icon {%- if params.hasInverseIcon %} ds_notification__icon--inverse{% endif %}{%- if params.hasColourIcon %} ds_notification__icon--colour{% endif %}" aria-hidden="true">
+                <svg class="ds_icon  ds_icon--fill" aria-hidden="true" role="img">
+                    <use href="/images/icons.stack.svg#priority_high"></use>
+                </svg>
+            </span>
+            {%- endif %}
+            {%- if params.content %}
+            <div class="ds_notification__text">
+                {{ params.content | safe }}
+            </div>
+            {%- endif %}
+            {%- if params.isDismissable %}
+            <button class="ds_notification__close js-close-notification" type="button">
+                <span class="visually-hidden">Close this notification</span>
+                <svg class="ds_icon  ds_icon--fill" aria-hidden="true" role="img">
+                    <use href="/images/icons.stack.svg#close"></use>
+                </svg>
+            </button>
+            {%- endif %}
+        </div>
+    </div>
+</div>
+{%- endmacro -%}
+
+{{notificationBanner({
+    content: content,
+    hasColourIcon: hasColourIcon,
+    hasIcon: hasIcon,
+    hasInverseIcon: hasInverseIcon,
+    id: id,
+    isDismissable: isDismissable,
+    title: title
+})}}

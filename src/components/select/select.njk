@@ -1,0 +1,39 @@
+{%- macro select(params) -%}
+<label class="ds_label" for="{{params.id}}">{{params.label}}</label>
+{%- if params.hintText %}
+{%- set hintTextId = "hint-text-" + params.id %}
+<p class="ds_hint-text" id="{{hintTextId}}">{{params.hintText}}</p>
+{%- endif %}
+{%- if params.errorMessage %}
+{%- set errorMessageId = "error-message-" + params.id %}
+<p class="ds_question__error-message " id="{{errorMessageId}}">{{params.errorMessage}}</p>
+{%- endif %}
+<div class="ds_select-wrapper {%- if params.width %} ds_input--{{ params.width }} {%- endif %}">
+    <select
+        class="ds_select {%- if params.hasError %} ds_select--error{%- endif %}"
+        id="{{ params.id }}"
+        {%- if params.hintText or params.errorMessage %}
+        aria-describedby="{% if params.hintText %}{{hintTextId}}{% endif %} {% if params.errorMessage %}{{errorMessageId}}{% endif %}"
+        {%- endif %}
+        {% if params.hasError %}aria-invalid="true"{%- endif %}
+        name="{{ params.id }}"
+    >
+        {%- for option in params.options %}
+        <option value="{{ option.value }}" {%- if option.isSelected %} selected{%- endif %}>{{ option.content }}</option>
+        {%- endfor %}
+    </select>
+    <span class="ds_select-arrow" aria-hidden="true"></span>
+</div>
+{%- endmacro -%}
+
+{{select({
+    errorMessage: errorMessage,
+    hasError: hasError,
+    hintText: hintText,
+    id: id,
+    label: label,
+    name: name,
+    options: options,
+    value: value,
+    width: width
+})}}

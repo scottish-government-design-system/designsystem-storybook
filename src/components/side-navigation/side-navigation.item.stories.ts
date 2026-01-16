@@ -3,14 +3,14 @@ import type { Meta, StoryObj } from '@storybook/html';
 // @ts-expect-error no type defs
 import ComponentTemplate from './side-navigation.item.njk';
 
-export type ComponentArgs = {
+export type SideNavigationItemArgs = {
     href?: string
     isCurrent?: boolean
-    items?: ComponentArgs[]
+    items?: SideNavigationItemArgs[]
     title: string
 }
 
-const meta: Meta<ComponentArgs> = {
+const meta: Meta<SideNavigationItemArgs> = {
     title: 'Components/Side navigation/Item',
     tags: ['autodocs'],
     decorators: [
@@ -36,7 +36,7 @@ const meta: Meta<ComponentArgs> = {
 };
 
 export default meta;
-type Story = StoryObj<ComponentArgs>;
+type Story = StoryObj<SideNavigationItemArgs>;
 
 export const Default: Story = {};
 
@@ -47,12 +47,14 @@ export const Current: Story = {
 };
 
 export const NoLink: Story = {
+    name: 'No link',
     args: {
         href: undefined
     }
 };
 
 export const CurrentNoLink: Story = {
+    name: 'No link on current',
     args: {
         href: undefined,
         isCurrent: true
@@ -60,6 +62,7 @@ export const CurrentNoLink: Story = {
 };
 
 export const SubList: Story = {
+    name: 'With sub list',
     args: {
         href: '#apples',
         title: 'Apples',

@@ -1,17 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/html';
 import argTypes from '../../../.storybook/sgdsArgTypes';
-import { ComponentArgs as TaskArgs } from './task.stories';
+import { TaskArgs } from './task.stories';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './task-list.njk';
 
-type TaskGroupArgs = {
+export type TaskGroupArgs = {
     content?: string,
     title: string,
     tasks: TaskArgs[]
 }
 
-type ComponentArgs = {
+export type TaskListArgs = {
     groups: TaskGroupArgs[],
     groupHeadingLevel?: 'h2' | 'h3' | 'h4'
     headingLevel?: 'h2' | 'h3' | 'h4'
@@ -21,7 +21,7 @@ type ComponentArgs = {
     title?: string
 };
 
-const meta: Meta<ComponentArgs> = {
+const meta: Meta<TaskListArgs> = {
     title: 'Components/Task list',
     tags: ['autodocs'],
     render: (args) => {
@@ -70,11 +70,12 @@ const meta: Meta<ComponentArgs> = {
 };
 
 export default meta;
-type Story = StoryObj<ComponentArgs>;
+type Story = StoryObj<TaskListArgs>;
 
 export const Default: Story = {};
 
 export const WithoutHeadingAndIntro: Story = {
+    name: 'Without heading and intro',
     args: {
         intro: null,
         title: null
@@ -82,6 +83,7 @@ export const WithoutHeadingAndIntro: Story = {
 };
 
 export const GroupedTasks: Story = {
+    name: 'Grouped tasks',
     args: {
         groups: [
             {

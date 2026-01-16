@@ -4,12 +4,12 @@ import argTypes from '../../../.storybook/sgdsArgTypes';
 // @ts-expect-error no type defs
 import ComponentTemplate from './tag.njk';
 
-type ComponentArgs = {
+export type TagArgs = {
     colour?: string
     content: string
 };
 
-const meta: Meta<ComponentArgs> = {
+const meta: Meta<TagArgs> = {
     title: 'Components/Tag',
     tags: ['autodocs'],
     render: (args) => {
@@ -24,6 +24,6 @@ const meta: Meta<ComponentArgs> = {
 };
 
 export default meta;
-type Story = StoryObj<ComponentArgs>;
+type Story = StoryObj<TagArgs>;
 
 export const Default: Story = {};

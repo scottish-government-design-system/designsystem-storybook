@@ -1,0 +1,18 @@
+{%- macro searchFacet(params) -%}
+<dd class="ds_facet-wrapper">
+    {%- if params.hasJoinContent %}<span aria-hidden="true">{{params.joinContent | default('or')}}</span>{%- endif %}
+    <span class="ds_facet">
+        {{params.title}}
+        <button type="button" aria-label="Remove '{{params.accessibleName | default(params.title)}}' filter" class="ds_facet__button">
+            <svg class="ds_icon  ds_facet__button-icon" aria-hidden="true" role="img">
+                <use href="/images/icons.stack.svg#cancel"></use>
+            </svg>
+        </button>
+    </span>
+</dd>
+{%- endmacro -%}
+
+{{searchFacet({
+    accessibleName: accessibleName,
+    title: title
+})}}

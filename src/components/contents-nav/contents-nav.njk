@@ -1,0 +1,25 @@
+{%- macro contentsNav(params) -%}
+<nav class="ds_contents-nav" aria-label="{{ params.label }}">
+    <h2 class="ds_contents-nav__title">{{ params.title }}</h2>
+    <ul class="ds_contents-nav__list">
+        {%- for item in params.items -%}
+        <li class="ds_contents-nav__item" {%- if item.isCurrent %} aria-current="page"{%- endif %}>
+            {%- if item.href %}
+            <a class="ds_contents-nav__link {% if item.isCurrent %}ds_current{% endif %}" href="{{ item.href }}">
+                {{ item.content }}
+            </a>
+            {%- else %}
+            <span class="ds_contents-nav__link {% if item.isCurrent %}ds_current{% endif %}">
+                {{ item.content }}
+            </span>
+            {%- endif %}
+        </li>
+        {%-  endfor %}
+    </ul>
+</nav>
+{%- endmacro -%}
+
+{{contentsNav({
+    items: items,
+    title: title
+})}}

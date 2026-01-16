@@ -3,12 +3,12 @@ import type { Meta, StoryObj } from '@storybook/html';
 // @ts-expect-error no type defs
 import ComponentTemplate from './site-branding.njk';
 
-type ComponentArgs = {
+export type SiteBrandingArgs = {
     hasLogo?: boolean
     siteTitle?: string
 };
 
-const meta: Meta<ComponentArgs> = {
+const meta: Meta<SiteBrandingArgs> = {
     title: 'Components/Site branding',
     tags: ['autodocs'],
     render: (args) => {
@@ -21,11 +21,12 @@ const meta: Meta<ComponentArgs> = {
 };
 
 export default meta;
-type Story = StoryObj<ComponentArgs>;
+type Story = StoryObj<SiteBrandingArgs>;
 
 export const Default: Story = {};
 
 export const TwoLineTitle: Story = {
+    name: 'Two line title',
     args: {
         siteTitle: 'Scottish Government<br>Design System'
     }

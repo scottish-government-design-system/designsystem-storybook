@@ -1,0 +1,67 @@
+{%- macro searchResult(params) -%}
+{%- from 'src/components/page-metadata/page-metadata.njk' import pageMetadata -%}
+<div class="ds_sort-options">
+    <div class="ds_search-result {% if params.isPromoted %}ds_search-result--promoted{% endif %}">
+        {%- if params.isPromoted %}
+        <div class="ds_search-result--promoted-content">
+        <header class="ds_search-result--promoted-title">Recommended</header>
+        {%- endif %}
+        <h3 class="ds_search-result__title">
+            <a class="ds_search-result__link" href="{{params.href}}">
+                {{params.title}}
+            </a>
+        </h3>
+        {% if params.hasMedia %}
+        <div class="ds_search-result__has-media">
+            <div class="ds_search-result__media-wrapper">
+                <a class="ds_search-result__media-link" href="{{params.href}}" tabindex="-1" aria-hidden="true">
+                    <div class="ds_aspect-box ds_aspect-box--square ds_search-result__media">
+                        <img alt="" class="ds_aspect-box__inner" src="/images/highland-cow.jpg">
+                    </div>
+                </a>
+            </div>
+            <div class="ds_search-result__summary">
+                {{params.content}}
+            </div>
+        </div>
+        {%- else %}
+        <div class="ds_search-result__summary">
+            {{params.content}}
+        </div>
+        {%- endif %}
+        {%- if params.hasMetadata %}
+            {{pageMetadata({
+                className: 'ds_search-result__metadata',
+                isInline: true,
+                items: params.metadataItems
+            })}}
+        {%- endif %}
+        {%- if params.hasContext %}
+        <dl class="ds_search-result__context">
+            <dt class="ds_search-result__context-key">Part of:</dt>
+            {%- for item in params.contextItems %}
+            <dd class="ds_search-result__context-value">
+                <a href="{{item.href}}">{{item.content}}</a>
+            </dd>
+            {%- endfor %}
+        </dl>
+        {%- endif %}
+        {%- if params.isPromoted %}
+        </div>
+        {%- endif %}
+    </div>
+</div>
+{%- endmacro -%}
+
+{{searchResult({
+    content: content,
+    contextItems: contextItems,
+    hasContext: hasContext,
+    hasMedia: hasMedia,
+    hasMetadata: hasMetadata,
+    href: href,
+    isPromoted: isPromoted,
+    metadataItems: metadataItems,
+    promotedTitle: promotedTitle,
+    title: title
+})}}

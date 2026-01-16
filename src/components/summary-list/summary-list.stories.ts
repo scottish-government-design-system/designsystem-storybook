@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/html';
-import { ComponentArgs as SummaryItemArgs } from './summary-item.stories';
+import { SummaryItemArgs } from './summary-item.stories';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './summary-list.njk';
 
-export type ComponentArgs = {
+export type SummaryListArgs = {
     hasNoActions?: boolean
     hasShortKeys?: boolean
     isBorderless?: boolean
@@ -12,7 +12,7 @@ export type ComponentArgs = {
     listType: 'ol' | 'ul'
 };
 
-const meta: Meta<ComponentArgs> = {
+const meta: Meta<SummaryListArgs> = {
     title: 'Components/Summary list',
     tags: ['autodocs'],
     render: (args) => {
@@ -80,23 +80,26 @@ const meta: Meta<ComponentArgs> = {
 };
 
 export default meta;
-type Story = StoryObj<ComponentArgs>;
+type Story = StoryObj<SummaryListArgs>;
 
 export const Default: Story = {};
 
 export const NoActions: Story = {
+    name: 'No actions',
     args: {
         hasNoActions: true
     }
 };
 
 export const NoBorder: Story = {
+    name: 'No border',
     args: {
         isBorderless: true
     }
 };
 
 export const ShortKeys: Story = {
+    name: 'Short keys',
     args: {
         hasShortKeys: true,
         items: [

@@ -8,14 +8,14 @@ export type ActionArgs = {
     label: string
 }
 
-export type ComponentArgs = {
+export type SummaryItemArgs = {
     actions?: ActionArgs[]
     key: string
     value?: string | number
     values?: string[] | number[]
 };
 
-const meta: Meta<ComponentArgs> = {
+const meta: Meta<SummaryItemArgs> = {
     title: 'Components/Summary list/Item',
     tags: ['autodocs'],
     render: (args) => {
@@ -36,11 +36,12 @@ const meta: Meta<ComponentArgs> = {
 };
 
 export default meta;
-type Story = StoryObj<ComponentArgs>;
+type Story = StoryObj<SummaryItemArgs>;
 
 export const Default: Story = {};
 
 export const CompoundAnswer: Story = {
+    name: 'Compound answer',
     args: {
         key: 'Account holders',
         value: `<dl>
@@ -53,6 +54,7 @@ export const CompoundAnswer: Story = {
 };
 
 export const MultipleAnswers: Story = {
+    name: 'Multiple answers',
     args: {
         key: 'Foodie people',
         values: [
@@ -64,6 +66,7 @@ export const MultipleAnswers: Story = {
 };
 
 export const MultipleActions: Story = {
+    name: 'Multiple actions',
     args: {
         actions: [
             {
@@ -77,6 +80,7 @@ export const MultipleActions: Story = {
 }
 
 export const LongAnswer: Story = {
+    name: 'Long answer',
     args: {
         key: "Message body",
         value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer semper nunc ut lectus facilisis, ac ullamcorper augue molestie. Nam hendrerit nulla ut nunc laoreet porta. Etiam dignissim magna gravida sem volutpat fringilla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque nisi nisl, varius vel purus at, accumsan posuere purus. Aliquam facilisis lacus id lorem consectetur luctus. Donec mattis vehicula ante, ac consequat diam sollicitudin iaculis."
@@ -84,6 +88,7 @@ export const LongAnswer: Story = {
 }
 
 export const ActionsAreLinks: Story = {
+    name: 'Actions are links',
     args: {
         actions: [
             {

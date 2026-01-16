@@ -1,0 +1,51 @@
+{%- macro cookieNotification(params) -%}
+{%- if params.isConfirmation %}
+<div id="cookie-confirm" class="ds_notification ds_reversed ds_notification--success js-confirm-cookie-content" data-module="ds-notification">
+    <div class="ds_wrapper">
+        <div class="ds_notification__content ds_notification__content--has-close">
+            <h2 class="visually-hidden">Cookies on this website</h2>
+            <div class="ds_notification__text">
+                <p>Your cookie preferences have been saved. You can <a href="/cookies/">change your cookie settings</a> at any time.</p>
+            </div>
+            <button class="ds_notification__close js-close-notification" type="button">
+                <span class="visually-hidden">Close this notification</span>
+                <svg class="ds_icon ds_icon--fill" aria-hidden="true" role="img">
+                    <use href="/node_modules/@scottish-government/design-system/dist/images/icons/icons.stack.svg#close"></use>
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>
+{%- else %}
+<div id="cookie-notice" class="ds_notification ds_notification--large ds_notification--cookie js-initial-cookie-content fully-hidden" data-module="ds-cookie-notification">
+    <div class="ds_wrapper">
+        <div class="ds_notification__content">
+            <h2 class="visually-hidden">Cookies on this website</h2>
+            <div class="ds_notification__text">
+                <p>We use <a href="/cookies/">cookies</a> to collect anonymous data to help us improve your site browsing experience.</p>
+                <p>Click 'Accept all cookies' to agree to all cookies that collect anonymous data. To only allow the cookies that make the site work, click 'Use essential cookies only.' Visit 'Set cookie preferences' to control specific cookies.</p>
+            </div>
+            <div class="ds_button-group">
+                <button class="ds_button ds_button--small js-accept-all-cookies" type="button">Accept all cookies</button>
+                <button class="ds_button ds_button--small ds_button--secondary js-accept-essential-cookies" type="button">Use essential cookies only</button>
+                <a href="/cookies/">Set cookie preferences</a>
+            </div>
+        </div>
+    </div>
+</div>
+{%- endif %}
+{%- endmacro -%}
+
+{{cookieNotification({
+    isConfirmation: isConfirmation
+})}}
+
+<style>
+    /*
+    Prevent the notice being accidentally hidden in this example
+    by other settings (fully-hidden might be set)
+    */
+    #cookie-notice {
+        display: block !important
+    }
+</style>

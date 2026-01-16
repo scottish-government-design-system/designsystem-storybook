@@ -3,22 +3,22 @@ import type { Meta, StoryObj } from '@storybook/html';
 // @ts-expect-error no type defs
 import ComponentTemplate from './back-link.njk';
 
-type ComponentArgs = {
-    label: string
+export type BackLinkArgs = {
+    content: string
 };
 
-const meta: Meta<ComponentArgs> = {
+const meta: Meta<BackLinkArgs> = {
     title: 'Components/Back link',
     tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },
     args: {
-        label: 'Back'
+        content: 'Back'
     }
 };
 
 export default meta;
-type Story = StoryObj<ComponentArgs>;
+type Story = StoryObj<BackLinkArgs>;
 
 export const Default: Story = {};

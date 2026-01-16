@@ -10,11 +10,11 @@ type BreadcrumbItem = {
     isHidden?: boolean
 }
 
-type ComponentArgs = {
+export type BreadcrumbsArgs = {
     items: BreadcrumbItem[]
 };
 
-const meta: Meta<ComponentArgs> = {
+const meta: Meta<BreadcrumbsArgs> = {
     title: 'Components/Breadcrumbs',
     tags: ['autodocs'],
     render: (args) => {
@@ -43,11 +43,12 @@ const meta: Meta<ComponentArgs> = {
 };
 
 export default meta;
-type Story = StoryObj<ComponentArgs>;
+type Story = StoryObj<BreadcrumbsArgs>;
 
 export const Default: Story = {};
 
 export const OmitCurrentPage: Story = {
+    name: 'Omit current page',
     args: {
         items: (() => {
             const items = JSON.parse(JSON.stringify(meta.args.items));

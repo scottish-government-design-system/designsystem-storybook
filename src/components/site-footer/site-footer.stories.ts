@@ -3,19 +3,19 @@ import type { Meta, StoryObj } from '@storybook/html';
 // @ts-expect-error no type defs
 import ComponentTemplate from './site-footer.njk';
 
-type FooterLinkArgs = {
+export type FooterLinkArgs = {
     content: string
     href: string
 }
 
-type ComponentArgs = {
+export type SiteFooterArgs = {
     hasLicense?: boolean
     hasLinks?: boolean
     hasOrg?: boolean
     links?: FooterLinkArgs[]
 };
 
-const meta: Meta<ComponentArgs> = {
+const meta: Meta<SiteFooterArgs> = {
     title: 'Components/Site footer',
     tags: ['autodocs'],
     render: (args) => {
@@ -43,29 +43,33 @@ const meta: Meta<ComponentArgs> = {
 };
 
 export default meta;
-type Story = StoryObj<ComponentArgs>;
+type Story = StoryObj<SiteFooterArgs>;
 
 export const Default: Story = {};
 
 export const NoLinks: Story = {
+    name: 'No links',
     args: {
         hasLinks: false
     }
 };
 
 export const NoCopyright: Story = {
+    name: 'No copyright/license',
     args: {
         hasLicense: false
     }
 };
 
 export const NoOrg: Story = {
+    name: 'No organisation',
     args: {
         hasOrg: false
     }
 };
 
 export const LotsOfLinks: Story = {
+    name: 'Lots of links',
     args: {
         links: [
             {

@@ -1,0 +1,30 @@
+{%- macro details(params) -%}
+{%- from 'src/components/date-picker/date-picker.njk' import datePicker -%}
+{%- from 'src/components/text-input/text-input.njk' import textInput -%}
+<details class="ds_details" data-module="ds-details">
+    <summary class="ds_details__summary">
+        {{ params.summary }}
+    </summary>
+    <div class="ds_details__text">
+        {%- if params.hasFormContent -%}
+        {{datePicker({
+            id: 'start-date',
+            label: 'Start date'
+        })}}
+        {{textInput({
+            id: 'text-field',
+            label: 'Text label',
+            width: 'fluid-half'
+        })}}
+        {% else -%}
+        {{ params.content | safe }}
+        {%- endif %}
+    </div>
+</details>
+{%- endmacro -%}
+
+{{details({
+    content: content,
+    hasFormContent: hasFormContent,
+    summary: summary
+})}}

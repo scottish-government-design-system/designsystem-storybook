@@ -9,13 +9,13 @@ export type MenuItemArgs = {
     isCurrent?: boolean
 }
 
-type ComponentArgs = {
+export type SiteNavigationArgs = {
     isMobileNav?: boolean
     items: MenuItemArgs[]
     label?: string
 };
 
-const meta: Meta<ComponentArgs> = {
+const meta: Meta<SiteNavigationArgs> = {
     title: 'Components/Site navigation',
     tags: ['autodocs'],
     render: (args) => {
@@ -46,11 +46,12 @@ const meta: Meta<ComponentArgs> = {
 };
 
 export default meta;
-type Story = StoryObj<ComponentArgs>;
+type Story = StoryObj<SiteNavigationArgs>;
 
 export const Default: Story = {};
 
 export const MobileNav: Story = {
+    name: 'Mobile navigation',
     args: {
         isMobileNav: true
     }

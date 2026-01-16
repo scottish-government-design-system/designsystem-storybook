@@ -1,0 +1,24 @@
+{%- macro searchSort(params) -%}
+{%- from 'src/components/button/button.njk' import button -%}
+{%- from 'src/components/select/select.njk' import select -%}
+<div class="ds_sort-options ">
+    {{select({
+        id: params.id,
+        label: params.label,
+        options: params.options
+    })}}
+
+    {{button({
+        content: 'Apply sort',
+        isSecondary: true,
+        isSmall: true,
+        type: 'subit'
+    })}}
+</div>
+{%- endmacro -%}
+
+{{searchSort({
+    id: id,
+    label: label,
+    options: options
+})}}

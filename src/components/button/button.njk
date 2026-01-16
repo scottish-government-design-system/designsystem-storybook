@@ -20,13 +20,13 @@
     {% endif %}
 {%- endif %}
 {%- if hasLinkStyle %}
-    <{{elementName}} {% if params.isDisabled %}disabled{%endif%} class="ds_link">{{content}}</{{elementName}}>
+    <{{elementName}} {% if params.isDisabled %}disabled{%endif%} class="ds_link">{{params.content}}</{{elementName}}>
 {%- else %}
     <{{elementName}} {% if params.isDisabled %}disabled{%endif%} class="ds_button {{styleModifier}} {{widthModifier}} {{sizeModifier}} {{iconModifier}}" {%- if params.href %}href="{{params.href}}"{%- endif %}>
         {%- if isIconOnly %}
-        <span class="visually-hidden">{{content}}</span>
+        <span class="visually-hidden">{{params.content}}</span>
         {%- else %}
-        {{content}}
+        {{params.content}}
         {%- endif %}
         {%- if params.icon %}
         <svg class="ds_icon" aria-hidden="true" role="img"><use href="/images/icons.stack.svg#{{params.icon}}"></use></svg>

@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/html';
 // @ts-expect-error no type defs
 import ComponentTemplate from './step.njk';
 
-export type ComponentArgs = {
+export type StepArgs = {
     content: string
     heading: string
     isCurrent?: boolean
@@ -14,7 +14,7 @@ export type ComponentArgs = {
     index?: number
 };
 
-const meta: Meta<ComponentArgs> = {
+const meta: Meta<StepArgs> = {
     title: 'Components/Step navigation/Step',
     tags: ['autodocs'],
     decorators: [(Story) => '<div class="ds_step-navigation">\n<div class="ds_accordion">\n<ol class="ds_step-navigation__list">' + Story() + '</ol>\n</div>\n</div>'],
@@ -54,6 +54,6 @@ const meta: Meta<ComponentArgs> = {
 };
 
 export default meta;
-type Story = StoryObj<ComponentArgs>;
+type Story = StoryObj<StepArgs>;
 
 export const Default: Story = {};

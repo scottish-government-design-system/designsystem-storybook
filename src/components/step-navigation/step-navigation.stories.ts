@@ -1,16 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/html';
-import { ComponentArgs as StepArgs } from './step.stories';
+import { StepArgs } from './step.stories';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './step-navigation.njk';
 
-type ComponentArgs = {
+export type StepNavigationArgs = {
     isSmall?: boolean
     steps: StepArgs[],
     title?: string
 };
 
-const meta: Meta<ComponentArgs> = {
+const meta: Meta<StepNavigationArgs> = {
     title: 'Components/Step navigation',
     tags: ['autodocs'],
     render: (args) => {
@@ -104,7 +104,7 @@ const meta: Meta<ComponentArgs> = {
 };
 
 export default meta;
-type Story = StoryObj<ComponentArgs>;
+type Story = StoryObj<StepNavigationArgs>;
 
 export const Default: Story = {};
 
