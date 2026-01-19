@@ -1,0 +1,59 @@
+{%- macro card(params) -%}
+{%- from 'src/components/page-metadata/page-metadata.njk' import pageMetadata -%}
+<{{ params.tagName | default('div') }} class="ds_card{%- if params.hasHover %}  ds_card--hover{% endif -%}{%- if params.isGrey %}  ds_card--grey{% endif -%}">
+
+    {%- if params.image and params.image != 'none' %}
+    <div class="ds_card__media {%- if params.hasSmallImage %}  ds_card__media--small-mobile{%- endif -%}">
+        <div class="ds_aspect-box">
+            <img alt="" aria-hidden="true" class="ds_aspect-box__inner" src="/images/placeholders/{{ params.image }}.jpg" />
+        </div>
+    </div>
+    {%- endif -%}
+    <div class="ds_card__content">
+        {%- if params.heading %}
+        <h2 class="ds_card__title">
+            {%- if params.href %}
+            <a class="ds_card__link--cover" href="{{ params.href }}">
+            {%- endif -%}
+                {{ params.heading }}
+            {%- if params.href -%}
+            </a>
+            {%- endif -%}
+        </h2>
+        {% endif -%}
+        {%- if params.content -%}
+        <p>{{ params.content | safe }}</p>
+        {% endif -%}
+        {%- if params.hasMetadata %}
+        <div class="ds_card__content-footer">
+            {{pageMetadata({
+                isInline: true,
+                items: [
+                    {
+                        key: 'Content type',
+                        value: 'Consultation paper'
+                    },
+                    {
+                        key: 'Publish date',
+                        value: '13 August 2025'
+                    }
+                ]
+            })}}
+        </div>
+        {% endif -%}
+    </div>
+</{{ params.tagName | default('div') }}>
+{%- endmacro -%}
+
+{{card({
+	content: content,
+    hasHover: hasHover,
+    hasMetadata: hasMetadata,
+    hasSmallImage: hasSmallImage,
+    heading: heading,
+    headingLevel: headingLevel,
+	href: href,
+    image: image,
+    isGrey: isGrey,
+    tagName: tagName
+})}}

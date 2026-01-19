@@ -1,0 +1,61 @@
+<div class="ds_wrapper">
+    <nav aria-label="Breadcrumb">
+        <ol class="ds_breadcrumbs">
+            <li class="ds_breadcrumbs__item">
+                <a class="ds_breadcrumbs__link" href="#">Home</a>
+            </li>
+            <li class="ds_breadcrumbs__item">
+                <a class="ds_breadcrumbs__link" href="#">Benefits</a>
+            </li>
+            <li class="ds_breadcrumbs__item">
+                <a class="ds_breadcrumbs__link" href="#">Carers</a>
+            </li>
+            <li class="ds_breadcrumbs__item" aria-current="page">Eligibility for Carer Support Payment</li>
+        </ol>
+    </nav>
+
+    <main id="main-content" class="ds_layout  ds_layout--question-page">
+        <div class="ds_layout__header">
+            <div class="ds_error-summary" id="error-summary" aria-labelledby="error-summary-title" role="alert">
+                <h2 class="ds_error-summary__title" id="error-summary-title">There is a problem</h2>
+                <ul class="ds_error-summary__list">
+                    <li>
+                        <a href="#question-1">Tell us if you live in Scotland</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="ds_layout__content">
+            <form class="ds_form">
+                <div class="ds_form__content">
+                    <div class="ds_question  ds_question--error" id="question-1">
+                        <fieldset aria-describedby="error-1">
+                            <legend class="ds_page-header">
+                                <span class="ds_page-header__label ds_content-label">Eligibility for Carer Support Payment</span>
+                                <h1 class="ds_page-header__title">
+                                    Do you live in Scotland?
+                                </h1>
+                            </legend>
+                            <p class="ds_question__error-message" id="error-1"><span class="visually-hidden">Error:</span> Tell us if you live in Scotland</p>
+                            <div class="ds_field-group">
+                                <div class="ds_radio">
+                                    <input class="ds_radio__input" id="yes" type="radio" name="answer" value="yes">
+                                    <label class="ds_radio__label" for="yes">Yes</label>
+                                </div>
+                                <div class="ds_radio">
+                                    <input class="ds_radio__input" id="no" type="radio" name="answer" value="no">
+                                    <label class="ds_radio__label" for="no">No</label>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="ds_form__actions">
+                    <button class="ds_button ds_button--has-icon">Next<svg class="ds_icon" aria-hidden="true" role="img">
+                        <use href="/node_modules/@scottish-government/design-system/dist/images/icons/icons.stack.svg#chevron_right"></use>
+                    </svg></button>
+                </div>
+            </form>
+        </div>
+    </main>
+</div>

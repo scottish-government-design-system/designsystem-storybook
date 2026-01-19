@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/html';
-import argTypes from '../../../.storybook/sgdsArgTypes';
+import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './notification-panel.njk';
@@ -24,7 +24,7 @@ const meta: Meta<NotificationPanelArgs> = {
         heading: 'Thank you'
     },
     argTypes: {
-        ariaLive: argTypes.ariaLive(),
+        ariaLive: SGDSArgTypes.ariaLive(),
         heading: {
             description: 'Title of the notification panel',
             type: {
@@ -32,11 +32,8 @@ const meta: Meta<NotificationPanelArgs> = {
                 required: true
             }
         },
-        headingLevel: argTypes.headingLevel(),
-        isNeutral: {
-            control: 'boolean',
-            type: 'boolean'
-        },
+        headingLevel: SGDSArgTypes.headingLevel(),
+        isNeutral: SGDSArgTypes.boolean(),
     }
 };
 

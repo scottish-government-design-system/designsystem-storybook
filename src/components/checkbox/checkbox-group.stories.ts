@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/html';
+import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './checkbox-group.njk';
 
 export type CheckboxGroupArgs = {
     hasExclusive?: boolean
-    isInline?: boolean
     isSmall?: boolean
     name: string
 };
@@ -20,14 +20,7 @@ const meta: Meta<CheckboxGroupArgs> = {
         name: 'default'
     },
     argTypes: {
-        isSmall: {
-            control: 'boolean',
-            table: {
-                type: {
-                    summary: 'boolean'
-                }
-            }
-        }
+        isSmall: SGDSArgTypes.boolean()
     },
     play: () => {
         window.DS.initAll();

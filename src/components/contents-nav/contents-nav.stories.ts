@@ -1,13 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/html';
+import { ContentsNavItemArgs } from './contents-nav.item.stories';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './contents-nav.njk';
-
-export type ContentsNavItemArgs = {
-    content: string
-    href?: string
-    isCurrent?: boolean
-}
+import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 
 export type ContentsNavArgs = {
     items: ContentsNavItemArgs[]
@@ -46,7 +42,7 @@ const meta: Meta<ContentsNavArgs> = {
         title: 'Contents'
     },
     argTypes: {
-
+        items: SGDSArgTypes.hidden()
     }
 };
 

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/html';
-import argTypes from '../../../.storybook/sgdsArgTypes';
+import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './checkbox.njk';
@@ -26,17 +26,14 @@ const meta: Meta<CheckboxArgs> = {
         label: 'Benefits and grants'
     },
     argTypes: {
-        checked: {
-            control: 'boolean'
-        },
-        hintText: argTypes.hintText,
-        isExclusive: {
-            control: 'boolean',
+        checked: SGDSArgTypes.boolean(),
+        hintText: SGDSArgTypes.hintText(),
+        isExclusive: SGDSArgTypes.boolean({
             description: 'Whether the checkbox is exclusive (e.g. a \'none\' option)'
-        },
-        id: argTypes.id(),
-        isSmall: argTypes.isSmall(),
-        label: argTypes.label(),
+        }),
+        id: SGDSArgTypes.id(),
+        isSmall: SGDSArgTypes.isSmall(),
+        label: SGDSArgTypes.label(),
         name: {
             type: 'string'
         }

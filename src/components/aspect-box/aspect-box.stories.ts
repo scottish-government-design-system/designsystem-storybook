@@ -1,11 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/html';
+import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './aspect-box.njk';
 
 export type AspectBoxArgs = {
     altText?: string
-    presentation?: boolean
+    isPresentation?: boolean
     ratio?: string
 };
 
@@ -17,6 +18,16 @@ const meta: Meta<AspectBoxArgs> = {
     },
     args: {
         altText: 'Thistle flowers in a field'
+    },
+    argTypes: {
+        isPresentation: SGDSArgTypes.boolean({
+            description: 'Presentation images have aria-hidden'
+        }),
+        ratio: SGDSArgTypes.select({
+            default: '16:9',
+            options: ['16:9', '1:1', '4:3', '21:9']
+        })
+
     }
 };
 
@@ -28,24 +39,24 @@ export const Default: Story = {
 export const Square: Story = {
     name: '1:1 ratio (square)',
     args: {
-        ratio: 'ds_aspect-box--square'
+        ratio: '1:1'
     }
 };
 export const FourToThree: Story = {
     name: '4:3 ratio',
     args: {
-        ratio: 'ds_aspect-box--43'
+        ratio: '4:3'
     }
 };
 export const TwentyOneToNine: Story = {
     name: '21:9 ratio',
     args: {
-        ratio: 'ds_aspect-box--219'
+        ratio: '21:9'
     }
 };
 export const Presentation: Story = {
     args: {
-        presentation: true,
-        altText: ''
+        altText: '',
+        isPresentation: true
     }
 };

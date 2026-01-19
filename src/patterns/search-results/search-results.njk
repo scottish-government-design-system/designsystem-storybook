@@ -1,0 +1,313 @@
+{%- macro searchResults(params) -%}
+{%- from 'src/components/pagination/pagination.njk' import pagination -%}
+<div class="ds_search-results">
+    {%- if params.hasSuggestions %}
+    <nav class="ds_search-suggestions" aria-label="Alternative search suggestions">
+        <h2 class="visually-hidden">Also showing results for crofting</h2>
+        <p><span aria-hidden="true">Also showing results for</span> <a aria-label="Show results only for crofting" href="#">crofting</a><br>
+        <span aria-hidden="true">Show results only for</span> <a aria-label="Show results only for cfrting" href="#">crfting</a></p>
+    </nav>
+    {%- endif %}
+
+    <h2 class="ds_search-results__title">
+        7 results for <span class="ds_search-results__title-query">crofting</span>
+    </h2>
+
+    {%- if params.hasControls %}
+    <div class="ds_search-controls">
+        <div class="ds_skip-links  ds_skip-links--static">
+            <ul class="ds_skip-links__list">
+                <li class="ds_skip-links__item"><a class="ds_skip-links__link" href="#search-results" data-section="7 results for crofting" data-navigation="skip-link-1">Skip to results</a></li>
+            </ul>
+        </div>
+
+        <div class="ds_facets">
+            <p class="visually-hidden">There are 5 search filters applied</p>
+            <dl class="ds_facets__list">
+                <div class="ds_facet-group">
+                    <dt class="ds_facet__group-title">
+                        Content type:
+                    </dt>
+                    <dd class="ds_facet-wrapper">
+                        <span class="ds_facet">
+                            Advice and guidance
+                            <button type="button" aria-label="Remove 'Advice and guidance' filter" class="ds_facet__button" data-slug="advice-and-guidance" data-button="button-filter-advice-and-guidance-remove">
+                                <svg class="ds_facet__button-icon" aria-hidden="true" role="img" focusable="false"><use href="/images/icons.stack.svg#cancel"></use></svg>
+                            </button>
+                        </span>
+                    </dd>
+                    <dd class="ds_facet-wrapper">
+                        <span aria-hidden="true">or</span>
+                        <span class="ds_facet">
+                            Agreement
+                            <button type="button" aria-label="Remove 'Agreement' filter" class="ds_facet__button" data-slug="agreement" data-button="button-filter-agreement-remove">
+                                <svg class="ds_facet__button-icon" aria-hidden="true" role="img" focusable="false"><use href="/images/icons.stack.svg#cancel"></use></svg>
+                            </button>
+                        </span>
+                    </dd>
+                </div>
+
+                <div class="ds_facet-group">
+                    <dt class="ds_facet__group-title">
+                        Topic:
+                    </dt>
+                    <dd class="ds_facet-wrapper">
+                        <span class="ds_facet">
+                            Arts, culture and sport
+                            <button type="button" aria-label="Remove 'Arts, culture and sport' filter" class="ds_facet__button" data-slug="arts-culture-and-sport" data-button="button-filter-arts-culture-and-sport-remove">
+                                <svg class="ds_facet__button-icon" aria-hidden="true" role="img" focusable="false"><use href="/images/icons.stack.svg#cancel"></use></svg>
+                            </button>
+                        </span>
+                    </dd>
+                    <dd class="ds_facet-wrapper">
+                        <span aria-hidden="true">or</span>
+                        <span class="ds_facet">
+                            Brexit
+                            <button type="button" aria-label="Remove 'Brexit' filter" class="ds_facet__button" data-slug="brexit" data-button="button-filter-brexit-remove">
+                                <svg class="ds_facet__button-icon" aria-hidden="true" role="img" focusable="false"><use href="/images/icons.stack.svg#cancel"></use></svg>
+                            </button>
+                        </span>
+                    </dd>
+                </div>
+
+                <div class="ds_facet-group">
+                    <dt class="ds_facet__group-title">
+                        Updated after:
+                    </dt>
+                    <dd class="ds_facet-wrapper">
+                        <span class="ds_facet">
+                            07/02/2023
+                            <button type="button" aria-label="Remove '07/02/2023' filter" class="ds_facet__button" data-slug="07-02-2023" data-button="button-filter-07-02-2023-remove">
+                                <svg class="ds_facet__button-icon" aria-hidden="true" role="img" focusable="false"><use href="/images/icons.stack.svg#cancel"></use></svg>
+                            </button>
+                        </span>
+                    </dd>
+                </div>
+            </dl>
+
+            <button class="ds_facets__clear-button  ds_button  ds_button--secondary" type="button" data-button="button-clear-all-filters">
+                Clear all filters
+                <svg class="ds_facet__button-icon" aria-hidden="true" role="img" focusable="false"><use href="/images/icons.stack.svg#cancel"></use></svg>
+            </button>
+        </div>
+
+        <hr class="ds_search-results__divider">
+
+        <div class="ds_sort-options">
+            <label class="ds_label" for="sort-by">Sort by</label>
+            <span class="ds_select-wrapper">
+                <select class="ds_select js-has-tracking-event" id="sort-by" data-form="select-sort-by">
+                    <option data-form="select-sort-by-most-relevant">Most relevant</option>
+                    <option data-form="select-sort-by-something-else">Something else</option>
+                </select>
+                <span class="ds_select-arrow" aria-hidden="true"></span>
+            </span>
+
+            <button form="filters" class="ds_button  ds_button--secondary  ds_button--small" type="submit" data-button="button-apply-sort">Apply sort</button>
+        </div>
+    </div>
+    {%- endif %}
+
+    <ol class="ds_search-results__list" data-total="{{ params.resultsCount }}" {%- if params.resultsStart %} start="{{ params.resultsStart }}"{%- endif %}>
+        <li class="ds_search-result  {% if hasPromoted %}ds_search-result--promoted{% endif%}">
+            {%- if hasPromoted %}
+            <div class="ds_search-result--promoted-content">
+            <header class="ds_search-result--promoted-title">Recommended by gov.scot</header>
+            {%- endif %}
+            <h3 class="ds_search-result__title">
+                <a class="ds_search-result__link" href="#">Crofting community right to buy</a>
+            </h3>
+            <p class="ds_search-result__summary">Information and guidance regarding the <mark>crofting</mark> community right to buy.</p>
+            <dl class="ds_metadata ds_search-result__metadata  ds_metadata--inline">
+                <div class="ds_metadata__item">
+                    <dt class="ds_metadata__key visually-hidden">Format</dt>
+                    <dd class="ds_metadata__value">Policy</dd>
+                </div>
+            </dl>
+            {%- if hasPromoted %}
+            </div>
+            {%- endif %}
+        </li>
+
+        <li class="ds_search-result  {% if hasPromoted %}ds_search-result--promoted{% endif%}">
+            {%- if hasPromoted %}
+            <div class="ds_search-result--promoted-content">
+            <header class="ds_search-result--promoted-title">Recommended by gov.scot</header>
+            {%- endif %}
+            <h3 class="ds_search-result__title">
+                <a class="ds_search-result__link" href="#">Crofting consultation 2017</a>
+            </h3>
+            <p class="ds_search-result__summary">We are seeking the views of crofters, and those with an interest, on the pathway of any potential new legislation to reform <mark>crofting</mark> law.</p>
+            <dl class="ds_metadata ds_search-result__metadata ds_metadata--inline">
+                <div class="ds_metadata__item">
+                    <dt class="ds_metadata__key visually-hidden">Format</dt>
+                    <dd class="ds_metadata__value">Publication - Consultation paper</dd>
+                </div>
+                <div class="ds_metadata__item">
+                    <dt class="ds_metadata__key visually-hidden">Date</dt>
+                    <dd class="ds_metadata__value">28 August 2017</dd>
+                </div>
+            </dl>
+            {%- if hasPromoted %}
+            </div>
+            {%- endif %}
+        </li>
+
+        <li class="ds_search-result">
+            <h3 class="ds_search-result__title">
+                <a class="ds_search-result__link" href="#">Crofting Elections 2017: consultation responses analysis</a>
+            </h3>
+            <p class="ds_search-result__summary">Analysis of the responses to the <mark>Crofting</mark> Elections 2017 consultation.</p>
+            <dl class="ds_metadata ds_search-result__metadata ds_metadata--inline">
+                <div class="ds_metadata__item">
+                    <dt class="ds_metadata__key visually-hidden">Format</dt>
+                    <dd class="ds_metadata__value">Publication - Consultation analysis</dd>
+                </div>
+                <div class="ds_metadata__item">
+                    <dt class="ds_metadata__key visually-hidden">Date</dt>
+                    <dd class="ds_metadata__value">1 September 2017</dd>
+                </div>
+            </dl>
+        </li>
+
+        <li class="ds_search-result">
+            <h3 class="ds_search-result__title">
+                <a class="ds_search-result__link" href="#">Crofting Commision</a>
+            </h3>
+            <p class="ds_search-result__summary">Elections regulations put before parliament.</p>
+            <dl class="ds_metadata ds_search-result__metadata ds_metadata--inline">
+                <div class="ds_metadata__item">
+                    <dt class="ds_metadata__key visually-hidden">Format</dt>
+                    <dd class="ds_metadata__value">News</dd>
+                </div>
+                <div class="ds_metadata__item">
+                    <dt class="ds_metadata__key visually-hidden">Date</dt>
+                    <dd class="ds_metadata__value">25 October 2016</dd>
+                </div>
+            </dl>
+            <dl class="ds_search-result__context">
+                <dt class="ds_search-result__context-key">Part of:</dt>
+                <dd class="ds_search-result__context-value"><a href="#">Equality and rights</a></dd>
+            </dl>
+        </li>
+
+        <li class="ds_search-result">
+            <h3 class="ds_search-result__title">
+                <a class="ds_search-result__link" href="#">Proposals on secondary legislation the Land Reform (Scotland) Act 2003 part three: crofting community right to buy as amended by the Community Empowerment (Scotland) Act 2015: consultation</a>
+            </h3>
+            <p class="ds_search-result__summary">Consultation relating to secondary legislation for the Land Reform (Scotland) Act 2003 part three, crofting community right to buy as amended by the Community ...</p>
+            <dl class="ds_metadata ds_search-result__metadata ds_metadata--inline">
+                <div class="ds_metadata__item">
+                    <dt class="ds_metadata__key visually-hidden">Format</dt>
+                    <dd class="ds_metadata__value">Publication - Research and Analysis</dd>
+                </div>
+                <div class="ds_metadata__item">
+                    <dt class="ds_metadata__key visually-hidden">Date</dt>
+                    <dd class="ds_metadata__value">1 September 2016</dd>
+                </div>
+            </dl>
+            <dl class="ds_search-result__context">
+                <dt class="ds_search-result__context-key">Part of:</dt>
+                <dd class="ds_search-result__context-value"><a href="#">Farming and rural</a></dd>
+            </dl>
+        </li>
+
+        <li class="ds_search-result">
+            <h3 class="ds_search-result__title">
+                <a class="ds_search-result__link" href="#">Cabinet Secretary for Rural Affairs and Islands</a>
+            </h3>
+            <div class="ds_search-result__has-media">
+                <div class="ds_search-result__media-wrapper">
+                    <a class="ds_search-result__media-link" href="#" aria-hidden="true" tabindex="-1">
+                        <div class="ds_search-result__media  ds_aspect-box  ds_aspect-box--square">
+                            <img alt="" class="ds_aspect-box__inner" src="/images/placeholders/thistles.jpg" width="656" height="369" />
+                        </div>
+                    </a>
+                </div>
+                <div>
+                    <h4 class="ds_search-result__sub-title">Incumbent&#39;s name</h4>
+                    <p class="ds_search-result__summary">The Cabinet Secretary is responsible for: cross-government co-ordination on islands, Islands Bond, carbon-neutral islands, <mark>crofting</mark> ...</p>
+                </div>
+            </div>
+        </li>
+
+        <li class="ds_search-result">
+            <h3 class="ds_search-result__title">
+                <a class="ds_search-result__link" href="#">Section 1 - Introduction</a>
+            </h3>
+            <p class="ds_search-result__summary">We are seeking the views of crofters, and those with an interest, on the pathway of any potential new legislation to reform <mark>crofting</mark> law.</p>
+            <dl class="ds_metadata ds_search-result__metadata ds_metadata--inline">
+                <div class="ds_metadata__item">
+                    <dt class="ds_metadata__key visually-hidden">Format</dt>
+                    <dd class="ds_metadata__value">Publication - Consultation paper</dd>
+                </div>
+                <div class="ds_metadata__item">
+                    <dt class="ds_metadata__key visually-hidden">Date</dt>
+                    <dd class="ds_metadata__value">28 August 2017</dd>
+                </div>
+            </dl>
+            <dl class="ds_search-result__context">
+                <dt class="ds_search-result__context-key">Part of:</dt>
+                <dd class="ds_search-result__context-value"><a href="#">Crofting consultation 2017</a></dd>
+            </dl>
+        </li>
+    </ol>
+
+    {%- if params.hasPagination %}
+        {{pagination({
+            label: "Search result pages",
+            items: [
+                {
+                    content: "1",
+                    isCurrent: true,
+                    href: "#"
+                },
+                {
+                    content: "2",
+                    href: "#"
+                },
+                {
+                    content: "3",
+                    href: "#"
+                },
+                {
+                    content: "4",
+                    href: "#"
+                },
+                {
+                    content: "5",
+                    href: "#"
+                },
+                {
+                    content: "5",
+                    isEllipsis: true
+                },
+                {
+                    content: "Next",
+                    href: "#",
+                    isNext: true
+                }
+            ]
+        })}}
+    {%- endif %}
+
+    {%- if params.hasRelated %}
+    <aside class="ds_search-results__related" aria-labelledby="search-results__related-title">
+        <h2 id="search-results__related-title" class="ds_search-results__related-title">Related searches</h2>
+        <ul class="ds_no-bullets">
+            <li><a href="#">crofting law scotland</a></li>
+            <li><a href="#">crofting register</a></li>
+            <li><a href="#">crofting grants</a></li>
+        </ul>
+    </aside>
+    {%- endif %}
+</div>
+{%- endmacro -%}
+
+{{searchResults({
+    hasControls: hasControls,
+    hasPagination: hasPagination,
+    hasPromoted: hasPromoted,
+    hasRelated: hasRelated,
+    hasSuggestions: hasSuggestions
+})}}

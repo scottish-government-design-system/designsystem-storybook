@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/html';
+import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './breadcrumbs.njk';
@@ -7,10 +8,10 @@ type BreadcrumbItem = {
     content: string
     href?: string
     isCurrent?: boolean
-    isHidden?: boolean
 }
 
 export type BreadcrumbsArgs = {
+    isOmitCurrentPage?: boolean
     items: BreadcrumbItem[]
 };
 
@@ -39,6 +40,10 @@ const meta: Meta<BreadcrumbsArgs> = {
                 "isCurrent": true
             }
         ]
+    },
+    argTypes: {
+        isOmitCurrentPage: SGDSArgTypes.boolean(),
+        items: SGDSArgTypes.hidden()
     }
 };
 
@@ -50,10 +55,6 @@ export const Default: Story = {};
 export const OmitCurrentPage: Story = {
     name: 'Omit current page',
     args: {
-        items: (() => {
-            const items = JSON.parse(JSON.stringify(meta.args.items));
-            items[3].isHidden = true;
-            return items
-        })()
+        isOmitCurrentPage: true
     }
 }

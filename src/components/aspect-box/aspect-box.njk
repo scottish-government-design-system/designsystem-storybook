@@ -1,5 +1,14 @@
 {%- macro aspectBox(params) -%}
-<div class="ds_aspect-box  {{params.ratio}}">
+{%- if params.ratio == '16:9' %}
+{%- set ratioClass = '' %}
+{%- elif params.ratio == '1:1' %}
+{%- set ratioClass = 'ds_aspect-box--square' %}
+{%- elif params.ratio == '4:3' %}
+{%- set ratioClass = 'ds_aspect-box--43' %}
+{%- elif params.ratio == '21:9' %}
+{%- set ratioClass = 'ds_aspect-box--219' %}
+{%- endif %}
+<div class="ds_aspect-box  {{ratioClass}}">
     <img {%- if params.altText %} alt="{{ params.altText }}"{%- endif %}{%- if params.presentation %} aria-hidden="true"{%- endif %} class="ds_aspect-box__inner" class="ds_aspect-box__inner" src="/images/placeholders/thistles.jpg" width="656" height="369">
 </div>
 {%- endmacro -%}

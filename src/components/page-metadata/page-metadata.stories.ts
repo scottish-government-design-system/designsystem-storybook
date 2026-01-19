@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/html';
+import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './page-metadata.njk';
@@ -33,15 +34,9 @@ const meta: Meta<PageMetadataArgs> = {
         ]
     },
     argTypes: {
-        isInline: {
-            description: 'Use the inline display variant',
-            control: 'boolean',
-            table: {
-                type: {
-                    summary: 'boolean'
-                }
-            }
-        },
+        isInline: SGDSArgTypes.boolean({
+            description: 'Use the inline display variant'
+        })
     }
 };
 

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/html';
-import argTypes from '../../../.storybook/sgdsArgTypes';
+import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './select.njk';
@@ -51,14 +51,14 @@ const meta: Meta<SelectArgs> = {
         ]
     },
     argTypes: {
-        errorMessage: argTypes.errorMessage(),
-        hasError: argTypes.hasError(),
-        hintText: argTypes.hintText(),
-        id: argTypes.id(),
-        label: argTypes.label(),
+        errorMessage: SGDSArgTypes.errorMessage(),
+        hasError: SGDSArgTypes.hasError(),
+        hintText: SGDSArgTypes.hintText(),
+        id: SGDSArgTypes.id(),
+        label: SGDSArgTypes.label(),
         name: {type: 'string'},
         value: {type: 'string'},
-        width: argTypes.inputWidth()
+        width: SGDSArgTypes.inputWidth()
     }
 };
 

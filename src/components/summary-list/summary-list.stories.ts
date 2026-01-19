@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/html';
 import { SummaryItemArgs } from './summary-item.stories';
+import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './summary-list.njk';
@@ -19,9 +20,6 @@ const meta: Meta<SummaryListArgs> = {
         return(ComponentTemplate(args))
     },
     args: {
-        hasNoActions: false,
-        hasShortKeys: false,
-        isBorderless: false,
         items: [
             {
                 key: "Have you had the grant 3 times or more since 1 May 2022?",
@@ -75,7 +73,10 @@ const meta: Meta<SummaryListArgs> = {
         listType: 'ol'
     },
     argTypes: {
-
+        hasNoActions: SGDSArgTypes.boolean(),
+        hasShortKeys: SGDSArgTypes.boolean(),
+        isBorderless: SGDSArgTypes.boolean(),
+        listType: SGDSArgTypes.select({options: ['ol', 'ul']})
     }
 };
 

@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/html';
+import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './button.njk';
@@ -34,15 +35,9 @@ const meta: Meta<ButtonArgs> = {
         isSmall: false
     },
     argTypes: {
-        hasLinkStyle: {
-            description: 'Make the button look like a link',
-            control: 'boolean',
-            table: {
-                type: {
-                    summary: 'boolean'
-                }
-            }
-        },
+        hasLinkStyle: SGDSArgTypes.boolean({
+            description: 'Make the button look like a link'
+        }),
         href: {
             control: { type: 'text' },
             description: '`href` attribute, changes element to `<a>` if set',
@@ -58,48 +53,15 @@ const meta: Meta<ButtonArgs> = {
             control: { type: 'select' },
             type: 'string'
         },
-        isDisabled: {
-            control: 'boolean',
-            table: {
-                type: {
-                    summary: 'boolean'
-                }
-            }
-        },
-        isIconLeft: {
-            description: 'Show icon on left of button',
-            control: 'boolean',
-            table: {
-                type: {
-                    summary: 'boolean'
-                }
-            }
-        },
-        isIconOnly: {
-            description: 'Show only the icon',
-            control: 'boolean',
-            table: {
-                type: {
-                    summary: 'boolean'
-                }
-            }
-        },
-        isSecondary: {
-            control: 'boolean',
-            table: {
-                type: {
-                    summary: 'boolean'
-                }
-            }
-        },
-        isSmall: {
-            control: 'boolean',
-            table: {
-                type: {
-                    summary: 'boolean'
-                }
-            }
-        },
+        isDisabled: SGDSArgTypes.boolean(),
+        isIconLeft: SGDSArgTypes.boolean({
+            description: 'Show icon on left of button'
+        }),
+        isIconOnly: SGDSArgTypes.boolean({
+            description: 'Show only the icon'
+        }),
+        isSecondary: SGDSArgTypes.boolean(),
+        isSmall: SGDSArgTypes.boolean(),
         width: {
             options: ['fluid', 'fixed', 'max'],
             control: { type: 'radio' },

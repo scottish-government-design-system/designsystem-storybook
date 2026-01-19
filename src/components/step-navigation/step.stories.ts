@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/html';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './step.njk';
+import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 
 export type StepArgs = {
     content: string
@@ -22,8 +23,6 @@ const meta: Meta<StepArgs> = {
         return(ComponentTemplate(args))
     },
     args: {
-        isCurrent: false,
-        isOpen: false,
         content: `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             <ol>
                 <li>
@@ -39,6 +38,8 @@ const meta: Meta<StepArgs> = {
         index: 0
     },
     argTypes: {
+        isCurrent: SGDSArgTypes.boolean(),
+        isOpen: SGDSArgTypes.boolean(),
         index: {
             table: {
                 disable: true,

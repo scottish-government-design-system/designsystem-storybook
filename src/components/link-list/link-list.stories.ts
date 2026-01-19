@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/html';
-import argTypes from '../../../.storybook/sgdsArgTypes';
+import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './link-list.njk';
@@ -43,36 +43,11 @@ const meta: Meta<LinkListArgs> = {
         ]
     },
     argTypes: {
-        hasAllItemOptions: {
-            control: 'boolean',
-            table: {
-                type: {
-                    summary: 'boolean'
-                }
-            }
-        },
-        headingLevel: argTypes.headingLevel(),
-        isBorderless: {
-            control: 'boolean',
-            table: {
-                type: {
-                    summary: 'boolean'
-                }
-            }
-        },
-        isTwoColumns: {
-            control: 'boolean',
-            table: {
-                type: {
-                    summary: 'boolean'
-                }
-            }
-        },
-        items: {
-            table: {
-                disable: true,
-            }
-        },
+        hasAllItemOptions: SGDSArgTypes.boolean(),
+        headingLevel: SGDSArgTypes.headingLevel(),
+        isBorderless: SGDSArgTypes.boolean(),
+        isTwoColumns: SGDSArgTypes.boolean(),
+        items: SGDSArgTypes.hidden()
     }
 };
 

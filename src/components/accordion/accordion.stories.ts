@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/html';
+import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './accordion.njk';
@@ -6,7 +7,7 @@ import ComponentTemplate from './accordion.njk';
 export type AccordionArgs = {
     items: object[]
     closeText: string
-    isOpenAll: boolean
+    hasOpenAll: boolean
     isSmall: boolean
     openText: string
 };
@@ -23,7 +24,7 @@ const meta: Meta<AccordionArgs> = {
         return(ComponentTemplate(args))
     },
     args: {
-        isOpenAll: true,
+        hasOpenAll: true,
         items: [
             {
                 heading: 'Healthcare for veterans',
@@ -39,6 +40,12 @@ const meta: Meta<AccordionArgs> = {
                 content: `<p>If you need <a href="#">help finding a place to live</a> there\'s support specifically for veterans.</p>`
             }
         ]
+    },
+    argTypes: {
+        hasOpenAll: SGDSArgTypes.boolean({
+            table: { defaultValue: { summary: 'true' } }
+        }),
+        items: SGDSArgTypes.hidden()
     },
 
     play: () => {
@@ -60,7 +67,7 @@ export const Default: Story = {
 export const WithoutOpenAll: Story = {
     name: 'Without \'open all\'',
     args: {
-        isOpenAll: false
+        hasOpenAll: false
     }
 };
 

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/html';
-import argTypes from '../../../.storybook/sgdsArgTypes';
+import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './confirmation-message.njk';
@@ -22,7 +22,7 @@ const meta: Meta<ConfirmationMessageArgs> = {
         content: "<p>You have added a tenant to the application.</p>"
     },
     argTypes: {
-        headingLevel: argTypes.headingLevel()
+        headingLevel: SGDSArgTypes.headingLevel()
     }
 };
 

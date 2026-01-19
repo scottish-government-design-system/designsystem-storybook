@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/html';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './date-picker.njk';
+import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 
 export type DatePickerArgs = {
     dateFormat?: string
@@ -25,6 +26,12 @@ const meta: Meta<DatePickerArgs> = {
         isMultipleFields: false,
         label: 'Start date',
         placeholder: 'dd/mm/yyyy'
+    },
+    argTypes: {
+        dateFormat: SGDSArgTypes.select({
+            default: 'DMY',
+            options: ['DMY', 'MDY', 'YMD']
+        })
     },
     play: () => {
         window.DS.initAll();

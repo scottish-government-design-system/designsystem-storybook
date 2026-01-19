@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/html';
+import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './search-filters.panel.njk';
@@ -33,27 +34,9 @@ const meta: Meta<SearchFiltersPanelArgs> = {
                 }
             }
         },
-        hasTextFilters: {
-            control: 'boolean',
-            table: {
-                type: {
-                    summary: 'boolean'
-                }
-            }
-        },
-        id: {
-            table: {
-                disable: true,
-            }
-        },
-        isScrollable: {
-            control: 'boolean',
-            table: {
-                type: {
-                    summary: 'boolean'
-                }
-            }
-        },
+        hasTextFilters: SGDSArgTypes.boolean(),
+        id: SGDSArgTypes.hidden(),
+        isScrollable: SGDSArgTypes.boolean(),
     },
     play: () => {
         window.DS.initAll();

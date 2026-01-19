@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/html';
-import argTypes from '../../../.storybook/sgdsArgTypes';
+import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './text-input.njk';
@@ -37,37 +37,31 @@ const meta: Meta<TextInputArgs> = {
         label: 'First name'
     },
     argTypes: {
-        buttonIcon: {
-            control: { type: 'select' },
+        buttonIcon: SGDSArgTypes.select({
             description: 'Name of the icon to use',
-            options: ['arrow_upward', 'calendar_today', 'cancel', 'check_circle', 'chevron_left', 'chevron_right', 'close', 'description', 'double_chevron_left', 'double_chevron_right' ,'error', 'expand_less', 'expand_more', 'list', 'priority_high', 'search'],
-            type: 'string'
-        },
+            options: ['arrow_upward', 'calendar_today', 'cancel', 'check_circle', 'chevron_left', 'chevron_right', 'close', 'description', 'double_chevron_left', 'double_chevron_right' ,'error', 'expand_less', 'expand_more', 'list', 'priority_high', 'search']
+        }),
         buttonText: {
             desctiption: 'Text content for the button',
             type: 'string'
         },
-        countThreshold: argTypes.countThreshold(),
+        countThreshold: SGDSArgTypes.countThreshold(),
         currencySymbol: {
             description: 'Currency symbol to use (default is \'£\')',
             type: 'string'
         },
-        errorMessage: argTypes.errorMessage(),
-        hasButton: {
-            control: 'boolean',
-            description: 'Whether the component has an associated button',
-            type: 'boolean'
-        },
-        isCurrency: {
-            control: 'boolean',
-            description: 'Whether the component is a currency field',
-            type: 'boolean'
-        },
-        hasError: argTypes.hasError(),
-        hintText: argTypes.hintText(),
-        id: argTypes.id(),
-        label: argTypes.label(),
-        maxlength: argTypes.maxlength(),
+        errorMessage: SGDSArgTypes.errorMessage(),
+        hasButton: SGDSArgTypes.boolean({
+            description: 'Whether the component has an associated button'
+        }),
+        isCurrency: SGDSArgTypes.boolean({
+            description: 'Whether the component is a currency field'
+        }),
+        hasError: SGDSArgTypes.hasError(),
+        hintText: SGDSArgTypes.hintText(),
+        id: SGDSArgTypes.id(),
+        label: SGDSArgTypes.label(),
+        maxlength: SGDSArgTypes.maxlength(),
         name: {type: 'string'},
         placeholder: {type: 'string'},
         type: {
@@ -79,7 +73,7 @@ const meta: Meta<TextInputArgs> = {
             }
         },
         value: {type: 'string'},
-        width: argTypes.inputWidth()
+        width: SGDSArgTypes.inputWidth()
     }
 };
 

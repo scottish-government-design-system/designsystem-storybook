@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/html';
+import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './radio-button.njk';
@@ -24,7 +25,14 @@ const meta: Meta<RadioButtonArgs> = {
         label: 'Arrears'
     },
     argTypes: {
-
+        checked: SGDSArgTypes.boolean(),
+        hintText: SGDSArgTypes.hintText(),
+        id: SGDSArgTypes.id(),
+        isSmall: SGDSArgTypes.isSmall(),
+        label: SGDSArgTypes.label(),
+        name: {
+            type: 'string'
+        }
     }
 };
 

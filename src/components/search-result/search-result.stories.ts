@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/html';
 import { MetadataItemArgs } from '../page-metadata/page-metadata.stories';
+import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './search-result.njk';
@@ -11,13 +12,13 @@ export type ContextItemArgs = {
 
 export type SearchResultArgs = {
     content?: string
-    contextItems: ContextItemArgs[]
+    contextItems?: ContextItemArgs[]
     hasContext?: boolean
     hasMedia?: boolean
     hasMetadata?: boolean
     href: string
     isPromoted?: boolean
-    metadataItems: MetadataItemArgs[]
+    metadataItems?: MetadataItemArgs[]
     promotedTitle?: string
     title: string
 };
@@ -55,48 +56,12 @@ const meta: Meta<SearchResultArgs> = {
         ]
     },
     argTypes: {
-        contextItems: {
-            table: {
-                disable: true,
-            }
-        },
-        hasContext: {
-            control: 'boolean',
-            table: {
-                type: {
-                    summary: 'boolean'
-                }
-            }
-        },
-        hasMedia: {
-            control: 'boolean',
-            table: {
-                type: {
-                    summary: 'boolean'
-                }
-            }
-        },
-        hasMetadata: {
-            control: 'boolean',
-            table: {
-                type: {
-                    summary: 'boolean'
-                }
-            }
-        },
-        isPromoted: {
-            control: 'boolean',
-            table: {
-                type: {
-                    summary: 'boolean'
-                }
-            }
-        },
-        metadataItems: {
-            table: {
-                disable: true,
-            }
-        },
+        contextItems: SGDSArgTypes.hidden(),
+        hasContext: SGDSArgTypes.boolean(),
+        hasMedia: SGDSArgTypes.boolean(),
+        hasMetadata: SGDSArgTypes.boolean(),
+        isPromoted: SGDSArgTypes.boolean(),
+        metadataItems: SGDSArgTypes.hidden()
     }
 };
 

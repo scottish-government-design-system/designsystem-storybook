@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/html';
-import argTypes from '../../../.storybook/sgdsArgTypes';
+import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 import { OptionArgs } from '../select/select.stories';
 
 // @ts-expect-error no type defs
@@ -36,8 +36,8 @@ const meta: Meta<SearchSortArgs> = {
         ]
     },
     argTypes: {
-        id: argTypes.id(),
-        label: argTypes.label()
+        id: SGDSArgTypes.id(),
+        label: SGDSArgTypes.label()
     }
 };
 

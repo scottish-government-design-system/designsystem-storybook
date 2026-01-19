@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/html';
+import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './sequential-navigation.njk';
@@ -35,7 +36,8 @@ const meta: Meta<SequentialNavArgs> = {
         }
     },
     argTypes: {
-
+        next: SGDSArgTypes.hidden(),
+        prev: SGDSArgTypes.hidden()
     }
 };
 

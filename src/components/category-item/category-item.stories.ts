@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/html';
-import argTypes from '../../../.storybook/sgdsArgTypes';
+import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './category-item.njk';
@@ -24,7 +24,7 @@ const meta: Meta<CategoryItemArgs> = {
         href: '#foo'
     },
     argTypes: {
-        headingLevel: argTypes.headingLevel(),
+        headingLevel: SGDSArgTypes.headingLevel(),
         tagName: {
             control: { type: 'select' },
             options: ['div', 'li'],

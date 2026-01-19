@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/html';
+import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './file-download.njk';
@@ -21,35 +22,12 @@ const meta: Meta<FileDownloadArgs> = {
         hasMetadata: true
     },
     argTypes: {
-        fileIcon: {
-            options: ['Audio', 'Csv', 'Excel', 'File', 'Generic', 'Geodata', 'Ical', 'Ico', 'Image', 'Odf', 'Odg', 'Odp', 'Ods', 'Odt', 'Pdf', 'Ppt', 'Rtf', 'Text', 'Video', 'Word', 'Xml', 'Zip'],
-            control: { type: 'select' },
-            type: 'string'
-        },
-        hasCoverImage: {
-            control: 'boolean',
-            table: {
-                type: {
-                    summary: 'boolean'
-                }
-            }
-        },
-        hasMetadata: {
-            control: 'boolean',
-            table: {
-                type: {
-                    summary: 'boolean'
-                }
-            }
-        },
-        isHighlighted: {
-            control: 'boolean',
-            table: {
-                type: {
-                    summary: 'boolean'
-                }
-            }
-        }
+        fileIcon: SGDSArgTypes.select({
+            options: ['Audio', 'Csv', 'Excel', 'File', 'Generic', 'Geodata', 'Ical', 'Ico', 'Image', 'Odf', 'Odg', 'Odp', 'Ods', 'Odt', 'Pdf', 'Ppt', 'Rtf', 'Text', 'Video', 'Word', 'Xml', 'Zip']
+        }),
+        hasCoverImage: SGDSArgTypes.boolean(),
+        hasMetadata: SGDSArgTypes.boolean(),
+        isHighlighted: SGDSArgTypes.boolean()
     }
 };
 

@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/html';
+import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './feature-header.njk';
@@ -28,48 +29,16 @@ const meta: Meta<FeatureHeaderArgs> = {
         image: 'svg'
     },
     argTypes: {
-        background: {
-            options: ['none', 'colour', 'secondary', 'tertiary'],
-            control: { type: 'select' },
-            type: 'string'
-        },
-        hasButton: {
-            control: 'boolean',
-            table: {
-                type: {
-                    summary: 'boolean'
-                }
-            }
-        },
-        image: {
-            options: ['none', 'normal', 'square', 'svg'],
-            control: { type: 'select' },
-            type: 'string'
-        },
-        isFullWidth: {
-            control: 'boolean',
-            table: {
-                type: {
-                    summary: 'boolean'
-                }
-            }
-        },
-        isTopAlign: {
-            control: 'boolean',
-            table: {
-                type: {
-                    summary: 'boolean'
-                }
-            }
-        },
-        isWideText: {
-            control: 'boolean',
-            table: {
-                type: {
-                    summary: 'boolean'
-                }
-            }
-        }
+        background: SGDSArgTypes.select({
+            options: ['none', 'colour', 'secondary', 'tertiary']
+        }),
+        hasButton: SGDSArgTypes.boolean(),
+        image: SGDSArgTypes.select({
+            options: ['none', 'normal', 'square', 'svg']
+        }),
+        isFullWidth: SGDSArgTypes.boolean(),
+        isTopAlign: SGDSArgTypes.boolean(),
+        isWideText: SGDSArgTypes.boolean()
     }
 };
 

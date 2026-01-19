@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/html';
+import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './site-footer.njk';
@@ -39,6 +40,12 @@ const meta: Meta<SiteFooterArgs> = {
                 href: "#"
             }
         ],
+    },
+    argTypes: {
+        hasLicense: SGDSArgTypes.boolean(),
+        hasLinks: SGDSArgTypes.boolean(),
+        hasOrg: SGDSArgTypes.boolean(),
+        links: SGDSArgTypes.hidden(),
     }
 };
 

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/html';
-import argTypes from '../../../.storybook/sgdsArgTypes';
+import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './notification-banner.njk';
@@ -25,23 +25,19 @@ const meta: Meta<NotificationBannerAergs> = {
         title: 'Information'
     },
     argTypes: {
-        hasColourIcon: {
-            control: 'boolean',
+        hasColourIcon: SGDSArgTypes.boolean({
             description: 'Makes the icon display in the alternative colour scheme'
-        },
-        hasIcon: {
-            description: 'Shows the \'high priority\' icon on the notification banner',
-            control: 'boolean'
-        },
-        hasInverseIcon: {
-            control: 'boolean',
+        }),
+        hasIcon: SGDSArgTypes.boolean({
+            description: 'Shows the \'high priority\' icon on the notification banner'
+        }),
+        hasInverseIcon: SGDSArgTypes.boolean({
             description: 'Makes the icon be inverted against a circle background'
-        },
-        id: argTypes.id(),
-        isDismissable: {
-            control: 'boolean',
+        }),
+        id: SGDSArgTypes.id(),
+        isDismissable: SGDSArgTypes.boolean({
             description: 'Shows a \'close\' button on the notification banner'
-         },
+        }),
         title: {
             description: 'A hidden title for the notification banner, useful for screen reader users',
             type: 'string'

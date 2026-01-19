@@ -92,7 +92,7 @@ type Story = StoryObj<SummaryCardArgs>;
 export const Default: Story = {};
 
 export const NoActions: Story = {
-    name: 'WNo actionsthout',
+    name: 'No actions',
     args: {
         actions: undefined
     }

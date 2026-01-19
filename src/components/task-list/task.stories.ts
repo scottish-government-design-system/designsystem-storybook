@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/html';
-import argTypes from '../../../.storybook/sgdsArgTypes';
+import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './task.njk';
@@ -27,11 +27,9 @@ const meta: Meta<TaskArgs> = {
         title: 'This is another task'
     },
     argTypes: {
-        status: {
-            options: ['None', 'Complete', 'In progress', 'Not started', 'Cannot start yet'],
-            control: { type: 'select' },
-            type: 'string'
-        },
+        status: SGDSArgTypes.select({
+            options: ['None', 'Complete', 'In progress', 'Not started', 'Cannot start yet']
+        })
     }
 };
 

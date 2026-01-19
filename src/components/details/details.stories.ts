@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/html';
+import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './details.njk';
@@ -23,14 +24,7 @@ const meta: Meta<DetailsArgs> = {
         summary: 'I cannot sign in'
     },
     argTypes: {
-        hasFormContent: {
-            control: 'boolean',
-            table: {
-                type: {
-                    summary: 'boolean'
-                }
-            }
-        }
+        hasFormContent: SGDSArgTypes.boolean()
     }
 };
 

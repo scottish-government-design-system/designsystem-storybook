@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/html';
-import argTypes from '../../../.storybook/sgdsArgTypes';
+import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './tag.njk';
@@ -19,7 +19,7 @@ const meta: Meta<TagArgs> = {
         content: 'Status'
     },
     argTypes: {
-        colour: argTypes.tagColour(),
+        colour: SGDSArgTypes.tagColour(),
     }
 };
 

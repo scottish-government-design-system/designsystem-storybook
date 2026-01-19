@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/html';
-import argTypes from '../../../.storybook/sgdsArgTypes';
+import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './tabs.njk';
@@ -51,18 +51,15 @@ const meta: Meta<TabsArgs> = {
         ]
     },
     argTypes: {
-        headingLevel: argTypes.headingLevel({
+        headingLevel: SGDSArgTypes.headingLevel({
             description: 'Heading level to use for the tab container\'s title',
         }),
-        isBorderless: {
-            description: 'Whether to give each tab a border',
-            control: 'boolean'
-        },
-        isManual: {
-            control: 'boolean',
-            description: 'Whether to require manual tab activation',
-            type: 'boolean'
-        },
+        isBorderless: SGDSArgTypes.boolean({
+            description: 'Whether to give each tab a border'
+        }),
+        isManual: SGDSArgTypes.boolean({
+            description: 'Whether to require manual tab activation'
+        }),
         title: {
             description: 'The title of the tab list',
             type: 'string'

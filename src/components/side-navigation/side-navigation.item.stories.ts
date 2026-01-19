@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/html';
+import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './side-navigation.item.njk';
@@ -24,14 +25,7 @@ const meta: Meta<SideNavigationItemArgs> = {
         title: 'Apples'
     },
     argTypes: {
-        isCurrent: {
-            control: 'boolean',
-            table: {
-                type: {
-                    summary: 'boolean'
-                }
-            }
-        },
+        isCurrent: SGDSArgTypes.boolean(),
     }
 };
 

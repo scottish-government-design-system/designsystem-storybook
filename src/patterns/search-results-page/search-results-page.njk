@@ -1,0 +1,705 @@
+{%- macro searchResultsPage(params) -%}
+{%- from 'src/components/pagination/pagination.njk' import pagination -%}
+<div class="ds_layout  ds_layout--search-results{% if params.hasFilters %}--filters{% endif %}">
+
+    <div class="ds_layout__header">
+        <header class="ds_page-header">
+            <h1 class="ds_page-header__title">Search</h1>
+        </header>
+    </div>
+
+    <div class="ds_layout__content">
+        <div class="ds_site-search">
+            <form role="search" class="ds_site-search__form">
+                <label class="ds_label  visually-hidden" for="site-search">Search</label>
+                <div class="ds_input__wrapper  ds_input__wrapper--has-icon">
+                    <input name="q" required="" id="site-search" class="ds_input  ds_site-search__input" type="search" placeholder="Search" autocomplete="off" value="{{params.resultsTitle}}" />
+                    <button type="submit" class="ds_button  js-site-search-button">
+                        <span class="visually-hidden">Search</span>
+                        <svg class="ds_icon" aria-hidden="true" role="img"><use href="/node_modules/@scottish-government/design-system/dist/images/icons/icons.stack.svg#search"></use></svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    {%- if params.hasFilters %}
+    <div class="ds_layout__sidebar">
+
+        <div class="ds_search-filters">
+            <div class="ds_details  ds_no-margin" data-module="ds-details">
+                <input id="filters-toggle" type="checkbox" class="ds_details__toggle  visually-hidden">
+
+                <label for="filters-toggle" class="ds_details__summary">
+                    Search filters
+                </label>
+
+                <div class="ds_skip-links  ds_skip-links--static">
+                    <ul class="ds_skip-links__list">
+                        <li class="ds_skip-links__item"><a class="ds_skip-links__link" href="#search-results">Skip to results</a></li>
+                    </ul>
+                </div>
+
+                <div class="ds_details__text">
+                    <form id="filters">
+                        <h2 class="ds_search-filters__title  ds_h4">Filter by</h2>
+
+                        <div class="ds_accordion  ds_accordion--small  ds_!_margin-top--0" data-module="ds-accordion">
+                            <div class="ds_accordion-item">
+                                <input type="checkbox" class="visually-hidden  ds_accordion-item__control" id="panel-1" aria-labelledby="panel-1-heading" />
+                                <div class="ds_accordion-item__header">
+                                    <h3 id="panel-1-heading" class="ds_accordion-item__title">
+                                        Content type
+                                        {% if params.facets %}<div class="ds_search-filters__filter-count">(2 selected)</div>{% endif %}
+                                    </h3>
+                                    <span class="ds_accordion-item__indicator"></span>
+                                    <label class="ds_accordion-item__label" for="panel-1"><span class="visually-hidden">Show this section</span></label>
+                                </div>
+                                <div class="ds_accordion-item__body">
+                                    <fieldset>
+                                        <legend class="visually-hidden">Select which publication types you would like to see</legend>
+
+                                        <div class="ds_search-filters__scrollable">
+                                            <div class="ds_search-filters__checkboxes">
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="advice-and-guidance" {% if params.facets %}checked{% endif %} name="publicationTypes" value="advice-and-guidance" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-advice-and-guidance">
+                                                    <label for="advice-and-guidance" class="ds_checkbox__label">Advice and guidance</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="agreement" {% if params.facets %}checked{% endif %} name="publicationTypes" value="agreement" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-agreement">
+                                                    <label for="agreement" class="ds_checkbox__label">Agreement</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="consultation-analysis" name="publicationTypes" value="consultation-analysis" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-consultation-analysis">
+                                                    <label for="consultation-analysis" class="ds_checkbox__label">Consultation analysis</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="consultation-paper" name="publicationTypes" value="consultation-paper" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-consultation-paper">
+                                                    <label for="consultation-paper" class="ds_checkbox__label">Consultation paper</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="corporate-report" name="publicationTypes" value="corporate-report" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-corporate-report">
+                                                    <label for="corporate-report" class="ds_checkbox__label">Corporate report</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="correspondence" name="publicationTypes" value="correspondence" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-correspondence">
+                                                    <label for="correspondence" class="ds_checkbox__label">Correspondence</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="foi-eir-release" name="publicationTypes" value="foi-eir-release" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-foi-eir-release">
+                                                    <label for="foi-eir-release" class="ds_checkbox__label">FOI / EIR release</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="factsheet" name="publicationTypes" value="factsheet" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-factsheet">
+                                                    <label for="factsheet" class="ds_checkbox__label">Factsheet</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="form" name="publicationTypes" value="form" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-form">
+                                                    <label for="form" class="ds_checkbox__label">Form</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="impact-assessment" name="publicationTypes" value="impact-assessment" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-impact-assessment">
+                                                    <label for="impact-assessment" class="ds_checkbox__label">Impact assessment</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="independent-report" name="publicationTypes" value="independent-report" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-independent-report">
+                                                    <label for="independent-report" class="ds_checkbox__label">Independent report</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="map" name="publicationTypes" value="map" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-map">
+                                                    <label for="map" class="ds_checkbox__label">Map</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="minutes" name="publicationTypes" value="minutes" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-minutes">
+                                                    <label for="minutes" class="ds_checkbox__label">Minutes</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="progress-report" name="publicationTypes" value="progress-report" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-progress-report">
+                                                    <label for="progress-report" class="ds_checkbox__label">Progress report</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="regulation-directive-order" name="publicationTypes" value="regulation-directive-order" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-regulation-directive-order">
+                                                    <label for="regulation-directive-order" class="ds_checkbox__label">Regulation / directive / order</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="research-and-analysis" name="publicationTypes" value="research-and-analysis" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-research-and-analysis">
+                                                    <label for="research-and-analysis" class="ds_checkbox__label">Research and analysis</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="speech-statement" name="publicationTypes" value="speech-statement" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-speech-statement">
+                                                    <label for="speech-statement" class="ds_checkbox__label">Speech / statement</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="statistics" name="publicationTypes" value="statistics" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-statistics">
+                                                    <label for="statistics" class="ds_checkbox__label">Statistics</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="strategy-plan" name="publicationTypes" value="strategy-plan" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-strategy-plan">
+                                                    <label for="strategy-plan" class="ds_checkbox__label">Strategy / plan</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="transparency-data" name="publicationTypes" value="transparency-data" class="ds_checkbox__input" type="checkbox" data-form="checkbox-publicationTypes-transparency-data">
+                                                    <label for="transparency-data" class="ds_checkbox__label">Transparency data</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+
+                            <div class="ds_accordion-item">
+                                <input type="checkbox" class="visually-hidden  ds_accordion-item__control" id="panel-2" aria-labelledby="panel-2-heading" />
+                                <div class="ds_accordion-item__header">
+                                    <h3 id="panel-2-heading" class="ds_accordion-item__title">
+                                        Topic
+                                        {% if params.facets %}<div class="ds_search-filters__filter-count">(2 selected)</div>{% endif %}
+                                    </h3>
+                                    <span class="ds_accordion-item__indicator"></span>
+                                    <label class="ds_accordion-item__label" for="panel-2"><span class="visually-hidden">Show this section</span></label>
+                                </div>
+                                <div class="ds_accordion-item__body">
+                                    <fieldset>
+                                        <legend class="visually-hidden">Select which topics you would like to see</legend>
+
+                                        <div class="ds_search-filters__scrollable">
+                                            <div class="ds_search-filters__checkboxes">
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="arts-culture-and-sport" {% if params.facets %}checked{% endif %} name="topics" class="ds_checkbox__input" type="checkbox" value="Arts, culture and sport" data-form="checkbox-topics-arts-culture-and-sport">
+                                                    <label for="arts-culture-and-sport" class="ds_checkbox__label">Arts, culture and sport</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="brexit" name="topics" {% if params.facets %}checked{% endif %} class="ds_checkbox__input" type="checkbox" value="Brexit" data-form="checkbox-topics-brexit">
+                                                    <label for="brexit" class="ds_checkbox__label">Brexit</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="building-a-new-scotland" name="topics" class="ds_checkbox__input" type="checkbox" value="Building a new Scotland" data-form="checkbox-topics-building-a-new-scotland">
+                                                    <label for="building-a-new-scotland" class="ds_checkbox__label">Building a new Scotland</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="building-planning-and-design" name="topics" class="ds_checkbox__input" type="checkbox" value="Building, planning and design" data-form="checkbox-topics-building-planning-and-design">
+                                                    <label for="building-planning-and-design" class="ds_checkbox__label">Building, planning and design</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="business-industry-and-innovation" name="topics" class="ds_checkbox__input" type="checkbox" value="Business, industry and innovation" data-form="checkbox-topics-business-industry-and-innovation">
+                                                    <label for="business-industry-and-innovation" class="ds_checkbox__label">Business, industry and innovation</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="children-and-families" name="topics" class="ds_checkbox__input" type="checkbox" value="Children and families" data-form="checkbox-topics-children-and-families">
+                                                    <label for="children-and-families" class="ds_checkbox__label">Children and families</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="communities-and-third-sector" name="topics" class="ds_checkbox__input" type="checkbox" value="Communities and third sector" data-form="checkbox-topics-communities-and-third-sector">
+                                                    <label for="communities-and-third-sector" class="ds_checkbox__label">Communities and third sector</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="constitution-and-democracy" name="topics" class="ds_checkbox__input" type="checkbox" value="Constitution and democracy" data-form="checkbox-topics-constitution-and-democracy">
+                                                    <label for="constitution-and-democracy" class="ds_checkbox__label">Constitution and democracy</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="coronavirus-covid-19-in-scotland" name="topics" class="ds_checkbox__input" type="checkbox" value="Coronavirus (COVID-19) in Scotland" data-form="checkbox-topics-coronavirus-covid-19-in-scotland">
+                                                    <label for="coronavirus-covid-19-in-scotland" class="ds_checkbox__label">Coronavirus (COVID-19) in Scotland</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="cost-of-living-crisis" name="topics" class="ds_checkbox__input" type="checkbox" value="Cost of living crisis" data-form="checkbox-topics-cost-of-living-crisis">
+                                                    <label for="cost-of-living-crisis" class="ds_checkbox__label">Cost of living crisis</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="economy" name="topics" class="ds_checkbox__input" type="checkbox" value="Economy" data-form="checkbox-topics-economy">
+                                                    <label for="economy" class="ds_checkbox__label">Economy</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="education" name="topics" class="ds_checkbox__input" type="checkbox" value="Education" data-form="checkbox-topics-education">
+                                                    <label for="education" class="ds_checkbox__label">Education</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="energy" name="topics" class="ds_checkbox__input" type="checkbox" value="Energy" data-form="checkbox-topics-energy">
+                                                    <label for="energy" class="ds_checkbox__label">Energy</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="environment-and-climate-change" name="topics" class="ds_checkbox__input" type="checkbox" value="Environment and climate change" data-form="checkbox-topics-environment-and-climate-change">
+                                                    <label for="environment-and-climate-change" class="ds_checkbox__label">Environment and climate change</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="equality-and-rights" name="topics" class="ds_checkbox__input" type="checkbox" value="Equality and rights" data-form="checkbox-topics-equality-and-rights">
+                                                    <label for="equality-and-rights" class="ds_checkbox__label">Equality and rights</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="farming-and-rural" name="topics" class="ds_checkbox__input" type="checkbox" value="Farming and rural" data-form="checkbox-topics-farming-and-rural">
+                                                    <label for="farming-and-rural" class="ds_checkbox__label">Farming and rural</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="health-and-social-care" name="topics" class="ds_checkbox__input" type="checkbox" value="Health and social care" data-form="checkbox-topics-health-and-social-care">
+                                                    <label for="health-and-social-care" class="ds_checkbox__label">Health and social care</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="housing" name="topics" class="ds_checkbox__input" type="checkbox" value="Housing" data-form="checkbox-topics-housing">
+                                                    <label for="housing" class="ds_checkbox__label">Housing</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="international" name="topics" class="ds_checkbox__input" type="checkbox" value="International" data-form="checkbox-topics-international">
+                                                    <label for="international" class="ds_checkbox__label">International</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="law-and-order" name="topics" class="ds_checkbox__input" type="checkbox" value="Law and order" data-form="checkbox-topics-law-and-order">
+                                                    <label for="law-and-order" class="ds_checkbox__label">Law and order</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="marine-and-fisheries" name="topics" class="ds_checkbox__input" type="checkbox" value="Marine and fisheries" data-form="checkbox-topics-marine-and-fisheries">
+                                                    <label for="marine-and-fisheries" class="ds_checkbox__label">Marine and fisheries</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="money-and-tax" name="topics" class="ds_checkbox__input" type="checkbox" value="Money and tax" data-form="checkbox-topics-money-and-tax">
+                                                    <label for="money-and-tax" class="ds_checkbox__label">Money and tax</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="programme-for-government" name="topics" class="ds_checkbox__input" type="checkbox" value="Programme for Government" data-form="checkbox-topics-programme-for-government">
+                                                    <label for="programme-for-government" class="ds_checkbox__label">Programme for Government</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="public-safety-and-emergencies" name="topics" class="ds_checkbox__input" type="checkbox" value="Public safety and emergencies" data-form="checkbox-topics-public-safety-and-emergencies">
+                                                    <label for="public-safety-and-emergencies" class="ds_checkbox__label">Public safety and emergencies</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="public-sector" name="topics" class="ds_checkbox__input" type="checkbox" value="Public sector" data-form="checkbox-topics-public-sector">
+                                                    <label for="public-sector" class="ds_checkbox__label">Public sector</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="scottish-budget" name="topics" class="ds_checkbox__input" type="checkbox" value="Scottish Budget" data-form="checkbox-topics-scottish-budget">
+                                                    <label for="scottish-budget" class="ds_checkbox__label">Scottish Budget</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="transport" name="topics" class="ds_checkbox__input" type="checkbox" value="Transport" data-form="checkbox-topics-transport">
+                                                    <label for="transport" class="ds_checkbox__label">Transport</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="ukraine" name="topics" class="ds_checkbox__input" type="checkbox" value="Ukraine" data-form="checkbox-topics-ukraine">
+                                                    <label for="ukraine" class="ds_checkbox__label">Ukraine</label>
+                                                </div>
+
+                                                <div class="ds_checkbox ds_checkbox--small">
+                                                    <input id="work-and-skills" name="topics" class="ds_checkbox__input" type="checkbox" value="Work and skills" data-form="checkbox-topics-work-and-skills">
+                                                    <label for="work-and-skills" class="ds_checkbox__label">Work and skills</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+
+                            <div class="ds_accordion-item">
+                                <input type="checkbox" class="visually-hidden  ds_accordion-item__control" id="panel-3" aria-labelledby="panel-3-heading" />
+                                <div class="ds_accordion-item__header">
+                                    <h3 id="panel-3-heading" class="ds_accordion-item__title">
+                                        Updated
+                                        {% if params.facets %}<div class="ds_search-filters__filter-count">(1 selected)</div>{% endif %}
+                                    </h3>
+                                    <span class="ds_accordion-item__indicator"></span>
+                                    <label class="ds_accordion-item__label" for="panel-3"><span class="visually-hidden">Show this section</span></label>
+                                </div>
+                                <div class="ds_accordion-item__body">
+                                    <fieldset id="filter-date-range" class="filters__fieldset">
+                                        <legend class="visually-hidden">Filter by date</legend>
+
+                                        <div class="ds_question">
+                                            <div data-module="ds-datepicker" class="ds_datepicker" id="fromDatePicker">
+                                                <label class="ds_label  ds_no-margin--bottom" for="date-from">Updated after</label>
+                                                <p class="ds_hint-text  ds_!_margin-bottom--1">For example, 21/01/2022</p>
+                                                <div class="ds_input__wrapper">
+                                                    <input id="date-from" {% if params.facets %}value="07/02/2023"{% endif %} class="ds_input" type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="ds_question">
+                                            <div data-module="ds-datepicker" class="ds_datepicker" id="toDatePicker">
+                                                <label class="ds_label  ds_no-margin--bottom" for="date-to">Updated before</label>
+                                                <p class="ds_hint-text  ds_!_margin-bottom--1">For example, 21/01/2022</p>
+                                                <div class="ds_input__wrapper">
+                                                    <input id="date-to" class="ds_input" type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="ds_button  ds_button--primary  ds_button--small  ds_button--max  ds_no-margin">
+                            Apply filter
+                        </button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {%- endif %}
+
+    <div class="ds_layout__list">
+        <div class="ds_search-results">
+            {%- if params.hasSuggestions %}
+            <nav class="ds_search-suggestions" aria-label="Alternative search suggestions">
+                <h2 class="visually-hidden">Also showing results for crofting</h2>
+                <p><span aria-hidden="true">Also showing results for</span> <a aria-label="Show results only for crofting" href="#">crofting</a><br>
+                <span aria-hidden="true">Show results only for</span> <a aria-label="Show results only for cfrting" href="#">crfting</a></p>
+            </nav>
+            {%- endif %}
+
+            <h2 class="ds_search-results__title">
+                7 results for <span class="ds_search-results__title-query">crofting</span>
+            </h2>
+
+            {%- if params.hasFacets or params.hasSort %}
+            <div class="ds_search-controls">
+                <div class="ds_skip-links  ds_skip-links--static">
+                    <ul class="ds_skip-links__list">
+                        <li class="ds_skip-links__item"><a class="ds_skip-links__link" href="#search-results" data-section="7 results for crofting" data-navigation="skip-link-1">Skip to results</a></li>
+                    </ul>
+                </div>
+
+                {%- if params.hasFacets %}
+                <div class="ds_facets">
+                    <p class="visually-hidden">There are 5 search filters applied</p>
+                    <dl class="ds_facets__list">
+                        <div class="ds_facet-group">
+                            <dt class="ds_facet__group-title">
+                                Content type:
+                            </dt>
+                            <dd class="ds_facet-wrapper">
+                                <span class="ds_facet">
+                                    Advice and guidance
+                                    <button type="button" aria-label="Remove 'Advice and guidance' filter" class="ds_facet__button" data-slug="advice-and-guidance" data-button="button-filter-advice-and-guidance-remove">
+                                        <svg class="ds_facet__button-icon" aria-hidden="true" role="img" focusable="false"><use href="/images/icons.stack.svg#cancel"></use></svg>
+                                    </button>
+                                </span>
+                            </dd>
+                            <dd class="ds_facet-wrapper">
+                                <span aria-hidden="true">or</span>
+                                <span class="ds_facet">
+                                    Agreement
+                                    <button type="button" aria-label="Remove 'Agreement' filter" class="ds_facet__button" data-slug="agreement" data-button="button-filter-agreement-remove">
+                                        <svg class="ds_facet__button-icon" aria-hidden="true" role="img" focusable="false"><use href="/images/icons.stack.svg#cancel"></use></svg>
+                                    </button>
+                                </span>
+                            </dd>
+                        </div>
+
+                        <div class="ds_facet-group">
+                            <dt class="ds_facet__group-title">
+                                Topic:
+                            </dt>
+                            <dd class="ds_facet-wrapper">
+                                <span class="ds_facet">
+                                    Arts, culture and sport
+                                    <button type="button" aria-label="Remove 'Arts, culture and sport' filter" class="ds_facet__button" data-slug="arts-culture-and-sport" data-button="button-filter-arts-culture-and-sport-remove">
+                                        <svg class="ds_facet__button-icon" aria-hidden="true" role="img" focusable="false"><use href="/images/icons.stack.svg#cancel"></use></svg>
+                                    </button>
+                                </span>
+                            </dd>
+                            <dd class="ds_facet-wrapper">
+                                <span aria-hidden="true">or</span>
+                                <span class="ds_facet">
+                                    Brexit
+                                    <button type="button" aria-label="Remove 'Brexit' filter" class="ds_facet__button" data-slug="brexit" data-button="button-filter-brexit-remove">
+                                        <svg class="ds_facet__button-icon" aria-hidden="true" role="img" focusable="false"><use href="/images/icons.stack.svg#cancel"></use></svg>
+                                    </button>
+                                </span>
+                            </dd>
+                        </div>
+
+                        <div class="ds_facet-group">
+                            <dt class="ds_facet__group-title">
+                                Updated after:
+                            </dt>
+                            <dd class="ds_facet-wrapper">
+                                <span class="ds_facet">
+                                    07/02/2023
+                                    <button type="button" aria-label="Remove '07/02/2023' filter" class="ds_facet__button" data-slug="07-02-2023" data-button="button-filter-07-02-2023-remove">
+                                        <svg class="ds_facet__button-icon" aria-hidden="true" role="img" focusable="false"><use href="/images/icons.stack.svg#cancel"></use></svg>
+                                    </button>
+                                </span>
+                            </dd>
+                        </div>
+                    </dl>
+
+                    <button class="ds_facets__clear-button  ds_button  ds_button--secondary" type="button" data-button="button-clear-all-filters">
+                        Clear all filters
+                        <svg class="ds_facet__button-icon" aria-hidden="true" role="img" focusable="false"><use href="/images/icons.stack.svg#cancel"></use></svg>
+                    </button>
+                </div>
+                {%- endif %}
+
+                {%- if params.hasFacets and params.hasSort %}
+                <hr class="ds_search-results__divider">
+                {%- endif%}
+
+                {%- if params.hasSort %}
+                <div class="ds_sort-options">
+                    <label class="ds_label" for="sort-by">Sort by</label>
+                    <span class="ds_select-wrapper">
+                        <select class="ds_select js-has-tracking-event" id="sort-by" data-form="select-sort-by">
+                            <option data-form="select-sort-by-most-relevant">Most relevant</option>
+                            <option data-form="select-sort-by-something-else">Something else</option>
+                        </select>
+                        <span class="ds_select-arrow" aria-hidden="true"></span>
+                    </span>
+
+                    <button form="filters" class="ds_button  ds_button--secondary  ds_button--small" type="submit" data-button="button-apply-sort">Apply sort</button>
+                </div>
+                {%- endif %}
+            </div>
+            {%- endif %}
+
+            <ol class="ds_search-results__list" data-total="{{ params.resultsCount }}" {%- if params.resultsStart %} start="{{ params.resultsStart }}"{%- endif %}>
+                <li class="ds_search-result  {% if hasPromoted %}ds_search-result--promoted{% endif%}">
+                    {%- if hasPromoted %}
+                    <div class="ds_search-result--promoted-content">
+                    <header class="ds_search-result--promoted-title">Recommended by gov.scot</header>
+                    {%- endif %}
+                    <h3 class="ds_search-result__title">
+                        <a class="ds_search-result__link" href="#">Crofting community right to buy</a>
+                    </h3>
+                    <p class="ds_search-result__summary">Information and guidance regarding the <mark>crofting</mark> community right to buy.</p>
+                    <dl class="ds_metadata ds_search-result__metadata  ds_metadata--inline">
+                        <div class="ds_metadata__item">
+                            <dt class="ds_metadata__key visually-hidden">Format</dt>
+                            <dd class="ds_metadata__value">Policy</dd>
+                        </div>
+                    </dl>
+                    {%- if hasPromoted %}
+                    </div>
+                    {%- endif %}
+                </li>
+
+                <li class="ds_search-result  {% if hasPromoted %}ds_search-result--promoted{% endif%}">
+                    {%- if hasPromoted %}
+                    <div class="ds_search-result--promoted-content">
+                    <header class="ds_search-result--promoted-title">Recommended by gov.scot</header>
+                    {%- endif %}
+                    <h3 class="ds_search-result__title">
+                        <a class="ds_search-result__link" href="#">Crofting consultation 2017</a>
+                    </h3>
+                    <p class="ds_search-result__summary">We are seeking the views of crofters, and those with an interest, on the pathway of any potential new legislation to reform <mark>crofting</mark> law.</p>
+                    <dl class="ds_metadata ds_search-result__metadata ds_metadata--inline">
+                        <div class="ds_metadata__item">
+                            <dt class="ds_metadata__key visually-hidden">Format</dt>
+                            <dd class="ds_metadata__value">Publication - Consultation paper</dd>
+                        </div>
+                        <div class="ds_metadata__item">
+                            <dt class="ds_metadata__key visually-hidden">Date</dt>
+                            <dd class="ds_metadata__value">28 August 2017</dd>
+                        </div>
+                    </dl>
+                    {%- if hasPromoted %}
+                    </div>
+                    {%- endif %}
+                </li>
+
+                <li class="ds_search-result">
+                    <h3 class="ds_search-result__title">
+                        <a class="ds_search-result__link" href="#">Crofting Elections 2017: consultation responses analysis</a>
+                    </h3>
+                    <p class="ds_search-result__summary">Analysis of the responses to the <mark>Crofting</mark> Elections 2017 consultation.</p>
+                    <dl class="ds_metadata ds_search-result__metadata ds_metadata--inline">
+                        <div class="ds_metadata__item">
+                            <dt class="ds_metadata__key visually-hidden">Format</dt>
+                            <dd class="ds_metadata__value">Publication - Consultation analysis</dd>
+                        </div>
+                        <div class="ds_metadata__item">
+                            <dt class="ds_metadata__key visually-hidden">Date</dt>
+                            <dd class="ds_metadata__value">1 September 2017</dd>
+                        </div>
+                    </dl>
+                </li>
+
+                <li class="ds_search-result">
+                    <h3 class="ds_search-result__title">
+                        <a class="ds_search-result__link" href="#">Crofting Commision</a>
+                    </h3>
+                    <p class="ds_search-result__summary">Elections regulations put before parliament.</p>
+                    <dl class="ds_metadata ds_search-result__metadata ds_metadata--inline">
+                        <div class="ds_metadata__item">
+                            <dt class="ds_metadata__key visually-hidden">Format</dt>
+                            <dd class="ds_metadata__value">News</dd>
+                        </div>
+                        <div class="ds_metadata__item">
+                            <dt class="ds_metadata__key visually-hidden">Date</dt>
+                            <dd class="ds_metadata__value">25 October 2016</dd>
+                        </div>
+                    </dl>
+                    <dl class="ds_search-result__context">
+                        <dt class="ds_search-result__context-key">Part of:</dt>
+                        <dd class="ds_search-result__context-value"><a href="#">Equality and rights</a></dd>
+                    </dl>
+                </li>
+
+                <li class="ds_search-result">
+                    <h3 class="ds_search-result__title">
+                        <a class="ds_search-result__link" href="#">Proposals on secondary legislation the Land Reform (Scotland) Act 2003 part three: crofting community right to buy as amended by the Community Empowerment (Scotland) Act 2015: consultation</a>
+                    </h3>
+                    <p class="ds_search-result__summary">Consultation relating to secondary legislation for the Land Reform (Scotland) Act 2003 part three, crofting community right to buy as amended by the Community ...</p>
+                    <dl class="ds_metadata ds_search-result__metadata ds_metadata--inline">
+                        <div class="ds_metadata__item">
+                            <dt class="ds_metadata__key visually-hidden">Format</dt>
+                            <dd class="ds_metadata__value">Publication - Research and Analysis</dd>
+                        </div>
+                        <div class="ds_metadata__item">
+                            <dt class="ds_metadata__key visually-hidden">Date</dt>
+                            <dd class="ds_metadata__value">1 September 2016</dd>
+                        </div>
+                    </dl>
+                    <dl class="ds_search-result__context">
+                        <dt class="ds_search-result__context-key">Part of:</dt>
+                        <dd class="ds_search-result__context-value"><a href="#">Farming and rural</a></dd>
+                    </dl>
+                </li>
+
+                <li class="ds_search-result">
+                    <h3 class="ds_search-result__title">
+                        <a class="ds_search-result__link" href="#">Cabinet Secretary for Rural Affairs and Islands</a>
+                    </h3>
+                    <div class="ds_search-result__has-media">
+                        <div class="ds_search-result__media-wrapper">
+                            <a class="ds_search-result__media-link" href="#" aria-hidden="true" tabindex="-1">
+                                <div class="ds_search-result__media  ds_aspect-box  ds_aspect-box--square">
+                                    <img alt="" class="ds_aspect-box__inner" src="/images/placeholders/thistles.jpg" width="656" height="369" />
+                                </div>
+                            </a>
+                        </div>
+                        <div>
+                            <h4 class="ds_search-result__sub-title">Incumbent&#39;s name</h4>
+                            <p class="ds_search-result__summary">The Cabinet Secretary is responsible for: cross-government co-ordination on islands, Islands Bond, carbon-neutral islands, <mark>crofting</mark> ...</p>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="ds_search-result">
+                    <h3 class="ds_search-result__title">
+                        <a class="ds_search-result__link" href="#">Section 1 - Introduction</a>
+                    </h3>
+                    <p class="ds_search-result__summary">We are seeking the views of crofters, and those with an interest, on the pathway of any potential new legislation to reform <mark>crofting</mark> law.</p>
+                    <dl class="ds_metadata ds_search-result__metadata ds_metadata--inline">
+                        <div class="ds_metadata__item">
+                            <dt class="ds_metadata__key visually-hidden">Format</dt>
+                            <dd class="ds_metadata__value">Publication - Consultation paper</dd>
+                        </div>
+                        <div class="ds_metadata__item">
+                            <dt class="ds_metadata__key visually-hidden">Date</dt>
+                            <dd class="ds_metadata__value">28 August 2017</dd>
+                        </div>
+                    </dl>
+                    <dl class="ds_search-result__context">
+                        <dt class="ds_search-result__context-key">Part of:</dt>
+                        <dd class="ds_search-result__context-value"><a href="#">Crofting consultation 2017</a></dd>
+                    </dl>
+                </li>
+            </ol>
+
+            {%- if params.hasPagination %}
+                {{pagination({
+                    label: "Search result pages",
+                    items: [
+                        {
+                            content: "1",
+                            isCurrent: true,
+                            href: "#"
+                        },
+                        {
+                            content: "2",
+                            href: "#"
+                        },
+                        {
+                            content: "3",
+                            href: "#"
+                        },
+                        {
+                            content: "4",
+                            href: "#"
+                        },
+                        {
+                            content: "5",
+                            href: "#"
+                        },
+                        {
+                            content: "5",
+                            isEllipsis: true
+                        },
+                        {
+                            content: "Next",
+                            href: "#",
+                            isNext: true
+                        }
+                    ]
+                })}}
+            {%- endif %}
+
+            {%- if params.hasRelated %}
+            <aside class="ds_search-results__related" aria-labelledby="search-results__related-title">
+                <h2 id="search-results__related-title" class="ds_search-results__related-title">Related searches</h2>
+                <ul class="ds_no-bullets">
+                    <li><a href="#">crofting law scotland</a></li>
+                    <li><a href="#">crofting register</a></li>
+                    <li><a href="#">crofting grants</a></li>
+                </ul>
+            </aside>
+            {%- endif %}
+
+
+        </div>
+    </div>
+
+</div>
+{%- endmacro -%}
+
+{{searchResultsPage({
+    hasFacets: hasFacets,
+    hasFilters: hasFilters,
+    hasSort: hasSort,
+    hasSuggestions: hasSuggestions
+})}}

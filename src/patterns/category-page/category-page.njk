@@ -1,0 +1,107 @@
+{# Example of Category page with a category sub layout #}
+{%- from 'src/components/back-to-top/back-to-top.njk' import backToTop -%}
+{%- from 'src/components/breadcrumbs/breadcrumbs.njk' import breadcrumbs -%}
+{%- from 'src/components/category-list/category-list.njk' import categoryList -%}
+{%- from 'src/components/page-header/page-header.njk' import pageHeader -%}
+{%- from 'src/components/site-header/site-header.njk' import siteHeader -%}
+{%- from 'src/components/site-footer/site-footer.njk' import siteFooter -%}
+<div class="ds_page">
+    <div class="ds_page__top">
+        {{siteHeader()}}
+    </div>
+
+    <div class="ds_page__middle">
+        {%- if hasBreadcrumbs %}
+        <div class="ds_wrapper">
+            {{breadcrumbs({
+                items: [
+                    {
+                        "content": "Home",
+                        "href": "#"
+                    },
+                    {
+                        "content": "Justice and the law",
+                        "href": "#"
+                    },
+                    {
+                        "content": "Your rights and the law",
+                        "href": "#"
+                    },
+                    {
+                        "content": "Data sharing of personal information",
+                        "isCurrent": true
+                    }
+                ]
+            })}}
+        </div>
+        {%- endif %}
+
+        <main id="main-content">
+            <div class="ds_wrapper">
+                {{pageHeader({
+                    heading: 'Apply for or renew a disabled parking permit'
+                })}}
+            </div>
+
+            <div class="ds_category-lower  ds_pre-footer-background">
+                <div class="ds_wrapper">
+                    <div class="ds_layout  ds_layout--category-list">
+                        {{categoryList({
+                            items: [{
+                                content: 'Access to and protection of the countryside and managing wildlife on your land',
+                                heading: 'Environment and countryside',
+                                href: '#foo'
+                            },
+                            {
+                                content: 'Find out about Environmental Impact Assessments (EIAs) in your area',
+                                heading: 'Environmental Impact Assessment (EIA)',
+                                href: '#bar'
+                            },
+                            {
+                                content: 'Guidance for farming, animal health, agriculture and food businesses in Scotland',
+                                heading: 'Farming and rural issues',
+                                href: '#baz'
+                            },
+                            {
+                                content: 'Find advice and support to help your business become more environmentally aware and efficient',
+                                heading: 'Waste and energy',
+                                href: '#qux'
+                            },
+                            {
+                                content: 'Includes information on safety at sea and managing crew',
+                                heading: 'Marine and fisheries',
+                                href: '#quux'
+                            }],
+                            containerStart: '<div class="ds_layout__list"><div class="ds_category-list-container">',
+                            containerEnd: '</div></div>'
+                        })}}
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    {{backToTop()}}
+
+    <div class="ds_page__bottom">
+        {{siteFooter({
+            hasLicense: true,
+            hasLinks: true,
+            hasOrg: true,
+            links: [
+                {
+                    content: "Privacy",
+                    href: "#"
+                },
+                {
+                    content: "Cookies",
+                    href: "#"
+                },
+                {
+                    content: "Accessibility",
+                    href: "#"
+                }
+            ]
+        })}}
+    </div>
+</div>

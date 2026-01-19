@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/html';
+import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './icon.njk';
@@ -21,18 +22,14 @@ const meta: Meta<IconArgs> = {
         name: 'search'
     },
     argTypes: {
-        name: {
+        name: SGDSArgTypes.select({
             description: 'Name of the icon to use',
-            options: ['arrow_upward', 'calendar_today', 'cancel', 'check_circle', 'chevron_left', 'chevron_right', 'close', 'description', 'double_chevron_left', 'double_chevron_right' ,'error', 'expand_less', 'expand_more', 'list', 'priority_high', 'search'],
-            control: { type: 'select' },
-            type: 'string'
-        },
-        size: {
+            options: ['arrow_upward', 'calendar_today', 'cancel', 'check_circle', 'chevron_left', 'chevron_right', 'close', 'description', 'double_chevron_left', 'double_chevron_right' ,'error', 'expand_less', 'expand_more', 'list', 'priority_high', 'search']
+        }),
+        size: SGDSArgTypes.select({
             description: 'Size of the icon',
             options: [16, 20, 24, 28, 32, 36, 40, 44, 48],
-            control: { type: 'select' },
-            type: 'number'
-        }
+        })
     }
 };
 

@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/html';
+import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './site-branding.njk';
@@ -17,6 +18,9 @@ const meta: Meta<SiteBrandingArgs> = {
     args: {
         hasLogo: true,
         siteTitle: 'Design System'
+    },
+    argTypes: {
+        hasLogo: SGDSArgTypes.boolean()
     }
 };
 

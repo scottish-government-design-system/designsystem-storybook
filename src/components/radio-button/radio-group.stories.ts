@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/html';
+import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './radio-group.njk';
@@ -19,27 +20,9 @@ const meta: Meta<RadioGroupArgs> = {
         name: 'default'
     },
     argTypes: {
-        isInline: {
-            control: 'boolean',
-            table: {
-                type: {
-                    summary: 'boolean'
-                }
-            }
-        },
-        isSmall: {
-            control: 'boolean',
-            table: {
-                type: {
-                    summary: 'boolean'
-                }
-            }
-        },
-        name: {
-            table: {
-                disable: true,
-            }
-        }
+        isInline: SGDSArgTypes.boolean(),
+        isSmall: SGDSArgTypes.boolean(),
+        name: SGDSArgTypes.hidden()
     }
 };
 

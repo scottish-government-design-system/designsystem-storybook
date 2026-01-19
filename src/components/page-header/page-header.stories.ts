@@ -3,6 +3,7 @@ import { MetadataItemArgs } from '../page-metadata/page-metadata.stories';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './page-header.njk';
+import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 
 export type PageHeaderArgs = {
     hasMetadata?: boolean
@@ -40,10 +41,7 @@ const meta: Meta<PageHeaderArgs> = {
         ]
     },
     argTypes: {
-        hasMetadata: {
-            control: 'boolean',
-            type: 'boolean'
-        },
+        hasMetadata: SGDSArgTypes.boolean(),
         heading: {
             description: 'Text to use for the H1 element',
             type: {
@@ -55,11 +53,7 @@ const meta: Meta<PageHeaderArgs> = {
             description: 'Text to use for a label shown above the H1 element',
             type: 'string'
         },
-        metadataItems: {
-            table: {
-                disable: true,
-            }
-        },
+        metadataItems: SGDSArgTypes.hidden(),
         tag: {
             type: 'string'
         },

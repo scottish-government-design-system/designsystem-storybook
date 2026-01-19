@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/html';
-import argTypes from '../../../.storybook/sgdsArgTypes';
+import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './textarea.njk';
@@ -29,13 +29,13 @@ const meta: Meta<TextareaArgs> = {
         id: 'description'
     },
     argTypes: {
-        countThreshold: argTypes.countThreshold(),
-        errorMessage: argTypes.errorMessage(),
-        hasError: argTypes.hasError(),
-        hintText: argTypes.hintText(),
-        id: argTypes.id(),
-        label: argTypes.label(),
-        maxlength: argTypes.maxlength(),
+        countThreshold: SGDSArgTypes.countThreshold(),
+        errorMessage: SGDSArgTypes.errorMessage(),
+        hasError: SGDSArgTypes.hasError(),
+        hintText: SGDSArgTypes.hintText(),
+        id: SGDSArgTypes.id(),
+        label: SGDSArgTypes.label(),
+        maxlength: SGDSArgTypes.maxlength(),
         name: { type: 'string' },
         placeholder: {type: 'string'},
         rows: {type: 'number'},

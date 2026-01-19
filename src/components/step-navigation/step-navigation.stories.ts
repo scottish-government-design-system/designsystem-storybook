@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/html';
 import { StepArgs } from './step.stories';
+import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './step-navigation.njk';
@@ -95,7 +96,9 @@ const meta: Meta<StepNavigationArgs> = {
         title: 'Fruit steps'
     },
     argTypes: {
-
+        isSmall: SGDSArgTypes.boolean(),
+        steps: SGDSArgTypes.hidden(),
+        title: {type: 'string'}
     },
 
     play: () => {

@@ -1,5 +1,6 @@
 {%- macro categoryList(params) -%}
 {%- from 'src/components/category-item/category-item.njk' import categoryItem -%}
+{%- from 'src/components/card/card.njk' import card -%}
 {%- if params.containerStart %}
     {{ params.containerStart | safe}}
 {%- endif -%}
@@ -8,10 +9,10 @@
     {%- set tagName = 'ol' %}
 {%- endif %}
 <nav aria-label="Category navigation">
-    <{{tagName}} class="ds_category-list  {% if params.isGrid %}ds_category-list--grid{% endif %}">
+    <{{tagName}} class="ds_category-list  {% if params.isGrid %}ds_category-list--grid{% endif %}  {% if params.isCards %}ds_category-list--narrow{% endif %}">
         {%- if params.isCards -%}
         {%- for item in params.items %}
-            {{categoryItem({
+            {{card({
                 content: item.content,
                 heading: item.heading,
                 headingLevel: params.headingLevel,
@@ -38,6 +39,8 @@
 {%- endmacro -%}
 
 {{categoryList({
+    containerEnd: containerEnd,
+    containerStart: containerStart,
     headingLevel: headingLevel,
     isCards: isCards,
     isGrid: isGrid,

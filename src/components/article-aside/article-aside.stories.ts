@@ -26,6 +26,17 @@ const meta: Meta<ArticleAsideArgs> = {
                 "link": "#"
             }
         ]
+    },
+    argTypes: {
+        items: {
+            name: 'content',
+            control: false,
+            table: {
+                type: {
+                    summary: 'HTML'
+                }
+            }
+        }
     }
 };
 

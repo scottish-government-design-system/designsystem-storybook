@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/html';
+import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './question.njk';
@@ -21,7 +22,16 @@ const meta: Meta<QuestionArgs> = {
 
     },
     argTypes: {
-
+        errorMessage: {
+            description: 'Error message to apply to a whole fieldset',
+            type: 'string'
+        },
+        hasError: SGDSArgTypes.boolean(),
+        hintText: SGDSArgTypes.hintText(),
+        legend: { type: 'string' },
+        tagName: SGDSArgTypes.select({
+            options: ['div', 'fieldset']
+        })
     }
 };
 

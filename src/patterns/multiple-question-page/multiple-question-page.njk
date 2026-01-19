@@ -1,0 +1,131 @@
+{# Example of Question page with a single question and optional summary list #}
+{%- from 'src/components/back-to-top/back-to-top.njk' import backToTop -%}
+{%- from 'src/components/button/button.njk' import button -%}
+{%- from 'src/components/site-header/site-header.njk' import siteHeader -%}
+{%- from 'src/components/site-footer/site-footer.njk' import siteFooter -%}
+<div class="ds_page">
+
+    <div class="ds_page__top">
+        {{siteHeader()}}
+    </div>
+
+    <div class="ds_page__middle">
+        <div class="ds_wrapper">
+            <main id="main-content" class="ds_layout  ds_layout--article">
+                <div class="ds_layout__header">
+                    {%- if isErrorState %}
+                    <div class="ds_error-summary" id="error-summary" aria-labelledby="error-summary-title" role="alert">
+                        <h2 class="ds_error-summary__title" id="error-summary-title">There is a problem</h2>
+                        <ul class="ds_error-summary__list">
+                            <li>
+                                <a href="#unique-id-error">How much is the first rent payment?: Enter an amount</a>
+                            </li>
+                            <li>
+                                <a href="#unique-id2-error">From: Enter a date</a>
+                            </li>
+                            <li>
+                                <a href="#unique-id3-error">To: Enter a date</a>
+                            </li>
+                        </ul>
+                    </div>
+                    {%- endif %}
+                    <header class="ds_page-header">
+                        <span class="ds_page-header__label ds_content-label">About the tenancy</span>
+                        <h1 class="ds_page-header__title">
+                            First rent payment
+                        </h1>
+                    </header>
+                </div>
+                <div class="ds_layout__content">
+                    <form class="ds_form">
+                        <div class="ds_form__content">
+                            <div class="ds_question  {%- if isErrorState %}  ds_question--error{%- endif %}">
+                                <label class="ds_label" for="unique-id">How much is the first rent payment?</label>
+                                <p class="ds_hint-text" id="unique-id-hint">This does not include the deposit</p>
+                                {%- if isErrorState %}
+                                <p class="ds_question__error-message" id="unique-id-error"><span class="visually-hidden">Error: </span>Enter an amount</p>
+                                <div class="ds_currency-wrapper">
+                                    <input aria-invalid="true" class="ds_input  ds_input--error" type="text" id="unique-id" name="unique-id" aria-describedby="unique-id-hint  unique-id-error">
+                                </div>
+                                {%- else %}
+                                <div class="ds_currency-wrapper">
+                                    <input class="ds_input  ds_input--fixed-10" type="text" id="unique-id" name="unique-id" aria-describedby="unique-id-hint">
+                                </div>
+                                {%- endif %}
+                            </div>
+                            <div data-module="ds-datepicker" class="ds_question  ds_datepicker  {%- if isErrorState %}  ds_question--error{%- endif %}">
+                                <label class="ds_label" for="start-date">From:</label>
+                                <p class="ds_hint-text" id="unique-id2-hint">Use dd/mm/yyyy format. For example, 31/01/2024.</p>
+                                {%- if isErrorState %}
+                                <p class="ds_question__error-message" id="unique-id2-error"><span class="visually-hidden">Error: </span>Enter a date</p>
+                                <div class="ds_input__wrapper">
+                                    <input aria-invalid="true" id="start-date" name="start-date" type="text" class="ds_input ds_input--fixed-10 ds_input--error" aria-describedby="unique-id2-hint  unique-id2-error">
+                                </div>
+                                {%- else %}
+                                <div class="ds_input__wrapper">
+                                    <input id="start-date" name="start-date" type="text" class="ds_input ds_input--fixed-10" aria-describedby="unique-id2-hint">
+                                </div>
+                                {%- endif %}
+                            </div>
+                            <div data-module="ds-datepicker" class="ds_question  ds_datepicker  {%- if isErrorState %}  ds_question--error{%- endif %}">
+                                <label class="ds_label" for="start-date">To:</label>
+                                <p class="ds_hint-text" id="unique-id3-hint">Use dd/mm/yyyy format. For example, 31/01/2024.</p>
+                                {%- if isErrorState %}
+                                <p class="ds_question__error-message" id="unique-id3-error"><span class="visually-hidden">Error: </span>Enter a date</p>
+                                <div class="ds_input__wrapper">
+                                    <input aria-invalid="true" id="end-date" name="end-date" type="text" class="ds_input ds_input--fixed-10 ds_input--error" aria-describedby="unique-id3-hint  unique-id3-error">
+                                </div>
+                                {%- else %}
+                                <div class="ds_input__wrapper">
+                                    <input id="end-date" name="end-date" type="text" class="ds_input ds_input--fixed-10" aria-describedby="unique-id3-hint">
+                                </div>
+                                {%- endif %}
+                            </div>
+                        </div>
+                        <div class="ds_form__actions">
+                            <div class="ds_button-group">
+                                {{button({
+                                    content: 'Back',
+                                    hasIcon: true,
+                                    icon: 'chevron_left',
+                                    isIconLeft: true
+                                })}}
+
+                                {{button({
+                                    content: 'Next',
+                                    hasIcon: true,
+                                    icon: 'chevron_right'
+                                })}}
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    {{backToTop()}}
+
+    <div class="ds_page__bottom">
+        {{siteFooter({
+            hasLicense: true,
+            hasLinks: true,
+            hasOrg: true,
+            links: [
+                {
+                    content: "Privacy",
+                    href: "#"
+                },
+                {
+                    content: "Cookies",
+                    href: "#"
+                },
+                {
+                    content: "Accessibility",
+                    href: "#"
+                }
+            ]
+        })}}
+    </div>
+
+</div>

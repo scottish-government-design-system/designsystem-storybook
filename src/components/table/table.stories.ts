@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/html';
-import argTypes from '../../../.storybook/sgdsArgTypes';
+import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './table.njk';
@@ -156,16 +156,8 @@ const meta: Meta<TableArgs> = {
         smallScreen: 'none'
     },
     argTypes: {
-        head: {
-            table: {
-                disable: true,
-            }
-        },
-        rows: {
-            table: {
-                disable: true,
-            }
-        },
+        head: SGDSArgTypes.boolean(),
+        rows: SGDSArgTypes.boolean(),
         smallScreen: {
             // description: 'Name of the icon to use',
             options: ['none', 'boxes', 'scrolling'],

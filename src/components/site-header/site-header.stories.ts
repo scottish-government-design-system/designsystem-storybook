@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/html';
 import { MenuItemArgs } from '../site-navigation/site-navigation.stories';
+import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './site-header.njk';
@@ -19,9 +20,6 @@ const meta: Meta<SiteHeaderArgs> = {
         return(ComponentTemplate(args))
     },
     args: {
-        hasNavigation: false,
-        hasPhaseBanner: false,
-        hasSearch: false,
         navItems: [
             {
                 content: "Apples",
@@ -40,8 +38,14 @@ const meta: Meta<SiteHeaderArgs> = {
                 content: "Dates",
                 href: "#qux"
             }
-        ],
-        siteTitle: ''
+        ]
+    },
+    argTypes: {
+        hasNavigation: SGDSArgTypes.boolean(),
+        hasPhaseBanner: SGDSArgTypes.boolean(),
+        hasSearch: SGDSArgTypes.boolean(),
+        navItems: SGDSArgTypes.hidden(),
+        siteTitle: {type: 'string'}
     }
 };
 

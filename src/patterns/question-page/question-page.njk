@@ -1,0 +1,148 @@
+{# Example of Question page with a single question and optional summary list #}
+{%- from 'src/components/back-to-top/back-to-top.njk' import backToTop -%}
+{%- from 'src/components/button/button.njk' import button -%}
+{%- from 'src/components/error-summary/error-summary.njk' import errorSummary -%}
+{%- from 'src/components/site-header/site-header.njk' import siteHeader -%}
+{%- from 'src/components/site-footer/site-footer.njk' import siteFooter -%}
+{%- from 'src/components/text-input/text-input.njk' import textInput -%}
+<div class="ds_page">
+    <div class="ds_page__top">
+        {{siteHeader({siteTitle: 'Design system'})}}
+        {%- if params.siteHeader %}
+        {%- endif %}
+    </div>
+
+    <div class="ds_page__middle">
+        <div class="ds_wrapper">
+            {%- if hasBackButton %}
+                <a class="ds_back-link" href="#">Back</a>
+            {%- endif %}
+
+            <main id="main-content" class="ds_layout  ds_layout--question-page">
+                {%- if isErrorState %}
+                <div class="ds_layout__header">
+                    {{errorSummary({
+                        errors: [{
+                            content: 'What is your email address?: Error message',
+                            href: '#email'
+                        }]
+                    })}}
+                </div>
+                {%- endif %}
+                <div class="ds_layout__content">
+                    <form class="ds_form">
+                        <div class="ds_form__content">
+                            <div class="ds_question   {% if isErrorState %}ds_question--error{%- endif %}">
+                                {%- if isFieldset %}
+                                <fieldset>
+                                    <legend class="ds_page-header">
+                                        <span class="ds_page-header__label ds_content-label">Your details</span>
+                                        <h1 class="ds_page-header__title">
+                                            <label for="email">What is your location?</label>
+                                        </h1>
+                                    </legend>
+
+                                    {{textInput({
+                                        label: 'Latitude',
+                                        id: 'latitude'
+                                    })}}
+
+                                    {{textInput({
+                                        label: 'Longitude',
+                                        id: 'longitude'
+                                    })}}
+                                </fieldset>
+                                {%- else %}
+                                    <div class="ds_page-header">
+                                        <span class="ds_page-header__label ds_content-label">Your details</span>
+                                        <h1 class="ds_page-header__title">
+                                            <label for="email">What is your email address?</label>
+                                        </h1>
+                                    </div>
+                                    <p class="ds_hint-text" id="unique-id-hint">For example, john@gmail.com</p>
+                                    {%- if isErrorState %}
+                                    <p class="ds_question__error-message" id="unique-id-error"><span class="visually-hidden">Error:</span> Error message</p>
+                                    {%- endif %}
+                                    <input class="ds_input  {% if isErrorState %}ds_input--error{%- endif %}" type="text" id="email" name="email" aria-describedby="unique-id-hint ">
+                                {%- endif %}
+                            </div>
+                        </div>
+                        <div class="ds_form__actions">
+                            <div class="ds_button-group">
+                                {{button({
+                                    content: 'Back',
+                                    hasIcon: true,
+                                    icon: 'chevron_left',
+                                    isIconLeft: true
+                                })}}
+
+                                {{button({
+                                    content: 'Next',
+                                    hasIcon: true,
+                                    icon: 'chevron_right'
+                                })}}
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                {%- if hasAnswerSummary %}
+                <div class="ds_layout__footer">
+                    <div class="ds_!_margin-top--4">
+                        <h2>Your answers</h2>
+                        <p><button class="ds_link" type="button">Clear answers and start again</button></p>
+                        <ol class="ds_summary-list">
+                            <li class="ds_summary-list__item"><span class="ds_summary-list__key">Do you live in Scotland?</span> <span class="ds_summary-list__value" id="q1"> <span class="visually-hidden">Your answer is: </span> <q class="ds_summary-list__answer">Yes</q></span>
+                                <div class="ds_summary-list__actions">
+                                    <ul class="ds_summary-list__actions-list">
+                                        <li class="ds_summary-list__actions-list-item"><button class="ds_link" aria-describedby="q1" type="button">Change <span class="visually-hidden">your answer for: <q>Do you live in Scotland?</q></span></button></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="ds_summary-list__item"><span class="ds_summary-list__key">Are you a British citizen?</span> <span class="ds_summary-list__value" id="q2"> <span class="visually-hidden">Your answer is: </span> <q class="ds_summary-list__answer">Yes</q></span>
+                                <div class="ds_summary-list__actions">
+                                    <ul class="ds_summary-list__actions-list">
+                                        <li class="ds_summary-list__actions-list-item"><button class="ds_link" aria-describedby="q2" type="button">Change <span class="visually-hidden">your answer for: <q>Are you a British citizen?</q></span></button></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="ds_summary-list__item"><span class="ds_summary-list__key">Do you get one of these benefits?</span> <span class="ds_summary-list__value" id="q2"> <span class="visually-hidden">Your answer is: </span> <q class="ds_summary-list__answer">I do not get any of these benefits</q></span>
+                                <div class="ds_summary-list__actions">
+                                    <ul class="ds_summary-list__actions-list">
+                                        <li class="ds_summary-list__actions-list-item"><button class="ds_link" aria-describedby="q2" type="button">Change <span class="visually-hidden">your answer for: <q>Do you get one of these benefits?</q></span></button></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                {%- endif %}
+            </main>
+        </div>
+    </div>
+
+    {{backToTop()}}
+
+    <div class="ds_page__bottom">
+        {{siteFooter({
+            hasLicense: true,
+            hasLinks: true,
+            hasOrg: true,
+            links: [
+                {
+                    content: "Privacy",
+                    href: "#"
+                },
+                {
+                    content: "Cookies",
+                    href: "#"
+                },
+                {
+                    content: "Accessibility",
+                    href: "#"
+                }
+            ]
+        })}}
+    </div>
+
+</div>
