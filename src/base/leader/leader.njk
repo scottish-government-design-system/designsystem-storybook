@@ -1,0 +1,7 @@
+{%- macro leader(params)-%}
+{{params.content | safe}}
+{%- endmacro -%}
+
+{{leader({
+    content: content
+})}}

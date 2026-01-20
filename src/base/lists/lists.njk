@@ -1,0 +1,13 @@
+{%- macro list(params)-%}
+{{params.intro | safe}}
+<{{params.tagName | default('ul')}} {%- if params.hasBullets %}{% else %} class="ds_no-bullets"{% endif %}>
+{{params.listContent | safe}}
+</{{params.tagName | default('ul')}}>
+{%- endmacro -%}
+
+{{list({
+    intro: intro,
+    listContent: listContent,
+    hasBullets: hasBullets,
+    tagName: tagName
+})}}

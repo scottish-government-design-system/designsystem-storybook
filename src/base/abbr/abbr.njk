@@ -1,0 +1,7 @@
+{%- macro abbr(params)-%}
+<p>The <abbr {%- if params.hasTitleAttribute %} title="World Health Organization"{% endif %}>WHO</abbr> was founded in 1948.</p>
+{%- endmacro -%}
+
+{{abbr({
+    hasTitleAttribute: hasTitleAttribute
+})}}

@@ -1,0 +1,7 @@
+{%- macro body(params)-%}
+{{params.content | safe}}
+{%- endmacro -%}
+
+{{body({
+    content: content
+})}}

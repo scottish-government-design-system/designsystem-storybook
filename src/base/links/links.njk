@@ -1,0 +1,7 @@
+{%- macro links(params)-%}
+{{params.content | safe}}
+{%- endmacro -%}
+
+{{links({
+    content: content
+})}}

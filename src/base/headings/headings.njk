@@ -1,0 +1,7 @@
+{%- macro headings(params)-%}
+{{params.content | safe}}
+{%- endmacro -%}
+
+{{headings({
+    content: content
+})}}
