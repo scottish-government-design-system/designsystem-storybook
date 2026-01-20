@@ -74,6 +74,9 @@ const meta: Meta<TextInputArgs> = {
         },
         value: {type: 'string'},
         width: SGDSArgTypes.inputWidth()
+    },
+    play: () => {
+        window.DS.initAll();
     }
 };
 
@@ -95,6 +98,11 @@ export const KitchenSink: Story = {
         maxlength: 20,
         value: 'Cholmondley',
         width: 'fixed-20'
+    },
+    parameters: {
+        docs: {
+            story: { autoplay: true },
+        }
     }
 };
 
@@ -120,3 +128,17 @@ export const WithButton: Story = {
         id: 'withbutton'
     }
 }
+
+export const WithCharacterCount: Story = {
+    name: 'With character count',
+    args: {
+        id: 'character-count',
+        maxlength: 20,
+        width: 'fixed-20'
+    },
+    parameters: {
+        docs: {
+            story: { autoplay: true },
+        }
+    }
+};

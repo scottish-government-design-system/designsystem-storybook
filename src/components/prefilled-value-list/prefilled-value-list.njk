@@ -1,0 +1,19 @@
+{%- macro prefilledValueList(params) -%}
+<dl class="ds_prefilled-value-list" {%- if params.label %} aria-label="{{ params.label }}"{%- endif %}>
+  {%- for item in params.items %}
+  {%- set rowloop = loop %}
+  <dt class="ds_prefilled-value-list__key" id="item-{{rowloop.index}}-key">{{ item.label }}</dt>
+  <dd class="ds_prefilled-value-list__value">
+    <div>{{ item.value }}</div>
+    {%- if item.hasEditLink %}
+    <button class="ds_link  ds_prefilled-value-list__value-actions" type="button" aria-describedby="item-{{rowloop.index}}-key">Change</button>
+    {%- endif %}
+  </dd>
+  {%- endfor %}
+</dl>
+{%- endmacro -%}
+
+{{prefilledValueList({
+    items: items,
+    label: label
+})}}

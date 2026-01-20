@@ -1,5 +1,6 @@
 
 {%- macro textInput(params) -%}
+{%- if params.maxlength %}<div data-module="ds-character-count">{%- endif %}
 <label class="ds_label" for="{{params.id}}">{{params.label}}</label>
 {%- if params.hintText %}
 {%- set hintTextId = "hint-text-" + params.id -%}
@@ -17,6 +18,7 @@
     aria-describedby="{% if params.hintText %}{{hintTextId}}{% endif %} {% if params.errorMessage %}{{errorMessageId}}{% endif %}"
     {%- endif -%}
     {%- if params.hasError %}aria-invalid="true"{%- endif %}
+    {%- if params.maxlength %}maxlength="{{params.maxlength}}"{%- endif %}
     name="{{params.name | default(params.id)}}"
     {%- if params.placeholder -%}placeholder="{{params.placeholder}}"{%- endif %}
     {%- if params.step -%}step="{{params.step}}"{%- endif %}
@@ -32,6 +34,7 @@
 </button>
 {%- endif %}
 {%- if params.isCurrency %}</div>{%- endif %}
+{% if params.maxlength %}</div>{%- endif %}
 {%- endmacro -%}
 
 {{textInput({

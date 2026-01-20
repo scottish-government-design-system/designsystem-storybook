@@ -18,6 +18,9 @@ const meta: Meta<CookieNotificationArgs> = {
     },
     argTypes: {
 
+    },
+    play: () => {
+        window.DS.initAll();
     }
 };
 
@@ -27,6 +30,11 @@ type Story = StoryObj<CookieNotificationArgs>;
 export const Default: Story = {};
 
 export const Confirmation: Story = {
+    parameters: {
+        docs: {
+            story: { autoplay: true },
+        }
+    },
     args: {
         isConfirmation: true
     }

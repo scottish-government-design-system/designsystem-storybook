@@ -1,5 +1,6 @@
 
 {%- macro textarea(params) -%}
+{%- if params.maxlength %}<div data-module="ds-character-count" {% if params.countThreshold %}data-threshold="{{params.countThreshold}}"{% endif %}>{%- endif %}
 <label class="ds_label" for="{{params.id}}">{{params.label}}</label>
 {%- if params.hintText %}
 <p class="ds_hint-text" id="hint-text-kitchensink">Please describe the problem you are having</p>
@@ -10,18 +11,22 @@
 <textarea
     class="ds_input {% if params.hasError %}ds_input--error{% endif %}"
     id="{{params.id}}"
+    {%- if params.maxlength %}maxlength="{{params.maxlength}}"{%- endif %}
     {%- if params.name -%}name="{{params.name}}"{%- else -%}name="{{params.id}}"{%- endif -%}
     {%- if params.placeholder -%}placeholder="{{params.placeholder}}"{%- endif -%}
-    {%- if params.placeholder -%}rows="{{params.rows}}"{%- endif -%}
+    {%- if params.rows -%}rows="{{params.rows}}"{%- endif -%}
 >{{params.value}}</textarea>
+{% if params.maxlength %}</div>{%- endif %}
 {%- endmacro -%}
 
 {{textarea({
+    countThreshold: countThreshold,
     errorMessage: errorMessage,
     hasError: hasError,
     hintText: hintText,
     id: id,
     label: label,
+    maxlength: maxlength,
     name: name,
     placeholder: placeholder,
     rows: rows,

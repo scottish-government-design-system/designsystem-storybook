@@ -41,6 +41,9 @@ const meta: Meta<TextareaArgs> = {
         rows: {type: 'number'},
         value: {type: 'string'}
     },
+    play: () => {
+        window.DS.initAll();
+    }
 };
 
 export default meta;
@@ -56,6 +59,42 @@ export const KitchenSink: Story = {
         hasError: true,
         hintText: 'Please describe the problem you are having',
         id: 'kitchensink',
-        rows: 6
+        maxlength: 200,
+        rows: 5
+    },
+    parameters: {
+        docs: {
+            story: { autoplay: true },
+        }
+    }
+};
+
+export const WithCharacterCount: Story = {
+    name: 'With character count',
+    args: {
+        id: 'character-count',
+        maxlength: 250,
+        rows: 5
+    },
+    parameters: {
+        docs: {
+            story: { autoplay: true },
+        }
+    }
+};
+
+export const WithCharacterCountThreshold: Story = {
+    name: 'With character count threshold',
+    args: {
+        countThreshold: 80,
+        id: 'character-count-threshold',
+        maxlength: 250,
+        rows: 5,
+        value: 'Mygov.scot gives people and businesses information about and access to public services in Scotland. We work closely with public sector organisations to make public services easy to find and understand.'
+    },
+    parameters: {
+        docs: {
+            story: { autoplay: true },
+        }
     }
 };

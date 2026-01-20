@@ -42,13 +42,22 @@ const meta: Meta<NotificationBannerAergs> = {
             description: 'A hidden title for the notification banner, useful for screen reader users',
             type: 'string'
         }
+    },
+    play: () => {
+        window.DS.initAll();
     }
 };
 
 export default meta;
 type Story = StoryObj<NotificationBannerAergs>;
 
-export const Default: Story = {};
+export const Default: Story = {
+    parameters: {
+        docs: {
+            story: { autoplay: true },
+        }
+    }
+};
 
 export const Dismissable: Story = {
     args: {
