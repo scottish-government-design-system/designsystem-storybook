@@ -7,7 +7,7 @@ export type HrArgs = {
 };
 
 const meta: Meta<HrArgs> = {
-    title: 'Base/HR',
+    title: 'Base/Core/HR',
     tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))

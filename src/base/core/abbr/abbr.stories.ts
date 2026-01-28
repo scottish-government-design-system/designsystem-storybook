@@ -8,7 +8,7 @@ export type AbbrArgs = {
 };
 
 const meta: Meta<AbbrArgs> = {
-    title: 'Base/Abbr',
+    title: 'Base/Core/Abbr',
     tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))

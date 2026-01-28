@@ -1,0 +1,59 @@
+{%- macro page(params) -%}
+{%- from 'src/components/site-footer/site-footer.njk' import siteFooter -%}
+<div class="ds_page">
+    {%- if params.pageTop %}
+    <div class="ds_page__top">
+        {{ pageTop.content | safe }}
+    </div>
+    {%- endif %}
+
+    {%- if params.pageMiddle %}
+    <div class="ds_page__middle">
+        {{ pageMiddle.content | safe }}
+    </div>
+    {%- endif %}
+
+    {%- if params.pageBottom %}
+    <div class="ds_page__bottom">
+        {%- if pageBottom.isStandardFooter %}
+        {{siteFooter({
+            hasLicense: true,
+            hasLinks: true,
+            hasOrg: true,
+            links: [
+                {
+                    content: "Privacy",
+                    href: "#"
+                },
+                {
+                    content: "Cookies",
+                    href: "#"
+                },
+                {
+                    content: "Accessibility",
+                    href: "#"
+                }
+            ]
+        })}}
+        {%- else %}
+        {{ pageBottom.content | safe }}
+        {%- endif %}
+    </div>
+    {%- endif %}
+
+    {%- for area in params.areas %}
+    <div class="{{ area.className }}">
+        {{ area.content | safe }}
+    </div>
+    {%- endfor %}
+    {%- if params.hasFooter %}
+
+    {%- endif %}
+</div>
+{%- endmacro -%}
+
+{{page({
+    pageBottom: pageBottom,
+    pageMiddle: pageMiddle,
+    pageTop: pageTop
+})}}

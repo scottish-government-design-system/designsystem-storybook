@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/html';
-import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
+import SGDSArgTypes from '../../../../.storybook/sgdsArgTypes';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './small.njk';
@@ -10,7 +10,7 @@ export type SmallArgs = {
 };
 
 const meta: Meta<SmallArgs> = {
-    title: 'Base/Small',
+    title: 'Base/Core/Small',
     tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))

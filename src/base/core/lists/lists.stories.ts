@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/html';
-import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
+import SGDSArgTypes from '../../../../.storybook/sgdsArgTypes';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './lists.njk';
@@ -12,7 +12,7 @@ export type ListsArgs = {
 };
 
 const meta: Meta<ListsArgs> = {
-    title: 'Base/Lists',
+    title: 'Base/Core/Lists',
     tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))

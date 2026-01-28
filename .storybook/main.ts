@@ -41,6 +41,7 @@ const config: StorybookConfig = {
         use: 'ts-loader'
       }
     );
+    config.cache = { type: 'memory' };
     return config;
   }
 };

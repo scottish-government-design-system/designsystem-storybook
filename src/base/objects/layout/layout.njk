@@ -1,0 +1,16 @@
+{%- macro layout(params) -%}
+<div class="ds_wrapper">
+    <main class="ds_layout {%- if params.className %} {{ params.className }}{%- endif %}">
+        {%- for area in params.areas %}
+        <div class="{{ area.className }}">
+            {{ area.content | safe }}
+        </div>
+        {%- endfor %}
+    </main>
+</div>
+{%- endmacro -%}
+
+{{layout({
+    areas: areas,
+    className: className
+})}}
