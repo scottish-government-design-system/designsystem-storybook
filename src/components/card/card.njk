@@ -1,28 +1,97 @@
 {%- macro card(params) -%}
+{%- from 'src/components/button/button.njk' import button -%}
 {%- from 'src/components/page-metadata/page-metadata.njk' import pageMetadata -%}
-<{{ params.tagName | default('div') }} class="ds_card{%- if params.hasHover %}  ds_card--hover{% endif -%}{%- if params.isGrey %}  ds_card--grey{% endif -%}">
-
+{%- if params.isAdaptive %}
+<div class="ds_card-container">
+{% endif -%}
+<{{ params.tagName | default('div') }} class="ds_card{%- if params.isNav %}  ds_card--hover{% endif -%}{%- if params.isGrey %}  ds_card--background-secondary{% endif -%}{%- if params.isHorizontal %}  ds_card--horizontal{% endif -%}{%- if params.isHorizontalSmall %}  ds_card--horizontal-small{% endif -%}">
     {%- if params.image and params.image != 'none' %}
-    <div class="ds_card__media {%- if params.hasSmallImage %}  ds_card__media--small-mobile{%- endif -%}">
-        <div class="ds_aspect-box">
-            <img alt="" aria-hidden="true" class="ds_aspect-box__inner" src="/images/placeholders/{{ params.image }}.jpg" />
-        </div>
-    </div>
-    {%- endif -%}
-    <div class="ds_card__content">
-        {%- if params.heading %}
-        <h2 class="ds_card__title">
-            {%- if params.href %}
-            <a class="ds_card__link--cover" href="{{ params.href }}">
-            {%- endif -%}
-                {{ params.heading }}
-            {%- if params.href -%}
-            </a>
-            {%- endif -%}
-        </h2>
+    <div class="ds_card__media {%- if params.imageCover %}  ds_card__media--cover{%- endif -%}{%- if params.imageWidth and params.imageWidth != 'default' %}  {{ params.imageWidth }}{%- endif -%}">
+        {%- if params.imageAspect and params.imageAspect != 'none' %}
+        <div class="ds_aspect-box {%- if params.imageAspect != 'default' %} {{ params.imageAspect }}{%- endif -%}">
         {% endif -%}
-        {%- if params.content -%}
-        <p>{{ params.content | safe }}</p>
+            <img alt="" aria-hidden="true" {%- if params.imageAspect and params.imageAspect != 'none' %} class="ds_aspect-box__inner"{%- endif -%} src="/images/placeholders/{{ params.image }}.jpg"/>
+        {%- if params.imageAspect and params.imageAspect != 'none' %}
+        </div>
+        {% endif -%}
+    </div>
+    {% endif -%}
+    <div class="ds_card__content">
+        <div class="ds_card__content-header">
+            {%- if params.hasNotification %}
+            <span class="ds_notification-tag__wrapper">
+            {%- endif -%}
+            {%- if params.icon == "cog" %}
+            <svg class="ds_icon" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 40" width="33" height="40" fill="none">
+                <path d="m13.7908 36.6667c-.5092 0-.956-.1667-1.3405-.5-.3841-.3334-.6133-.75-.6875-1.25l-.5416-3.5279c-.4722-.1759-.956-.4073-1.45127-.6942-.49528-.2872-.94208-.5882-1.34042-.9029l-3.24999 1.4721c-.49056.213-.98125.2362-1.47209.0695-.49083-.1666-.87514-.4768-1.15291-.9304l-2.263755-4.0279c-.2777775-.4536-.3565275-.9304-.2362497-1.4304.1205557-.5.3891667-.9121.8058327-1.2363l2.958332-2.1945c-.04639-.2314-.07416-.4836-.08333-.7567-.00945-.2733-.01417-.5257-.01417-.7571s.00472-.4837.01417-.7571c.00917-.273.03694-.5252.08333-.7566l-2.958332-2.1946c-.416666-.3242-.685277-.7363-.8058327-1.2363-.1202778-.5-.0415278-.9768.2362497-1.4304l2.263755-4.02791c.27777-.45361.66208-.76375 1.15291-.93041.49084-.16667.98153-.14348 1.47209.06958l3.24999 1.47204c.39834-.31468.84751-.61565 1.34751-.90287.49998-.28695.98138-.50917 1.44418-.66667l.5416-3.55542c.0742-.5.3034-.91666.6875-1.25.3845-.33333.8313-.5 1.3405-.5h4.5833c.5092 0 .956.16667 1.3404.5.3842.33334.6133.75.6875 1.25l.5417 3.52792c.4722.17583.9605.40264 1.465.68042.5047.27778.9469.58333 1.3266.91662l3.25-1.47204c.4906-.21306.9767-.23625 1.4584-.06958.4814.16666.861.4768 1.1387.93041l2.2917 4.02791c.2778.4536.3565.9351.2362 1.4446-.1205.5092-.3891.9165-.8058 1.2221l-2.9583 2.1387c.0464.25.0742.5117.0833.785.0095.2731.0142.5346.0142.7846s-.0047.507-.0142.7708c-.0091.2639-.0415.5209-.0971.7709l2.9584 2.1666c.4166.3056.6851.713.8054 1.2221.1205.5095.0419.991-.2359 1.4446l-2.2779 4.0279c-.2777.4536-.662.7638-1.1529.9304-.4905.1667-.9812.1435-1.4721-.0695l-3.2221-1.4721c-.3983.3147-.8427.6203-1.3333.9166-.4908.2964-.9769.5232-1.4583.6805l-.5417 3.5279c-.0742.5-.3033.9166-.6875 1.25-.3844.3333-.8312.5-1.3404.5zm2.3195-11.1113c1.537 0 2.8471-.5416 3.9305-1.625 1.0833-1.0833 1.625-2.3934 1.625-3.9304 0-1.5369-.5417-2.8471-1.625-3.9304-1.0834-1.0833-2.3935-1.625-3.9305-1.625-1.5463 0-2.8588.5417-3.9375 1.625-1.0788 1.0833-1.6183 2.3935-1.6183 3.9304 0 1.537.5395 2.8471 1.6183 3.9304 1.0787 1.0834 2.3912 1.625 3.9375 1.625z" />
+            </svg>
+            {% endif -%}
+            {%- if params.icon == "info" %}
+            <svg class="ds_icon" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 40" width="34" height="40" fill="none">
+                <path d="m16.755 28.3333c.3947 0 .724-.133.9879-.3991.2639-.2664.3959-.5963.3959-.9896v-7.2225c0-.3933-.1335-.7232-.4005-.9896-.2672-.2661-.5983-.3992-.9933-.3992-.3947 0-.724.1331-.9879.3992-.2639.2664-.3958.5963-.3958.9896v7.2225c0 .3933.1334.7232.4004.9896.2672.2661.5983.3991.9933.3991zm-.0887-13.1666c.4169 0 .7666-.1385 1.0491-.4154.2822-.2767.4234-.6198.4234-1.0292 0-.425-.141-.7813-.423-1.0688-.2822-.2875-.6318-.4312-1.0487-.4312-.417 0-.7667.1437-1.0492.4312-.2822.2875-.4233.6438-.4233 1.0688 0 .4094.141.7525.4229 1.0292.2822.2769.6318.4154 1.0488.4154zm.0079 21.5c-2.3009 0-4.4629-.4375-6.4863-1.3125-2.02332-.875-3.7897-2.0671-5.29915-3.5763-1.50917-1.5094-2.70125-3.2765-3.57625-5.3012s-1.3125-4.1882-1.3125-6.4904c0-2.3023.4375-4.4659 1.3125-6.4909.875-2.0247 2.06708-3.78706 3.57625-5.28706 1.50945-1.5 3.27653-2.6875 5.30125-3.5625 2.0247-.875 4.1882-1.3125 6.4904-1.3125s4.4659.4375 6.4909 1.3125c2.0247.875 3.787 2.0625 5.287 3.5625s2.6875 3.26386 3.5625 5.29166 1.3125 4.192 1.3125 6.4925c0 2.3008-.4375 4.4629-1.3125 6.4863-.875 2.0233-2.0625 3.7879-3.5625 5.2937s-3.2639 2.6981-5.2916 3.5767c-2.0278.8783-4.192 1.3175-6.4925 1.3175z" />
+            </svg>
+            {% endif -%}
+            {%- if params.icon == "mail" %}
+            <svg class="ds_icon" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 40" width="34" height="40" fill="none">
+                <path d="m2.77792 33.6667c-.75 0-1.40056-.2754-1.95167-.8263-.550833-.5511-.82625-1.2016-.82625-1.9516v-21.11088c0-.75.275417-1.40056.82625-1.95167.55111-.55083 1.20167-.82625 1.95167-.82625h27.77748c.75 0 1.4006.27542 1.9517.82625.5508.55111.8262 1.20167.8262 1.95167v21.11088c0 .75-.2754 1.4005-.8262 1.9516-.5511.5509-1.2017.8263-1.9517.8263zm13.88878-12.5417c.1389 0 .2662-.0208.3821-.0625.1155-.0417.2336-.0949.3541-.1596l12.6525-8.1529c.1667-.1019.2917-.2339.375-.3958.0834-.162.125-.3402.125-.5346 0-.4261-.1851-.7549-.5554-.9863s-.7499-.2221-1.1387.0279l-12.1946 7.75-12.1667-7.75c-.38889-.25-.77319-.2616-1.15292-.0349-.37944.2269-.56916.5487-.56916.9654 0 .2036.04625.3911.13875.5625s.21291.3033.36125.3958l12.65248 8.1529c.1206.0647.2386.1179.3542.1596.1158.0417.2432.0625.3821.0625z" />
+            </svg>
+            {% endif -%}
+            {%- if params.icon == "article" %}
+            <svg class="ds_icon" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 40" width="30" height="40" fill="none">
+                <path d="m2.77792 35c-.75 0-1.40056-.2754-1.95167-.8262-.550833-.5512-.82625-1.2017-.82625-1.9517v-24.44418c0-.75.275417-1.40056.82625-1.95167.55111-.55083 1.20167-.82625 1.95167-.82625h24.44418c.75 0 1.4005.27542 1.9517.82625.5508.55111.8262 1.20167.8262 1.95167v24.44418c0 .75-.2754 1.4005-.8262 1.9517-.5512.5508-1.2017.8262-1.9517.8262zm5.19416-6.6387h8.75002c.3936 0 .7235-.1337.9896-.4009.2664-.2672.3995-.5982.3995-.9929 0-.395-.1331-.7244-.3995-.9883-.2661-.2639-.596-.3959-.9896-.3959h-8.75002c-.39333 0-.72319.1336-.98958.4009-.26611.2669-.39917.5979-.39917.9929s.13306.7244.39917.9883c.26639.2639.59625.3959.98958.3959zm0-6.9726h14.05582c.3933 0 .7232-.1334.9896-.4004.2661-.2672.3992-.5983.3992-.9933 0-.3947-.1331-.724-.3992-.9879-.2664-.2639-.5963-.3959-.9896-.3959h-14.05582c-.39333 0-.72319.1335-.98958.4005-.26611.2672-.39917.5983-.39917.9933 0 .3947.13306.724.39917.9879.26639.2639.59625.3958.98958.3958zm0-6.972h14.05582c.3933 0 .7232-.1336.9896-.4009.2661-.2669.3992-.5979.3992-.9929s-.1331-.7244-.3992-.9883c-.2664-.2639-.5963-.3958-.9896-.3958h-14.05582c-.39333 0-.72319.1336-.98958.4008-.26611.2672-.39917.5982-.39917.9929 0 .395.13306.7244.39917.9883.26639.2639.59625.3959.98958.3959z" />
+            </svg>
+            {% endif -%}
+            {%- if params.icon == "bell" %}
+            <svg class="ds_icon" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 40" width="27" height="40" fill="none">
+                <path d="m1.38875 31.6667c-.398055 0-.729028-.132-.992917-.3959-.263889-.2638-.395833-.5948-.395833-.9929 0-.3983.131944-.7294.395833-.9933s.594862-.3958.992917-.3958h1.94458v-12.3334c0-2.3239.68987-4.4002 2.06959-6.2291 1.37944-1.82865 3.18958-2.99296 5.43038-3.49296v-1c0-.69444.2431-1.28472.7292-1.77083s1.0764-.72917 1.7708-.72917c.6945 0 1.2848.24306 1.7709.72917s.7291 1.07639.7291 1.77083v1c2.2409.5 4.051 1.66431 5.4305 3.49296 1.3797 1.8289 2.0695 3.9052 2.0695 6.2291v12.3334h1.9446c.3981 0 .729.1319.9929.3958s.3959.595.3959.9933c0 .3981-.132.7291-.3959.9929-.2639.2639-.5948.3959-.9929.3959zm11.94455 5c-.9166 0-1.7014-.3264-2.3541-.9792-.6528-.6528-.9792-1.4375-.9792-2.3542h6.6667c0 .9167-.3264 1.7014-.9792 2.3542s-1.4375.9792-2.3542.9792z" />
+            </svg>
+            {% endif -%}
+            {%- if params.icon == "folder" %}
+            <svg class="ds_icon" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 40" width="34" height="40" fill="none">
+                <path d="m2.77792 33.6667c-.75 0-1.40056-.2802-1.95167-.8404-.550833-.56-.82625-1.2059-.82625-1.9375v-21.11088c0-.73167.275417-1.3775.82625-1.9375.55111-.56028 1.20167-.84042 1.95167-.84042h9.98588c.3705 0 .7294.07403 1.0766.22208.3472.14834.6459.3475.8959.5975l1.9583 1.95834h13.8608c.7317 0 1.3775.27998 1.9375.83998.5603.5603.8404 1.2061.8404 1.9375v18.3334c0 .7316-.2801 1.3775-.8404 1.9375-.56.5602-1.2058.8404-1.9375.8404z" />
+            </svg>
+            {% endif -%}
+            {%- if params.hasNotification and params.notificationValue and params.icon and params.icon != "none" -%}
+            <span class="ds_notification-tag{%- if params.notificationValue == 'none' %} ds_notification-tag--dot{% endif %}"{%- if params.heading %} aria-hidden="true"{% endif -%}>{% if params.notificationValue and params.notificationValue != 'none' %}{{ params.notificationValue }}{% endif %}{% if params.notificationDescription %} <span class="visually-hidden">{{ params.notificationDescription }}</span>{% endif %}</span>
+            </span>
+            {% endif -%}
+            {%- if params.status -%}
+            <strong class="ds_tag" {%- if params.heading %} aria-hidden="true"{% endif -%}>{{ params.status }}</strong>
+            {%- endif -%}
+            {%- if params.heading %}
+            <{{ params.headingLevel | default('h2') }} class="ds_card__title">
+                {%- if params.isNav %}
+                <a class="ds_card__link  ds_card__link--cover" href="#">
+                {%- endif -%}
+                    {{ params.heading }}
+                    {%- if params.hasNotification -%}
+                    <span class="visually-hidden">, {% if params.notificationValue and params.notificationValue != 'none' %}{{ params.notificationValue }}{% endif %} {{ params.notificationDescription }}</span>
+                    {% endif -%}
+                    {%- if params.status %}
+                    <span class="visually-hidden">, {{ params.status }}</span>
+                    {% endif -%}
+                {%- if params.isNav -%}
+                </a>
+                {%- endif -%}
+            </{{ params.headingLevel | default('h2') }}>
+            {% endif -%}
+        </div>
+        {%- if params.content or params.hasButtons -%}
+        <div class="ds_card__content-main">
+            {%- if params.content -%}
+            {{ params.content | safe }}
+            {% endif -%}
+            {%- if params.hasButtons %}
+            <div class="ds_button-group  ds_button-group--wrap">
+                {{button({
+                    content: 'Secondary button',
+                    isSecondary: true,
+                    isSmall: true
+                })}}
+                <a href="#">Text link</a>
+            </div>
+            {% endif -%}
+        </div>
         {% endif -%}
         {%- if params.hasMetadata %}
         <div class="ds_card__content-footer">
@@ -43,17 +112,30 @@
         {% endif -%}
     </div>
 </{{ params.tagName | default('div') }}>
+{%- if params.isAdaptive %}
+</div>
+{% endif -%}
 {%- endmacro -%}
 
 {{card({
 	content: content,
-    hasHover: hasHover,
+    hasButtons: hasButtons,
     hasMetadata: hasMetadata,
-    hasSmallImage: hasSmallImage,
+    hasNotification: hasNotification,
     heading: heading,
     headingLevel: headingLevel,
-	href: href,
+    icon: icon,
     image: image,
+    imageAspect: imageAspect,
+    imageCover: imageCover,
+    imageWidth: imageWidth,
+    isAdaptive: isAdaptive,
+    isHorizontal: isHorizontal,
+    isHorizontalSmall: isHorizontalSmall,
     isGrey: isGrey,
+	isNav: isNav,
+    notificationDescription: notificationDescription,
+    notificationValue: notificationValue,
+    status: status,
     tagName: tagName
 })}}
