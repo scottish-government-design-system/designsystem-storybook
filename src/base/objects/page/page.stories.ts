@@ -55,6 +55,9 @@ const meta: Meta<PageArgs> = {
     },
     argTypes: {
 
+    },
+    parameters: {
+        layout: 'fullscreen'
     }
 };
 

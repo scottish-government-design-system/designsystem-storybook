@@ -15,6 +15,9 @@ const meta: Meta<PhaseBannerArgs> = {
     },
     args: {
         tagText: 'Beta'
+    },
+    parameters: {
+        layout: 'fullscreen'
     }
 };
 

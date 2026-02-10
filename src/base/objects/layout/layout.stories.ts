@@ -78,6 +78,9 @@ const meta: Meta<LayoutArgs> = {
     },
     argTypes: {
 
+    },
+    parameters: {
+        layout: 'fullscreen'
     }
 };
 

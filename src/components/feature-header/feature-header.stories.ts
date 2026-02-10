@@ -39,6 +39,9 @@ const meta: Meta<FeatureHeaderArgs> = {
         isFullWidth: SGDSArgTypes.boolean(),
         isTopAlign: SGDSArgTypes.boolean(),
         isWideText: SGDSArgTypes.boolean()
+    },
+    parameters: {
+        layout: 'fullscreen'
     }
 };
 

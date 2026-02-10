@@ -17,7 +17,6 @@ export type DatePickerArgs = {
 
 const meta: Meta<DatePickerArgs> = {
     title: 'Components/Date picker',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

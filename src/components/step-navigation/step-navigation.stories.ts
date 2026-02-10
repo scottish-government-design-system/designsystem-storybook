@@ -13,7 +13,6 @@ export type StepNavigationArgs = {
 
 const meta: Meta<StepNavigationArgs> = {
     title: 'Components/Step navigation',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

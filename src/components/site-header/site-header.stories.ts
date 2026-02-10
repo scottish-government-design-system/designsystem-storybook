@@ -46,6 +46,9 @@ const meta: Meta<SiteHeaderArgs> = {
         hasSearch: SGDSArgTypes.boolean(),
         navItems: SGDSArgTypes.hidden(),
         siteTitle: {type: 'string'}
+    },
+    parameters: {
+        layout: 'fullscreen'
     }
 };
 

@@ -17,7 +17,7 @@
                 {%- endif %}
             </div>
             {%- if hasNavigation %}
-                {{siteNavigation({items: params.navItems, label: 'Main navigation', isMobileNav: true})}}
+                {{siteNavigation({items: params.navItems, label: 'Main navigation', isolateMenu: 'mobile'})}}
             {%- endif %}
             {%- if params.hasSearch %}
                 {{siteSearch({modifierClasses: 'ds_site-header__search'})}}
@@ -25,12 +25,12 @@
         </div>
     </div>
     {%- if params.hasPhaseBanner %}
-        {{phaseBanner()}}
+        {{phaseBanner({tagText: 'Beta'})}}
     {%- endif %}
     {%- if params.hasNavigation %}
     <div class="ds_site-header__navigation">
         <div class="ds_wrapper">
-            {{siteNavigation({items: params.navItems, label: 'Main navigation'})}}
+            {{siteNavigation({items: params.navItems, label: 'Main navigation', isolateMenu: 'desktop'})}}
         </div>
     </div>
     {%- endif %}

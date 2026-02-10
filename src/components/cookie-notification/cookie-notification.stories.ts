@@ -19,6 +19,9 @@ const meta: Meta<CookieNotificationArgs> = {
     argTypes: {
 
     },
+    parameters: {
+        layout: 'fullscreen'
+    },
     play: () => {
         window.DS.initAll();
     }

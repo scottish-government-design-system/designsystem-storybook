@@ -43,6 +43,9 @@ const meta: Meta<NotificationBannerAergs> = {
             type: 'string'
         }
     },
+    parameters: {
+        layout: 'fullscreen'
+    },
     play: () => {
         window.DS.initAll();
     }

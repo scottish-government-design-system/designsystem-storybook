@@ -46,6 +46,9 @@ const meta: Meta<SiteFooterArgs> = {
         hasLinks: SGDSArgTypes.boolean(),
         hasOrg: SGDSArgTypes.boolean(),
         links: SGDSArgTypes.hidden(),
+    },
+    parameters: {
+        layout: 'fullscreen'
     }
 };
 

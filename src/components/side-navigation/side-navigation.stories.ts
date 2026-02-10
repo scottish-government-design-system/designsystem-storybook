@@ -11,7 +11,6 @@ export type SideNavigationArgs = {
 
 const meta: Meta<SideNavigationArgs> = {
     title: 'Components/Side navigation',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },
@@ -45,6 +44,9 @@ const meta: Meta<SideNavigationArgs> = {
                 }
             }
         },
+    },
+    play: () => {
+        window.DS.initAll();
     }
 };
 

@@ -15,6 +15,9 @@ const meta: Meta<ArticlePageArgs> = {
     },
     args: {
 
+    },
+    parameters: {
+        layout: 'fullscreen'
     }
 };
 
