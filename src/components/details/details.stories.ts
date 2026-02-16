@@ -25,6 +25,9 @@ const meta: Meta<DetailsArgs> = {
     },
     argTypes: {
         hasFormContent: SGDSArgTypes.boolean()
+    },
+    play: () => {
+        window.DS.initAll();
     }
 };
 
