@@ -24,10 +24,20 @@
         isSmall: params.isSmall
     })}}
     {%- endif %}
+    {%- if params.hasOther %}
+    {{checkbox({
+        id: 'other',
+        label: 'Other',
+        isOther: true,
+        isSmall: params.isSmall,
+        labelOther: 'Other benefits'
+    })}}
+    {%- endif %}
 <div>
 {%- endmacro -%}
 
 {{checkboxGroup({
     hasExclusive: hasExclusive,
+    hasOther: hasOther,
     isSmall: isSmall
 })}}

@@ -3,6 +3,14 @@
     <input class="ds_radio__input" {% if params.checked %}checked{% endif %} id="{{params.id}}" type="radio" name="{{params.name | default(params.id)}}">
     <label class="ds_radio__label" for="{{params.id}}">{{params.label}}</label>
     {%- if params.hintText %}<p class="ds_hint-text">{{params.hintText}}</p>{%- endif %}
+    {%- if params.isOther %}
+    <div class="ds_question__sub">
+        <div class="ds_question">
+            <label class="ds_label" for="{{params.id}}-other-text">{{params.labelOther}} <span class="visually-hidden">(if "other" selected)</span></label>
+            <input type="text" id="{{params.id}}-other-text" class="ds_input">
+        </div>
+    </div>
+    {%- endif %}
 </div>
 {%- endmacro -%}
 
@@ -10,7 +18,9 @@
     checked: checked,
     hintText: hintText,
     id: id,
+    isOther: isOther,
     isSmall: isSmall,
     label: label,
+    labelOther: labelOther,
     name: name
 })}}

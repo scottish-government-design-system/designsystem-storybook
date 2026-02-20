@@ -5,6 +5,7 @@ import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 import ComponentTemplate from './radio-group.njk';
 
 export type RadioGroupArgs = {
+    hasOther?: boolean
     isInline?: boolean
     isSmall?: boolean
     name: string
@@ -20,7 +21,12 @@ const meta: Meta<RadioGroupArgs> = {
         name: 'default'
     },
     argTypes: {
-        isInline: SGDSArgTypes.boolean(),
+        hasOther: SGDSArgTypes.boolean({
+            if: { arg: 'isInline', truthy: false }
+        }),      
+        isInline: SGDSArgTypes.boolean({
+            if: { arg: 'hasOther', truthy: false }
+        }),
         isSmall: SGDSArgTypes.boolean(),
         name: SGDSArgTypes.hidden()
     }
@@ -44,5 +50,12 @@ export const InlineRadios: Story = {
     args: {
         name: 'inline',
         isInline: true
+    }
+};
+
+export const WithOtherRadio: Story = {
+    name: 'With other option',
+    args: {
+        hasOther: true,
     }
 };
