@@ -2,9 +2,8 @@
 <div class="ds_file-download  {%- if params.isHighlighted %}  ds_file-download--highlighted{%- endif -%}">
     <div class="ds_file-download__thumbnail">
         <a class="ds_file-download__thumbnail-link" aria-hidden="true" tabindex="-1" href="#">
-            <span class="visually-hidden">Document cover image</span>
             {%- if params.hasCoverImage %}
-                <img class="ds_file-download__thumbnail-image" src="/images/placeholders/document-thumbnail.png" alt="">
+                <img class="ds_file-download__thumbnail-image  ds_file-download__thumbnail-image--outlined" src="/images/placeholders/document-thumbnail.png" alt="">
             {% else %}
                 <img class="ds_file-download__thumbnail-image" src="/images/documents/{{params.fileIcon | lower | default('generic')}}.svg" alt="">
             {%- endif %}
