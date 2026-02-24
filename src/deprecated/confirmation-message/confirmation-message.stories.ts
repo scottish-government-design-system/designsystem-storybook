@@ -11,7 +11,7 @@ export type ConfirmationMessageArgs = {
 };
 
 const meta: Meta<ConfirmationMessageArgs> = {
-    title: 'Components/Confirmation message',
+    title: 'Deprecated/Confirmation message',
     render: (args) => {
         return(ComponentTemplate(args))
     },
