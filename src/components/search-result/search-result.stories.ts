@@ -25,7 +25,6 @@ export type SearchResultArgs = {
 
 const meta: Meta<SearchResultArgs> = {
     title: 'Components/Search results/Result',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

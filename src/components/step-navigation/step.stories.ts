@@ -17,7 +17,6 @@ export type StepArgs = {
 
 const meta: Meta<StepArgs> = {
     title: 'Components/Step navigation/Step',
-    tags: ['autodocs'],
     decorators: [(Story) => '<div class="ds_step-navigation">\n<div class="ds_accordion">\n<ol class="ds_step-navigation__list">' + Story() + '</ol>\n</div>\n</div>'],
     render: (args) => {
         return(ComponentTemplate(args))

@@ -14,7 +14,6 @@ export type LinkListArgs = {
 
 const meta: Meta<LinkListArgs> = {
     title: 'Components/Link list',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

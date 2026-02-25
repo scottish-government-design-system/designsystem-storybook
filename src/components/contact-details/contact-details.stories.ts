@@ -30,7 +30,6 @@ export type ContactDetailsArgs = {
 
 const meta: Meta<ContactDetailsArgs> = {
     title: 'Components/Contact details',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

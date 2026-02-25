@@ -15,7 +15,6 @@ export type SiteHeaderArgs = {
 
 const meta: Meta<SiteHeaderArgs> = {
     title: 'Components/Site header',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

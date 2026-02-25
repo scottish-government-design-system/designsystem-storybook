@@ -14,7 +14,6 @@ export type IconArgs = {
 
 const meta: Meta<IconArgs> = {
     title: 'Components/Icon',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

@@ -9,7 +9,6 @@ export type BodyArgs = {
 
 const meta: Meta<BodyArgs> = {
     title: 'Base/Core/Body',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

@@ -9,7 +9,6 @@ export type HideThisPageArgs = {
 
 const meta: Meta<HideThisPageArgs> = {
     title: 'Components/Hide this page',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },
@@ -21,10 +20,19 @@ const meta: Meta<HideThisPageArgs> = {
             description: 'The URL to take the user to',
             type: 'string'
         }
+    },
+    play: () => {
+        window.DS.initAll();
     }
 };
 
 export default meta;
 type Story = StoryObj<HideThisPageArgs>;
 
-export const Default: Story = {};
+export const Default: Story = {
+    parameters: {
+        docs: {
+            story: { autoplay: true },
+        }
+    }
+};

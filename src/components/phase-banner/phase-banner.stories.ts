@@ -9,7 +9,6 @@ export type PhaseBannerArgs = {
 
 const meta: Meta<PhaseBannerArgs> = {
     title: 'Components/Phase banner',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

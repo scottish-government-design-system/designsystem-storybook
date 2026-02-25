@@ -14,7 +14,6 @@ export type SearchFiltersPanelArgs = {
 
 const meta: Meta<SearchFiltersPanelArgs> = {
     title: 'Components/Search results/Filters/Filter panel',
-    tags: ['autodocs'],
     decorators: [
         (Story) => {return `<div class="ds_accordion  ds_accordion--small">\n${Story()}\n</div>`}
     ],

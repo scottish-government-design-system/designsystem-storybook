@@ -16,7 +16,6 @@ type NotificationBannerAergs = {
 
 const meta: Meta<NotificationBannerAergs> = {
     title: 'Components/Notification banner',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

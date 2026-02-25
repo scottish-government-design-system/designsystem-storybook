@@ -14,7 +14,6 @@ export type QuestionArgs = {
 
 const meta: Meta<QuestionArgs> = {
     title: 'Components/Question',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

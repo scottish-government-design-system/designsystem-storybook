@@ -13,7 +13,6 @@ export type ListsArgs = {
 
 const meta: Meta<ListsArgs> = {
     title: 'Base/Core/Lists',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

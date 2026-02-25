@@ -16,7 +16,6 @@ export type PageArgs = {
 
 const meta: Meta<PageArgs> = {
     title: 'Base/Objects/Page',
-    tags: ['autodocs'],
     decorators: [
         (Story) => `<style>
 .ds_page__top,

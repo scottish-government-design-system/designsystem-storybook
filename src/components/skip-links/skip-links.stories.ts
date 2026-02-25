@@ -8,7 +8,6 @@ export type SkipLinksArgs = {
 
 const meta: Meta<SkipLinksArgs> = {
     title: 'Components/Skip links',
-    tags: ['autodocs'],
     decorators: [(Story) => `<div class="ds_inset-text"><div  class="ds_inset-text__text">Press the tab key to show the "skip links".</div></div>${Story()}`],
     render: (args) => {
         return(ComponentTemplate(args))

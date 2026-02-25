@@ -15,7 +15,6 @@ export type TaskArgs = {
 
 const meta: Meta<TaskArgs> = {
     title: 'Components/Task list/Task',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

@@ -18,7 +18,6 @@ export type SiteFooterArgs = {
 
 const meta: Meta<SiteFooterArgs> = {
     title: 'Components/Site footer',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

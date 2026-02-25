@@ -10,7 +10,6 @@ export type SearchFacetsGroupArgs = {
 
 const meta: Meta<SearchFacetsGroupArgs> = {
     title: 'Components/Search results/Facets/Group',
-    tags: ['autodocs'],
     decorators: [
         (Story) => `<div class="ds_facets">\n${Story()}\n</div>`
     ],

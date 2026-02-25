@@ -9,7 +9,6 @@ export type ErrorSummaryPositionArgs = {
 
 const meta: Meta<ErrorSummaryPositionArgs> = {
     title: 'Patterns/Error summary position',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

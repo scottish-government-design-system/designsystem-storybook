@@ -28,7 +28,6 @@
 .docblock-argstable td > div > div > span {
     line-height: unset;
 }
-
 </style>
 
 
@@ -183,5 +182,13 @@ html[lang] .token.entity {
         line-height: 1.5
     }
 }
-
 </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (window.DS?.tracking) {
+            window.DS.tracking.init();
+        }
+    });
+    document.documentElement.classList.add('js-enabled');
+</script>

@@ -20,7 +20,6 @@ export type TextareaArgs = {
 
 const meta: Meta<TextareaArgs> = {
     title: 'Components/Textarea',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },
@@ -49,7 +48,13 @@ const meta: Meta<TextareaArgs> = {
 export default meta;
 type Story = StoryObj<TextareaArgs>;
 
-export const Default: Story = {};
+export const Default: Story = {
+    parameters: {
+        docs: {
+            story: { autoplay: true },
+        }
+    }
+};
 
 export const KitchenSink: Story = {
     name: 'Kitchen sink',
@@ -61,11 +66,6 @@ export const KitchenSink: Story = {
         id: 'kitchensink',
         maxlength: 200,
         rows: 5
-    },
-    parameters: {
-        docs: {
-            story: { autoplay: true },
-        }
     }
 };
 
@@ -75,11 +75,6 @@ export const WithCharacterCount: Story = {
         id: 'character-count',
         maxlength: 250,
         rows: 5
-    },
-    parameters: {
-        docs: {
-            story: { autoplay: true },
-        }
     }
 };
 
@@ -91,10 +86,5 @@ export const WithCharacterCountThreshold: Story = {
         maxlength: 250,
         rows: 5,
         value: 'Mygov.scot gives people and businesses information about and access to public services in Scotland. We work closely with public sector organisations to make public services easy to find and understand.'
-    },
-    parameters: {
-        docs: {
-            story: { autoplay: true },
-        }
     }
 };

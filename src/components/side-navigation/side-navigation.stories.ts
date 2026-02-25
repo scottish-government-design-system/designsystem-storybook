@@ -53,7 +53,13 @@ const meta: Meta<SideNavigationArgs> = {
 export default meta;
 type Story = StoryObj<SideNavigationArgs>;
 
-export const Default: Story = {};
+export const Default: Story = {
+    parameters: {
+        docs: {
+            story: { autoplay: true },
+        }
+    }
+};
 
 export const NestedNavigation: Story = {
     name: 'Nested navigation',

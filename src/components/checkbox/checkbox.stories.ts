@@ -17,12 +17,10 @@ export type CheckboxArgs = {
 
 const meta: Meta<CheckboxArgs> = {
     title: 'Components/Checkbox/Checkbox',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },
     args: {
-        id: 'benefits-and-grants',
         label: 'Benefits and grants'
     },
     argTypes: {
@@ -43,7 +41,11 @@ const meta: Meta<CheckboxArgs> = {
 export default meta;
 type Story = StoryObj<CheckboxArgs>;
 
-export const Default: Story = {};
+export const Default: Story = {
+    args: {
+        id: 'default'
+    }
+};
 
 export const CheckedByDefault: Story = {
     name: 'Checked by default',

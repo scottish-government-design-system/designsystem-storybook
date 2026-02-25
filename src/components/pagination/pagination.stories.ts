@@ -20,7 +20,6 @@ export type PaginationArgs = {
 
 const meta: Meta<PaginationArgs> = {
     title: 'Components/Pagination',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

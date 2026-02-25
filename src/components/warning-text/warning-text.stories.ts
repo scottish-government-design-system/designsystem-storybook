@@ -9,7 +9,6 @@ export type WarningTextArgs = {
 
 const meta: Meta<WarningTextArgs> = {
     title: 'Components/Warning text',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

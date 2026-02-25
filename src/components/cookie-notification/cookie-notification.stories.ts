@@ -9,7 +9,6 @@ export type CookieNotificationArgs = {
 
 const meta: Meta<CookieNotificationArgs> = {
     title: 'Components/Cookie notification',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

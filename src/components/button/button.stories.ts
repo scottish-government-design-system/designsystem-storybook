@@ -21,7 +21,6 @@ export type ButtonArgs = {
 
 const meta: Meta<ButtonArgs> = {
     title: 'Components/Button',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

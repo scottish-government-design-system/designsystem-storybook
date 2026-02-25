@@ -18,7 +18,6 @@ export type FeatureHeaderArgs = {
 
 const meta: Meta<FeatureHeaderArgs> = {
     title: 'Components/Feature header',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

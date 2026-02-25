@@ -3,7 +3,7 @@ import type { Preview } from '@storybook/html-vite'
 import '@scottish-government/design-system/dist/css/design-system.css';
 import '@scottish-government/design-system/dist/scripts/design-system.js';
 
-const kindleViewports = {
+const viewportSizes = {
   smalldown: {
     name: 'Small mobile',
     styles: {
@@ -76,10 +76,12 @@ const preview: Preview = {
 
     viewport: {
       options: {
-        ...kindleViewports,
+        ...viewportSizes,
       },
     }
   },
+  //👇 Enables auto-generated documentation for all stories
+  tags: ['autodocs']
 };
 
 export default preview;

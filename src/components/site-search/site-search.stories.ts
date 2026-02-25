@@ -8,7 +8,6 @@ export type SiteSearchArgs = {
 
 const meta: Meta<SiteSearchArgs> = {
     title: 'Components/Site search',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

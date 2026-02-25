@@ -15,7 +15,6 @@ export type LayoutArgs = {
 
 const meta: Meta<LayoutArgs> = {
     title: 'Base/Objects/Layout',
-    tags: ['autodocs'],
     decorators: [
         (Story) => `<style>
 .ds_layout__header,

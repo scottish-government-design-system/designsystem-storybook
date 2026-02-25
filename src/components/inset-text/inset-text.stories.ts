@@ -10,7 +10,6 @@ export type InsetTextArgs = {
 
 const meta: Meta<InsetTextArgs> = {
     title: 'Components/Inset text',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

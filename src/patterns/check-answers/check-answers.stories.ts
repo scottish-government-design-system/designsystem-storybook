@@ -9,7 +9,6 @@ export type CheckAnswersArgs = {
 
 const meta: Meta<CheckAnswersArgs> = {
     title: 'Patterns/Check answers',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

@@ -59,7 +59,13 @@ const meta: Meta<SiteNavigationArgs> = {
 export default meta;
 type Story = StoryObj<SiteNavigationArgs>;
 
-export const Default: Story = {};
+export const Default: Story = {
+    parameters: {
+        docs: {
+            story: { autoplay: true },
+        }
+    }
+};
 
 export const DesktopOnly: Story = {
     args: {
