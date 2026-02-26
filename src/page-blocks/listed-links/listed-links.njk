@@ -1,0 +1,43 @@
+{%- macro pbListedLinks(params) -%}
+{%- from 'src/components/link-list/link-list.item.njk' import linkListItem -%}
+<div class="ds_pb  ds_pb--link-list
+{%- if params.background and params.background != 'none' %}  {{params.background}}{% endif %}
+{%- if not hasBottomPadding %}  ds_!_padding-bottom--0{% endif %}">
+    <div class="ds_wrapper">
+        <div class="ds_pb__inner"> 
+            <nav {%- if params.headingLabel %} aria-labelledby="ds_pb--link-list__title"{%- else %} aria-label="Navigation heading"{% endif -%}>
+                {%- if params.headingLabel %}
+                <{{ params.headingLevel | default('h2')}} id="ds_pb--link-list__title">{{ params.headingLabel}}</{{ params.headingLevel | default('h2')}}>
+                {%- endif -%}
+                {%- if params.content %}
+                {{ params.content | safe}}
+                {% endif -%}
+                <ul class="ds_link-list
+                {%- if params.isTwoColumns %}  ds_link-list-2-items{%- endif -%}
+                {%- if params.isBorderless %}  ds_link-list--no-border{% endif -%}">
+                {%- for item in params.items -%}
+                    {{linkListItem({
+                        content: item.content,
+                        hasImage: item.hasImage,
+                        hasMetadata: item.hasMetadata,
+                        heading: item.heading,
+                        headingLevel: item.headingLevel,
+                        tagName: 'li'
+                    })}}
+                {% endfor %}    
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+{%- endmacro -%}
+
+{{pbListedLinks({
+    background: background,
+    hasBottomPadding: hasBottomPadding,
+    headingLabel: headingLabel,
+    headingLevel: headingLevel,
+    isBorderless: isBorderless,
+    isTwoColumns: isTwoColumns,
+    items: items
+})}}

@@ -1,0 +1,82 @@
+{%- macro pbFeatureGrid(params) -%}
+<div class="ds_pb  ds_pb--feature-grid 
+{%- if params.background and params.background != 'none' %}  {{params.background}}{% endif %}
+{%- if not hasBottomPadding %}  ds_!_padding-bottom--0{% endif %}
+{%- if params.numberItems and params.numberItems == 'Three' %}  ds_pb--feature-grid-3-items{% endif %}
+{%- if params.numberItems and params.numberItems == 'Four' %}  ds_pb--feature-grid-4-items{% endif %}">
+    <div class="ds_wrapper">
+        <div class="ds_pb__inner">
+            <div class="ds_pb--feature-grid__item">
+                <div class="ds_pb--feature-grid__item-media">
+                    <a href="#" tabindex="-1">
+                        <div class="ds_aspect-box">
+                            <img alt="" aria-hidden="true" class="ds_aspect-box__inner" src="/images/placeholders/highland-cow.jpg" />
+                        </div>
+                    </a>
+                </div>
+                <h2 class="ds_pb--feature-grid__item-title">
+                    <a href="#">Heading</a>
+                </h2>
+                <div class="ds_pb--feature-grid__item-summary">
+                    <p>Summary text</p>
+                </div>
+            </div>
+            <div class="ds_pb--feature-grid__item">
+                <div class="ds_pb--feature-grid__item-media">
+                    <a href="#" tabindex="-1">
+                        <div class="ds_aspect-box">
+                            <img alt="" aria-hidden="true" class="ds_aspect-box__inner" src="/images/placeholders/highland-cow.jpg" />
+                        </div>
+                    </a>
+                </div>
+                <h2 class="ds_pb--feature-grid__item-title">
+                    <a href="#">Heading</a>
+                </h2>
+                <div class="ds_pb--feature-grid__item-summary">
+                    <p>Summary text</p>
+                </div>
+            </div>
+            {%- if params.numberItems and params.numberItems != 'Two' %}
+            <div class="ds_pb--feature-grid__item">
+                <div class="ds_pb--feature-grid__item-media">
+                    <a href="#" tabindex="-1">
+                        <div class="ds_aspect-box">
+                            <img alt="" aria-hidden="true" class="ds_aspect-box__inner" src="/images/placeholders/highland-cow.jpg" />
+                        </div>
+                    </a>
+                </div>
+                <h2 class="ds_pb--feature-grid__item-title">
+                    <a href="#">Heading</a>
+                </h2>
+                <div class="ds_pb--feature-grid__item-summary">
+                    <p>Summary text</p>
+                </div>
+            </div>
+            {% endif %}
+            {%- if params.numberItems and params.numberItems == 'Four' %}
+            <div class="ds_pb--feature-grid__item">
+                <div class="ds_pb--feature-grid__item-media">
+                    <a href="#" tabindex="-1">
+                        <div class="ds_aspect-box">
+                            <img alt="" aria-hidden="true" class="ds_aspect-box__inner" src="/images/placeholders/highland-cow.jpg" />
+                        </div>
+                    </a>
+                </div>
+                <h2 class="ds_pb--feature-grid__item-title">
+                    <a href="#">Heading</a>
+                </h2>
+                <div class="ds_pb--feature-grid__item-summary">
+                    <p>Summary text</p>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{%- endmacro -%}
+
+{{pbFeatureGrid({
+    background: background,
+    hasBottomPadding: hasBottomPadding,
+    numberItems: numberItems
+})}}

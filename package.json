@@ -14,6 +14,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@scottish-government-design-system/page-blocks": "^1.1.0",
     "@scottish-government/design-system": "^3.3.2"
   },
   "devDependencies": {

@@ -1,0 +1,25 @@
+{%- macro pbCardText(params) -%}
+<div class="ds_pb  ds_pb--card-text {%- if params.background and params.background != 'none' %}  {{params.background}}{% endif %} {%- if not hasBottomPadding %}  ds_!_padding-bottom--0{% endif %}">
+    <div class="ds_wrapper">
+        <div class="ds_pb__inner">
+            <div class="ds_pb__text">
+            <h2>Latest updates</h2><p>Redesigned <a href="/styles/icons" data-section="Latest updates">icons guidance</a>, with new guidance about using icons not included in the Design System (29 February 2024)</p><p>New <a href="/patterns/add-more-fields" data-section="Latest updates">'Add more fields' pattern</a>&nbsp;published (25 January 2024)</p></div>
+            <div class="ds_pb__card">
+                <div class="ds_card  ds_card--hover  {%- if not params.background or params.background == 'none' %}  ds_card--grey{% endif %}">
+                    <div class="ds_card__content">
+                        <h2 class="ds_card__title">
+                            <a class="ds_card__link--cover" href="/components" data-navigation="card-1">Components</a>
+                        </h2>
+                        <p>Components are self-contained parts of a user interface that can be easily lifted and reused, such as a banner, breadcrumbs or button.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{%- endmacro -%}
+
+{{pbCardText({
+    background: background,
+    hasBottomPadding: hasBottomPadding
+})}}

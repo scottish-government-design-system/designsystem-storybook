@@ -1,0 +1,47 @@
+{%- macro pbFeatureHeader(params) -%}
+{%- from 'src/components/feature-header/feature-header.njk' import featureHeader -%}
+    {% if params.background == 'theme' %}
+        {% set modifier = "ds_pb  ds_pb--ds_feature-header  ds_pb__theme--background-secondary  ds_feature-header--background-secondary" %}
+    {% else %}
+        {% set modifier = "ds_pb  ds_pb--ds_feature-header" %}
+    {% endif %}
+    {% if params.secondaryAlign == 'middle' %}
+        {% set secondaryAlign = "middle-mobile" %}
+    {% elseif params.secondaryAlign == 'right' %}
+        {% set secondaryAlign = "right-mobile" %}
+    {% else %}
+        {% set secondaryAlign = false %}
+    {% endif %}
+    {{featureHeader({
+        altText: params.altText,
+        background: params.background,
+        content: params.content,
+        cover: params.hasCoverImage,
+        hasButton: params.hasButton,
+        hasVideo: params.hasVideo,
+        heading: params.heading,
+        image: params.image,
+        imageHideOnMobile: params.imageHideOnMobile,
+        isFullWidth: params.isFullWidth,
+        isTopAlign: params.isTopAlign,
+        isWideText: params.isWideText,
+        modifiers: modifier,
+        secondaryAlign: secondaryAlign
+    })}}
+{%- endmacro -%}
+
+{{pbFeatureHeader({
+    altText: altText,
+    background: background,
+    content: content,
+    hasButton: hasButton,
+    hasCoverImage: hasCoverImage,
+    hasVideo: hasVideo,
+    heading: heading,
+    image: image,
+    imageHideOnMobile: imageHideOnMobile,
+    isFullWidth: isFullWidth,
+    isTopAlign: isTopAlign,
+    isWideText: isWideText,
+    secondaryAlign: imageAlignOnMobile
+})}}

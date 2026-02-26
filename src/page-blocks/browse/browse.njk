@@ -1,0 +1,255 @@
+{%- macro pbBrowse(params) -%}
+<div class="ds_pb  ds_pb--browse  {%- if params.background and params.background != 'none' %}  {{params.background}}{% endif %} {%- if not hasBottomPadding %}  ds_!_padding-bottom--0{% endif %}">
+    <div class="ds_wrapper">    
+        <div class="ds_pb__inner">
+
+        {% if params.format == 'Grid'%}
+        <ol class="ds_category-list  ds_category-list--grid">
+            <li class="ds_category-item">
+                <h2 class="ds_category-item__title">
+                    <a href="#" class="ds_category-item__link">
+                        About NSWA
+                    </a>
+                </h2>
+
+            </li>
+            <li class="ds_category-item">
+                <h2 class="ds_category-item__title">
+                    <a href="#" class="ds_category-item__link">
+                        News and events
+                    </a>
+                </h2>
+
+            </li>
+            <li class="ds_category-item">
+                <h2 class="ds_category-item__title">
+                    <a href="#" class="ds_category-item__link">
+                        Social work in Scotland
+                    </a>
+                </h2>
+
+            </li>
+            <li class="ds_category-item">
+                <h2 class="ds_category-item__title">
+                    <a href="#" class="ds_category-item__link">
+                        Education and training
+                    </a>
+                </h2>
+
+            </li>
+            <li class="ds_category-item">
+                <h2 class="ds_category-item__title">
+                    <a href="#" class="ds_category-item__link">
+                        Workforce planning and data
+                    </a>
+                </h2>
+
+            </li>
+        </ol>
+        {% elseif params.format == 'List'%}
+        <ol class="ds_category-list">
+            <li class="ds_category-item">
+                <h2 class="ds_category-item__title">
+                    <a href="#" class="ds_category-item__link">
+                        About NSWA
+                    </a>
+                </h2>
+
+            </li>
+            <li class="ds_category-item">
+                <h2 class="ds_category-item__title">
+                    <a href="#" class="ds_category-item__link">
+                        News and events
+                    </a>
+                </h2>
+
+            </li>
+            <li class="ds_category-item">
+                <h2 class="ds_category-item__title">
+                    <a href="#" class="ds_category-item__link">
+                        Social work in Scotland
+                    </a>
+                </h2>
+
+            </li>
+            <li class="ds_category-item">
+                <h2 class="ds_category-item__title">
+                    <a href="#" class="ds_category-item__link">
+                        Education and training
+                    </a>
+                </h2>
+
+            </li>
+            <li class="ds_category-item">
+                <h2 class="ds_category-item__title">
+                    <a href="#" class="ds_category-item__link">
+                        Workforce planning and data
+                    </a>
+                </h2>
+
+            </li>
+        </ol>
+        {% elseif params.format == 'Image cards' -%}
+        <ol class="ds_category-list  ds_category-list--grid">
+            <li class="ds_card  ds_card--hover">
+                <div class="ds_card__media">
+                    <div class="ds_aspect-box">
+                        <img alt="" aria-hidden="true" class="ds_aspect-box__inner" src="/images/placeholders/highland-cow.jpg" />
+                    </div>
+                </div>
+                <div class="ds_card__content">
+                    <div class="ds_card__content-header">
+                        <h2 class="ds_card__title">
+                            <a class="ds_card__link  ds_card__link--cover" href="#">About NSWA</a>
+                        </h2>
+                    </div>
+                    <div class="ds_card__content-main">
+                        <p>Who we are, what we do and how to contact us.</p>
+                    </div>
+                </div>
+            </li>
+            <li class="ds_card  ds_card--hover">
+                <div class="ds_card__media">
+                    <div class="ds_aspect-box">
+                        <img alt="" aria-hidden="true" class="ds_aspect-box__inner" src="/images/placeholders/highland-cow.jpg" />
+                    </div>
+                </div>
+                <div class="ds_card__content">
+                    <div class="ds_card__content-header">
+                        <h2 class="ds_card__title">
+                            <a class="ds_card__link  ds_card__link--cover" href="#">News and events</a>
+                        </h2>
+                    </div>
+                    <div class="ds_card__content-main">
+                        <p>Short description of what's in this section using keywords and 20 words maximum.</p>
+                    </div>
+                </div>
+            </li>
+            <li class="ds_card  ds_card--hover">
+                <div class="ds_card__media">
+                    <div class="ds_aspect-box">
+                        <img alt="" aria-hidden="true" class="ds_aspect-box__inner" src="/images/placeholders/highland-cow.jpg" />
+                    </div>
+                </div>
+                <div class="ds_card__content">
+                    <div class="ds_card__content-header">
+                        <h2 class="ds_card__title">
+                            <a class="ds_card__link  ds_card__link--cover" href="#">Social work in Scotland</a>
+                        </h2>
+                    </div>
+                    <div class="ds_card__content-main">
+                        <p>Short description of what's in this section using keywords and 20 words maximum.</p>
+                    </div>
+                </div>
+            </li>
+            <li class="ds_card  ds_card--hover">
+                <div class="ds_card__media">
+                    <div class="ds_aspect-box">
+                        <img alt="" aria-hidden="true" class="ds_aspect-box__inner" src="/images/placeholders/highland-cow.jpg" />
+                    </div>
+                </div>
+                <div class="ds_card__content">
+                    <div class="ds_card__content-header">
+                        <h2 class="ds_card__title">
+                            <a class="ds_card__link  ds_card__link--cover" href="#">Education and training</a>
+                        </h2>
+                    </div>
+                    <div class="ds_card__content-main">
+                        <p>Short description of what's in this section using keywords and 20 words maximum.</p>
+                    </div>
+                </div>
+            </li>
+            <li class="ds_card  ds_card--hover">
+                <div class="ds_card__media">
+                    <div class="ds_aspect-box">
+                        <img alt="" aria-hidden="true" class="ds_aspect-box__inner" src="/images/placeholders/highland-cow.jpg" />
+                    </div>
+                </div>
+                <div class="ds_card__content">
+                    <div class="ds_card__content-header">
+                        <h2 class="ds_card__title">
+                            <a class="ds_card__link  ds_card__link--cover" href="#">Workforce planning and data</a>
+                        </h2>
+                    </div>
+                    <div class="ds_card__content-main">
+                        <p>Short description of what's in this section using keywords and 20 words maximum.</p>
+                    </div>
+                </div>
+            </li>
+        </ol>
+        {% else -%}
+        <ol class="ds_category-list  ds_category-list--grid  ds_category-list--narrow">
+            <li class="ds_card  ds_card--hover  ds_card--fixed-height">
+                <div class="ds_card__content">
+                    <div class="ds_card__content-header">
+                        <h2 class="ds_card__title">
+                            <a class="ds_card__link  ds_card__link--cover" href="#">About NSWA</a>
+                        </h2>
+                    </div>
+                    <div class="ds_card__content-main">
+                        <p>Who we are, what we do and how to contact us.</p>
+                    </div>
+                </div>
+            </li>
+            <li class="ds_card  ds_card--hover">
+                <div class="ds_card__content  ds_card--fixed-height">
+                    <div class="ds_card__content-header">
+                        <h2 class="ds_card__title">
+                            <a class="ds_card__link  ds_card__link--cover" href="#">News and events</a>
+                        </h2>
+                    </div>
+                    <div class="ds_card__content-main">
+                        <p>Short description of what's in this section using keywords and 20 words maximum.</p>
+                    </div>
+                </div>
+            </li>
+            <li class="ds_card  ds_card--hover  ds_card--fixed-height">
+                <div class="ds_card__content">
+                    <div class="ds_card__content-header">
+                        <h2 class="ds_card__title">
+                            <a class="ds_card__link  ds_card__link--cover" href="#">Social work in Scotland</a>
+                        </h2>
+                    </div>
+                    <div class="ds_card__content-main">
+                        <p>Short description of what's in this section using keywords and 20 words maximum.</p>
+                    </div>
+                </div>
+            </li>
+            <li class="ds_card  ds_card--hover  ds_card--fixed-height">
+                <div class="ds_card__content">
+                    <div class="ds_card__content-header">
+                        <h2 class="ds_card__title">
+                            <a class="ds_card__link  ds_card__link--cover" href="#">Education and training</a>
+                        </h2>
+                    </div>
+                    <div class="ds_card__content-main">
+                        <p>Short description of what's in this section using keywords and 20 words maximum.</p>
+                    </div>
+                </div>
+            </li>
+            <li class="ds_card  ds_card--hover  ds_card--fixed-height">
+                <div class="ds_card__content">
+                    <div class="ds_card__content-header">
+                        <h2 class="ds_card__title">
+                            <a class="ds_card__link  ds_card__link--cover" href="#">Workforce planning and data</a>
+                        </h2>
+                    </div>
+                    <div class="ds_card__content-main">
+                        <p>Short description of what's in this section using keywords and 20 words maximum.</p>
+                    </div>
+                </div>
+            </li>
+        </ol>
+        {% endif -%}
+
+
+        </div>
+    </div>
+</div>
+{%- endmacro -%}
+
+{{pbBrowse({
+    background: background,
+    hasBottomPadding: hasBottomPadding,
+    format: format
+})}}

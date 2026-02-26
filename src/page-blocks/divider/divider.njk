@@ -1,0 +1,15 @@
+{%- macro pbDivider(params) -%}
+<div class="ds_pb  ds_pb--divider">
+    {%- if not params.isFullWidth %}
+    <div class="ds_wrapper">
+    {% endif -%}
+        <hr>
+    {%- if not params.isFullWidth %}
+    </div> 
+    {% endif -%}
+</div>
+{%- endmacro -%}
+
+{{pbDivider({
+    fullWidth: fullWidth
+})}}

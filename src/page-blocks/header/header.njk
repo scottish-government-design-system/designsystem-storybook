@@ -1,0 +1,22 @@
+{%- macro pbHeader(params) -%}
+{% if params.position == "center" or params.position == "right" %}
+{% set position = params.position %}
+{% endif %}
+<div class="ds_pb  ds_pb--header {%- if params.background and params.background != 'none' %}  {{params.background}}{% endif %} {%- if not params.hasBottomPadding %}  ds_!_padding-bottom--0{% endif %}">
+    <div class="ds_wrapper">
+        <div class="ds_pb__inner">
+            <div class="ds_pb__text  {%- if position %}  ds_pb__text--{{ position }}{% endif %}">
+                <{{ params.headingLevel | default('h2') }}>{{ params.heading }}</{{ params.headingLevel | default('h2') }}>
+            </div>
+        </div>
+    </div>
+</div>
+{%- endmacro -%}
+
+{{pbHeader({
+    background: background,
+    hasBottomPadding: hasBottomPadding,
+    heading: heading,
+    headingLevel: headingLevel,
+    position: position
+})}}

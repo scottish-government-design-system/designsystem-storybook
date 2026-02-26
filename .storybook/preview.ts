@@ -1,6 +1,7 @@
 import type { Preview } from '@storybook/html-vite'
 
 import '@scottish-government/design-system/dist/css/design-system.css';
+import '@scottish-government-design-system/page-blocks/dist/css/page-blocks.css';
 import '@scottish-government/design-system/dist/scripts/design-system.js';
 
 const preview: Preview = {

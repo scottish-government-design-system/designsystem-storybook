@@ -1,0 +1,23 @@
+{%- macro pbDoubleText(params) -%}
+<div class="ds_pb  ds_pb--double-text {%- if params.background and params.background != 'none' %}  {{params.background}}{% endif %}">
+    <div class="ds_wrapper">
+        <div class="ds_pb__inner {%- if not params.hasBottomPadding %}  ds_!_padding-bottom--0{% endif %}">
+            <div class="ds_pb__text">
+                <h2>Latest updates</h2>
+                <p>Redesigned <a href="/styles/icons" data-section="Latest updates">icons guidance</a>, with new guidance about using icons not included in the Design System (29 February 2024)</p>
+                <p>New <a href="/patterns/add-more-fields" data-section="Latest updates">'Add more fields' pattern</a> published (25 January 2024)</p>
+            </div>
+            <div class="ds_pb__text">
+                <h2>Latest updates</h2>
+                <p>Redesigned <a href="/styles/icons" data-section="Latest updates">icons guidance</a>, with new guidance about using icons not included in the Design System (29 February 2024)</p>
+                <p>New <a href="/patterns/add-more-fields" data-section="Latest updates">'Add more fields' pattern</a> published (25 January 2024)</p>
+            </div>
+        </div>
+    </div>
+</div>
+{%- endmacro -%}
+
+{{pbDoubleText({
+    background: background,
+    hasBottomPadding: hasBottomPadding
+})}}

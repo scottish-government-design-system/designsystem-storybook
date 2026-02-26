@@ -1,0 +1,30 @@
+{%- macro pbImageText(params) -%}
+<div class="ds_pb  ds_pb--image-text{%- if params.background and params.background != 'none' %}  {{params.background}}{% endif %} {%- if not hasBottomPadding %}  ds_!_padding-bottom--0{% endif %} {%- if params.isVerticallyCentred %}  ds_pb--image-text--center{% endif -%}">
+    <div class="ds_wrapper">
+        <div class="ds_pb__inner">
+            {% if imagePosition == 'left' %}
+            <div class="ds_pb__poster">
+                <img alt="Highland cow" src="/images/placeholders/highland-cow.jpg"/>
+            </div>
+            {% endif %}
+            <div class="ds_pb__text">
+                <h2>Latest updates</h2>
+                <p>Redesigned <a href="/styles/icons" data-section="Latest updates">icons guidance</a>, with new guidance about using icons not included in the Design System (29 February 2024)</p>
+                <p>New <a href="/patterns/add-more-fields" data-section="Latest updates">'Add more fields' pattern</a> published (25 January 2024)</p>
+            </div>
+            {% if imagePosition == 'right' %}
+            <div class="ds_pb__poster">
+                <img alt="Highland cow" src="/images/placeholders/highland-cow.jpg"/>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{%- endmacro -%}
+
+{{pbImageText({
+    background: background,
+    hasBottomPadding: hasBottomPadding,
+    isVerticallyCentred: isVerticallyCentred,
+    imagePosition: imagePosition
+})}}

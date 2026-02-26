@@ -9,7 +9,8 @@
 {%- if params.background == 'tertiary' %}  ds_feature-header--background-tertiary{% endif %}
 {%- if params.isWideText %}  ds_feature-header--wide{% endif %}
 {%- if params.isFullWidth %}  ds_feature-header--fullwidth{% endif %}
-{%- if params.isTopAlign %}  ds_feature-header--top{% endif %}"
+{%- if params.isTopAlign %}  ds_feature-header--top{% endif %}
+{%- if params.modifiers %}  {{ params.modifiers }}{% endif %}"
 {%- if params.style %} style="{{params.style}}"{% endif %}>
     {%- if params.isFullWidth %}
     <div class="ds_wrapper">
@@ -31,7 +32,16 @@
         {% endif -%}
     </div>
     {%- if params.image == 'normal' %}
-    <div class="ds_feature-header__secondary {%- if params.cover %}  ds_feature-header__secondary--cover{% endif %} {%- if params.removePadding %}  ds_feature-header__secondary--no-padding{% endif %}">
+    <div class="ds_feature-header__secondary  {%- if params.secondaryAlign %}  ds_feature-header__secondary--{{params.secondaryAlign}}{% endif %} {%- if params.cover %}  ds_feature-header__secondary--cover{% endif %} {%- if params.removePadding %}  ds_feature-header__secondary--no-padding{% endif %}{%- if params.imageHideOnMobile %}  ds_feature-header__secondary--hidden-mobile{% endif -%}">
+        {%- if params.hasVideo %}
+        <a href="{{params.videoLink}}" class="ds_feature-header__secondary-link" target="_blank">
+        {%- endif %} 
+        {%- if params.imageHideOnMobile %}
+        <picture>    
+            <source media="(max-width: 767px)"
+                    sizes="1px"
+                    srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 1w"/>
+        {%- endif %} 
         <img class="ds_feature-header__image" alt="" src="https://placehold.co/767x431"
             width="767"
             height="431"
@@ -45,9 +55,28 @@
             https://placehold.co/1088x612 1088w,
             https://placehold.co/1534x863 1534w"
             sizes="(min-width:1200px) 544px, (min-width:992px) 448px, (min-width: 768px) 352px, 100vw"/>
+        {%- if params.imageHideOnMobile %}
+        </picture>
+        {%- endif %} 
+        {%- if params.hasVideo %}
+            <svg class="ds_feature-header__secondary-overlay" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 160 90">
+                <circle class="ds_feature-header__secondary-overlay-background" cx="82" cy="45.5" r="16" fill="#0065db"/>
+                <path class="ds_feature-header__secondary-overlay-foreground" fill="#fff" d="M76 45.3v-9.2l8 4.6 8 4.6-8 4.7-8 4.6z"/>
+            </svg>
+        </a>
+        {%- endif %} 
     </div>
     {%- elseif params.image == 'square' %}
-    <div class="ds_feature-header__secondary {%- if params.cover %}  ds_feature-header__secondary--cover{% endif %} {%- if params.removePadding %}  ds_feature-header__secondary--no-padding{% endif %}">
+    <div class="ds_feature-header__secondary  {%- if params.secondaryAlign %}  ds_feature-header__secondary--{{params.secondaryAlign}}{% endif %} {%- if params.cover %}  ds_feature-header__secondary--cover{% endif %} {%- if params.removePadding %}  ds_feature-header__secondary--no-padding{% endif %}{%- if params.imageHideOnMobile %}  ds_feature-header__secondary--hidden-mobile{% endif -%}">
+        {%- if params.hasVideo %}
+        <a href="{{params.videoLink}}" class="ds_feature-header__secondary-link" target="_blank">
+        {%- endif %} 
+        {%- if params.imageHideOnMobile %}
+        <picture>    
+            <source media="(max-width: 767px)"
+                    sizes="1px"
+                    srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 1w"/>
+        {%- endif %} 
         <img class="ds_feature-header__image" alt="" src="https://placehold.co/767x767"
             width="767"
             height="767"
@@ -61,12 +90,69 @@
             https://placehold.co/1088x1088 1088w,
             https://placehold.co/1534x1534 1534w"
             sizes="(min-width:1200px) 544px, (min-width:992px) 448px, (min-width: 768px) 352px, 100vw"/>
+        {%- if params.imageHideOnMobile %}
+        </picture>
+        {%- endif %} 
+        {%- if params.hasVideo %}
+            <svg class="ds_feature-header__secondary-overlay" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 160 90">
+                <circle class="ds_feature-header__secondary-overlay-background" cx="82" cy="45.5" r="16" fill="#0065db"/>
+                <path class="ds_feature-header__secondary-overlay-foreground" fill="#fff" d="M76 45.3v-9.2l8 4.6 8 4.6-8 4.7-8 4.6z"/>
+            </svg>
+        </a>
+        {%- endif %} 
     </div>
     {%- elseif params.image == 'svg' %}
-    <div class="ds_feature-header__secondary {%- if params.cover %}  ds_feature-header__secondary--cover{% endif %} {%- if params.removePadding %}  ds_feature-header__secondary--no-padding{% endif %}">
+    <div class="ds_feature-header__secondary  {%- if params.secondaryAlign %}  ds_feature-header__secondary--{{params.secondaryAlign}}{% endif %} {%- if params.cover %}  ds_feature-header__secondary--cover{% endif %} {%- if params.removePadding %}  ds_feature-header__secondary--no-padding{% endif %}{%- if params.imageHideOnMobile %}  ds_feature-header__secondary--hidden-mobile{% endif -%}">
+        {%- if params.hasVideo %}
+        <a href="{{params.videoLink}}" class="ds_feature-header__secondary-link" target="_blank">
+        {%- endif %} 
+        {%- if params.imageHideOnMobile %}
+        <picture>    
+            <source media="(max-width: 767px)"
+                    sizes="1px"
+                    srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 1w"/>
+        {%- endif %} 
         <img class="ds_feature-header__image" alt="" src="/images/placeholders/illustration.svg"
             width="767"
             height="767"/>
+        {%- if params.imageHideOnMobile %}
+        </picture>
+        {%- endif %} 
+        {%- if params.hasVideo %}
+            <svg class="ds_feature-header__secondary-overlay" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 160 90">
+                <circle class="ds_feature-header__secondary-overlay-background" cx="82" cy="45.5" r="16" fill="#0065db"/>
+                <path class="ds_feature-header__secondary-overlay-foreground" fill="#fff" d="M76 45.3v-9.2l8 4.6 8 4.6-8 4.7-8 4.6z"/>
+            </svg>
+        </a>
+        {%- endif %} 
+    </div>
+    {%- elseif params.image == 'small' %}
+    <div class="ds_feature-header__secondary  {%- if params.secondaryAlign %}  ds_feature-header__secondary--{{params.secondaryAlign}}{% endif %} {%- if params.cover %}  ds_feature-header__secondary--cover{% endif %} {%- if params.removePadding %}  ds_feature-header__secondary--no-padding{% endif %}{%- if params.imageHideOnMobile %}  ds_feature-header__secondary--hidden-mobile{% endif -%}">
+        {%- if params.hasVideo %}
+        <a href="{{params.videoLink}}" class="ds_feature-header__secondary-link" target="_blank">
+        {%- endif %} 
+        {%- if params.imageHideOnMobile %}
+        <picture>    
+            <source media="(max-width: 767px)"
+                    sizes="1px"
+                    srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 1w"/>
+        {%- endif %} 
+        <img class="ds_feature-header__image" alt="" src="https://placehold.co/300x300" 
+            width="300" 
+            height="300"
+            srcset="
+            https://placehold.co/300x300 300w"
+            sizes="100vw"/>
+        {%- if params.imageHideOnMobile %}
+        </picture>
+        {%- endif %} 
+        {%- if params.hasVideo %}
+            <svg class="ds_feature-header__secondary-overlay" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 160 90">
+                <circle class="ds_feature-header__secondary-overlay-background" cx="82" cy="45.5" r="16" fill="#0065db"/>
+                <path class="ds_feature-header__secondary-overlay-foreground" fill="#fff" d="M76 45.3v-9.2l8 4.6 8 4.6-8 4.7-8 4.6z"/>
+            </svg>
+        </a>
+        {%- endif %} 
     </div>
     {%- endif %}
     {%- if params.isFullWidth %}
@@ -87,5 +173,6 @@
     image: image,
     isFullWidth: isFullWidth,
     isTopAlign: isTopAlign,
-    isWideText: isWideText
+    isWideText: isWideText,
+    modifiers: modifiers
 })}}
