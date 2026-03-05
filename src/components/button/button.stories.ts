@@ -8,19 +8,19 @@ type ButtonWidth = 'fluid' | 'fixed' | 'max';
 
 export type ButtonArgs = {
     content: string
-    hasLinkStyle?: boolean;
-    href?: string;
-    icon?: string;
+    hasLinkStyle?: boolean
+    href?: string
+    icon?: string
     isDisabled?: boolean
-    isIconLeft?: boolean;
-    isIconOnly?: boolean;
-    isSecondary?: boolean;
-    isSmall?: boolean;
-    width?: ButtonWidth;
+    isIconLeft?: boolean
+    isIconOnly?: boolean
+    isSecondary?: boolean
+    isSmall?: boolean
+    width?: ButtonWidth
 };
 
 const meta: Meta<ButtonArgs> = {
-    title: 'Components/Button',
+    title: 'Components/Button/Button',
     render: (args) => {
         return(ComponentTemplate(args))
     },

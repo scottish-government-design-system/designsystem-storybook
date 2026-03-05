@@ -1,0 +1,30 @@
+{%- from 'src/components/button/button.njk' import button -%}
+
+{%- macro buttonGroup(params) -%}
+{%- if params.groupItems %}
+<div class="ds_button-group  {%- if params.mobileLayout and params.mobileLayout != 'stacked' %}  ds_button-group--{{ params.mobileLayout }}{% endif -%}"">
+    {%- for item in params.groupItems %}
+    {%- if item.linkText %}
+        <a href="{{ item.href }}">{{ item.linkText }}</a>
+    {%- else %}
+    {{ button({
+        content: item.content,
+        hasLinkStyle: item.hasLinkStyle,
+        href: item.href,
+        icon: item.icon,
+        isDisabled: item.isDisabled,
+        isIconLeft: item.isIconLeft,
+        isIconOnly: item.isIconOnly,
+        isSecondary: item.isSecondary,
+        isSmall: item.isSmall,
+        width: width})}}
+        {%- endif %}
+    {%- endfor %}
+</div>
+{%- endif %}
+{%- endmacro -%}
+
+{{buttonGroup({
+    groupItems: groupItems,
+    mobileLayout: mobileLayout
+})}}
