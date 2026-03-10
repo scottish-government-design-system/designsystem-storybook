@@ -17,7 +17,6 @@ export type SummaryItemArgs = {
 
 const meta: Meta<SummaryItemArgs> = {
     title: 'Components/Summary list/Item',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

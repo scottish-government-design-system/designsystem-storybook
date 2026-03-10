@@ -13,7 +13,6 @@ export type SideNavigationItemArgs = {
 
 const meta: Meta<SideNavigationItemArgs> = {
     title: 'Components/Side navigation/Item',
-    tags: ['autodocs'],
     decorators: [
         (Story) => `<div class="ds_side-navigation">\n<ul class="ds_side-navigation__list">${Story()}</ul>\n</div>`
     ],

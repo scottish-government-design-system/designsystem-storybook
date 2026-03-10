@@ -12,12 +12,8 @@ export type CheckboxGroupArgs = {
 
 const meta: Meta<CheckboxGroupArgs> = {
     title: 'Components/Checkbox/Checkbox group',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
-    },
-    args: {
-        name: 'default'
     },
     argTypes: {
         isSmall: SGDSArgTypes.boolean()
@@ -30,19 +26,25 @@ const meta: Meta<CheckboxGroupArgs> = {
 export default meta;
 type Story = StoryObj<CheckboxGroupArgs>;
 
-export const Default: Story = {};
+export const Default: Story = {
+    args: {
+        name: 'default'
+    },
+    // tags: ['!autodocs']
+};
 
 export const SmallCheckboxes: Story = {
     name: 'Small checkboxes',
     args: {
-        name: 'small',
-        isSmall: true
+        isSmall: true,
+        name: 'small'
     }
 };
 
 export const WithExclusiveCheckbox: Story = {
     name: 'With exclusive checkbox',
     args: {
-        hasExclusive: true
+        hasExclusive: true,
+        name: 'has-exclusive'
     }
 };

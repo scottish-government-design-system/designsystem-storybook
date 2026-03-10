@@ -19,7 +19,6 @@ declare global {
 
 const meta: Meta<AccordionArgs> = {
     title: 'Components/Accordion',
-    // tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

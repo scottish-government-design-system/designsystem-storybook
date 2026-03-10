@@ -21,7 +21,6 @@ export type TabsArgs = {
 
 const meta: Meta<TabsArgs> = {
     title: 'Components/Tabs',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

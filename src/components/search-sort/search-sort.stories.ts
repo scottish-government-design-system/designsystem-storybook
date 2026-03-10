@@ -13,7 +13,6 @@ export type SearchSortArgs = {
 
 const meta: Meta<SearchSortArgs> = {
     title: 'Components/Search results/Sort',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/html';
+import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './site-navigation.njk';
@@ -10,14 +11,13 @@ export type MenuItemArgs = {
 }
 
 export type SiteNavigationArgs = {
-    isMobileNav?: boolean
+    isolateMenu?: 'both' | 'desktop' | 'mobile'
     items: MenuItemArgs[]
     label?: string
 };
 
 const meta: Meta<SiteNavigationArgs> = {
     title: 'Components/Site navigation',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },
@@ -42,17 +42,39 @@ const meta: Meta<SiteNavigationArgs> = {
             }
         ],
         label: 'Main navigation'
+    },
+    argTypes: {
+        isolateMenu: {
+            description: 'Show specific menus',
+            options: ['both', 'mobile', 'desktop'],
+            control: { type: 'select' },
+            type: 'string'
+        },
+    },
+    play: () => {
+        window.DS.initAll();
     }
 };
 
 export default meta;
 type Story = StoryObj<SiteNavigationArgs>;
 
-export const Default: Story = {};
+export const Default: Story = {
+    parameters: {
+        docs: {
+            story: { autoplay: true },
+        }
+    }
+};
 
-export const MobileNav: Story = {
-    name: 'Mobile navigation',
+export const DesktopOnly: Story = {
     args: {
-        isMobileNav: true
+        isolateMenu: 'desktop'
+    }
+};
+
+export const MobileOnly: Story = {
+    args: {
+        isolateMenu: 'mobile'
     }
 };

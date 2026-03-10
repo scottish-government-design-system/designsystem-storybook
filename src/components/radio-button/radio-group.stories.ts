@@ -12,12 +12,8 @@ export type RadioGroupArgs = {
 
 const meta: Meta<RadioGroupArgs> = {
     title: 'Components/Radio/Radio group',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
-    },
-    args: {
-        name: 'default'
     },
     argTypes: {
         isInline: SGDSArgTypes.boolean(),
@@ -29,7 +25,11 @@ const meta: Meta<RadioGroupArgs> = {
 export default meta;
 type Story = StoryObj<RadioGroupArgs>;
 
-export const Default: Story = {};
+export const Default: Story = {
+    args: {
+        name: 'default'
+    }
+};
 
 export const SmallRadios: Story = {
     name: 'Small radios',

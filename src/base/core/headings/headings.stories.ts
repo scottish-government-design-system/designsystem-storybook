@@ -10,7 +10,6 @@ export type HeadingsArgs = {
 
 const meta: Meta<HeadingsArgs> = {
     title: 'Base/Core/Headings',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

@@ -9,7 +9,6 @@ export type LeaderArgs = {
 
 const meta: Meta<LeaderArgs> = {
     title: 'Base/Core/Leader',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

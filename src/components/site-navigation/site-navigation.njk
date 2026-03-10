@@ -1,5 +1,6 @@
 {%- macro siteNavigation(params) -%}
-{%- if params.isMobileNav %}{#- Mobile menu -#}
+{%- if params.isolateMenu != "desktop" %}
+{#- Mobile menu -#}
 <div class="ds_site-header__controls">
     <label aria-controls="mobile-navigation" class="ds_site-header__control js-toggle-menu" for="menu">
         <span class="ds_site-header__control-text">Menu</span>
@@ -17,8 +18,9 @@
     {%- endfor %}
     </ul>
 </nav>
-
-{%- else %}{# Desktop menu #}
+{%- endif %}
+{%- if params.isolateMenu != "mobile" %}
+{# Desktop menu #}
 <nav class="ds_site-navigation" aria-label="{{ params.label }}">
     <ul class="ds_site-navigation__list">
     {%- for item in params.items %}
@@ -30,9 +32,8 @@
 </nav>
 {%- endif %}
 {%- endmacro -%}
-
 {{siteNavigation({
-    isMobileNav: isMobileNav,
+    isolateMenu: isolateMenu,
     items: items,
     label: label
 })}}

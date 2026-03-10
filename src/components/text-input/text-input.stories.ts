@@ -27,7 +27,6 @@ export type TextInputArgs = {
 
 const meta: Meta<TextInputArgs> = {
     title: 'Components/Text input',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

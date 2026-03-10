@@ -1,0 +1,13 @@
+import { Canvas, Controls, Meta, Title } from '@storybook/addon-docs/blocks';
+
+import * as ComponentStories from './site-navigation.stories';
+
+<Meta of={ComponentStories} />
+
+<Title></Title>
+
+Site navigation should be used within the [site header](?path=/docs/components-site-header--docs).
+
+<Canvas of={ComponentStories.Default} />
+
+<Controls of={ComponentStories.Default} />

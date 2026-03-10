@@ -11,7 +11,6 @@ export type TagArgs = {
 
 const meta: Meta<TagArgs> = {
     title: 'Components/Tag',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

@@ -9,7 +9,6 @@ export type MultipleQuestionPageArgs = {
 
 const meta: Meta<MultipleQuestionPageArgs> = {
     title: 'Patterns/Multiple question page',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

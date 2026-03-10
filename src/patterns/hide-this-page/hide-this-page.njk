@@ -1,0 +1,94 @@
+{%- from 'src/components/back-to-top/back-to-top.njk' import backToTop -%}
+{%- from 'src/components/site-header/site-header.njk' import siteHeader -%}
+{%- from 'src/components/site-footer/site-footer.njk' import siteFooter -%}
+<div class="ds_has-hide-page">
+<div class="ds_skip-links">
+    <ul class="ds_skip-links__list">
+        <li class="ds_skip-links__item"><a class="ds_skip-links__link" href="#main-content" data-navigation="skip-link-1">Skip to main content</a></li>
+    </ul>
+</div>
+<span id="page-top"></span>
+<div class="visually-hidden  ds_hide-page">
+    <p>To leave the page quickly, press the escape key.</p>
+</div>
+<div class="ds_page">
+
+    <div class="ds_page__top">
+        {{siteHeader()}}
+    </div>
+
+    <div class="ds_page__middle">
+        <div class="ds_wrapper">
+            <nav aria-label="Breadcrumb">
+                <ol class="ds_breadcrumbs">
+                    <li class="ds_breadcrumbs__item">
+                        <a class="ds_breadcrumbs__link" href="#">Home</a>
+                    </li>
+                    <li class="ds_breadcrumbs__item">
+                        <a class="ds_breadcrumbs__link" href="#">Health, social care and wellbeing</a>
+                    </li>
+                    <li class="ds_breadcrumbs__item">
+                        <a class="ds_breadcrumbs__link" href="#">Sport</a>
+                    </li>
+                    <li class="ds_breadcrumbs__item" aria-current="page">Volunteer to help with sport in Scotland</li>
+                </ol>
+            </nav>
+
+            <main id="main-content" class="ds_layout  ds_layout--article">
+                <div lang="en" class="ds_hide-page">
+                    <a href="https://www.bbc.co.uk/weather" data-altlink="https://www.google.com" class="ds_hide-page__button  ds_button  js-hide-page"><strong>Hide this page</strong> <span class="visually-hidden  js-enabled-text">Or press escape key to hide this page</span></a>
+                    <p aria-hidden="true" class="ds_hide-page__text  js-enabled-text">(Or press Esc key)</p>
+                </div>
+                <div class="ds_layout__header">
+                    <header class="ds_page-header">
+                        <h1 class="ds_page-header__title">Volunteer to help with sport in Scotland</h1>
+                        <dl class="ds_page-header__metadata  ds_metadata">
+                            <div class="ds_metadata__item">
+                                <dt class="ds_metadata__key">Last updated</dt>
+                                <dd class="ds_metadata__value">7 Aug 2023</dd>
+                            </div>
+                        </dl>
+                    </header>
+                </div>
+                <div class="ds_layout__content">
+                    <p>Volunteering to help with sports clubs and organisations in Scotland can help you meet new people and take on new challenges.</p>
+                    <p>The <a href="#">sportscotland website</a> gives more information on volunteering to help with sport, including:</p>
+                    <ul>
+                        <li>the benefits of volunteering</li>
+                        <li>where to get involved</li>
+                        <li>how to volunteer</li>
+                        <li>opportunities available</li>
+                        <li>safeguarding (making sure children are safe)</li>
+                    </ul>
+                    <p>You can also find more information about the opportunities available at the <a href="#">Scottish Sports Association website</a>.</p>
+                </div>
+            </main>
+        </div>
+        </div>
+
+    {{backToTop()}}
+
+    <div class="ds_page__bottom">
+        {{siteFooter({
+            hasLicense: true,
+            hasLinks: true,
+            hasOrg: true,
+            links: [
+                {
+                    content: "Privacy",
+                    href: "#"
+                },
+                {
+                    content: "Cookies",
+                    href: "#"
+                },
+                {
+                    content: "Accessibility",
+                    href: "#"
+                }
+            ]
+        })}}
+    </div>
+
+</div>
+</div>

@@ -10,7 +10,6 @@ export type CategoryPageArgs = {
 
 const meta: Meta<CategoryPageArgs> = {
     title: 'Patterns/Category page',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

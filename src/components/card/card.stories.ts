@@ -18,7 +18,6 @@ export type CardArgs = {
 
 const meta: Meta<CardArgs> = {
     title: 'Components/Card',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },
@@ -28,7 +27,7 @@ const meta: Meta<CardArgs> = {
         href: '#foo'
     },
     argTypes: {
-        headingLevel: SGDSArgTypes.headingLevel(),
+        headingLevel: SGDSArgTypes.headingLevel({options: ['h2','h3','h4','h5','h6']}),
         hasMetadata: SGDSArgTypes.boolean(),
         hasSmallImage: SGDSArgTypes.boolean(),
         image: {

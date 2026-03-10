@@ -10,7 +10,6 @@ export type ArticleAsideArgs = {
 
 const meta: Meta<ArticleAsideArgs> = {
     title: 'Components/Article aside',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

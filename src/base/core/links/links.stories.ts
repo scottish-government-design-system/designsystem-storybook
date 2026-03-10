@@ -9,7 +9,6 @@ export type LinkArgs = {
 
 const meta: Meta<LinkArgs> = {
     title: 'Base/Core/Links',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

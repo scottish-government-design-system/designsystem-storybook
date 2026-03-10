@@ -1,17 +1,20 @@
 {%- macro question(params) -%}
 {%- from 'src/components/text-input/text-input.njk' import textInput -%}
 {%- from 'src/components/checkbox/checkbox.njk' import checkbox -%}
-<{{params.tagName | default('div')}} class="ds_question {% if params.hasError %}ds_question--error{% endif %}">
+<div class="ds_question {% if params.hasError %}ds_question--error{% endif %}">
+    {%- if params.isFieldset %}
+    <fieldset aria-describedby="ds_hint  error-message-1">
+    {%- endif %}
     {%- if params.legend %}
     <legend>{{params.legend}}</legend>
     {%- endif %}
     {%- if params.hintText %}
-    <p class="ds_hint-text">{{params.hintText}}</p>
+    <p class="ds_hint-text" id="ds_hint">{{params.hintText}}</p>
     {%- endif %}
     {%- if params.errorMessage %}
-    <p class="ds_question__error-message">{{params.errorMessage}}</p>
+    <p class="ds_question__error-message" id="error-message-1">{{params.errorMessage}}</p>
     {%- endif %}
-    {%- if tagName == 'fieldset' %}
+    {%- if params.isFieldset %}
     <div class="ds_checkboxes  ds_field-group" data-module="ds-checkboxes">
         {{checkbox({
             id: 'universal-credit',
@@ -25,11 +28,6 @@
             id: 'jsa',
             label: "Income-based Job Seeker's Allowance"
         })}}
-        {{checkbox({
-            id: 'none',
-            label: 'No, I do not receive any of these benefits',
-            isExclusive: true
-        })}}
     </div>
     {%- else %}
     {{textInput({
@@ -39,13 +37,16 @@
         label: 'First name'
     })}}
     {%- endif %}
-</{{params.tagName | default('div')}}>
+    {%- if params.isFieldset %}
+    </fieldset>
+    {%- endif %}
+</div>
 {%- endmacro -%}
 
 {{question({
     errorMessage: errorMessage,
     hasError: hasError,
     hintText: hintText,
-    legend: legend,
-    tagName: tagName
+    isFieldset: isFieldset,
+    legend: legend
 })}}

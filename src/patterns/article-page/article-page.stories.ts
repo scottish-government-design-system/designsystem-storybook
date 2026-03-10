@@ -9,12 +9,14 @@ export type ArticlePageArgs = {
 
 const meta: Meta<ArticlePageArgs> = {
     title: 'Patterns/Article page',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },
     args: {
 
+    },
+    parameters: {
+        layout: 'fullscreen'
     }
 };
 

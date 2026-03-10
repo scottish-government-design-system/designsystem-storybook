@@ -11,7 +11,6 @@ export type SmallArgs = {
 
 const meta: Meta<SmallArgs> = {
     title: 'Base/Core/Small',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

@@ -2,23 +2,23 @@
 {%- from 'src/components/checkbox/checkbox.njk' import checkbox -%}
 <div class="ds_checkboxes  ds_field-group" data-module="ds-checkboxes">
     {{checkbox({
-        id: 'universal-credit',
+        id: params.name + '-universal-credit',
         label: 'Universal credit',
         isSmall: params.isSmall
     })}}
     {{checkbox({
-        id: 'pension-credit',
+        id: params.name + '-pension-credit',
         label: 'Pension credit',
         isSmall: params.isSmall
     })}}
     {{checkbox({
-        id: 'jsa',
+        id: params.name + '-jsa',
         label: "Income-based Job Seeker's Allowance",
         isSmall: params.isSmall
     })}}
     {%- if params.hasExclusive %}
     {{checkbox({
-        id: 'none',
+        id: params.name + '-none',
         label: 'No, I do not receive any of these benefits',
         isExclusive: true,
         isSmall: params.isSmall
@@ -28,6 +28,7 @@
 {%- endmacro -%}
 
 {{checkboxGroup({
+    name: name,
     hasExclusive: hasExclusive,
     isSmall: isSmall
 })}}

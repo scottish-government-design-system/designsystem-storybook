@@ -24,7 +24,6 @@ export type SelectArgs = {
 
 const meta: Meta<SelectArgs> = {
     title: 'Components/Select',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

@@ -15,7 +15,6 @@ export type CategoryListArgs = {
 
 const meta: Meta<CategoryListArgs> = {
     title: 'Components/Category list',
-    tags: ['autodocs'],
     render: (args) => {
         return (ComponentTemplate(args))
     },
