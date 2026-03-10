@@ -12,7 +12,6 @@ export type AspectBoxArgs = {
 
 const meta: Meta<AspectBoxArgs> = {
     title: 'Components/Aspect box',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

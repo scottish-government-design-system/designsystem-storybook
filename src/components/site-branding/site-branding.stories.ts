@@ -11,7 +11,6 @@ export type SiteBrandingArgs = {
 
 const meta: Meta<SiteBrandingArgs> = {
     title: 'Components/Site branding',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

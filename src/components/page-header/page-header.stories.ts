@@ -15,7 +15,6 @@ export type PageHeaderArgs = {
 
 const meta: Meta<PageHeaderArgs> = {
     title: 'Components/Page header',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

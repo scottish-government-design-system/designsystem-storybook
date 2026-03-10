@@ -15,7 +15,6 @@ export type NotificationPanelArgs = {
 
 const meta: Meta<NotificationPanelArgs> = {
     title: 'Components/Notification panel',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

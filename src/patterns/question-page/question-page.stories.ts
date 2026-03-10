@@ -13,7 +13,6 @@ export type QuestionPageArgs = {
 
 const meta: Meta<QuestionPageArgs> = {
     title: 'Patterns/Question page',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

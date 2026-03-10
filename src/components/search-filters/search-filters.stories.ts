@@ -9,7 +9,6 @@ export type SearchFiltersArgs = {
 
 const meta: Meta<SearchFiltersArgs> = {
     title: 'Components/Search results/Filters',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

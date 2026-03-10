@@ -11,8 +11,7 @@ export type ConfirmationMessageArgs = {
 };
 
 const meta: Meta<ConfirmationMessageArgs> = {
-    title: 'Components/Confirmation message',
-    tags: ['autodocs'],
+    title: 'Deprecated/Confirmation message',
     render: (args) => {
         return(ComponentTemplate(args))
     },

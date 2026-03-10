@@ -15,7 +15,6 @@ export type SiteHeaderArgs = {
 
 const meta: Meta<SiteHeaderArgs> = {
     title: 'Components/Site header',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },
@@ -46,6 +45,9 @@ const meta: Meta<SiteHeaderArgs> = {
         hasSearch: SGDSArgTypes.boolean(),
         navItems: SGDSArgTypes.hidden(),
         siteTitle: {type: 'string'}
+    },
+    parameters: {
+        layout: 'fullscreen'
     }
 };
 

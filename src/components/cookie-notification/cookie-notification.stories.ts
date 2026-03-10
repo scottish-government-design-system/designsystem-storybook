@@ -9,7 +9,6 @@ export type CookieNotificationArgs = {
 
 const meta: Meta<CookieNotificationArgs> = {
     title: 'Components/Cookie notification',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },
@@ -18,6 +17,9 @@ const meta: Meta<CookieNotificationArgs> = {
     },
     argTypes: {
 
+    },
+    parameters: {
+        layout: 'fullscreen'
     },
     play: () => {
         window.DS.initAll();

@@ -9,7 +9,6 @@ export type BackLinkArgs = {
 
 const meta: Meta<BackLinkArgs> = {
     title: 'Components/Back link',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

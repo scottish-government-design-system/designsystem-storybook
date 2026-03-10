@@ -12,7 +12,6 @@ export type BackToTopArgs = {
 
 const meta: Meta<BackToTopArgs> = {
     title: 'Components/Back to top',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

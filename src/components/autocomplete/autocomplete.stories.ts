@@ -10,7 +10,6 @@ export type AutocompleteArgs = {
 
 const meta: Meta<AutocompleteArgs> = {
     title: 'Components/Autocomplete',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

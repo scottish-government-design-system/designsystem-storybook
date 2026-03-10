@@ -12,7 +12,6 @@ export type DetailsArgs = {
 
 const meta: Meta<DetailsArgs> = {
     title: 'Components/Details',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },
@@ -25,13 +24,22 @@ const meta: Meta<DetailsArgs> = {
     },
     argTypes: {
         hasFormContent: SGDSArgTypes.boolean()
+    },
+    play: () => {
+        window.DS.initAll();
     }
 };
 
 export default meta;
 type Story = StoryObj<DetailsArgs>;
 
-export const Default: Story = {};
+export const Default: Story = {
+    parameters: {
+        docs: {
+            story: { autoplay: true },
+        }
+    }
+};
 
 export const WithFormContent: Story = {
     name: 'With form content',

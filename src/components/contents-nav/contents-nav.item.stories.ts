@@ -12,7 +12,6 @@ export type ContentsNavItemArgs = {
 
 const meta: Meta<ContentsNavItemArgs> = {
     title: 'Components/Contents nav/Item',
-    tags: ['autodocs'],
     decorators: [
         (Story) => `<ul class="ds_contents-nav__list">\n${Story()}\n</ul>`
     ],

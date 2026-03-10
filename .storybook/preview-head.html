@@ -1,5 +1,7 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700,400italic&amp;display=swap" rel="stylesheet" type="text/css">
 <style>
+.sbdocs.sbdocs-content {max-width: unset;}
+
 .sbdocs.sbdocs-content :where(p:not(.sb-anchor, .sb-unstyled, .sb-unstyled p)),
 .sbdocs.sbdocs-content :where(li:not(.sb-anchor, .sb-unstyled, .sb-unstyled li)) {
   font-size: 1rem !important;
@@ -26,7 +28,6 @@
 .docblock-argstable td > div > div > span {
     line-height: unset;
 }
-
 </style>
 
 
@@ -181,5 +182,13 @@ html[lang] .token.entity {
         line-height: 1.5
     }
 }
-
 </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (window.DS?.tracking) {
+            window.DS.tracking.init();
+        }
+    });
+    document.documentElement.classList.add('js-enabled');
+</script>

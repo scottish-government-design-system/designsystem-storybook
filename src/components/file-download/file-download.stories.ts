@@ -13,7 +13,6 @@ export type FileDownloadArgs = {
 
 const meta: Meta<FileDownloadArgs> = {
     title: 'Components/File download',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

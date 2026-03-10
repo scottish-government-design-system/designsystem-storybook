@@ -17,7 +17,6 @@ export type PageMetadataArgs = {
 
 const meta: Meta<PageMetadataArgs> = {
     title: 'Components/Page metadata',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

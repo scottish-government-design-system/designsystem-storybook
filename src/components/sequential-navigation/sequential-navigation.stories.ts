@@ -18,7 +18,6 @@ export type SequentialNavArgs = {
 
 const meta: Meta<SequentialNavArgs> = {
     title: 'Components/Sequential navigation',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

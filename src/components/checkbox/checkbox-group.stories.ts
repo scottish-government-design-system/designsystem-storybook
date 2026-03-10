@@ -6,20 +6,23 @@ import ComponentTemplate from './checkbox-group.njk';
 
 export type CheckboxGroupArgs = {
     hasExclusive?: boolean
+    hasOther?: boolean
     isSmall?: boolean
     name: string
 };
 
 const meta: Meta<CheckboxGroupArgs> = {
     title: 'Components/Checkbox/Checkbox group',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },
-    args: {
-        name: 'default'
-    },
     argTypes: {
+        hasExclusive: SGDSArgTypes.boolean({
+            if: { arg: 'hasOther', truthy: false }
+        }),
+        hasOther: SGDSArgTypes.boolean({
+            if: { arg: 'hasExclusive', truthy: false }
+        }),
         isSmall: SGDSArgTypes.boolean()
     },
     play: () => {
@@ -30,19 +33,32 @@ const meta: Meta<CheckboxGroupArgs> = {
 export default meta;
 type Story = StoryObj<CheckboxGroupArgs>;
 
-export const Default: Story = {};
+export const Default: Story = {
+    args: {
+        name: 'default'
+    },
+    // tags: ['!autodocs']
+};
 
 export const SmallCheckboxes: Story = {
     name: 'Small checkboxes',
     args: {
-        name: 'small',
-        isSmall: true
+        isSmall: true,
+        name: 'small'
     }
 };
 
 export const WithExclusiveCheckbox: Story = {
     name: 'With exclusive checkbox',
     args: {
-        hasExclusive: true
+        hasExclusive: true,
+        name: 'has-exclusive'
+    }
+};
+
+export const WithOtherCheckbox: Story = {
+    name: 'With other checkbox',
+    args: {
+        hasOther: true,
     }
 };

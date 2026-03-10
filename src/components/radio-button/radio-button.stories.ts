@@ -16,7 +16,6 @@ export type RadioButtonArgs = {
 
 const meta: Meta<RadioButtonArgs> = {
     title: 'Components/Radio/Radio button',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

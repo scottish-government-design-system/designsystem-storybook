@@ -6,20 +6,20 @@
     {%- if params.isMultipleFields %}
     <div class="ds_datepicker__input-wrapper">
         <div>
-            <label class="ds_label" for="day">Day</label>
+            <label class="ds_label" for="{{params.id}}-day">Day</label>
             <input id="{{params.id}}-day" name="{{params.name | default(params.id)}}-day" class="ds_input ds_input--fixed-2  js-datepicker-date">
         </div>
         <div>
-            <label class="ds_label" for="month">Month</label>
+            <label class="ds_label" for="{{params.id}}-month">Month</label>
             <input id="{{params.id}}-month" name="{{params.name | default(params.id)}}-month" class="ds_input ds_input--fixed-2  js-datepicker-month">
         </div>
         <div>
-            <label class="ds_label" for="year">Year</label>
+            <label class="ds_label" for="{{params.id}}-year">Year</label>
             <input id="{{params.id}}-year" name="{{params.name | default(params.id)}}-year" class="ds_input ds_input--fixed-4  js-datepicker-year">
         </div>
     </div>
     {%- else %}
-    <label class="ds_label" for="start-date">{{ params.label }}</label>
+    <label class="ds_label" for="{{params.id}}">{{ params.label }}</label>
     <div class="ds_input__wrapper">
         <input {%- if params.dateFormat %} data-dateformat="{{params.dateFormat}}"{%- endif %} id="{{params.id}}" name="{{params.name | default(params.id)}}" {{ moduleDateRange | safe}} placeholder="{{ params.placeholder }}" type="text" class="ds_input ds_input--fixed-10">
     </div>

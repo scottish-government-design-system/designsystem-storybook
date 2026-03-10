@@ -13,7 +13,6 @@ export type StepNavigationArgs = {
 
 const meta: Meta<StepNavigationArgs> = {
     title: 'Components/Step navigation',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },
@@ -100,7 +99,6 @@ const meta: Meta<StepNavigationArgs> = {
         steps: SGDSArgTypes.hidden(),
         title: {type: 'string'}
     },
-
     play: () => {
         window.DS.initAll();
     }
@@ -109,7 +107,13 @@ const meta: Meta<StepNavigationArgs> = {
 export default meta;
 type Story = StoryObj<StepNavigationArgs>;
 
-export const Default: Story = {};
+export const Default: Story = {
+    parameters: {
+        docs: {
+            story: { autoplay: true },
+        }
+    }
+};
 
 export const Small: Story = {
     args: {

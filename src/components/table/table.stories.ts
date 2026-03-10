@@ -23,7 +23,6 @@ export type TableArgs = {
 
 const meta: Meta<TableArgs> = {
     title: 'Components/Table',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

@@ -9,7 +9,6 @@ export type GuidePageArgs = {
 
 const meta: Meta<GuidePageArgs> = {
     title: 'Patterns/Guide page',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

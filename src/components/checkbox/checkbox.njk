@@ -10,6 +10,14 @@
     >
     <label class="ds_checkbox__label" for="{{params.id}}">{{params.label}}</label>
     {%- if params.hintText %}<p class="ds_hint-text">{{params.hintText}}</p>{%- endif %}
+    {%- if params.isOther %}
+    <div class="ds_question__sub">
+        <div class="ds_question">
+            <label class="ds_label" for="{{params.id}}-other-text">{{params.labelOther}} <span class="visually-hidden">(if "other" selected)</span></label>
+            <input type="text" id="{{params.id}}-other-text" class="ds_input">
+        </div>
+    </div>
+    {%- endif %}
 </div>
 {%- endmacro -%}
 
@@ -18,7 +26,9 @@
     hintText: hintText,
     id: id,
     isExclusive: isExclusive,
+    isOther: isOther,
     isSmall: isSmall,
     label: label,
+    labelOther: labelOther,
     name: name
 })}}

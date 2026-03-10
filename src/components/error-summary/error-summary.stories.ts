@@ -16,7 +16,6 @@ export type ErrorSummaryArgs = {
 
 const meta: Meta<ErrorSummaryArgs> = {
     title: 'Components/Error summary',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

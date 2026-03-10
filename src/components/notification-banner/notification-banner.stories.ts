@@ -16,7 +16,6 @@ type NotificationBannerAergs = {
 
 const meta: Meta<NotificationBannerAergs> = {
     title: 'Components/Notification banner',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },
@@ -42,6 +41,9 @@ const meta: Meta<NotificationBannerAergs> = {
             description: 'A hidden title for the notification banner, useful for screen reader users',
             type: 'string'
         }
+    },
+    parameters: {
+        layout: 'fullscreen'
     },
     play: () => {
         window.DS.initAll();

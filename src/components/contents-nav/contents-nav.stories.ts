@@ -12,7 +12,6 @@ export type ContentsNavArgs = {
 
 const meta: Meta<ContentsNavArgs> = {
     title: 'Components/Contents nav',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

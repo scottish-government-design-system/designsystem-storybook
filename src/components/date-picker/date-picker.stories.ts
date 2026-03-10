@@ -17,12 +17,10 @@ export type DatePickerArgs = {
 
 const meta: Meta<DatePickerArgs> = {
     title: 'Components/Date picker',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },
     args: {
-        id: 'start-date',
         isMultipleFields: false,
         label: 'Start date',
         placeholder: 'dd/mm/yyyy'
@@ -42,6 +40,9 @@ export default meta;
 type Story = StoryObj<DatePickerArgs>;
 
 export const Default: Story = {
+    args: {
+        id: 'default',
+    },
     parameters: {
         docs: {
             story: { autoplay: true },
@@ -52,6 +53,7 @@ export const Default: Story = {
 export const DateRange: Story = {
     name: 'Date range',
     args: {
+        id: 'picker-range',
         maxDate: "19/09/2020",
         minDate: "09/08/2020"
     }
@@ -60,6 +62,7 @@ export const DateRange: Story = {
 export const MDY: Story = {
     name: 'MDY format',
     args: {
+        id: 'picker-mdy',
         dateFormat: "MDY",
         placeholder: "mm/dd/yyyy"
     }
@@ -68,6 +71,7 @@ export const MDY: Story = {
 export const YMD: Story = {
     name: 'YMD format',
     args: {
+        id: 'picker-ymd',
         dateFormat: "YMD",
         placeholder: "yyyy/mm/dd"
     }
@@ -76,6 +80,7 @@ export const YMD: Story = {
 export const SeparateFields: Story = {
     name: 'Separate fields',
     args: {
+        id: 'picker-separate',
         isMultipleFields: true
     }
 };

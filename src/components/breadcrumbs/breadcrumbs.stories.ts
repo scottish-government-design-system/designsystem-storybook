@@ -17,7 +17,6 @@ export type BreadcrumbsArgs = {
 
 const meta: Meta<BreadcrumbsArgs> = {
     title: 'Components/Breadcrumbs',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

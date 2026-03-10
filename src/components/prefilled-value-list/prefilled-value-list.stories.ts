@@ -16,7 +16,6 @@ export type PrefilledValueListArgs = {
 
 const meta: Meta<PrefilledValueListArgs> = {
     title: 'Components/Prefilled value list',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },

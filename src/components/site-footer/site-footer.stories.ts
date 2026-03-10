@@ -18,7 +18,6 @@ export type SiteFooterArgs = {
 
 const meta: Meta<SiteFooterArgs> = {
     title: 'Components/Site footer',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },
@@ -46,6 +45,9 @@ const meta: Meta<SiteFooterArgs> = {
         hasLinks: SGDSArgTypes.boolean(),
         hasOrg: SGDSArgTypes.boolean(),
         links: SGDSArgTypes.hidden(),
+    },
+    parameters: {
+        layout: 'fullscreen'
     }
 };
 

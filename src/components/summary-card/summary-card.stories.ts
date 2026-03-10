@@ -13,7 +13,6 @@ export type SummaryCardArgs = {
 
 const meta: Meta<SummaryCardArgs> = {
     title: 'Components/Summary card',
-    tags: ['autodocs'],
     render: (args) => {
         return(ComponentTemplate(args))
     },
