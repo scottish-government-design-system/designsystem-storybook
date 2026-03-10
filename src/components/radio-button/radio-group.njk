@@ -51,12 +51,23 @@
         name: params.name,
         isSmall: params.isSmall
     })}}
+    {%- if params.hasOther %}
+    {{radioButton({
+        id: 'other-' + params.name,
+        label: 'Other',
+        isOther: true,
+        isSmall: params.isSmall,
+        labelOther: 'Other type',
+        name: params.name
+    })}}
+    {%- endif %}
     {%- endif %}
 <div>
 {%- endmacro -%}
 
 {{radioGroup({
-    name: name,
+    hasOther: hasOther,
     isInline: isInline,
-    isSmall: isSmall
+    isSmall: isSmall,
+    name: name
 })}}
