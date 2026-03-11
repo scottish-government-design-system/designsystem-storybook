@@ -5,7 +5,10 @@
 {% endif -%}
     <div class="ds_wrapper">
         <div class="ds_card-grid-container">
-            <div class="ds_card-grid {%- if isMediumTwoColumns %}  ds_card-grid--medium-2{% endif -%}">
+            <div class="ds_card-grid 
+            {%- if hasMinHeight %}  ds_card-grid--min-height{% endif -%}
+            {%- if isMediumTwoColumns %}  ds_card-grid--medium-2{% endif -%}
+            {%- if isNarrow %}  ds_card-grid--narrow{% endif -%}">
                 {%- for item in items %}
                 {{card({
                     content: item.content,

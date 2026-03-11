@@ -8,7 +8,9 @@ import { CardArgs } from '../../components/card/card.stories';
 export type CardGridArgs = {
    items: CardArgs[]
    hasBackground?: boolean
+   hasMinHeight?: boolean
    isMediumTwoColumns?: boolean
+   isNarrow?: boolean
 };
 
 const meta: Meta<CardGridArgs> = {
@@ -53,7 +55,9 @@ const meta: Meta<CardGridArgs> = {
         ]
     },
     argTypes: {
-        isMediumTwoColumns: SGDSArgTypes.boolean()
+        hasMinHeight: SGDSArgTypes.boolean(),
+        isMediumTwoColumns: SGDSArgTypes.boolean(),
+        isNarrow: SGDSArgTypes.boolean()
     },
     parameters: {
         layout: 'fullscreen'
@@ -79,5 +83,13 @@ export const MediumTwoCols: Story = {
     name: 'Two column grid at medium size',
     args: {
         isMediumTwoColumns: true
+    }
+};
+
+export const NavigationPattern: Story = {
+    name: 'Card navigation pattern',
+    args: {
+        isNarrow: true,
+        hasMinHeight: true
     }
 };
