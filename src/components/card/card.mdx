@@ -1,0 +1,15 @@
+import { Canvas, Controls, Meta, Title, Stories } from '@storybook/addon-docs/blocks';
+
+import * as ComponentStories from './card.stories';
+
+<Meta of={ComponentStories} />
+
+<Title></Title>
+
+Cards can be standalone or placed within a [card grid](?path=/docs/patterns-card-grid--docs).
+
+<Canvas of={ComponentStories.Default} />
+
+<Controls of={ComponentStories.Default} />
+
+<Stories/>
