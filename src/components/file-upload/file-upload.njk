@@ -1,0 +1,30 @@
+{%- macro fileUpload(params) -%}
+<div class="ds_question  {% if params.hasError %}ds_question--error{% endif %}">
+    <div class="ds_file-upload" data-module="ds-file-upload">
+        <label class="ds_label" for="{{params.id}}">{{params.label}}</label>
+        {%- if params.hintText %}<p class="ds_hint-text">{{params.hintText}}</p>{%- endif %}
+        {%- if params.hasError %}<p class="ds_question__error-message">{{params.errorMessage}}</p>{%- endif %}
+        <input
+            {% if params.accept %}accept="{{params.accept}}"{% endif %}
+            {% if params.hasError %}aria-invalid="true"{% endif %}
+            class="ds_file-upload__input {% if params.hasError %}ds_file-upload__input--error{% endif %}"
+            id="{{params.id}}"
+            {% if params.isMultiple %}multiple{% endif %}
+            {% if params.name -%}name="{{params.name}}"{%- else -%}name="{{params.id}}"{%- endif -%}
+            type="file"
+            />
+    </div>
+</div>
+
+{%- endmacro -%}
+
+{{fileUpload({
+    accept: accept,
+    errorMessage: errorMessage,
+    hasError: hasError,
+    hintText: hintText,
+    id: id,
+    isMultiple: isMultiple,
+    label: label,
+    name: name
+})}}
