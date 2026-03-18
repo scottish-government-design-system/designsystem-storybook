@@ -8,7 +8,7 @@ export type LeaderArgs = {
 };
 
 const meta: Meta<LeaderArgs> = {
-    title: 'Base/Core/Leader',
+    title: 'Components/Leader',
     render: (args) => {
         return(ComponentTemplate(args))
     },
