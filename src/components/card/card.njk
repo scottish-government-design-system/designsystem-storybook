@@ -4,7 +4,7 @@
 {%- if params.isAdaptive %}
 <div class="ds_card-container">
 {% endif -%}
-<{{ params.tagName | default('div') }} class="ds_card{%- if params.isNav %}  ds_card--hover{% endif -%}{%- if params.isGrey %}  ds_card--background-secondary{% endif -%}{%- if params.isHorizontal %}  ds_card--horizontal{% endif -%}{%- if params.isHorizontalSmall %}  ds_card--horizontal-small{% endif -%}">
+<{{ params.tagName | default('div') }} class="ds_card{%- if params.isNav %}  ds_card--navigation{% endif -%}{%- if params.isGrey %}  ds_card--background-secondary{% endif -%}{%- if params.isHorizontal %}  ds_card--horizontal{% endif -%}{%- if params.isHorizontalSmall %}  ds_card--horizontal-small{% endif -%}">
     {%- if params.image and params.image != 'none' %}
     <div class="ds_card__media {%- if params.imageCover %}  ds_card__media--cover{%- endif -%}{%- if params.imageWidth and params.imageWidth != 'default' %}  {{ params.imageWidth }}{%- endif -%}">
         {%- if params.imageAspect and params.imageAspect != 'none' %}
