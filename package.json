@@ -13,10 +13,8 @@
     "url": "https://github.com/scottish-government-design-system/design-system"
   },
   "license": "MIT",
-  "dependencies": {
-    "@scottish-government/design-system": "^3.3.2"
-  },
   "devDependencies": {
+    "@scottish-government/design-system": "^4.0.0",
     "@storybook/addon-a11y": "^10.1.11",
     "@storybook/addon-docs": "^10.1.11",
     "@storybook/addon-vitest": "^10.1.11",

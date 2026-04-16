@@ -2,7 +2,7 @@
 
 {%- macro buttonGroup(params) -%}
 {%- if params.groupItems %}
-<div class="ds_button-group  {%- if params.mobileLayout and params.mobileLayout != 'stacked' %}  ds_button-group--{{ params.mobileLayout }}{% endif -%}"">
+<div class="ds_button-group  {%- if params.mobileLayout and params.mobileLayout != 'stacked' %}  ds_button-group--{{ params.mobileLayout }}{% endif -%}">
     {%- for item in params.groupItems %}
     {%- if item.linkText %}
         <a href="{{ item.href }}">{{ item.linkText }}</a>
