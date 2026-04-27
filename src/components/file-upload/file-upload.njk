@@ -1,21 +1,24 @@
 {%- macro fileUpload(params) -%}
 <div class="ds_question {%- if params.hasError %}  ds_question--error{% endif %}">
-    <div class="ds_file-upload" data-module="ds-file-upload">
+    <div class="ds_file-upload  {% if params.classModifier %}{{params.classModifier}}{% endif %}" data-module="ds-file-upload">
         <label class="ds_label" for="{{params.id}}">{{params.label}}</label>
         {%- if params.hintText %}
-        <p class="ds_hint-text">{{params.hintText}}</p>
+        <p class="ds_hint-text" id="hint-text-{{params.id}}">{{params.hintText}}</p>
         {%- endif %}
         {%- if params.hasError %}
-        <p class="ds_question__error-message">{{params.errorMessage}}</p>
+        <p class="ds_question__error-message" id="error-message-{{params.id}}">{{params.errorMessage}}</p>
         {%- endif %}
         <input
         {%- if params.accept %}
             accept="{{params.accept}}"
         {%- endif %}
+        {%- if params.hintText or params.hasError %}
+            aria-describedby="{% if params.hintText %}hint-text-{{params.id}}{% endif %} {% if params.hasError %}error-message-{{params.id}}{% endif %}"
+        {%- endif %}
         {%- if params.hasError %}
             aria-invalid="true"
         {%- endif %}
-            class="ds_file-upload__input {%- if params.hasError %}  ds_file-upload__input--error{% endif %}"
+            class="ds_file-upload__input{% if params.hasError %}  ds_file-upload__input--error{% endif %}"
             id="{{params.id}}"
         {%- if params.isMultiple %}
             multiple
@@ -26,7 +29,7 @@
             name="{{params.id}}"
         {%- endif %}
             type="file"
-            />
+        />
     </div>
 </div>
 
@@ -34,6 +37,7 @@
 
 {{fileUpload({
     accept: accept,
+    classModifier: classModifier,
     errorMessage: errorMessage,
     hasError: hasError,
     hintText: hintText,
