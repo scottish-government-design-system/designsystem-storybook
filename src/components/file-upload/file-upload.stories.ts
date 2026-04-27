@@ -28,8 +28,7 @@ const meta: Meta<FileUploadArgs> = {
         name: { type: 'string' }
     },
     play: () => {
-        const items = Array.from(document.querySelectorAll('.ds_file-upload'));
-        console.log("run it");
+        const items = Array.from(document.querySelectorAll('.ds_file-upload:not(.no-javascript)'));
         items.forEach((item: any) => {
             if (!item.classList.contains('js-initialised')) {
                 const fileUpload = new window.DS.components.FileUpload(item);
@@ -90,11 +89,10 @@ export const KitchenSink: Story = {
 export const NoJavaScript: Story = {
     name: 'No JavaScript',
     args: {
+        classModifier: 'no-javascript',
         hintText: 'The files must be no larger than 10MB each',
         id: 'file-upload-no-javascript',
         isMultiple: true,
         label: 'Select files'
-    },
-    play: () => {}
+    }
 }
-
