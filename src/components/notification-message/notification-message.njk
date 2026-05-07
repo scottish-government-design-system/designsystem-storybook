@@ -1,7 +1,19 @@
 {%- macro notificationMessage(params) -%}
-<div class="ds_notification-message{%- if params.modifiers %}  {{ params.modifiers }}{%- endif -%}" aria-live="polite">
+<div class="ds_notification-message{%- if params.state %}  ds_notification-message--{{ params.state }}{%- endif -%}{%- if params.modifiers %}  {{ params.modifiers }}{%- endif -%}" aria-live="polite" data-module="ds-notification-message">
 	<svg class="ds_notification-message__icon  ds_icon  ds_icon--24" aria-hidden="true" role="img">
+		{%- if params.state %}
+			{%- if params.state == 'error' %}
+			<use href="/images/icons.stack.svg#error"></use>
+			{%- elseif params.state == 'warning' %}
+			<use href="/images/icons.stack.svg#warning"></use>
+			{%- elseif params.state == 'info' %}
+			<use href="/images/icons.stack.svg#info"></use>
+			{%- else %}
+			<use href="/images/icons.stack.svg#check_circle"></use>
+			{%- endif -%}
+		{%- else -%}
 		<use href="/images/icons.stack.svg#check_circle"></use>
+		{%- endif -%}
 	</svg>
 
 	{%- if params.heading -%}
@@ -14,6 +26,15 @@
 		{{ params.content | safe }}
 	</div>
 	{%- endif -%}
+
+	{%- if params.isDismissable %}
+	<button class="ds_notification-message__close  js-close-notification-message" type="button">
+		<span class="visually-hidden">Close this notification</span>
+		<svg class="ds_icon  ds_icon--fill" aria-hidden="true" role="img">
+			<use href="/images/icons.stack.svg#close"></use>
+		</svg>
+	</button>
+	{%- endif %}
 </div>
 
 {%- endmacro -%}
@@ -21,5 +42,7 @@
 {{notificationMessage({
     content: content,
     heading: heading,
-    headingLevel: headingLevel
+    headingLevel: headingLevel,
+	isDismissable: isDismissable,
+	state: state
 })}}
