@@ -200,6 +200,14 @@ const SGDSArgTypes = {
             type: typeof params.options[0]
         } as InputType;
     },
+    state: (options?: ArgType) => {
+        return Object.assign({
+            description: 'The type of state to show',
+            options: ['', 'error', 'info', 'success', 'warning'],
+            control: { type: 'select' },
+            type: 'string'
+        }, options) as InputType;
+    },
     tagColour: (options?: ArgType) => {
         return Object.assign({
             control: { type: 'select' },
