@@ -1,11 +1,21 @@
 {%- macro warningText(params) -%}
 <div class="ds_warning-text">
+{%- if hasLegacyIcon %}
     <strong class="ds_warning-text__icon" aria-hidden="true"></strong>
+{%- else %}
+    <span class="ds_warning-text__icon" aria-hidden="true">
+        <svg class="ds_icon  ds_icon--fill" aria-hidden="true" role="img">
+            <use href="/images/icons.stack.svg#warning"></use>
+        </svg>
+    </span>
+{%- endif %}
     <strong class="visually-hidden">Warning</strong>
     <div class="ds_warning-text__text">{{params.content | safe}}</div>
 </div>
+
 {%- endmacro -%}
 
 {{warningText({
-    content: content
+    content: content,
+    hasLegacyIcon: hasLegacyIcon
 })}}
