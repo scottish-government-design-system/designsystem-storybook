@@ -6,9 +6,9 @@
             <h2 class="visually-hidden">{{ params.title }}</h2>
             {%- endif %}
             {%- if params.hasIcon %}
-            <span class="ds_notification__icon {%- if params.hasInverseIcon %} ds_notification__icon--inverse{% endif %}{%- if params.hasColourIcon %} ds_notification__icon--colour{% endif %}" aria-hidden="true">
+            <span class="ds_notification__icon" aria-hidden="true">
                 <svg class="ds_icon  ds_icon--fill" aria-hidden="true" role="img">
-                    <use href="/images/icons.stack.svg#priority_high"></use>
+                    <use href="/images/icons.stack.svg#warning"></use>
                 </svg>
             </span>
             {%- endif %}
@@ -32,9 +32,7 @@
 
 {{notificationBanner({
     content: content,
-    hasColourIcon: hasColourIcon,
     hasIcon: hasIcon,
-    hasInverseIcon: hasInverseIcon,
     id: id,
     isDismissable: isDismissable,
     title: title

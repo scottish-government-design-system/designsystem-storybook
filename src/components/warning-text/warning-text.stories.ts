@@ -4,7 +4,8 @@ import type { Meta, StoryObj } from '@storybook/html';
 import ComponentTemplate from './warning-text.njk';
 
 export type WarningTextArgs = {
-    content: string
+    content: string,
+    hasLegacyIcon?: boolean
 };
 
 const meta: Meta<WarningTextArgs> = {
@@ -13,7 +14,8 @@ const meta: Meta<WarningTextArgs> = {
         return(ComponentTemplate(args))
     },
     args: {
-        content: 'Call 999 if you or someone else is in immediate danger, or if the crime is in progress.'
+        content: 'Call 999 if you or someone else is in immediate danger, or if the crime is in progress.',
+        hasLegacyIcon: false
     }
 };
 
@@ -21,3 +23,9 @@ export default meta;
 type Story = StoryObj<WarningTextArgs>;
 
 export const Default: Story = {};
+
+export const WithLegacyIcon: Story = {
+    args: {
+        hasLegacyIcon: true
+    }
+};

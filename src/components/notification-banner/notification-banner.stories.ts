@@ -8,7 +8,6 @@ type NotificationBannerAergs = {
     content?: string
     hasColourIcon?: boolean
     hasIcon?: boolean
-    hasInverseIcon?: boolean
     id?: string
     isDismissable?: boolean
     title: string
@@ -24,14 +23,8 @@ const meta: Meta<NotificationBannerAergs> = {
         title: 'Information'
     },
     argTypes: {
-        hasColourIcon: SGDSArgTypes.boolean({
-            description: 'Makes the icon display in the alternative colour scheme'
-        }),
         hasIcon: SGDSArgTypes.boolean({
             description: 'Shows the \'high priority\' icon on the notification banner'
-        }),
-        hasInverseIcon: SGDSArgTypes.boolean({
-            description: 'Makes the icon be inverted against a circle background'
         }),
         id: SGDSArgTypes.id(),
         isDismissable: SGDSArgTypes.boolean({
@@ -70,8 +63,6 @@ export const Dismissable: Story = {
 export const WithIcon: Story = {
     name: 'With icon',
     args: {
-        hasColourIcon: true,
-        hasInverseIcon: true,
         hasIcon: true
     }
 };
