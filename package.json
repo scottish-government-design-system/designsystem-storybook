@@ -14,7 +14,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@scottish-government/design-system": "^4.0.0",
+    "@scottish-government/design-system": "^4.1.0",
     "@storybook/addon-a11y": "^10.1.11",
     "@storybook/addon-docs": "^10.1.11",
     "@storybook/addon-vitest": "^10.1.11",
