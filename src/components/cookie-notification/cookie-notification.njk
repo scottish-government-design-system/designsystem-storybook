@@ -1,6 +1,6 @@
 {%- macro cookieNotification(params) -%}
 {%- if params.isConfirmation %}
-<div id="cookie-confirm" class="ds_notification ds_reversed ds_notification--success js-confirm-cookie-content" data-module="ds-notification">
+<div id="cookie-confirm" class="ds_notification ds_reversed ds_notification--cookie-success js-confirm-cookie-content" data-module="ds-notification">
     <div class="ds_wrapper">
         <div class="ds_notification__content ds_notification__content--has-close">
             <h2 class="visually-hidden">Cookies on this website</h2>
@@ -24,12 +24,17 @@
             <div class="ds_notification__text">
                 <p>We use <a href="/cookies/">cookies</a> to collect anonymous data to help us improve your site browsing experience.</p>
                 <p>Click 'Accept all cookies' to agree to all cookies that collect anonymous data. To only allow the cookies that make the site work, click 'Use essential cookies only.' Visit 'Set cookie preferences' to control specific cookies.</p>
+            {%- if params.isLegacy %}
             </div>
+            {%- endif %}
             <div class="ds_button-group">
-                <button class="ds_button ds_button--small js-accept-all-cookies" type="button">Accept all cookies</button>
+                <button class="ds_button ds_button--small ds_button--secondary js-accept-all-cookies" type="button">Accept all cookies</button>
                 <button class="ds_button ds_button--small ds_button--secondary js-accept-essential-cookies" type="button">Use essential cookies only</button>
                 <a href="/cookies/">Set cookie preferences</a>
             </div>
+            {%- if not params.isLegacy %}
+            </div>
+            {%- endif %}
         </div>
     </div>
 </div>
@@ -37,7 +42,8 @@
 {%- endmacro -%}
 
 {{cookieNotification({
-    isConfirmation: isConfirmation
+    isConfirmation: isConfirmation,
+    isLegacy: isLegacy
 })}}
 
 <style>
