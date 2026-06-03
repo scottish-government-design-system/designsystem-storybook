@@ -5,6 +5,7 @@ import ComponentTemplate from './cookie-notification.njk';
 
 export type CookieNotificationArgs = {
     isConfirmation?: boolean
+    isLegacy?: boolean
 };
 
 const meta: Meta<CookieNotificationArgs> = {
@@ -39,5 +40,11 @@ export const Confirmation: Story = {
     },
     args: {
         isConfirmation: true
+    }
+};
+
+export const LegacyMarkup: Story = {
+    args: {
+        isLegacy: true
     }
 };
