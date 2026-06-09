@@ -85,37 +85,37 @@ const meta: Meta<ContactDetailsArgs> = {
                             {
                                 content: "<a class=\"ds_contact-details__social-link\" href=\"#\">Facebook</a>",
                                 isSocialItem: true,
-                                icon: "/images/social/facebook.svg"
+                                icon: "images/social/facebook.svg"
                             },
                             {
                                 content: "<a class=\"ds_contact-details__social-link\" href=\"#\">YouTube</a>",
                                 isSocialItem: true,
-                                icon: "/images/social/youtube.svg"
+                                icon: "images/social/youtube.svg"
                             },
                             {
                                 content: "<a class=\"ds_contact-details__social-link\" href=\"#\">Twitter one</a>",
                                 isSocialItem: true,
-                                icon: "/images/social/twitter.svg"
+                                icon: "images/social/twitter.svg"
                             },
                             {
                                 content: "<a class=\"ds_contact-details__social-link\" href=\"#\">Twitter two</a>",
                                 isSocialItem: true,
-                                // icon: "/images/social/twitter.svg"
+                                // icon: "images/social/twitter.svg"
                             },
                             {
                                 content: "<a class=\"ds_contact-details__social-link\" href=\"#\">Instagram</a>",
                                 isSocialItem: true,
-                                icon: "/images/social/instagram.svg"
+                                icon: "images/social/instagram.svg"
                             },
                             {
                                 content: "<a class=\"ds_contact-details__social-link\" href=\"#\">LinkedIn</a>",
                                 isSocialItem: true,
-                                icon: "/images/social/linkedin.svg"
+                                icon: "images/social/linkedin.svg"
                             },
                             {
                                 content: "<a class=\"ds_contact-details__social-link\" href=\"#\">Flickr</a>",
                                 isSocialItem: true,
-                                icon: "/images/social/flickr.svg"
+                                icon: "images/social/flickr.svg"
                             }
                         ]
                     }

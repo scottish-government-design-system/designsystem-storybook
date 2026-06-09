@@ -17,11 +17,11 @@
             {%- if item.href %}
             <a {% if ariaLabel %}aria-label="{{ ariaLabel }}"{% endif %} class="ds_pagination__link {%- if item.isPrevious or item.isNext %}  ds_pagination__link--text  ds_pagination__link--icon{% endif %}  {%- if item.isCurrent %}  ds_current{%- endif -%}" href="{{ item.href }}" {%- if item.isCurrent %} aria-current="page"{%- endif -%} >
                 {%- if item.isPrevious %}
-                <svg class="ds_icon" aria-hidden="true" role="img"><use href="/images/icons.stack.svg#chevron_left"></use></svg>
+                <svg class="ds_icon" aria-hidden="true" role="img"><use href="images/icons.stack.svg#chevron_left"></use></svg>
                 {%- endif %}
                 <span class="ds_pagination__link-label">{{ item.content }}</span>
                 {%- if item.isNext %}
-                <svg class="ds_icon" aria-hidden="true" role="img"><use href="/images/icons.stack.svg#chevron_right"></use></svg>
+                <svg class="ds_icon" aria-hidden="true" role="img"><use href="images/icons.stack.svg#chevron_right"></use></svg>
                 {%- endif %}
             </a>
             {%- elseif item.isEllipsis %}

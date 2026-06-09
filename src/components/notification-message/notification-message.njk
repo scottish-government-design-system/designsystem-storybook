@@ -3,16 +3,16 @@
 	<svg class="ds_notification-message__icon  ds_icon  ds_icon--24" aria-hidden="true" role="img">
 		{%- if params.state %}
 			{%- if params.state == 'error' %}
-			<use href="/images/icons.stack.svg#error"></use>
+			<use href="images/icons.stack.svg#error"></use>
 			{%- elseif params.state == 'warning' %}
-			<use href="/images/icons.stack.svg#warning"></use>
+			<use href="images/icons.stack.svg#warning"></use>
 			{%- elseif params.state == 'info' %}
-			<use href="/images/icons.stack.svg#info"></use>
+			<use href="images/icons.stack.svg#info"></use>
 			{%- else %}
-			<use href="/images/icons.stack.svg#check_circle"></use>
+			<use href="images/icons.stack.svg#check_circle"></use>
 			{%- endif -%}
 		{%- else -%}
-		<use href="/images/icons.stack.svg#check_circle"></use>
+		<use href="images/icons.stack.svg#check_circle"></use>
 		{%- endif -%}
 	</svg>
 
@@ -31,7 +31,7 @@
 	<button class="ds_notification-message__close  js-close-notification-message" type="button">
 		<span class="visually-hidden">Close this notification</span>
 		<svg class="ds_icon  ds_icon--fill" aria-hidden="true" role="img">
-			<use href="/images/icons.stack.svg#close"></use>
+			<use href="images/icons.stack.svg#close"></use>
 		</svg>
 	</button>
 	{%- endif %}
