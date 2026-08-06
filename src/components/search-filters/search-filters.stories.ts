@@ -17,6 +17,9 @@ const meta: Meta<SearchFiltersArgs> = {
     },
     argTypes: {
 
+    },
+    play: () => {
+        window.DS.initAll();
     }
 };
 
@@ -25,4 +28,10 @@ type Story = StoryObj<SearchFiltersArgs>;
 
 export const Default: Story = {
 
+};
+
+export const DeprecatedMarkup: Story = {
+    args: {
+        oldMarkup: true
+    }
 };

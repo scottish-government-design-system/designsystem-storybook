@@ -48,3 +48,33 @@ export const WithFormContent: Story = {
         summary: 'Some form elements'
     }
 };
+
+export const DeprecatedNonNativeDetails: Story = {
+    render: (args) => (
+        `<div class="ds_details" data-module="ds-details">
+            <div class="ds_details__summary">
+                ${args.summary}
+            </div>
+
+            <div class="ds_details__text">
+                ${args.content}
+            </div>
+        </div>`
+    )
+};
+
+export const DeprecatedToggleDetails: Story = {
+    render: (args) => (
+        `<div class="ds_details" data-module="ds-details">
+            <input id="filters-toggle" type="checkbox" class="ds_details__toggle  visually-hidden">
+
+            <label for="filters-toggle" class="ds_details__summary">
+                ${args.summary}
+            </label>
+
+            <div class="ds_details__text">
+                ${args.content}
+            </div>
+        </div>`
+    )
+};
