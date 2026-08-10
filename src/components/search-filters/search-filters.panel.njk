@@ -1,14 +1,10 @@
 {%- macro searchFiltersPanel(params) -%}
-<div class="ds_accordion-item">
-    <input type="checkbox" class="visually-hidden  ds_accordion-item__control" id="panel-{{params.id}}" aria-labelledby="panel-{{params.id}}-heading" />
-    <div class="ds_accordion-item__header">
-        <h3 id="panel-{{params.id}}-heading" class="ds_accordion-item__title">
-            {{params.title}}
-            {%if params.activeFilterCount %}<div class="ds_search-filters__filter-count">({{params.activeFilterCount}} selected)</div>{% endif %}
-        </h3>
+<details class="ds_accordion-item">
+    <summary class="ds_accordion-item__header">
+        {{params.title}}
+        {%if params.activeFilterCount %}<span class="ds_search-filters__filter-count">({{params.activeFilterCount}} selected)</span>{% endif %}
         <span aria-hidden="true" class="ds_accordion-item__indicator"></span>
-        <label class="ds_accordion-item__label" for="panel-{{params.id}}"><span class="visually-hidden">Show this section</span></label>
-    </div>
+    </summary>
     <div class="ds_accordion-item__body">
         {%- if params.hasTextFilters %}
         <fieldset id="filter-date-range" class="filters__fieldset">

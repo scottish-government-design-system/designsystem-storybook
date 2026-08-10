@@ -18,16 +18,12 @@
                 <h3 class="ds_search-filters__title  ds_h4">Filter by</h3>
 
                 <div class="ds_accordion  ds_accordion--small  ds_!_margin-top--0" data-module="ds-accordion">
-                    <div class="ds_accordion-item">
-                        <input type="checkbox" class="visually-hidden  ds_accordion-item__control" id="panel-1" aria-labelledby="panel-1-heading" />
-                        <div class="ds_accordion-item__header">
-                            <h3 id="panel-1-heading" class="ds_accordion-item__title">
-                                Content type
-                                <div class="ds_search-filters__filter-count">(1 selected)</div>
-                            </h3>
+                    <details class="ds_accordion-item">
+                        <summary class="ds_accordion-item__header">
+                            Content type
+                            <span class="ds_search-filters__filter-count">(1 selected)</span>
                             <span aria-hidden="true" class="ds_accordion-item__indicator"></span>
-                            <label class="ds_accordion-item__label" for="panel-1"><span class="visually-hidden">Show this section</span></label>
-                        </div>
+                        </summary>
                         <div class="ds_accordion-item__body">
                             <fieldset>
                                 <legend class="visually-hidden">Select which publication types you would like to see</legend>
@@ -137,17 +133,13 @@
                                 </div>
                             </fieldset>
                         </div>
-                    </div>
+                    </details>
 
-                    <div class="ds_accordion-item">
-                        <input type="checkbox" class="visually-hidden  ds_accordion-item__control" id="panel-2" aria-labelledby="panel-2-heading" />
-                        <div class="ds_accordion-item__header">
-                            <h3 id="panel-2-heading" class="ds_accordion-item__title">
-                                Topic
-                            </h3>
+                    <details class="ds_accordion-item">
+                        <summary class="ds_accordion-item__header">
+                            Topic
                             <span aria-hidden="true" class="ds_accordion-item__indicator"></span>
-                            <label class="ds_accordion-item__label" for="panel-2"><span class="visually-hidden">Show this section</span></label>
-                        </div>
+                        </summary>
                         <div class="ds_accordion-item__body">
                             <fieldset>
                                 <legend class="visually-hidden">Select which topics you would like to see</legend>
@@ -302,17 +294,13 @@
                                 </div>
                             </fieldset>
                         </div>
-                    </div>
+                    </details>
 
-                    <div class="ds_accordion-item">
-                        <input type="checkbox" class="visually-hidden  ds_accordion-item__control" id="panel-3" aria-labelledby="panel-3-heading" />
-                        <div class="ds_accordion-item__header">
-                            <h3 id="panel-3-heading" class="ds_accordion-item__title">
-                                Updated
-                            </h3>
+                    <details class="ds_accordion-item">
+                        <summary class="ds_accordion-item__header">
+                            Updated
                             <span aria-hidden="true" class="ds_accordion-item__indicator"></span>
-                            <label class="ds_accordion-item__label" for="panel-3"><span class="visually-hidden">Show this section</span></label>
-                        </div>
+                        </summary>
                         <div class="ds_accordion-item__body">
                             <fieldset id="filter-date-range" class="filters__fieldset">
                                 <legend class="visually-hidden">Filter by date</legend>
@@ -338,7 +326,7 @@
                                 </div>
                             </fieldset>
                         </div>
-                    </div>
+                    </details>
                 </div>
 
                 <button class="ds_button  ds_button--primary  ds_button--small  ds_button--max  ds_no-margin" type="submit">

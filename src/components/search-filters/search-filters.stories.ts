@@ -17,6 +17,9 @@ const meta: Meta<SearchFiltersArgs> = {
     },
     argTypes: {
 
+    },
+    play: () => {
+        window.DS.initAll();
     }
 };
 
