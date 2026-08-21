@@ -10,7 +10,7 @@
         {%- if params.imageAspect and params.imageAspect != 'none' %}
         <div class="ds_aspect-box {%- if params.imageAspect != 'default' %} {{ params.imageAspect }}{%- endif -%}">
         {% endif -%}
-            <img alt="" aria-hidden="true" {%- if params.imageAspect and params.imageAspect != 'none' %} class="ds_aspect-box__inner"{%- endif -%} src="/images/placeholders/{{ params.image }}.jpg"/>
+            <img alt="" aria-hidden="true" {%- if params.imageAspect and params.imageAspect != 'none' %} class="ds_aspect-box__inner"{%- endif -%} src="images/placeholders/{{ params.image }}.jpg"/>
         {%- if params.imageAspect and params.imageAspect != 'none' %}
         </div>
         {% endif -%}
