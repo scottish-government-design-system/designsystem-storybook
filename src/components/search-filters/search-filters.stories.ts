@@ -27,7 +27,11 @@ export default meta;
 type Story = StoryObj<SearchFiltersArgs>;
 
 export const Default: Story = {
-
+    parameters: {
+        docs: {
+            story: { autoplay: true },
+        }
+    }
 };
 
 export const DeprecatedMarkup: Story = {
