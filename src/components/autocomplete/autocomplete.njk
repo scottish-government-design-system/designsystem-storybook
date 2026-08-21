@@ -9,7 +9,7 @@
                 <button type="submit" class="ds_button">
                     <span class="visually-hidden">Search</span>
                     <svg class="ds_icon" aria-hidden="true" role="img">
-                        <use href="/images/icons.stack.svg#search"></use>
+                        <use href="images/icons.stack.svg#search"></use>
                     </svg>
                 </button>
 
@@ -25,7 +25,7 @@
             var searchElement = document.getElementById('site-search');
             var autocomplete = new window.DS.components.Autocomplete(
                 document.getElementById('site-search-autocomplete'),
-                '/data/autocomplete-dummy-data.json#', {
+                'data/autocomplete-dummy-data.json#', {
                     suggestionMappingFunction: function(suggestionsObj) {
                         var responseObj = JSON.parse(suggestionsObj.response).map(suggestionsObj => ({
                             key: '',

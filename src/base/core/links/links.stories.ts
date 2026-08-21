@@ -44,6 +44,6 @@ export const HeadingLinks: Story = {
 export const ImageLink: Story = {
     name: 'Image links',
     args: {
-        content: `<a href="#"><img src="/images/placeholders/thistles.jpg"></a>`
+        content: `<a href="#"><img src="images/placeholders/thistles.jpg"></a>`
     }
 };
