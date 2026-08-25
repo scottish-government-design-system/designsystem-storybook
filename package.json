@@ -14,18 +14,19 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@scottish-government/design-system": "^4.1.0",
-    "@storybook/addon-a11y": "^10.1.11",
-    "@storybook/addon-docs": "^10.1.11",
-    "@storybook/addon-vitest": "^10.1.11",
-    "@storybook/builder-webpack5": "^10.1.11",
-    "@storybook/html-vite": "^10.1.11",
-    "@vitest/browser-playwright": "^4.0.16",
-    "@vitest/coverage-v8": "^4.0.16",
-    "playwright": "^1.57.0",
+    "@scottish-government/design-system": "^4.2.0",
+    "@storybook/addon-a11y": "^10.5.10",
+    "@storybook/addon-docs": "^10.5.10",
+    "@storybook/addon-vitest": "^10.5.10",
+    "@storybook/builder-webpack5": "^10.5.10",
+    "@storybook/html-vite": "^10.5.10",
+    "@vitest/browser": "^4.1.9",
+    "@vitest/browser-playwright": "^4.1.9",
+    "@vitest/coverage-v8": "^4.1.9",
+    "playwright": "^1.62.1",
     "simple-nunjucks-loader": "^3.2.0",
-    "storybook": "^10.1.11",
-    "ts-loader": "^9.5.4",
-    "vitest": "^4.0.16"
+    "storybook": "^10.5.10",
+    "ts-loader": "^9.6.2",
+    "vitest": "^4.1.11"
   }
 }
