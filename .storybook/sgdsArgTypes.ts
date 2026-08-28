@@ -215,6 +215,14 @@ const SGDSArgTypes = {
             options: ['', 'blue', 'green', 'grey', 'orange', 'pink', 'purple', 'red', 'teal', 'yellow'],
             type: 'string'
         }, options) as InputType;
+    },
+    backgroundColour: (options?: ArgType) => {
+        return Object.assign({
+            control: { type: 'select' },
+            description: 'The background colour to use',
+            options: ['', 'secondary', 'tertiary', 'theme'],
+            type: 'string'
+        }, options) as InputType;
     }
 }
 

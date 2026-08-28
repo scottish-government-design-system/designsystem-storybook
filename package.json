@@ -14,6 +14,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@scottish-government-design-system/page-blocks": "github:scottish-government-design-system/page-blocks",
     "@scottish-government/design-system": "^4.2.0",
     "@storybook/addon-a11y": "^10.5.10",
     "@storybook/addon-docs": "^10.5.10",

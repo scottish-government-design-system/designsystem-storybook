@@ -1,0 +1,47 @@
+{%- from 'src/components/category-list/category-list.njk' import categoryList -%}
+
+{%- macro browse(params) -%}
+<div class="ds_pb  ds_pb--browse
+{%- if params.background == "secondary" %} ds_pb--background-secondary
+{%- elseif params.background == "tertiary" %} ds_pb--background-tertiary
+{%- elseif params.background == "thene" %} ds_pb__theme--background-secondary
+{%- endif %}
+{%- if params.removeBottomPadding %} ds_!_padding-bottom--0{% endif %}">
+    <div class="ds_wrapper">    
+        <div class="ds_pb__inner">
+            {%- if params.contentLayout == "imagecard" %}
+            {{categoryList({
+                headingLevel: "h2",
+                isCards: true,
+                items: params.items
+            })}}
+            {%- elseif params.contentLayout == "card" %}
+            {{categoryList({
+                headingLevel: "h2",
+                isCards: true,
+                items: params.items
+            })}}
+            {%- elseif params.contentLayout == "grid" %}
+            {{categoryList({
+                headingLevel: "h2",
+                isGrid: true,
+                isOrdered: true,
+                items: params.items
+            })}}
+            {%- elseif params.contentLayout == "list" %}
+            {{categoryList({
+                headingLevel: "h2",
+                items: params.items
+            })}}
+            {%- endif %}
+        </div>
+    </div>
+</div>
+{%- endmacro -%}
+
+{{browse({
+    background: background,
+    removeBottomPadding: removeBottomPadding,
+    contentLayout: contentLayout,
+    items: items
+})}}
