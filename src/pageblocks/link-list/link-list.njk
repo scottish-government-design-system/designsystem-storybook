@@ -1,0 +1,34 @@
+{%- from 'node_modules/@scottish-government-design-system/page-blocks/src/blocks/listed-links/macro.njk' import sgBlockLinkList -%}
+
+{%- from 'src/components/link-list/link-list.njk' import linkList -%}
+
+{%- macro linkListBlock(params) -%}
+
+{%- call sgBlockLinkList({
+        heading: "Latest " + params.title,
+        removeBottomPadding: params.removeBottomPadding,
+        viewAll: {
+            label: "See all " + params.title,
+            url: "#foo"
+        }
+    }) %}
+        {{linkList({
+                hasImage: hasImage,
+                hasMetadata: hasMetadata,
+                headingLevel: 'h3',
+                isBorderless: isBorderless,
+                isTwoColumns: isTwoColumns,
+                items: items,
+                hideNav: true
+            })}}   
+    {% endcall %}
+
+{%- endmacro -%}
+
+{{linkListBlock({
+    removeBottomPadding: removeBottomPadding,
+    title: title,
+    isBorderless: isBorderless,
+    isTwoColumns: isTwoColumns,
+    items: items
+})}}

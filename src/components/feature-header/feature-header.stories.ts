@@ -14,6 +14,7 @@ export type FeatureHeaderArgs = {
     isFullWidth?: boolean
     isTopAlign?: boolean
     isWideText?: boolean
+    isVideo?: boolean
 };
 
 const meta: Meta<FeatureHeaderArgs> = {
@@ -25,7 +26,8 @@ const meta: Meta<FeatureHeaderArgs> = {
         altText: "Alt text",
         content: "<p><a href=\"#\">The patterns</a> included here have been developed for use by government, public sector and third sector non-commercial organisations in Scotland.</p>",
         heading: "Digital standards heading",
-        image: 'svg'
+        image: 'svg',
+        isVideo: false
     },
     argTypes: {
         background: SGDSArgTypes.select({
@@ -37,7 +39,8 @@ const meta: Meta<FeatureHeaderArgs> = {
         }),
         isFullWidth: SGDSArgTypes.boolean(),
         isTopAlign: SGDSArgTypes.boolean(),
-        isWideText: SGDSArgTypes.boolean()
+        isWideText: SGDSArgTypes.boolean(),
+        isVideo: SGDSArgTypes.hidden()
     },
     parameters: {
         layout: 'fullscreen'

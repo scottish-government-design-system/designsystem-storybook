@@ -1,0 +1,19 @@
+{%- from 'node_modules/@scottish-government-design-system/page-blocks/src/blocks/card-text/macro.njk' import sgBlockTextWithCard -%}
+{%- from 'src/components/card/card.njk' import card -%}
+{%- macro textCard(params) -%}
+
+{{ sgBlockTextWithCard({
+    background: params.background,
+    removeBottomPadding: params.removeBottomPadding,
+    content: params.content,
+    card: card(params.cardContent)
+}) }}
+
+{%- endmacro -%}
+
+{{textCard({
+    background: background,
+    removeBottomPadding: removeBottomPadding,
+    content: content,
+    cardContent: cardContent
+})}}

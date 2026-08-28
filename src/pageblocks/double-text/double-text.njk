@@ -1,0 +1,19 @@
+{%- from 'node_modules/@scottish-government-design-system/page-blocks/src/blocks/double-text/macro.njk' import sgBlockDoubleText -%}
+
+{%- macro doubleText(params) -%}
+
+{{ sgBlockDoubleText({
+    background: params.background,
+    removeBottomPadding: params.removeBottomPadding,
+    content: params.content,
+    additionalContent: params.additionalContent
+}) }}
+
+{%- endmacro -%}
+
+{{doubleText({
+    background: background,
+    removeBottomPadding: removeBottomPadding,
+    content: content,
+    additionalContent: additionalContent
+})}}

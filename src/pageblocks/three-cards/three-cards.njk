@@ -1,0 +1,44 @@
+{%- from 'node_modules/@scottish-government-design-system/page-blocks/src/blocks/cards/macro.njk' import sgBlockThreeCards -%}
+{%- from 'src/components/card/card.njk' import card -%}
+
+{%- macro threeCard(params) -%}
+
+{%- call sgBlockThreeCards({
+    background: params.background,
+    removeBottomPadding: params.removeBottomPadding
+})  %}
+
+    {%- if params.background == "" %}
+        {%- for item in params.items %}
+            {{ card({
+                content: item.content,
+                hasMetadata: false,
+                heading: item.heading,
+                isNav: item.isNav,
+                image: item.image,
+                imageAspect: 'default',
+                isGrey: true
+            }) }}
+        {%- endfor %}       
+    {%- else %}
+        {%- for item in params.items %}
+            {{ card({
+                content: item.content,
+                hasMetadata: false,
+                heading: item.heading,
+                isNav: item.isNav,
+                image: item.image,
+                imageAspect: 'default'
+            }) }}
+        {%- endfor %}       
+    {%- endif %}
+
+{%- endcall %}
+
+{%- endmacro -%}
+
+{{threeCard({
+    background: background,
+    removeBottomPadding: removeBottomPadding,
+    items: items
+})}}
