@@ -1,0 +1,171 @@
+{%- from 'node_modules/@scottish-government-design-system/page-blocks/src/blocks/feature-header/macro.njk' import sgBlockFeatureHeader -%}
+{%- from 'src/components/button/button.njk' import button -%}
+
+{%- macro featureHeaderBlock(params) -%}
+
+
+{%- if image == "normal" %}
+{%- set imageObj = {
+        "src": "https://placehold.co/767x431",
+        "alt": params.altText,
+        "width": 767,
+        "height": 431,
+        "srcset": [
+            {
+            "src": "https://placehold.co/352x198",
+            "width": 352
+            },
+            {
+            "src": "https://placehold.co/448x252",
+            "width": 448
+            },
+            {
+            "src": "https://placehold.co/544x306",
+            "width": 544
+            },
+            {
+            "src": "https://placehold.co/704x396",
+            "width": 704
+            },
+            {
+            "src": "https://placehold.co/767x431",
+            "width": 767
+            },
+            {
+            "src": "https://placehold.co/896x504",
+            "width": 896
+            },
+            {
+            "src": "https://placehold.co/1088x612",
+            "width": 1088
+            },
+            {
+            "src": "https://placehold.co/1534x863",
+            "width": 1534
+            }
+        ],
+        "sizes": [
+            {
+            "media": "(min-width:1200px)",
+            "size": "544px"
+            },
+            {
+            "media": "(min-width:992px)",
+            "size": "448px"
+            },
+            {
+            "media": "(min-width:768px)",
+            "size": "352px"
+            }
+        ]
+    } %}
+{%- endif %}
+
+{%- if image == "square" %}
+{%- set imageObj = {
+        "src": "https://placehold.co/767x767",
+        "alt": params.altText,
+        "width": 767,
+        "height": 767,
+        "srcset": [
+            {
+            "src": "https://placehold.co/352x352",
+            "width": 352
+            },
+            {
+            "src": "https://placehold.co/448x448",
+            "width": 448
+            },
+            {
+            "src": "https://placehold.co/544x544",
+            "width": 544
+            },
+            {
+            "src": "https://placehold.co/704x704",
+            "width": 704
+            },
+            {
+            "src": "https://placehold.co/767x767",
+            "width": 767
+            },
+            {
+            "src": "https://placehold.co/896x896",
+            "width": 896
+            },
+            {
+            "src": "https://placehold.co/1088x1088",
+            "width": 1088
+            },
+            {
+            "src": "https://placehold.co/1534x1534",
+            "width": 1534
+            }
+        ],
+        "sizes": [
+            {
+            "media": "(min-width:1200px)",
+            "size": "544px"
+            },
+            {
+            "media": "(min-width:992px)",
+            "size": "448px"
+            },
+            {
+            "media": "(min-width:768px)",
+            "size": "352px"
+            }
+        ]
+    } %}
+{%- endif %}
+
+{%- if image == "svg" %}
+{%- set imageObj = {
+        "src": "images/placeholders/illustration.svg",
+        "alt": params.altText,
+        "width": 767,
+        "height": 767
+    } %}
+{%- endif %}
+
+{%- call sgBlockFeatureHeader({
+    background: params.background,
+    heading: params.heading,
+    image: imageObj,
+    isFullWidth: params.isFullWidth,
+    isTopAlign: params.isTopAlign,
+    isWideText: params.isWideText,
+    isImageCover: params.isImageCover,
+    hasNoImagePadding: params.hasNoImagePadding,
+    hasImageMobileAlignment: params.hasImageMobileAlignment,
+    videoUrl: params.videoUrl
+}) -%}
+
+{{ params.content | safe }}
+
+{%- if params.hasButton %}
+    {{button({
+        content: 'Call to action',
+        href: '#foo',
+        icon: 'chevron_right'
+    })}}
+{% endif -%}
+
+{%- endcall %}
+
+{%- endmacro -%}
+
+{{featureHeaderBlock({
+    altText: altText,
+    background: background,
+    content: content,
+    hasButton: hasButton,
+    heading: heading,
+    image: image,
+    isFullWidth: isFullWidth,
+    isTopAlign: isTopAlign,
+    isWideText: isWideText,
+    isImageCover: isImageCover,
+    hasNoImagePadding: hasNoImagePadding,
+    hasImageMobileAlignment: hasImageMobileAlignment,
+    videoUrl: videoUrl
+})}}
