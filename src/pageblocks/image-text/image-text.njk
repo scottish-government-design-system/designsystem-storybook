@@ -1,0 +1,72 @@
+{%- macro imageText(params) -%}
+<div class="ds_pb  ds_pb--image-text
+{%- if params.background == "secondary" %} ds_pb--background-secondary
+{%- elseif params.background == "tertiary" %} ds_pb--background-tertiary
+{%- elseif params.background == "theme" %} ds_pb__theme--background-secondary
+{%- endif %}
+{%- if params.isVerticalCentred %}  ds_pb--image-text--center{% endif %}
+{%- if params.removeBottomPadding %}  ds_!_padding-bottom--0{% endif %}">
+    <div class="ds_wrapper">    
+        <div class="ds_pb__inner">
+            {%- if params.contentPosition == "left" %}
+            <div class="ds_pb__text">
+                {{ params.content | safe }}
+            </div>
+            {% endif %}
+            {%- if params.image  == "normal" %}
+            <div class="ds_pb__poster">
+                <img class="ds_feature-header__image" alt="" src="https://placehold.co/767x431"
+                    width="767"
+                    height="431"
+                    srcset="
+                    https://placehold.co/352x198 352w,
+                    https://placehold.co/448x252 448w,
+                    https://placehold.co/544x306 544w,
+                    https://placehold.co/704x396 704w,
+                    https://placehold.co/767x431 767w,
+                    https://placehold.co/896x504 896w,
+                    https://placehold.co/1088x612 1088w,
+                    https://placehold.co/1534x863 1534w"
+                    sizes="(min-width:1200px) 544px, (min-width:992px) 448px, (min-width: 768px) 352px, 100vw"/>
+            </div>
+            {%- elseif params.image  == "square" %}
+            <div class="ds_pb__poster">
+                <img class="ds_feature-header__image" alt="" src="https://placehold.co/767x767"
+                    width="767"
+                    height="767"
+                    srcset="
+                    https://placehold.co/352x352 352w,
+                    https://placehold.co/448x448 448w,
+                    https://placehold.co/544x544 544w,
+                    https://placehold.co/704x704 704w,
+                    https://placehold.co/767x767 767w,
+                    https://placehold.co/896x896 896w,
+                    https://placehold.co/1088x1088 1088w,
+                    https://placehold.co/1534x1534 1534w"
+                    sizes="(min-width:1200px) 544px, (min-width:992px) 448px, (min-width: 768px) 352px, 100vw"/>
+            </div>
+            {%- elseif params.image  == "svg" %}
+            <div class="ds_pb__poster">
+                <img class="ds_feature-header__image" alt="" src="images/placeholders/illustration.svg"
+                    width="767"
+                    height="767"/>
+            </div>
+            {%- endif %}
+            {%- if params.contentPosition == "right" %}
+            <div class="ds_pb__text">
+                {{ params.content | safe }}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{%- endmacro -%}
+
+{{imageText({
+    background: background,
+    removeBottomPadding: removeBottomPadding,
+    isVerticalCentred: isVerticalCentred,
+    contentPosition: contentPosition,
+    content: content,
+    image: image
+})}}

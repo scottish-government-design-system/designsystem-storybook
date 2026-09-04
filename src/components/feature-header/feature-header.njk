@@ -9,7 +9,8 @@
 {%- if params.background == 'tertiary' %}  ds_feature-header--background-tertiary{% endif %}
 {%- if params.isWideText %}  ds_feature-header--wide{% endif %}
 {%- if params.isFullWidth %}  ds_feature-header--fullwidth{% endif %}
-{%- if params.isTopAlign %}  ds_feature-header--top{% endif %}"
+{%- if params.isTopAlign %}  ds_feature-header--top{% endif %}
+{%- if params.className %}  {{ params.className }}{% endif %}"
 {%- if params.style %} style="{{params.style}}"{% endif %}>
     {%- if params.isFullWidth %}
     <div class="ds_wrapper">
@@ -31,7 +32,11 @@
         {% endif -%}
     </div>
     {%- if params.image == 'normal' %}
-    <div class="ds_feature-header__secondary {%- if params.cover %}  ds_feature-header__secondary--cover{% endif %} {%- if params.removePadding %}  ds_feature-header__secondary--no-padding{% endif %}">
+    <div class="ds_feature-header__secondary {%- if params.isImageCover %}  ds_feature-header__secondary--cover{% endif %} {%- if params.hasNoImagePadding %}  ds_feature-header__secondary--no-padding{% endif %} {%- if params.hasImageMobileAlignment %}  ds_feature-header__secondary--{{ params.hasImageMobileAlignment }}-mobile{% endif %}">
+         {%- if params.hasImageMobileAlignment == 'hidden' %}
+        <picture>
+        <source media="(max-width: 767px)" sizes="1px" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 1w" />
+        {% endif -%}
         <img class="ds_feature-header__image" alt="" src="https://placehold.co/767x431"
             width="767"
             height="431"
@@ -45,9 +50,16 @@
             https://placehold.co/1088x612 1088w,
             https://placehold.co/1534x863 1534w"
             sizes="(min-width:1200px) 544px, (min-width:992px) 448px, (min-width: 768px) 352px, 100vw"/>
+        {%- if params.hasImageMobileAlignment == 'hidden' %}
+        </picture>
+        {%- endif %}
     </div>
     {%- elseif params.image == 'square' %}
-    <div class="ds_feature-header__secondary {%- if params.cover %}  ds_feature-header__secondary--cover{% endif %} {%- if params.removePadding %}  ds_feature-header__secondary--no-padding{% endif %}">
+    <div class="ds_feature-header__secondary {%- if params.isImageCover %}  ds_feature-header__secondary--cover{% endif %} {%- if params.hasNoImagePadding %}  ds_feature-header__secondary--no-padding{% endif %} {%- if params.hasImageMobileAlignment %}  ds_feature-header__secondary--{{ params.hasImageMobileAlignment }}-mobile{% endif %}">
+         {%- if params.hasImageMobileAlignment == 'hidden' %}
+        <picture>
+        <source media="(max-width: 767px)" sizes="1px" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 1w" />
+        {% endif -%}
         <img class="ds_feature-header__image" alt="" src="https://placehold.co/767x767"
             width="767"
             height="767"
@@ -61,12 +73,22 @@
             https://placehold.co/1088x1088 1088w,
             https://placehold.co/1534x1534 1534w"
             sizes="(min-width:1200px) 544px, (min-width:992px) 448px, (min-width: 768px) 352px, 100vw"/>
+        {%- if params.hasImageMobileAlignment == 'hidden' %}
+        </picture>
+        {%- endif %}
     </div>
     {%- elseif params.image == 'svg' %}
-    <div class="ds_feature-header__secondary {%- if params.cover %}  ds_feature-header__secondary--cover{% endif %} {%- if params.removePadding %}  ds_feature-header__secondary--no-padding{% endif %}">
+    <div class="ds_feature-header__secondary {%- if params.isImageCover %}  ds_feature-header__secondary--cover{% endif %} {%- if params.hasNoImagePadding %}  ds_feature-header__secondary--no-padding{% endif %} {%- if params.hasImageMobileAlignment %}  ds_feature-header__secondary--{{ params.hasImageMobileAlignment }}-mobile{% endif %}">
+        {%- if params.hasImageMobileAlignment == 'hidden' %}
+        <picture>
+        <source media="(max-width: 767px)" sizes="1px" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 1w" />
+        {% endif -%}
         <img class="ds_feature-header__image" alt="" src="images/placeholders/illustration.svg"
             width="767"
             height="767"/>
+        {%- if params.hasImageMobileAlignment == 'hidden' %}
+        </picture>
+        {%- endif %}
     </div>
     {%- endif %}
     {%- if params.isFullWidth %}
@@ -87,5 +109,9 @@
     image: image,
     isFullWidth: isFullWidth,
     isTopAlign: isTopAlign,
-    isWideText: isWideText
+    isWideText: isWideText,
+    className: className,
+    isImageCover: isImageCover,
+    hasNoImagePadding: hasNoImagePadding,
+    hasImageMobileAlignment: hasImageMobileAlignment
 })}}

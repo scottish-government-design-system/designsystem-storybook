@@ -1,0 +1,62 @@
+{%- macro featureGrid(params) -%}
+<div class="ds_pb  ds_pb--feature-grid
+{%- if params.contentLayout == 3 %} ds_pb--feature-grid-3-items {%- endif %}
+{%- if params.contentLayout == 4 %} ds_pb--feature-grid-4-items {%- endif %}
+{%- if params.background == "secondary" %} ds_pb--background-secondary
+{%- elseif params.background == "tertiary" %} ds_pb--background-tertiary
+{%- elseif params.background == "theme" %} ds_pb__theme--background-secondary
+{%- endif %}
+{%- if params.removeBottomPadding %} ds_!_padding-bottom--0{% endif %}">
+    <div class="ds_wrapper">    
+        <div class="ds_pb__inner">
+            {%- for i in range(0, params.contentLayout) %}
+            {% set item  = params.items[i] %}
+            <div class="ds_pb--feature-grid__item">
+
+                {%- if item.image %}
+                <div class="ds_pb--feature-grid__item-media {%- if item.imageSmall %}  ds_pb--feature-grid__item-media--small-mobile{%- endif %}">
+
+                {%- if item.href %}
+                <a href="{{ item.href }}" tabindex="-1">
+                {%- endif %}
+
+                    <div class="ds_aspect-box">
+                        <img loading="lazy" class="ds_aspect-box__inner" src="images/placeholders/{{ item.image }}.jpg" alt="{{ item.imageAlt }}"/>
+                    </div>
+
+                {%- if item.href %}
+                </a>
+                {%- endif %}
+
+                </div>
+                {%- endif %}
+
+                {%- if item.heading %}
+                <{{ item.headingLevel | default('h2')}} class="ds_pb--feature-grid__item-title">
+                    {%- if item.href %}
+                    <a href="{{ item.href }}">{{ item.heading }}</a>
+                    {% else %}
+                    {{ item.heading }}
+                    {%- endif%}
+                    </{{ item.headingLevel | default('h2')}}>
+                {%- endif %}
+
+                {%- if item.content %}
+                <div class="ds_pb--feature-grid__item-summary">
+                    {{ item.content | safe }}
+                </div>
+                {%- endif %}
+            
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{%- endmacro -%}
+
+{{featureGrid({
+    background: background,
+    removeBottomPadding: removeBottomPadding,
+    contentLayout: contentLayout,
+    items: items
+})}}

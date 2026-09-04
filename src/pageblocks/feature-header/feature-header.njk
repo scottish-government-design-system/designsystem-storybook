@@ -1,0 +1,73 @@
+
+
+
+{%- from 'src/components/feature-header/feature-header.njk' import featureHeader -%}
+
+{%- macro featureHeaderBlock(params) -%}
+
+{%- if params.background == 'theme'%}
+{{ featureHeader({
+    altText: altText,
+    background: background,
+    content: content,
+    hasButton: hasButton,
+    heading: heading,
+    image: image,
+    isFullWidth: isFullWidth,
+    isTopAlign: isTopAlign,
+    isWideText: isWideText,
+    className: 'ds_pb  ds_pb--ds_feature-header  ds_pb__theme--background-secondary  ds_feature-header--background-secondary',
+    isImageCover: isImageCover,
+    hasNoImagePadding: hasNoImagePadding,
+    hasImageMobileAlignment: hasImageMobileAlignment
+})}}
+{%- elseif params.background == 'theme-reversed' %}
+{{ featureHeader({
+    altText: altText,
+    background: 'colour',
+    content: content,
+    hasButton: hasButton,
+    heading: heading,
+    image: image,
+    isFullWidth: isFullWidth,
+    isTopAlign: isTopAlign,
+    isWideText: isWideText,
+    className: 'ds_pb  ds_pb--ds_feature-header',
+    isImageCover: isImageCover,
+    hasNoImagePadding: hasNoImagePadding,
+    hasImageMobileAlignment: hasImageMobileAlignment
+})}}
+{%- else %}
+{{ featureHeader({
+    altText: altText,
+    background: background,
+    content: content,
+    hasButton: hasButton,
+    heading: heading,
+    image: image,
+    isFullWidth: isFullWidth,
+    isTopAlign: isTopAlign,
+    isWideText: isWideText,
+    className: 'ds_pb  ds_pb--ds_feature-header',
+    isImageCover: isImageCover,
+    hasNoImagePadding: hasNoImagePadding,
+    hasImageMobileAlignment: hasImageMobileAlignment
+})}}
+{%- endif %}
+
+{%- endmacro -%}
+
+{{featureHeaderBlock({
+    altText: altText,
+    background: background,
+    content: content,
+    hasButton: hasButton,
+    heading: heading,
+    image: image,
+    isFullWidth: isFullWidth,
+    isTopAlign: isTopAlign,
+    isWideText: isWideText,
+    isImageCover: isImageCover,
+    hasNoImagePadding: hasNoImagePadding,
+    hasImageMobileAlignment: hasImageMobileAlignment
+})}}

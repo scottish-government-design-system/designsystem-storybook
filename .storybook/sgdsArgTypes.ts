@@ -223,6 +223,14 @@ const SGDSArgTypes = {
             options: ['', 'secondary', 'tertiary', 'theme'],
             type: 'string'
         }, options) as InputType;
+    },
+    expandedBackgroundColour: (options?: ArgType) => {
+        return Object.assign({
+            control: { type: 'select' },
+            description: 'The background colour to use',
+            options: ['', 'secondary', 'tertiary', 'theme', 'theme-reversed'],
+            type: 'string'
+        }, options) as InputType;
     }
 }
 

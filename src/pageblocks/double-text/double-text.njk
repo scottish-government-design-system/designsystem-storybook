@@ -1,0 +1,27 @@
+{%- macro doubleText(params) -%}
+<div class="ds_pb  ds_pb--double-text
+{%- if params.background == "secondary" %} ds_pb--background-secondary
+{%- elseif params.background == "tertiary" %} ds_pb--background-tertiary
+{%- elseif params.background == "theme" %} ds_pb__theme--background-secondary
+{%- endif %}">
+    <div class="ds_wrapper">    
+        <div class="ds_pb__inner {%- if params.removeBottomPadding %}  ds_!_padding-bottom--0{% endif %}">
+            <div class="ds_pb__text">
+                {{ params.content | safe }}
+            </div>
+            {%- if params.additionalContent %}
+            <div class="ds_pb__text">
+                {{ params.additionalContent | safe }}
+            </div>
+            {%- endif %}
+        </div>
+    </div>
+</div>
+{%- endmacro -%}
+
+{{doubleText({
+    background: background,
+    removeBottomPadding: removeBottomPadding,
+    content: content,
+    additionalContent: additionalContent
+})}}

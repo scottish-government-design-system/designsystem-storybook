@@ -6,8 +6,8 @@ import { CategoryItemArgs } from '../../components/category-item/category-item.s
 import ComponentTemplate from './browse.njk';
 
 export type BrowseBlockArgs = {
-    background: string
-    removeBottomPadding: boolean
+    background?: string
+    removeBottomPadding?: boolean
     contentLayout: string
     items: CategoryItemArgs[]
 };
@@ -19,6 +19,7 @@ const meta: Meta<BrowseBlockArgs> = {
     },
     args: {
         removeBottomPadding: false,
+        contentLayout: 'card',
         items: [
             {
                 content: 'Access to and protection of the countryside and managing wildlife on your land',

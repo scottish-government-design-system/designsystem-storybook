@@ -1,0 +1,34 @@
+{%- from 'src/components/link-list/link-list.njk' import linkList -%}
+
+{%- macro linkListBlock(params) -%}
+<div class="ds_pb  ds_pb--link-list
+{%- if params.removeBottomPadding %}  ds_!_padding-bottom--0{% endif %}">
+    <div class="ds_wrapper">    
+        <div class="ds_pb__inner">
+            <h2>Latest {{ params.title }}</h2>
+            {{linkList({
+                hasImage: hasImage,
+                hasMetadata: hasMetadata,
+                headingLevel: 'h3',
+                isBorderless: isBorderless,
+                isTwoColumns: isTwoColumns,
+                items: items,
+                hideNav: true
+            })}}    
+            <div>
+                <a href="#" class="ds_cb__link-major">See all {{ params.title }}<svg class="ds_icon" aria-hidden="true" role="img">
+                    <use href="images/icons.stack.svg#chevron_right"></use>
+                </svg></a>
+            </div>
+        </div>
+    </div>
+</div>
+{%- endmacro -%}
+
+{{linkListBlock({
+    removeBottomPadding: removeBottomPadding,
+    title: title,
+    isBorderless: isBorderless,
+    isTwoColumns: isTwoColumns,
+    items: items
+})}}
