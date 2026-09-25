@@ -49,3 +49,9 @@ export default meta;
 type Story = StoryObj<FeatureHeaderBlockArgs>;
 
 export const Default: Story = {};
+
+export const WithVideo: Story = {
+    args: {
+        isVideo: true
+    }
+};

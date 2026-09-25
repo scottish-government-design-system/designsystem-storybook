@@ -33,7 +33,10 @@
     </div>
     {%- if params.image == 'normal' %}
     <div class="ds_feature-header__secondary {%- if params.isImageCover %}  ds_feature-header__secondary--cover{% endif %} {%- if params.hasNoImagePadding %}  ds_feature-header__secondary--no-padding{% endif %} {%- if params.hasImageMobileAlignment %}  ds_feature-header__secondary--{{ params.hasImageMobileAlignment }}-mobile{% endif %}">
-         {%- if params.hasImageMobileAlignment == 'hidden' %}
+        {%- if params.isVideo %}
+        <a target="_blank" class="ds_feature-header__secondary-link" href="#">
+        {%- endif %}
+        {%- if params.hasImageMobileAlignment == 'hidden' %}
         <picture>
         <source media="(max-width: 767px)" sizes="1px" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 1w" />
         {% endif -%}
@@ -53,10 +56,20 @@
         {%- if params.hasImageMobileAlignment == 'hidden' %}
         </picture>
         {%- endif %}
+        {%- if params.isVideo %}
+            <svg class="ds_feature-header__secondary-overlay" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 160 90">
+                <circle class="ds_feature-header__secondary-overlay-background" cx="82" cy="45.5" r="16" fill="#0065db"/>
+                <path class="ds_feature-header__secondary-overlay-foreground" fill="#fff" d="M76 45.3v-9.2l8 4.6 8 4.6-8 4.7-8 4.6z"/>
+            </svg>
+        </a>
+        {%- endif %}
     </div>
     {%- elseif params.image == 'square' %}
     <div class="ds_feature-header__secondary {%- if params.isImageCover %}  ds_feature-header__secondary--cover{% endif %} {%- if params.hasNoImagePadding %}  ds_feature-header__secondary--no-padding{% endif %} {%- if params.hasImageMobileAlignment %}  ds_feature-header__secondary--{{ params.hasImageMobileAlignment }}-mobile{% endif %}">
-         {%- if params.hasImageMobileAlignment == 'hidden' %}
+        {%- if params.isVideo %}
+        <a target="_blank" class="ds_feature-header__secondary-link" href="#">
+        {%- endif %}
+        {%- if params.hasImageMobileAlignment == 'hidden' %}
         <picture>
         <source media="(max-width: 767px)" sizes="1px" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 1w" />
         {% endif -%}
@@ -76,9 +89,19 @@
         {%- if params.hasImageMobileAlignment == 'hidden' %}
         </picture>
         {%- endif %}
+        {%- if params.isVideo %}
+            <svg class="ds_feature-header__secondary-overlay" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 160 90">
+                <circle class="ds_feature-header__secondary-overlay-background" cx="82" cy="45.5" r="16" fill="#0065db"/>
+                <path class="ds_feature-header__secondary-overlay-foreground" fill="#fff" d="M76 45.3v-9.2l8 4.6 8 4.6-8 4.7-8 4.6z"/>
+            </svg>
+        </a>
+        {%- endif %}
     </div>
     {%- elseif params.image == 'svg' %}
     <div class="ds_feature-header__secondary {%- if params.isImageCover %}  ds_feature-header__secondary--cover{% endif %} {%- if params.hasNoImagePadding %}  ds_feature-header__secondary--no-padding{% endif %} {%- if params.hasImageMobileAlignment %}  ds_feature-header__secondary--{{ params.hasImageMobileAlignment }}-mobile{% endif %}">
+        {%- if params.isVideo %}
+        <a target="_blank" class="ds_feature-header__secondary-link" href="#">
+        {%- endif %}
         {%- if params.hasImageMobileAlignment == 'hidden' %}
         <picture>
         <source media="(max-width: 767px)" sizes="1px" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 1w" />
@@ -88,6 +111,13 @@
             height="767"/>
         {%- if params.hasImageMobileAlignment == 'hidden' %}
         </picture>
+        {%- endif %}
+        {%- if params.isVideo %}
+            <svg class="ds_feature-header__secondary-overlay" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 160 90">
+                <circle class="ds_feature-header__secondary-overlay-background" cx="82" cy="45.5" r="16" fill="#0065db"/>
+                <path class="ds_feature-header__secondary-overlay-foreground" fill="#fff" d="M76 45.3v-9.2l8 4.6 8 4.6-8 4.7-8 4.6z"/>
+            </svg>
+        </a>
         {%- endif %}
     </div>
     {%- endif %}
@@ -113,5 +143,6 @@
     className: className,
     isImageCover: isImageCover,
     hasNoImagePadding: hasNoImagePadding,
-    hasImageMobileAlignment: hasImageMobileAlignment
+    hasImageMobileAlignment: hasImageMobileAlignment,
+    isVideo: isVideo
 })}}

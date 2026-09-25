@@ -1,54 +1,54 @@
+{%- from 'node_modules/@scottish-government-design-system/page-blocks/src/blocks/browse/macro.njk' import sgBlockBrowse -%}
+
 {%- from 'src/components/category-list/category-list.njk' import categoryList -%}
 {%- from 'src/components/card/card.njk' import card -%}
 
 {%- macro browse(params) -%}
-<div class="ds_pb  ds_pb--browse
-{%- if params.background == "secondary" %} ds_pb--background-secondary
-{%- elseif params.background == "tertiary" %} ds_pb--background-tertiary
-{%- elseif params.background == "theme" %} ds_pb__theme--background-secondary
-{%- endif %}
-{%- if params.removeBottomPadding %} ds_!_padding-bottom--0{% endif %}">
-    <div class="ds_wrapper">    
-        <div class="ds_pb__inner">
-            {%- if params.contentLayout == "imagecard" %}
-            <div class="ds_card-grid  ds_card-grid--min-height  ds_card-grid--medium-2  ds_card-grid--narrow">
-                {%- for item in params.items %}
-                {{card({
-                    content: item.content,
-                    hasMetadata: false,
-                    heading: item.heading,
-                    isNav: true,
-                    image: 'thistles'
-                })}}
-                {% endfor %}
-            </div>
-            {%- elseif params.contentLayout == "card" %}
-            <div class="ds_card-grid  ds_card-grid--min-height  ds_card-grid--medium-2  ds_card-grid--narrow">
-                {%- for item in params.items %}
-                {{card({
-                    content: item.content,
-                    hasMetadata: false,
-                    heading: item.heading,
-                    isNav: true
-                })}}
-                {% endfor %}
-            </div>
-            {%- elseif params.contentLayout == "grid" %}
-            {{categoryList({
-                headingLevel: "h2",
-                isGrid: true,
-                isOrdered: true,
-                items: params.items
+
+{%- call sgBlockBrowse({
+    background: params.background,
+    removeBottomPadding: params.removeBottomPadding
+}) %}
+
+    {%- if params.contentLayout == "imagecard" %}
+        <div class="ds_card-grid  ds_card-grid--min-height  ds_card-grid--medium-2  ds_card-grid--narrow">
+            {%- for item in params.items %}
+            {{card({
+                content: item.content,
+                hasMetadata: false,
+                heading: item.heading,
+                isNav: true,
+                image: 'thistles'
             })}}
-            {%- elseif params.contentLayout == "list" %}
-            {{categoryList({
-                headingLevel: "h2",
-                items: params.items
-            })}}
-            {%- endif %}
+            {% endfor %}
         </div>
-    </div>
-</div>
+    {%- elseif params.contentLayout == "card" %}
+        <div class="ds_card-grid  ds_card-grid--min-height  ds_card-grid--medium-2  ds_card-grid--narrow">
+            {%- for item in params.items %}
+            {{card({
+                content: item.content,
+                hasMetadata: false,
+                heading: item.heading,
+                isNav: true
+            })}}
+            {% endfor %}
+        </div>
+    {%- elseif params.contentLayout == "grid" %}
+        {{categoryList({
+            headingLevel: "h2",
+            isGrid: true,
+            isOrdered: true,
+            items: params.items
+        })}}
+    {%- elseif params.contentLayout == "list" %}
+        {{categoryList({
+            headingLevel: "h2",
+            items: params.items
+        })}}
+    {%- endif %}
+
+{%- endcall %}
+
 {%- endmacro -%}
 
 {{browse({

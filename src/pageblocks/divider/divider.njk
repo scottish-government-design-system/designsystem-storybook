@@ -1,13 +1,11 @@
+{%- from 'node_modules/@scottish-government-design-system/page-blocks/src/blocks/divider/macro.njk' import sgBlockDivider -%}
+
 {%- macro divider(params) -%}
-<div class="ds_pb  ds_pb--divider">
-    {%- if params.fullWidth %}
-     <hr />
-    {%- else %}
-    <div class="ds_wrapper">    
-        <hr />
-    </div>    
-    {%- endif %}
-</div>
+
+ {{ sgBlockDivider({
+    fullWidth: params.fullWidth
+}) }}
+
 {%- endmacro -%}
 
 {{divider({
