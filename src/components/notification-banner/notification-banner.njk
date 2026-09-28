@@ -1,7 +1,7 @@
 {%- macro notificationBanner(params) -%}
 <div {%- if params.id %} id="{{ params.id }}" {%- endif %} class="ds_notification ds_reversed{%- if params.modifiers %} {{ params.modifiers }}{%- endif -%}" data-module="ds-notification">
     <div class="ds_wrapper">
-        <div class="ds_notification__content{%- if params.isDismissable %} ds_notification__content--has-close{%- endif %}">
+        <div class="ds_notification__content{%- if params.isDismissable and params.isLegacy %} ds_notification__content--has-close{%- endif %}">
             {%- if params.title %}
             <h2 class="visually-hidden">{{ params.title }}</h2>
             {%- endif %}
@@ -35,5 +35,6 @@
     hasIcon: hasIcon,
     id: id,
     isDismissable: isDismissable,
-    title: title
+    title: title,
+    isLegacy: isLegacy
 })}}
