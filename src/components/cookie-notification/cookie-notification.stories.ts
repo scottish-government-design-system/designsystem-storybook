@@ -48,3 +48,10 @@ export const LegacyMarkup: Story = {
         isLegacy: true
     }
 };
+
+export const ConfirmationLegacyMarkup: Story = {
+    args: {
+        isLegacy: true,
+        isConfirmation: true
+    }
+};

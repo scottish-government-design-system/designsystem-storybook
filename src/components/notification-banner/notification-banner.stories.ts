@@ -11,6 +11,7 @@ type NotificationBannerAergs = {
     id?: string
     isDismissable?: boolean
     title: string
+    isLegacy?: boolean
 };
 
 const meta: Meta<NotificationBannerAergs> = {
@@ -33,7 +34,10 @@ const meta: Meta<NotificationBannerAergs> = {
         title: {
             description: 'A hidden title for the notification banner, useful for screen reader users',
             type: 'string'
-        }
+        },
+        isLegacy: SGDSArgTypes.boolean({
+            description: 'Renders the legacy markup for the notification banner'
+        })
     },
     parameters: {
         layout: 'fullscreen'
