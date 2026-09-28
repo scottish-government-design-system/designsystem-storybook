@@ -2,7 +2,7 @@
 {%- if params.isConfirmation %}
 <div id="cookie-confirm" class="ds_notification ds_reversed ds_notification--cookie-success js-confirm-cookie-content" data-module="ds-notification">
     <div class="ds_wrapper">
-        <div class="ds_notification__content ds_notification__content--has-close">
+        <div class="ds_notification__content {%- if params.isLegacy %}  ds_notification__content--has-close{%- endif %}">
             <h2 class="visually-hidden">Cookies on this website</h2>
             <div class="ds_notification__text">
                 <p>Your cookie preferences have been saved. You can <a href="/cookies/">change your cookie settings</a> at any time.</p>
