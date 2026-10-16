@@ -1,6 +1,40 @@
 {%- macro featureHeader(params) -%}
+{%- from 'src/components/breadcrumbs/breadcrumbs.njk' import breadcrumbs -%}
 {%- from 'src/components/button/button.njk' import button -%}
+{%- from 'src/components/page-metadata/page-metadata.njk' import pageMetadata -%}
+
+{%- if params.ratio == '16:9' %}
+{%- set ratioClass = '' %}
+{%- elif params.ratio == '1:1' %}
+{%- set ratioClass = 'ds_aspect-box--square' %}
+{%- elif params.ratio == '4:3' %}
+{%- set ratioClass = 'ds_aspect-box--43' %}
+{%- elif params.ratio == '21:9' %}
+{%- set ratioClass = 'ds_aspect-box--219' %}
+{%- endif %}
+
 {%- if not params.isFullWidth %}
+<div class="ds_wrapper">
+    {%- if params.hasBreadcrumbs %}
+    {{breadcrumbs({
+        isOmitCurrentPage: false,
+        items: [
+            {
+                content: 'Home',
+                href: '#'
+            },
+            {
+                content: 'Breadcrumbs',
+                href: '#'
+            },
+            {
+                content: 'Feature header',
+                isCurrent: true
+            }
+        ]
+    })}}
+    {% endif -%}
+</div>
 <div class="ds_wrapper">
 {%- endif %}
 <header class="ds_feature-header
@@ -14,12 +48,46 @@
 {%- if params.style %} style="{{params.style}}"{% endif %}>
     {%- if params.isFullWidth %}
     <div class="ds_wrapper">
+        {%- if params.hasBreadcrumbs %}
+        <div class="ds_feature-header__breadcrumbs">
+        {{breadcrumbs({
+            isOmitCurrentPage: false,
+            items: [
+                {
+                    content: 'Home',
+                    href: '#'
+                },
+                {
+                    content: 'Breadcrumbs',
+                    href: '#'
+                },
+                {
+                    content: 'Feature header',
+                    isCurrent: true
+                }
+            ]
+        })}}
+        </div>
+        {% endif -%}
     {%- endif -%}
-
     <div class="ds_feature-header__primary">
         <h1 class="ds_feature-header__title">
             {{ params.heading }}
         </h1>
+        {%- if params.hasMetadata %}
+        {{pageMetadata({
+            items: [
+                {
+                    key: 'Content type',
+                    value: 'Publication'
+                },
+                {
+                    key: 'Last updated',
+                    value: '21/04/2025'
+                }
+            ]
+        })}}
+        {% endif -%}
         {%- if params.content %}
         {{ params.content | safe }}
         {% endif -%}
@@ -40,7 +108,10 @@
         <picture>
         <source media="(max-width: 767px)" sizes="1px" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 1w" />
         {% endif -%}
-        <img class="ds_feature-header__image" alt="" src="https://placehold.co/767x431"
+        {%- if params.hasAspectBox %}
+        <div class="ds_aspect-box  {{ratioClass}}">
+        {% endif -%}
+        <img class="{%- if params.hasAspectBox %}ds_aspect-box__inner{% else %}ds_feature-header__image{% endif -%}" alt="" src="https://placehold.co/767x431"
             width="767"
             height="431"
             srcset="
@@ -53,6 +124,9 @@
             https://placehold.co/1088x612 1088w,
             https://placehold.co/1534x863 1534w"
             sizes="(min-width:1200px) 544px, (min-width:992px) 448px, (min-width: 768px) 352px, 100vw"/>
+        {%- if params.hasAspectBox %}
+        </div>
+        {% endif -%}
         {%- if params.hasImageMobileAlignment == 'hidden' %}
         </picture>
         {%- endif %}
@@ -73,7 +147,10 @@
         <picture>
         <source media="(max-width: 767px)" sizes="1px" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 1w" />
         {% endif -%}
-        <img class="ds_feature-header__image" alt="" src="https://placehold.co/767x767"
+        {%- if params.hasAspectBox %}
+        <div class="ds_aspect-box  {{ratioClass}}">
+        {% endif -%}
+        <img class="{%- if params.hasAspectBox %}ds_aspect-box__inner{% else %}ds_feature-header__image{% endif -%}" alt="" src="https://placehold.co/767x767"
             width="767"
             height="767"
             srcset="
@@ -86,6 +163,9 @@
             https://placehold.co/1088x1088 1088w,
             https://placehold.co/1534x1534 1534w"
             sizes="(min-width:1200px) 544px, (min-width:992px) 448px, (min-width: 768px) 352px, 100vw"/>
+        {%- if params.hasAspectBox %}
+        </div>
+        {% endif -%}
         {%- if params.hasImageMobileAlignment == 'hidden' %}
         </picture>
         {%- endif %}
@@ -106,9 +186,15 @@
         <picture>
         <source media="(max-width: 767px)" sizes="1px" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7 1w" />
         {% endif -%}
-        <img class="ds_feature-header__image" alt="" src="images/placeholders/illustration.svg"
+        {%- if params.hasAspectBox %}
+        <div class="ds_aspect-box  {{ratioClass}}">
+        {% endif -%}
+        <img class="{%- if params.hasAspectBox %}ds_aspect-box__inner{% else %}ds_feature-header__image{% endif -%}" alt="" src="images/placeholders/illustration.svg"
             width="767"
             height="767"/>
+        {%- if params.hasAspectBox %}
+        </div>
+        {% endif -%}
         {%- if params.hasImageMobileAlignment == 'hidden' %}
         </picture>
         {%- endif %}
@@ -134,7 +220,10 @@
     altText: altText,
     background: background,
     content: content,
+    hasAspectBox: hasAspectBox,
+    hasBreadcrumbs: hasBreadcrumbs,
     hasButton: hasButton,
+    hasMetadata: hasMetadata,
     heading: heading,
     image: image,
     isFullWidth: isFullWidth,
@@ -144,5 +233,6 @@
     isImageCover: isImageCover,
     hasNoImagePadding: hasNoImagePadding,
     hasImageMobileAlignment: hasImageMobileAlignment,
-    isVideo: isVideo
+    isVideo: isVideo,
+    ratio: ratio
 })}}
