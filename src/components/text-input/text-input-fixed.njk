@@ -1,0 +1,46 @@
+{%- from 'src/components/text-input/text-input.njk' import textInput -%}
+
+{% macro fixedWidths(params) %}
+    {% for val in [20,10,5,4,3,2] %}
+        {{textInput({
+            afterContent: params.afterContent,
+            buttonIcon: params.buttonIcon,
+            buttonText: params.buttonText,
+            countThreshold: params.countThreshold,
+            currencySymbol: params.currencySymbol,
+            errorMessage: params.errorMessage,
+            hasButton: params.hasButton,
+            hasError: params.hasError,
+            hintText: params.hintText,
+            id: 'fixed-' + val,
+            label: 'Fixed ' + val,
+            maxLength: params.maxLength,
+            placeHolder: params.placeholder,
+            step: params.step,
+            type: params.type,
+            value: 'MMMMMMMMMMMMMMMMMMMM'.substring(0,val),
+            width: 'fixed-' + val
+        })}}
+    {% endfor %}
+{% endmacro %}
+
+{{fixedWidths({
+    afterContent: afterContent,
+    buttonIcon: buttonIcon,
+    buttonText: buttonText,
+    countThreshold: countThreshold,
+    currencySymbol: currencySymbol,
+    errorMessage: errorMessage,
+    hasButton: hasButton,
+    hasError: hasError,
+    hintText: hintText,
+    id: id,
+    label: label,
+    maxlength: maxlength,
+    name: name,
+    placeholder: placeholder,
+    step: step,
+    type: type,
+    value: value,
+    width: width
+})}}

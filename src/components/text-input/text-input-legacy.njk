@@ -1,0 +1,66 @@
+{%- macro textInput(params) -%}
+{%- if params.isCurrency or params.hasButton or params.afterContent %}
+    {%- set hasWrapper = true -%}
+{%- endif -%}
+
+{%- if params.maxlength %}<div data-module="ds-character-count">{%- endif %}
+    <label class="ds_label" for="{{params.id}}">{{params.label}}</label>
+    {%- if params.hintText %}
+        {%- set hintTextId = "hint-text-" + params.id -%}
+        <p class="ds_hint-text" id="{{hintTextId}}">{{params.hintText}}</p>
+    {%- endif %}
+    {%- if params.hasError and params.errorMessage %}
+        {%- set errorMessageId = "error-message-" + params.id -%}
+        <p class="ds_question__error-message " id="{{errorMessageId}}">{{params.errorMessage}}</p>
+    {%- endif %}
+    {%- if hasWrapper %}<div class="{% if params.hasButton or params.afterContent %}ds_input__wrapper{% endif %}  {% if params.hasButton %}ds_input__wrapper--has-icon{% endif %} {% if params.isCurrency %}ds_currency-wrapper{% endif %}" {% if params.isCurrency %}data-symbol="{{params.currencySymbol | default('£')}}"{% endif %}>{%- endif %}
+        <input
+            class="ds_input {% if params.hasError %}ds_input--error{% endif %} {% if params.width %}ds_input--{{params.width}}{% endif %}"
+            id="{{params.id}}"
+            {% if params.hintText or params.errorMessage -%}
+                aria-describedby="{% if params.hintText %}{{hintTextId}}{% endif %} {% if params.errorMessage %}{{errorMessageId}}{% endif %}"
+            {%- endif %}
+            {% if params.hasError -%}aria-invalid="true"{%- endif %}
+            {% if params.maxlength -%}maxlength="{{params.maxlength}}"{%- endif %}
+            name="{{params.name | default(params.id)}}"
+            {% if params.placeholder -%}placeholder="{{params.placeholder}}"{%- endif %}
+            {% if params.step -%}step="{{params.step}}"{%- endif %}
+            type="{{params.type | default('text')}}"
+            {% if params.value -%}
+            alue="{{params.value}}"{%- endif %}
+        >
+        {%- if params.hasButton %}
+        <button class="ds_button" type="button">
+            <span class="visually-hidden">{{params.buttonText}}</span>
+            <svg class="ds_icon" aria-hidden="true" role="img">
+                <use href="/images/icons.stack.svg#{{params.buttonIcon}}"></use>
+            </svg>
+        </button>
+        {%- endif %}
+        {%- if params.afterContent -%}<span class="ds_input-wrapper__after">{{params.afterContent}}</span>{%- endif -%}
+    {%- if hasWrapper %}</div>{%- endif %}
+{% if params.maxlength %}</div>{%- endif %}
+{%- endmacro -%}
+
+{{textInput({
+    afterContent: afterContent,
+    beforeContent: beforeContent,
+    buttonIcon: buttonIcon,
+    buttonText: buttonText,
+    countThreshold: countThreshold,
+    currencySymbol: currencySymbol,
+    errorMessage: errorMessage,
+    hasButton: hasButton,
+    hasError: hasError,
+    hintText: hintText,
+    id: id,
+    isCurrency: isCurrency,
+    label: label,
+    maxlength: maxlength,
+    name: name,
+    placeholder: placeholder,
+    step: step,
+    type: type,
+    value: value,
+    width: width
+})}}

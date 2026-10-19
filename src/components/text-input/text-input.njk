@@ -1,5 +1,8 @@
-
 {%- macro textInput(params) -%}
+{%- if params.currencySymbol or params.hasButton or params.afterContent -%}
+    {% set hasWrapper = true %}
+{%- endif -%}
+
 {%- if params.maxlength %}<div data-module="ds-character-count">{%- endif %}
 <label class="ds_label" for="{{params.id}}">{{params.label}}</label>
 {%- if params.hintText %}
@@ -10,7 +13,8 @@
 {%- set errorMessageId = "error-message-" + params.id -%}
 <p class="ds_question__error-message " id="{{errorMessageId}}">{{params.errorMessage}}</p>
 {%- endif %}
-{%- if params.isCurrency or params.hasButton %}<div class="{% if params.hasButton %}ds_input__wrapper  ds_input__wrapper--has-icon{% endif %} {% if params.isCurrency %}ds_currency-wrapper{% endif %}" {% if params.isCurrency %}data-symbol="{{params.currencySymbol | default('£')}}"{% endif %}>{%- endif %}
+{%- if hasWrapper %}<div class="ds_input-wrapper">{%- endif %}
+{% if params.currencySymbol %}<span class="ds_input-wrapper__symbol" aria-hidden="true">{{params.currencySymbol}}</span>{% endif %}
 <input
     class="ds_input {% if params.hasError %}ds_input--error{% endif %} {% if params.width %}ds_input--{{params.width}}{% endif %}"
     id="{{params.id}}"
@@ -33,11 +37,14 @@
     </svg>
 </button>
 {%- endif %}
-{%- if params.isCurrency %}</div>{%- endif %}
+{%- if params.afterContent -%}<span class="ds_input-wrapper__after" aria-hidden="true">{{params.afterContent}}</span>{%- endif -%}
+{%- if hasWrapper %}</div>{%- endif %}
 {% if params.maxlength %}</div>{%- endif %}
+
 {%- endmacro -%}
 
 {{textInput({
+    afterContent: afterContent,
     buttonIcon: buttonIcon,
     buttonText: buttonText,
     countThreshold: countThreshold,
@@ -47,7 +54,6 @@
     hasError: hasError,
     hintText: hintText,
     id: id,
-    isCurrency: isCurrency,
     label: label,
     maxlength: maxlength,
     name: name,

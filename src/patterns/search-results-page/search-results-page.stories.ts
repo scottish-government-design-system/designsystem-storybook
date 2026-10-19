@@ -28,6 +28,9 @@ const meta: Meta<SearchResultPageArgs> = {
         hasPromoted: SGDSArgTypes.boolean(),
         hasSort: SGDSArgTypes.boolean(),
         hasSuggestions: SGDSArgTypes.boolean()
+    },
+    play: () => {
+        window.DS.initAll();
     }
 };
 
