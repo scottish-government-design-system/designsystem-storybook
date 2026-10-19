@@ -12,7 +12,7 @@
         <div class="ds_site-search">
             <form role="search" class="ds_site-search__form">
                 <label class="ds_label  visually-hidden" for="site-search">Search</label>
-                <div class="ds_input__wrapper  ds_input__wrapper--has-icon">
+                <div class="ds_input-wrapper">
                     <input name="q" required="" id="site-search" class="ds_input  ds_site-search__input" type="search" placeholder="Search" autocomplete="off" value="{{params.resultsTitle}}" />
                     <button type="submit" class="ds_button  js-site-search-button">
                         <span class="visually-hidden">Search</span>
@@ -350,7 +350,7 @@
                                             <div data-module="ds-datepicker" class="ds_datepicker" id="fromDatePicker">
                                                 <label class="ds_label  ds_no-margin--bottom" for="date-from">Updated after</label>
                                                 <p class="ds_hint-text  ds_!_margin-bottom--1">For example, 21/01/2022</p>
-                                                <div class="ds_input__wrapper">
+                                                <div class="ds_input-wrapper">
                                                     <input id="date-from" {% if params.facets %}value="07/02/2023"{% endif %} class="ds_input" type="text">
                                                 </div>
                                             </div>
@@ -360,7 +360,7 @@
                                             <div data-module="ds-datepicker" class="ds_datepicker" id="toDatePicker">
                                                 <label class="ds_label  ds_no-margin--bottom" for="date-to">Updated before</label>
                                                 <p class="ds_hint-text  ds_!_margin-bottom--1">For example, 21/01/2022</p>
-                                                <div class="ds_input__wrapper">
+                                                <div class="ds_input-wrapper">
                                                     <input id="date-to" class="ds_input" type="text">
                                                 </div>
                                             </div>

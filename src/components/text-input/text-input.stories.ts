@@ -3,8 +3,15 @@ import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './text-input.njk';
+// @ts-expect-error no type defs
+import ComponentTemplateLegacy from './text-input-legacy.njk';
+// @ts-expect-error no type defs
+import FixedWidthsTemplate from './text-input-fixed.njk';
+// @ts-expect-error no type defs
+import FluidWidthsTemplate from './text-input-fluid.njk';
 
 export type TextInputArgs = {
+    afterContent?: string,
     buttonIcon?: string
     buttonText?: string
     countThreshold?: number
@@ -14,7 +21,6 @@ export type TextInputArgs = {
     hasError?: boolean
     hintText?: string
     id: string
-    isCurrency?: boolean
     label: string
     maxlength?: number
     name?: string
@@ -25,6 +31,10 @@ export type TextInputArgs = {
     width?: string
 };
 
+export type LegacyTextInputArgs = TextInputArgs & {
+    isCurrency?: boolean
+}
+
 const meta: Meta<TextInputArgs> = {
     title: 'Components/Text input',
     render: (args) => {
@@ -32,29 +42,27 @@ const meta: Meta<TextInputArgs> = {
     },
     args: {
         id: 'first-name',
-        isCurrency: false,
         label: 'First name'
     },
     argTypes: {
+        afterContent: { type: 'string' },
         buttonIcon: SGDSArgTypes.select({
             description: 'Name of the icon to use',
             options: ['arrow_upward', 'calendar_today', 'cancel', 'check_circle', 'chevron_left', 'chevron_right', 'close', 'description', 'double_chevron_left', 'double_chevron_right' ,'error', 'expand_less', 'expand_more', 'list', 'priority_high', 'search']
         }),
         buttonText: {
-            desctiption: 'Text content for the button',
+            description: 'Text content for the button',
             type: 'string'
         },
         countThreshold: SGDSArgTypes.countThreshold(),
         currencySymbol: {
-            description: 'Currency symbol to use (default is \'£\')',
-            type: 'string'
+            description: 'Text to show before user data. Intended for currency symbols. Will not behave well with multiple characters.',
+            control: { type: 'select' },
+            options: ['£', '$', '€', '¥', '₹', 'C$', 'CHF'],
         },
         errorMessage: SGDSArgTypes.errorMessage(),
         hasButton: SGDSArgTypes.boolean({
             description: 'Whether the component has an associated button'
-        }),
-        isCurrency: SGDSArgTypes.boolean({
-            description: 'Whether the component is a currency field'
         }),
         hasError: SGDSArgTypes.hasError(),
         hintText: SGDSArgTypes.hintText(),
@@ -81,6 +89,7 @@ const meta: Meta<TextInputArgs> = {
 
 export default meta;
 type Story = StoryObj<TextInputArgs>;
+type LegacyStory = StoryObj<LegacyTextInputArgs>;
 
 export const Default: Story = {
 
@@ -89,8 +98,13 @@ export const Default: Story = {
 export const KitchenSink: Story = {
     name: 'Kitchen sink',
     args: {
+        afterContent: 'per kg',
+        buttonIcon: 'search',
+        buttonText: 'Search',
         countThreshold: 50,
+        currencySymbol: '$',
         errorMessage: 'This field is required',
+        hasButton: true,
         hasError: true,
         hintText: 'Please enter your first or given name',
         id: 'kitchensink',
@@ -109,8 +123,7 @@ export const Currency: Story = {
     args: {
         currencySymbol: '$',
         id: 'price',
-        isCurrency: true,
-        label: 'Price per unit',
+        label: 'Price per unit, in dollars',
         placeholder: '0.00',
         step: '.01',
         type: 'number',
@@ -141,3 +154,69 @@ export const WithCharacterCount: Story = {
         }
     }
 };
+
+export const WithAfterContent: Story = {
+    name: 'With after content',
+    args: {
+        label: 'Units per kilogram',
+        id: 'unit-detail',
+        afterContent: 'per kg'
+    },
+    parameters: {
+        docs: {
+            story: { autoplay: true },
+        }
+    }
+};
+
+
+export const FixedWidths: Story = {
+    render: (args) => {
+        return(FixedWidthsTemplate(args))
+    }
+}
+
+export const FluidWidths: Story = {
+    render: (args) => {
+        return(FluidWidthsTemplate(args))
+    }
+}
+
+export const CurrencyLegacy: LegacyStory = {
+    render: (args) => {
+        return(ComponentTemplateLegacy(args))
+    },
+    name: 'Currency (legacy)',
+    args: {
+        currencySymbol: '$',
+        id: 'price',
+        isCurrency: true,
+        label: 'Price, in dollars',
+        placeholder: '0.00',
+        step: '.01',
+        type: 'number',
+        width: 'fluid-one-quarter'
+    },
+    argTypes: {
+        currencySymbol: {
+            description: 'Currency symbol to use, default is \'£\' (deprecated - use beforeContent)',
+            type: 'string'
+        },
+        isCurrency: SGDSArgTypes.boolean({
+            description: 'Whether the component is a currency field (deprecated - use beforeContent)'
+        })
+    }
+}
+
+export const WithButtonLegacy: LegacyStory = {
+    render: (args) => {
+        return(ComponentTemplateLegacy(args))
+    },
+    name: 'With button (legacy)',
+    args: {
+        buttonIcon: 'search',
+        buttonText: 'Search',
+        hasButton: true,
+        id: 'withbutton'
+    }
+}
