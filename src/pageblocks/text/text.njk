@@ -1,0 +1,21 @@
+{%- from 'node_modules/@scottish-government-design-system/page-blocks/src/blocks/text/macro.njk' import sgBlockText -%}
+
+{%- macro text(params) -%}
+
+{%- call sgBlockText({
+        background: params.background,
+        removeBottomPadding: params.removeBottomPadding,
+        position: params.position
+    }) %}
+        {{ content | safe }}
+    {% endcall %}
+
+
+{%- endmacro -%}
+
+{{text({
+    background: background,
+    removeBottomPadding: removeBottomPadding,
+    content: content,
+    position: position
+})}}

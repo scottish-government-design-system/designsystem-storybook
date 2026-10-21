@@ -1,0 +1,45 @@
+{%- from 'node_modules/@scottish-government-design-system/page-blocks/src/blocks/feature-grid/macro.njk' import sgBlockFeatureGrid -%}
+{%- from 'node_modules/@scottish-government-design-system/page-blocks/src/blocks/feature-grid/macro.njk' import sgBlockFeatureGridItem -%}
+
+{%- macro featureGrid(params) -%}
+
+{%- call sgBlockFeatureGrid({
+    background: params.background,
+    removeBottomPadding: params.removeBottomPadding,
+    contentLayout: params.contentLayout
+}) -%}
+
+{%- for i in range(0, params.contentLayout) %}
+    {% set item  = params.items[i] %}
+
+    {%- if item.image %}
+    {{ sgBlockFeatureGridItem({
+        image: 'images/placeholders/' + item.image + '.jpg',
+        imageAlt: item.imageAlt,
+        imageSmall: item.imageSmall,
+        heading: item.heading,
+        headingLevel: item.headingLevel,
+        content: item.content,
+        href: item.href
+    }) }}
+    {%- else %}
+    {{ sgBlockFeatureGridItem({
+        heading: item.heading,
+        headingLevel: item.headingLevel,
+        content: item.content,
+        href: item.href
+    }) }}
+    {%- endif %}    
+    
+{% endfor %}
+
+{% endcall %}
+
+{%- endmacro -%}
+
+{{featureGrid({
+    background: background,
+    removeBottomPadding: removeBottomPadding,
+    contentLayout: contentLayout,
+    items: items
+})}}

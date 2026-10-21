@@ -1,0 +1,21 @@
+{%- from 'node_modules/@scottish-government-design-system/page-blocks/src/blocks/header/macro.njk' import sgBlockHeader -%}
+
+{%- macro header(params) -%}
+
+{{ sgBlockHeader({
+    background: params.background,
+    removeBottomPadding: params.removeBottomPadding,
+    position: params.position,
+    headingLevel: params.headingLevel,
+    title: params.title
+}) }}
+
+{%- endmacro -%}
+
+{{header({
+    background: background,
+    removeBottomPadding: removeBottomPadding,
+    position: position,
+    headingLevel: headingLevel,
+    title: title
+})}}

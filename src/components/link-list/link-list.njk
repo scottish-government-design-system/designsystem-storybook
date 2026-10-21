@@ -3,29 +3,34 @@
 {%- if params.containerStart %}
     {{ params.containerStart | safe}}
 {%- endif -%}
+{% if not params.hideNav %}
 <nav aria-label="Navigation heading">
+{%- endif -%} 
     <ul class="ds_link-list
     {%- if params.isTwoColumns %}  ds_link-list-2-items{%- endif -%}
     {%- if params.isBorderless %}  ds_link-list--no-border{%- endif -%}">
         {%- for item in params.items -%}
             {{linkListItem({
                 content: item.content,
-                hasImage: params.hasAllItemOptions,
-                hasMetadata: params.hasAllItemOptions,
+                hasImage: params.hasImage,
+                hasMetadata: params.hasMetadata,
                 heading: item.heading,
                 headingLevel: params.headingLevel,
                 tagName: 'li'
             })}}
         {% endfor %}
     </ul>
+{% if not params.hideNav %}
 </nav>
+{%- endif -%}
 {%- if params.containerEnd %}
     {{ params.containerEnd | safe}}
 {%- endif -%}
 {%- endmacro -%}
 
 {{linkList({
-    hasAllItemOptions: hasAllItemOptions,
+    hasImage: hasAllItemOptions,
+    hasMetadata: hasAllItemOptions,
     headingLevel: headingLevel,
     isBorderless: isBorderless,
     isTwoColumns: isTwoColumns,

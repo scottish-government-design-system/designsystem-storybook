@@ -1,0 +1,59 @@
+{%- from 'node_modules/@scottish-government-design-system/page-blocks/src/blocks/browse/macro.njk' import sgBlockBrowse -%}
+
+{%- from 'src/components/category-list/category-list.njk' import categoryList -%}
+{%- from 'src/components/card/card.njk' import card -%}
+
+{%- macro browse(params) -%}
+
+{%- call sgBlockBrowse({
+    background: params.background,
+    removeBottomPadding: params.removeBottomPadding
+}) %}
+
+    {%- if params.contentLayout == "imagecard" %}
+        <div class="ds_card-grid  ds_card-grid--min-height  ds_card-grid--medium-2  ds_card-grid--narrow">
+            {%- for item in params.items %}
+            {{card({
+                content: item.content,
+                hasMetadata: false,
+                heading: item.heading,
+                isNav: true,
+                image: 'thistles'
+            })}}
+            {% endfor %}
+        </div>
+    {%- elseif params.contentLayout == "card" %}
+        <div class="ds_card-grid  ds_card-grid--min-height  ds_card-grid--medium-2  ds_card-grid--narrow">
+            {%- for item in params.items %}
+            {{card({
+                content: item.content,
+                hasMetadata: false,
+                heading: item.heading,
+                isNav: true
+            })}}
+            {% endfor %}
+        </div>
+    {%- elseif params.contentLayout == "grid" %}
+        {{categoryList({
+            headingLevel: "h2",
+            isGrid: true,
+            isOrdered: true,
+            items: params.items
+        })}}
+    {%- elseif params.contentLayout == "list" %}
+        {{categoryList({
+            headingLevel: "h2",
+            items: params.items
+        })}}
+    {%- endif %}
+
+{%- endcall %}
+
+{%- endmacro -%}
+
+{{browse({
+    background: background,
+    removeBottomPadding: removeBottomPadding,
+    contentLayout: contentLayout,
+    items: items
+})}}
