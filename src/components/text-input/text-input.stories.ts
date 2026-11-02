@@ -186,7 +186,7 @@ export const CurrencyLegacy: LegacyStory = {
     render: (args) => {
         return(ComponentTemplateLegacy(args))
     },
-    name: 'Currency (legacy)',
+    name: 'Lecagy currency (deprecated)',
     args: {
         currencySymbol: '$',
         id: 'price',
@@ -212,7 +212,7 @@ export const WithButtonLegacy: LegacyStory = {
     render: (args) => {
         return(ComponentTemplateLegacy(args))
     },
-    name: 'With button (legacy)',
+    name: 'Legacy button (deprecated)',
     args: {
         buttonIcon: 'search',
         buttonText: 'Search',
