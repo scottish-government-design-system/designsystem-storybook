@@ -3,6 +3,8 @@ import SGDSArgTypes from '../../../.storybook/sgdsArgTypes';
 
 // @ts-expect-error no type defs
 import ComponentTemplate from './accordion.njk';
+// @ts-expect-error no type defs
+import ComponentTemplateLegacy from './accordion-legacy.njk';
 
 export type AccordionArgs = {
     items: object[]
@@ -44,6 +46,7 @@ const meta: Meta<AccordionArgs> = {
         hasOpenAll: SGDSArgTypes.boolean({
             table: { defaultValue: { summary: 'true' } }
         }),
+        isSmall: SGDSArgTypes.boolean(),
         items: SGDSArgTypes.hidden()
     },
 
@@ -81,5 +84,12 @@ export const CustomOpenCloseText: Story = {
     args: {
         openText: 'Ouvrir',
         closeText: 'Fermer',
+    }
+};
+
+export const LegacyMarkup: Story = {
+    name: 'Legacy markup (deprecated)',
+    render: (args) => {
+        return(ComponentTemplateLegacy(args))
     }
 };
