@@ -23,7 +23,7 @@ const meta: Meta<StepNavigationArgs> = {
                 content: `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                     <ol>
                         <li>
-                            <a id="target-link" href="/my/target/link">Link 1</a>
+                            <a id="target-link" href="#">Link 1</a>
                         </li>
                         <li>
                             <a href="#">Link 2</a>
